@@ -1,0 +1,526 @@
+.header-content {
+  height: fit-content !important;
+  width: 66.67% !important;
+  margin-top: 1rem;
+}
+
+h2,a{
+  cursor: grab; 
+  font-family: sans-serif;
+}
+
+.dropbtn {
+  border: none;
+  font-size: 14px;
+  padding: 10px;
+  /* font-family: inherit !important; */
+}
+
+
+.drobdown {
+  position: relative !important;
+  display: inline-block !important;
+}
+
+.dropdown-content {
+  display: none;
+  background: #ffffff;
+  min-width: 40rem;
+  position: absolute;
+  /* left: 30rem; */
+  z-index: 1;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content-insights {
+  display: none;
+  background: #ffffff;
+  min-width: 15rem;
+  position: absolute;
+  left: -3rem;
+  z-index: 1;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content-company {
+  display: none;
+  background: #ffffff;
+  min-width: 35rem;
+  position: absolute;
+  left: -15rem;
+  z-index: 1;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  width: 9rem !important;
+}
+
+.dropdown-content-partners {
+  display: none;
+  background: #ffffff;
+  min-width: 30rem;
+  position: absolute;
+  left: -10rem;
+  z-index: 1;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.dropdown-content-customers {
+  display: none;
+  background: #ffffff;
+  min-width: 30rem;
+  position: absolute;
+  left: -10rem;
+  z-index: 1;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+  display: block;
+  font-size: 15px !important;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 17px;
+  font-size: 18px;
+}
+
+.subtittle {
+  font-size: 17px;
+  font-weight: bolder !important;
+  text-transform: uppercase;
+  color: #828080 !important;
+  font-family: inherit !important;
+  padding: 17px;
+}
+
+.logo-col{
+  padding-left: 0 !important;
+}
+
+.dropdown-content a:hover {
+  background: #ddd;
+}
+
+.whatwedo-hover:hover .dropdown-content-whatwedo {
+  display: block;
+}
+
+.solutions-hover:hover .dropdown-content-solutions {
+  display: block;
+}
+
+.customers-hover:hover .dropdown-content-customers {
+  display: block;
+}
+
+.partners-hover:hover .dropdown-content-partners {
+  display: block;
+}
+
+.company-hover:hover .dropdown-content-company {
+  display: block;
+}
+
+.insights-hover:hover .dropdown-content-insights {
+  display: block;
+}
+
+.contact-btn {
+  background: #4fb645;
+  border: none;
+  width: 100%;
+  font-size: 16px;
+  padding: 17px 0;
+  color: #fff;
+  border-radius: 10rem;
+}
+
+
+.button-contact{
+  padding-right: 0 !important;
+  padding-left: 2rem !important;
+}
+
+
+.upicon {
+  display: none;
+}
+
+.whatwedo-hover:hover .upicon-whatwedo {
+  display: inline-block;
+}
+
+.whatwedo-hover:hover .downicon-whatwedo {
+  display: none;
+}
+
+.solutions-hover:hover .upicon-solutions {
+  display: inline-block;
+}
+
+.solutions-hover:hover .downicon-solutions {
+  display: none;
+}
+
+.customers-hover:hover .upicon-customers {
+  display: inline-block;
+}
+
+.customers-hover:hover .downicon-customers {
+  display: none;
+}
+
+.partners-hover:hover .upicon-partners {
+  display: inline-block;
+}
+
+.partners-hover:hover .downicon-partners {
+  display: none;
+}
+
+.company-hover:hover .upicon-company {
+  display: inline-block;
+}
+
+.company-hover:hover .downicon-company {
+  display: none;
+}
+
+.insights-hover:hover .upicon-insights {
+  display: inline-block;
+}
+
+.insights-hover:hover .downicon-insights {
+  display: none;
+}
+
+.navbar-mobile, .dropdown-mobile {
+  display: none;
+}
+
+.header-container-mobile{
+  display: none;
+}
+
+.header-content{
+  margin: 1rem 0 0 0  !important;
+}
+
+
+.title{
+  text-align: right;
+  font-family:    sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .header-container-pc{
+    display: none;
+  }
+
+  .header-container-mobile{
+    display: flex;
+  }
+
+  .logo-col-mobile{
+    padding-left: 3rem;
+  }
+
+  .logo-mobile{
+    height: 4rem;
+  }
+
+  .navbar-pc {
+    display: none;
+  }
+
+  .navbar-mobile {
+    display: block;
+    
+  }
+
+  .dropdown-mobile-container{
+    width: 100vw;
+    height: 100%;
+    z-index: 2;
+    background-image: url("https://img.freepik.com/free-photo/abstract-surface-textures-white-concrete-stone-wall_74190-8189.jpg");
+    opacity: 0.95;
+    filter: blur(8px);
+    position: fixed;
+    left: 0rem;
+    top: 4rem;
+  
+  }
+
+  .dropdown-mobile{
+    z-index: 5;
+    width: fit-content;
+    position: absolute;
+    top: 4rem;
+    right: 1rem;
+    text-align: right;
+    
+  }
+
+  .title{
+    text-align: right;
+  }
+
+  .subtittle {
+    font-size: 15px;
+    text-align: right;
+    padding: 0;
+  }
+
+  .mobile-header{
+    font-weight: 700;
+    display: block;
+    font-family: inherit !important;
+  }
+
+
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .header-container-pc{
+    display: none;
+  }
+
+  .header-container-mobile{
+    display: flex;
+  }
+
+  .logo-col-mobile{
+    padding-left: 3rem;
+  }
+
+  .logo-mobile{
+    height: 5rem;
+  }
+
+  .navbar-pc {
+    display: none;
+  }
+
+  .navbar-mobile {
+    display: block;
+    
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .header-content {
+    height: fit-content !important;
+    width: 66.67% !important;
+  }
+  
+  h2,a{
+    cursor: grab;
+  }
+  
+  .dropbtn {
+    border: none;
+    font-size: 16px;
+    padding: 17px;
+    /* font-family: inherit !important; */
+  }
+  
+  .drobdown {
+    position: relative !important;
+    display: inline-block !important;
+  }
+  
+  .dropdown-content {
+    display: none;
+    background: #ffffff;
+    min-width: 40rem;
+    position: absolute;
+    /* left: 30rem; */
+    z-index: 1;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dropdown-content-insights {
+    display: none;
+    background: #ffffff;
+    min-width: 15rem;
+    position: absolute;
+    left: -3rem;
+    z-index: 1;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dropdown-content-company {
+    display: none;
+    background: #ffffff;
+    min-width: 35rem;
+    position: absolute;
+    left: -15rem;
+    z-index: 1;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .logo {
+    width: 100% !important;
+  }
+  
+  .dropdown-content-partners {
+    display: none;
+    background: #ffffff;
+    min-width: 30rem;
+    position: absolute;
+    left: -10rem;
+    z-index: 1;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  .dropdown-content-customers {
+    display: none;
+    background: #ffffff;
+    min-width: 30rem;
+    position: absolute;
+    left: -10rem;
+    z-index: 1;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dropdown-content a {
+    display: block;
+    font-size: 15px !important;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 17px;
+    font-size: 18px;
+  }
+  
+  .subtittle {
+    font-size: 17px;
+    font-weight: bolder !important;
+    text-transform: uppercase;
+    color: #828080 !important;
+    font-family: inherit !important;
+    padding: 17px;
+  }
+  
+  .logo-col{
+    padding-left: 0 !important;
+  }
+  
+  .dropdown-content a:hover {
+    background: #ddd;
+  }
+  
+  .whatwedo-hover:hover .dropdown-content-whatwedo {
+    display: block;
+  }
+  
+  .solutions-hover:hover .dropdown-content-solutions {
+    display: block;
+  }
+  
+  .customers-hover:hover .dropdown-content-customers {
+    display: block;
+  }
+  
+  .partners-hover:hover .dropdown-content-partners {
+    display: block;
+  }
+  
+  .company-hover:hover .dropdown-content-company {
+    display: block;
+  }
+  
+  .insights-hover:hover .dropdown-content-insights {
+    display: block;
+  }
+  
+  .contact-btn {
+    background: #4fb645;
+    border: none;
+    width: 100%;
+    font-size: 20px;
+    padding: 17px 0;
+    color: #fff;
+    border-radius: 10rem;
+  }
+  
+  .upicon {
+    display: none;
+  }
+  
+  .whatwedo-hover:hover .upicon-whatwedo {
+    display: inline-block;
+  }
+  
+  .whatwedo-hover:hover .downicon-whatwedo {
+    display: none;
+  }
+  
+  .solutions-hover:hover .upicon-solutions {
+    display: inline-block;
+  }
+  
+  .solutions-hover:hover .downicon-solutions {
+    display: none;
+  }
+  
+  .customers-hover:hover .upicon-customers {
+    display: inline-block;
+  }
+  
+  .customers-hover:hover .downicon-customers {
+    display: none;
+  }
+  
+  .partners-hover:hover .upicon-partners {
+    display: inline-block;
+  }
+  
+  .partners-hover:hover .downicon-partners {
+    display: none;
+  }
+  
+  .company-hover:hover .upicon-company {
+    display: inline-block;
+  }
+  
+  .company-hover:hover .downicon-company {
+    display: none;
+  }
+  
+  .insights-hover:hover .upicon-insights {
+    display: inline-block;
+  }
+  
+  .insights-hover:hover .downicon-insights {
+    display: none;
+  }
+  
+  .navbar-mobile, .dropdown-mobile {
+    display: none;
+  }
+  
+  .header-container-mobile{
+    display: none;
+  }
+  
+  .header-content{
+    margin: 0 !important;
+  }
+  
+  
+  .title{
+    text-align: right;
+    font-family:    sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}
