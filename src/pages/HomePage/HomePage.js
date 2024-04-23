@@ -9,7 +9,7 @@ const HomePage = () => {
             <Banner/>
             <Promo/>
             <WhyDommoishi/>
-            {/* <About/> */}
+            <About/>
 
         </div>
     );
