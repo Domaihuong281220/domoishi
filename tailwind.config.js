@@ -27,6 +27,9 @@ module.exports = {
         nexa_light: ["svn-nexa-light"],
         nexa: ["svn-nexa"],
         shopee_bold:["shopee-bold"],
+        shopee_regular:["shopee-regular"],
+        shopee_medium:["shopee-medium"],
+        shopee_light:["shopee-light"],
         jonitha:["jonitha-script"],
         chalkboard:["chalkboard"]
 

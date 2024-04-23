@@ -21,6 +21,23 @@
   src: url("./assets/fonts/ShopeeDisplay-Bold.ttf");
 }
 
+
+@font-face {
+  font-family: shopee-regular;
+  src: url("./assets/fonts/ShopeeDisplay-Regular.ttf");
+}
+
+
+@font-face {
+  font-family: shopee-medium;
+  src: url("./assets/fonts/ShopeeDisplay-Medium.ttf");
+}
+
+@font-face {
+  font-family: shopee-light;
+  src: url("./assets/fonts/ShopeeDisplay-Light.ttf");
+}
+
 @font-face {
   font-family:jonitha-script;
   src: url("./assets/fonts/SVN-Jonitha\ Script.otf");
