@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 export const path = {
   HOME: "/",
- 
+  NEWS: "/news",
 };
 
 export const ScrollToTop = () => {

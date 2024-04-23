@@ -1,8 +1,6 @@
 /** @format */
 
-import { HomePage
-} from "../pages";
-
+import { HomePage, News } from "../pages";
 
 import { path } from "./Constant";
 
@@ -12,7 +10,13 @@ const routes = [
     exact: true,
     component: <HomePage />,
     main: () => <HomePage />,
-  }
+  },
+  {
+    path: path.NEWS,
+    exact: true,
+    component: <News />,
+    main: () => <News />,
+  },
 ];
 
 export default routes;
