@@ -13,7 +13,7 @@ const WhyDomoishi = () => {
 
         <div className="w-full h-fit px-[12%] flex flex-col items-center justify-center">
             <p className="font-chalkboard 2xl:text-[80px] lg:text-5xl leading-[70px] ">Why should you <br></br>choose domoishi ? </p>
-            <p className="font-nexa_bold 2xl:text-[25px] lg:text-lg 2xl:leading-[60px] lg:leading-10 w-[70%] uppercase mt-12">
+            <p className="font-nexa_bold 2xl:text-[25px] lg:text-lg 2xl:leading-[60px] lg:leading-10 2xl:w-[70%] lg:w-[75%] uppercase mt-12">
                 Domoishi strives to be a leader in the fast casual restaurant market and recognizes that customers want
                 great tasting food that is made with fresh quality ingredients and is delivered “fast”.</p>
             <div class="relative w-[90%] h-[94vh] lg:h-[40rem]">

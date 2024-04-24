@@ -1,7 +1,7 @@
 /** @format */
 
 import { Routes, Route } from "react-router-dom";
-import { Header } from "../components";
+import { Footer, Header } from "../components";
 
 import PrivateLayout from "./PrivateLayout";
 import PublicLayout from "./PublicLayout";
@@ -39,7 +39,7 @@ const DefaultLayout = (props) => {
           {showContentMenu(PrivateRoute)}
         </Route>
       </Routes>
-
+      <Footer/>
     </>
   );
 };

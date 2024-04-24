@@ -1,6 +1,6 @@
 /** @format */
 
-import { HomePage, News } from "../pages";
+import { HomePage, Menu } from "../pages";
 
 import { path } from "./Constant";
 
@@ -16,6 +16,12 @@ const routes = [
     exact: true,
     component: <News />,
     main: () => <News />,
+  },
+  {
+    path: "/menu",
+    exact: true,
+    component: <Menu />,
+    main: () => <Menu />,
   },
 ];
 
