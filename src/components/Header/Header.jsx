@@ -2,15 +2,11 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-
-import { SearchOutlined } from '@ant-design/icons';
+import { path } from "../../utils/Constant";
+import { SearchOutlined } from "@ant-design/icons";
 import logo from "./domoishilogo.png";
 
-
 const Header = () => {
-
-
   return (
     <div className="h-fit bg-red-500">
       <nav class="bg-white   w-full z-20 top-0 start-0 pt-8  ">
@@ -19,11 +15,25 @@ const Header = () => {
             <img src={logo} class="2xl:h-32 lg:w-56" alt="Logo" />
           </a>
           <div class="flex md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
-            <button className="bg-[#CB1313] text-white font-shopee_bold py-3 px-4 rounded-full">ORDER NOW</button>
+            <button className="bg-[#CB1313] text-white font-shopee_bold py-3 px-4 rounded-full">
+              ORDER NOW
+            </button>
             {/* <button data-collapse-toggle="" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 " aria-controls="" aria-expanded="false">
               <span class="sr-only">Open main menu</span>
-              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+              <svg
+                class="w-5 h-5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 17 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 1h15M1 7h15M1 13h15"
+                />
               </svg>
             </button> */}
           </div>

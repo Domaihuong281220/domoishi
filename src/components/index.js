@@ -18,10 +18,13 @@
 export { default as Header } from "./Header/Header";
 export { default as Banner } from "./HomePage/Banner";
 export { default as Promo } from "./HomePage/Promo";
-export { default as WhyDommoishi} from "./HomePage/WhyDomoishi";
-export { default as About} from "./HomePage/About";
-export { default as Footer} from "./Footer";
+export { default as WhyDommoishi } from "./HomePage/WhyDomoishi";
+export { default as About } from "./HomePage/About";
+export { default as Footer } from "./Footer";
 
+// News
+
+export { default as CardNewsProduct } from "./News/CardNewsProduct";
 
 export {default as PokeBowl} from "./Menu/PokeBowl";
 export { default as Tea } from "./Menu/Tea";
@@ -29,7 +32,3 @@ export { default as WingAndAppetizer } from "./Menu/WingAndAppetizer";
 
 // export { default as EndSolutions } from "./EndSolutions";
 // export { default as Sustainability } from "./Sustainability";
-
-
-
-

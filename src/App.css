@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.mySwiper .swiper-button-prev {
+  height: 80px;
+  width: 80px;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  z-index: 10;
+}
+.mySwiper .swiper-button-next {
+  height: 80px;
+  width: 80px;
+  color: white;
+  font-weight: bold;
+  right: 5%;
+  top: 50%;
+  z-index: 10;
+}
+
