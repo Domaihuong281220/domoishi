@@ -23,6 +23,10 @@ export { default as About} from "./HomePage/About";
 export { default as Footer} from "./Footer";
 
 
+export {default as PokeBowl} from "./Menu/PokeBowl";
+export { default as Tea } from "./Menu/Tea";
+export { default as WingAndAppetizer } from "./Menu/WingAndAppetizer";
+
 // export { default as EndSolutions } from "./EndSolutions";
 // export { default as Sustainability } from "./Sustainability";
 

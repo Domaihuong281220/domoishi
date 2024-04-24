@@ -17,6 +17,11 @@
 }
 
 @font-face {
+  font-family: svn-rust;
+  src: url("./assets/fonts/SVN-Nexa\ Rust\ Script.ttf");
+}
+
+@font-face {
   font-family: shopee-bold;
   src: url("./assets/fonts/ShopeeDisplay-Bold.ttf");
 }
