@@ -5,7 +5,11 @@ import { useEffect } from "react";
 export const path = {
   HOME: "/",
   NEWS: "/news",
+  NEWS_DETAIL: "/news_detail",
+
   ABOUTUS: "/about-us",
+  FRANCHISING: "/franchising",
+  CAREERS: "/careers",
 };
 
 export const ScrollToTop = () => {

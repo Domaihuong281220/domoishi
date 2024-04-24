@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { path } from "../../utils/Constant";
 import { SearchOutlined } from "@ant-design/icons";
 import logo from "./domoishilogo.png";
 
@@ -61,7 +61,7 @@ const Header = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href={path.FRANCHISING}
                   class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
                 >
                   FRANCHISING
@@ -76,9 +76,8 @@ const Header = () => {
                 </a>
               </li>
               <li>
-                k{" "}
                 <a
-                  href="#"
+                  href={path.CAREERS}
                   class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
                 >
                   CARRERS
@@ -86,10 +85,10 @@ const Header = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href={path.NEWS}
                   class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
                 >
-                  NEW
+                  NEWS
                 </a>
               </li>
             </ul>

@@ -6,7 +6,7 @@ import { eventProductData } from "../../models/mockdata";
 import { CardNewsProduct } from "../../components";
 const News = () => {
   return (
-    <div className="pt-[250px] max-w-[76%] mx-auto ">
+    <div className=" max-w-[76%] mx-auto ">
       <div className="">
         <p className="font-nexa_bold text-[50px] ">EVENT</p>
         <p className="font-nexa_light text-[25px]">
@@ -45,6 +45,7 @@ const News = () => {
                   img={item.img}
                   desc={item.desc}
                   note={item.note}
+                  code={item.key}
                 />
               </>
             );
