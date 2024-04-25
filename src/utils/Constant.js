@@ -10,6 +10,7 @@ export const path = {
   ABOUTUS: "/about-us",
   FRANCHISING: "/franchising",
   CAREERS: "/careers",
+  LOCATIONS: "/locations",
 };
 
 export const ScrollToTop = () => {
