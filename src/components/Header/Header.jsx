@@ -37,59 +37,25 @@ const Header = () => {
               </svg>
             </button> */}
           </div>
-          <div
-            class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-            id=""
-          >
-            <ul class="flex flex-col p-4 md:p-0 mt-4 font-shopee_bold text-[0.8rem]  border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white ">
+          <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-shopee_bold text-[0.8rem] 2xl:text-xl  border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white ">
               <li>
-                <a
-                  href="/"
-                  class="block py-2 px-1 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 "
-                  aria-current="page"
-                >
-                  MENU
-                </a>
+                <a href="/" class="block py-2 px-1 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 2xl:mt-10" aria-current="page">MENU</a>
               </li>
               <li>
-                <a
-                  href="/bctc"
-                  class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
-                >
-                  LOCATIONS
-                </a>
+                <a href="/bctc" class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  2xl:mt-10">LOCATIONS</a>
               </li>
               <li>
-                <a
-                  href={path.FRANCHISING}
-                  class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
-                >
-                  FRANCHISING
-                </a>
+                <a href="#" class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  2xl:mt-10">FRANCHISING</a>
               </li>
               <li>
-                <a
-                  href="#"
-                  class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
-                >
-                  ABOUT US
-                </a>
+                <a href="#" class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  2xl:mt-10">ABOUT US</a>
               </li>
               <li>
-                <a
-                  href={path.CAREERS}
-                  class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
-                >
-                  CARRERS
-                </a>
+                <a href="#" class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  2xl:mt-10">CARRERS</a>
               </li>
               <li>
-                <a
-                  href={path.NEWS}
-                  class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 "
-                >
-                  NEWS
-                </a>
+                <a href="#" class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  2xl:mt-10">NEW</a>
               </li>
             </ul>
           </div>

@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 
+import pork from "../assets/Menu/poke.png"
+import ramen from "../assets/Menu/ramen.png"
+import wing from "../assets/Menu/wingandappetizer.png"
+import tea from "../assets/Menu/tea.png"
+import { PokeBowl, Tea, WingAndAppetizer } from "../components";
+import Ramen from "../components/Menu/Ramen";
 
 const Menu = () => {
 
@@ -13,7 +19,7 @@ const Menu = () => {
     return (
 
         <div className="w-full h-[100vh] lg:h-fit">
-            <p className="w-full text-center font-jonitha text-5xl">MENU</p>
+            <p className="w-full text-center font-jonitha text-5xl 2xl:text-6xl">MENU</p>
             <p className="font-nexa_bold text-3xl pt-8">Items may vary by location. <a href="" className="text-[#CB1313] underline">Find your Location</a></p>
 
             <div class="flex space-x-6 items-center justify-center pt-8">
@@ -72,7 +78,13 @@ const Menu = () => {
                 </div>
 
             </div>
-            <div className="w-full"></div>
+            <div className="w-full mt-8">
+                <img src={pork} alt="" className={`${menu1 ? "object-cover" : "hidden"}`}/>
+                <img src={ramen} alt="" className={`${menu2 ? "object-cover" : "hidden"}`}/>
+                <img src={tea} alt="" className={`${menu3 ? "object-cover" : "hidden"}`}/>
+                <img src={wing} alt="" className={`${menu4 ? "object-cover" : "hidden"}`}/>
+            </div>
+            {menu1?<PokeBowl/>:menu2?<Ramen/>:menu3?<Tea/>:<WingAndAppetizer/>}
         </div>
 
     );

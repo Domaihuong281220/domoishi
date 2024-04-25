@@ -26,8 +26,9 @@ export { default as Footer } from "./Footer";
 
 export { default as CardNewsProduct } from "./News/CardNewsProduct";
 
+export { default as Tea } from "./Menu/Tea";
+export { default as WingAndAppetizer } from "./Menu/WingAndAppetizer";
 // Locations
 export { default as CardLocations } from "./Locations/CardLocations";
-
 // export { default as EndSolutions } from "./EndSolutions";
 // export { default as Sustainability } from "./Sustainability";

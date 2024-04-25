@@ -31,14 +31,15 @@ module.exports = {
         shopee_medium:["shopee-medium"],
         shopee_light:["shopee-light"],
         jonitha:["jonitha-script"],
-        chalkboard:["chalkboard"]
-
+        chalkboard:["chalkboard"],
+        svn_rust :["svn-rust"]
       },
       
       screens: {
         pv: "280px",
         pvmax: "360px",
         ph: "480px",
+        'laptop': '1300px',
         dv: "1440px",
         dh: "5000px",
       },
