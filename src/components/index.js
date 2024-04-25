@@ -30,5 +30,9 @@ export {default as PokeBowl} from "./Menu/PokeBowl";
 export { default as Tea } from "./Menu/Tea";
 export { default as WingAndAppetizer } from "./Menu/WingAndAppetizer";
 
+
+//About
+export { default as WhyDomishiAbout } from "./About/WhyDomoishi"
+
 // export { default as EndSolutions } from "./EndSolutions";
 // export { default as Sustainability } from "./Sustainability";

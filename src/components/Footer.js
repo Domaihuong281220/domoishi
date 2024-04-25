@@ -6,8 +6,8 @@ import FooterAssets from "../assets/Footer.png";
 import { path } from "../utils/Constant";
 const Footer = () => {
   return (
-    <div className="w-full h-fit relative flex flex-col items-center justify-center py-14">
-      <div className="flex space-x-8 justify-center items-center w-[60%] text-[1.2rem]">
+    <div className="w-full h-fit relative flex flex-col items-center justify-center py-14  pv:max-md:py-8">
+      <div className="flex space-x-8  pv:max-md:space-x-2 justify-center items-center w-[60%]  pv:max-md:w-[76%]  pv:max-md:text-[10px] text-[1.2rem]">
         <a href="" className="font-shopee_bold">
           MENU
         </a>
@@ -27,13 +27,13 @@ const Footer = () => {
           NEW
         </a>
       </div>
-      <p className="font-shopee_regular text-xl py-4">
+      <p className="font-shopee_regular text-xl  pv:max-md:text-[10px]  pv:max-md:py-1 py-4">
         ALL RIGHTS RESERVED | DOMOISHI ©2024
       </p>
-      <div className="flex">
+      <div className="flex  pv:max-md:w-[76%]">
         <button className="w-[40%] relative">
           <img src={FooterAssets} alt="" className="object-contain" />
-          <p className="absolute top-1/2 left-24  transform -translate-x-1/2 -translate-y-1/2 font-shopee_bold text-xl">
+          <p className="absolute top-1/2 left-24  transform -translate-x-1/2 -translate-y-1/2  pv:max-md:text-[13px]  pv:max-md:left-14  pv:max-md:w-full font-shopee_bold text-xl">
             FOLLOW US
           </p>
         </button>
