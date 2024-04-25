@@ -8,6 +8,7 @@ import {
   Careers,
   NewsDetail,
   About,
+  Locations,
 } from "../pages";
 
 import { path } from "./Constant";
@@ -55,6 +56,10 @@ const routes = [
     exact: true,
     component: <About />,
     main: () => <About />,
+    path: path.LOCATIONS,
+    exact: true,
+    component: <Locations />,
+    main: () => <Locations />,
   },
 ];
 

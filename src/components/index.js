@@ -26,10 +26,10 @@ export { default as Footer } from "./Footer";
 
 export { default as CardNewsProduct } from "./News/CardNewsProduct";
 
-export {default as PokeBowl} from "./Menu/PokeBowl";
 export { default as Tea } from "./Menu/Tea";
 export { default as WingAndAppetizer } from "./Menu/WingAndAppetizer";
-
+// Locations
+export { default as CardLocations } from "./Locations/CardLocations";
 
 //About
 export { default as WhyDomishiAbout } from "./About/WhyDomoishi"
