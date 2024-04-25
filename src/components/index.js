@@ -28,6 +28,7 @@ export { default as CardNewsProduct } from "./News/CardNewsProduct";
 
 export { default as Tea } from "./Menu/Tea";
 export { default as WingAndAppetizer } from "./Menu/WingAndAppetizer";
+export {default as PokeBowl} from "./Menu/PokeBowl"
 // Locations
 export { default as CardLocations } from "./Locations/CardLocations";
 

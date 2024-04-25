@@ -55,7 +55,8 @@ const routes = [
     path: "/about",
     exact: true,
     component: <About />,
-    main: () => <About />,
+    main: () => <About />,},
+    {
     path: path.LOCATIONS,
     exact: true,
     component: <Locations />,

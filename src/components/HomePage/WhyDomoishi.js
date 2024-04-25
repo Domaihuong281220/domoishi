@@ -25,7 +25,7 @@ const WhyDomoishi = () => {
                         originates.  Wanting the best for our customers even includes our carry out bags, provided for in
                         restaurant leftovers and our online take out customers enjoyment.</p>
                 </div>
-                <div class="... z-30 absolute 2xl:top-44 lg:top-32 2xl:left-[30rem]  pv:max-md:left-24 pv:max-md:w-52 lg:left-[18rem] flex h-fit 2xl:w-fit lg:w-[35rem] items-center justify-center ">
+                <div class="... z-30 absolute 2xl:top-44 lg:top-32 2xl:left-[30rem]  pv:max-md:left-24 pv:max-md:w-52 lg:left-[18rem] flex h-fit 2xl:w-fit lg:w-[35rem] dv:w-[40rem] items-center justify-center ">
                     <img src={WhyDomoishi2} alt="" className="object-contain 2xl:pr-16 lg:pr-0" />
                 </div>
                 <div class="z-40 absolute 2xl:top-[45rem] lg:top-[28rem] 2xl:right-[0rem] lg:right-[-2rem] pv:max-md:w-20  pv:max-md:left-60 pv:max-md:top-32 flex 2xl:h-20 lg:h-fit  2xl:w-30 lg:w-48 items-center justify-center ">
@@ -34,7 +34,7 @@ const WhyDomoishi = () => {
 
             </div>
             <div class="relative w-[90%] 2xl:h-[75vh] lg:h-[34rem] pv:max-md:h-48 pv:max-md:mt-12">
-                <div class="z-40 absolute top-[25rem] pv:max-md:top-16  pv:max-md:right-4 lg:top-72 2xl:top-[25rem] right-[3rem] 2xl:right-0 lg:right-[-1rem]  flex h-[5rem] 2xl:w-[35rem] lg:w-[24rem] items-center justify-center">
+                <div class="z-40 absolute top-[25rem] pv:max-md:top-16  pv:max-md:right-4 lg:top-72 2xl:top-[25rem] right-[3rem] dv:right-8 2xl:right-0 lg:right-[-1rem]  flex h-[5rem] 2xl:w-[35rem] lg:w-[24rem] items-center justify-center">
                     <img src={WhyDomoishi4} alt="" className="object-contain pv:max-md:w-32  " />
                     <p className="font-jonitha uppercase 2xl:text-[35px] pv:max-md:text-[7px] pv:max-md:top-0 lg:text-2xl absolute top-[-6rem] 2xl:top-[-10rem]">Customers deserve the best</p>
                     <p className="font-nexa-light 2xl:text-[25px] lg:text-[1.2rem] pv:max-md:text-[5px] pv:max-md:px-4 2xl:leading-[40px] lg:leading-6 absolute 2xl:px-12 lg:px-8 lg:pt-10 text-left">
