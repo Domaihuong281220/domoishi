@@ -26,21 +26,24 @@ module.exports = {
         nexa_bold: ["svn-nexa-bold"],
         nexa_light: ["svn-nexa-light"],
         nexa: ["svn-nexa"],
-        shopee_bold:["shopee-bold"],
-        shopee_regular:["shopee-regular"],
-        shopee_medium:["shopee-medium"],
-        shopee_light:["shopee-light"],
-        jonitha:["jonitha-script"],
-        chalkboard:["chalkboard"],
-        svn_rust :["svn-rust"]
+        shopee_bold: ["shopee-bold"],
+        shopee_regular: ["shopee-regular"],
+        shopee_medium: ["shopee-medium"],
+        shopee_light: ["shopee-light"],
+        jonitha: ["jonitha-script"],
+        chalkboard: ["chalkboard"],
+        svn_rust: ["svn-rust"],
       },
-      
+
       screens: {
         pv: "280px",
         pvmax: "360px",
         ph: "480px",
-        'laptop': '1300px',
+        laptop: "1300px",
         dv: "1440px",
+
+        dh_max: "1920px",
+
         dh: "5000px",
       },
       boxShadow: {
