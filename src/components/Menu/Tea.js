@@ -82,7 +82,7 @@ const Tea = () => {
 
 
             </div>
-            <p className="w-full text-center font-jonitha text-4xl 2xl:text-5xl pt-12 pv:max-md:pt-0">TOPPINGS</p>
+            <p className="w-full text-center font-jonitha text-4xl 2xl:text-5xl pt-12 2xl:pt-[28rem] pv:max-md:pt-0">TOPPINGS</p>
             <div class="flex flex-col my-12">
                 <div class="-m-1.5 overflow-x-auto">
                     <div class=" inline-block align-middle">
