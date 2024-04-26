@@ -28,7 +28,7 @@ const Franchising = () => {
         </div>
         <div className="flex  justify-center gap-10 pt-10 pv:max-md:grid  pv:max-md:grid-cols-1 md:max-2xl:grid  md:max-2xl:grid-cols-2">
           <div className="flex flex-col gap-10">
-            <div className="flex items-center justify-between pv:max-md:gap-2 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start ">
+            <div className="flex items-center justify-between pv:max-md:gap-2 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start 2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start">
               <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 *FIRST NAME :
               </p>
@@ -37,7 +37,7 @@ const Franchising = () => {
                 placeholder="First Name"
               ></input>
             </div>
-            <div className="flex items-center justify-between pv:max-md:gap-2 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start ">
+            <div className="flex items-center justify-between pv:max-md:gap-2 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start  2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start ">
               <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 *LAST NAME :{" "}
               </p>
@@ -46,7 +46,7 @@ const Franchising = () => {
                 placeholder="Last Name"
               ></input>
             </div>
-            <div className="flex items-center justify-between pv:max-md:gap-2 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start">
+            <div className="flex items-center justify-between pv:max-md:gap-2 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start  2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start">
               <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 *ADDRESS :{" "}
               </p>
@@ -55,7 +55,7 @@ const Franchising = () => {
                 placeholder="Address"
               ></input>
             </div>
-            <div className="flex items-center justify-between pv:max-md:gap-2 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start">
+            <div className="flex items-center justify-between pv:max-md:gap-2 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start  2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start">
               <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 COUNTRY :{" "}
               </p>
@@ -64,7 +64,7 @@ const Franchising = () => {
                 placeholder="Contry"
               ></input>
             </div>
-            <div className="flex items-center justify-between pv:max-md:gap-2 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start">
+            <div className="flex items-center justify-between pv:max-md:gap-2 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start  2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start">
               <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 *STATE PROVIDE:
               </p>
@@ -73,20 +73,20 @@ const Franchising = () => {
                 placeholder="Select State"
               ></input>
             </div>
-            <div className="flex flex-col gap-10 pv:max-md:gap-2 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start">
+            <div className="flex flex-col gap-10 pv:max-md:gap-2 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start  2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start">
               <div className="w-full flex justify-end">
-                <p className="w-[600px] text-right pv:max-md:text-center md:max-2xl:text-center  text-[20px] font-nexa_bold md:max-2xl:text-[14px ">
+                <p className="w-[600px] text-right pv:max-md:text-center md:max-2xl:text-center  text-[20px] font-nexa_bold md:max-2xl:text-[14px]  2xl:max-dh_max:text-left ">
                   *Please describe your business background/restaurant
                   experience including name(s) of franchise brands :
                 </p>
               </div>
-              <div className="flex justify-end pv:max-md:w-full md:max-2xl:w-full">
-                <input className=" w-[420px] pv:max-md:w-full md:max-2xl:w-full   h-10 border-[1px] border-[#707070] rounded-xl p-2"></input>
+              <div className="flex justify-end pv:max-md:w-full md:max-2xl:w-full 2xl:max-dh_max:w-full">
+                <input className=" w-[420px] pv:max-md:w-full md:max-2xl:w-full 2xl:max-dh_max:w-full   h-10 border-[1px] border-[#707070] rounded-xl p-2"></input>
               </div>
             </div>
           </div>
           <div className="flex flex-col justify-center gap-10">
-            <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start  ">
+            <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start  2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start  ">
               <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 CITY:{" "}
               </p>
@@ -95,16 +95,16 @@ const Franchising = () => {
                 placeholder="Locate"
               ></input>
             </div>
-            <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start ">
+            <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start  2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start ">
               <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] pv:max-md:flex-col pv:max-md:items-start md:max-2xl:text-[14px]">
                 ZIP/POSTAL CODE:{" "}
               </p>
               <input
-                className="w-[420px] md:max-2xl:w-full  pv:max-md:w-full h-10 border-[1px] border-[#707070] rounded-xl p-2 md:max-2xl:text-[14px]"
+                className="w-[420px] md:max-2xl:w-full  pv:max-md:w-full h-10 border-[1px] border-[#707070] rounded-xl p-2 md:max-2xl:text-[14px]  2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start"
                 placeholder="Zip/postal code"
               ></input>
             </div>
-            <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start">
+            <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start  2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start">
               <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 *EMAIL :{" "}
               </p>
@@ -113,7 +113,7 @@ const Franchising = () => {
                 placeholder="Email"
               ></input>
             </div>
-            <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start">
+            <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start  2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start">
               <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 MOBILE :{" "}
               </p>
@@ -122,7 +122,7 @@ const Franchising = () => {
                 placeholder="Phone Number"
               ></input>
             </div>
-            <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start">
+            <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start  2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start">
               <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px] ">
                 *PREFERRED CITY 1:{" "}
               </p>
@@ -132,7 +132,7 @@ const Franchising = () => {
               ></input>
             </div>
             <div className="flex flex-col gap-10 ">
-              <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start ">
+              <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start   2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start">
                 <p className="font-nexa_bold text-[20px] uppercase pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                   *Net Worth :
                 </p>
@@ -141,7 +141,7 @@ const Franchising = () => {
                   placeholder="Net worth"
                 ></input>
               </div>
-              <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start   md:max-2xl:flex-col md:max-2xl:items-start   ">
+              <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start   md:max-2xl:flex-col md:max-2xl:items-start   2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start ">
                 <p className="font-nexa_bold text-[20px] uppercase pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                   *Cash Available <br /> for Investment :
                 </p>

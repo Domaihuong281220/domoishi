@@ -39,7 +39,7 @@ const DefaultLayout = (props) => {
           {showContentMenu(PrivateRoute)}
         </Route>
       </Routes>
-      <Footer/>
+      <Footer />
     </>
   );
 };
