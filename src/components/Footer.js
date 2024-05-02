@@ -8,13 +8,13 @@ const Footer = () => {
   return (
     <div className="w-full h-fit relative flex flex-col items-center justify-center py-14  pv:max-md:py-8">
       <div className="flex space-x-8  pv:max-md:space-x-2 justify-center items-center w-[60%]  pv:max-md:w-[76%]  pv:max-md:text-[10px] text-[1.2rem]">
-        <a href="" className="font-shopee_bold">
+        <a href="/menu" className="font-shopee_bold">
           MENU
         </a>
-        <a href="" className="font-shopee_bold">
+        <a href="/locations" className="font-shopee_bold">
           LOCATIONS
         </a>
-        <a href="" className="font-shopee_bold">
+        <a href="/franchising" className="font-shopee_bold">
           FRANCHISING
         </a>
         <a href={path.ABOUTUS} className="font-shopee_bold">

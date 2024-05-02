@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { path } from "../../utils/Constant";
 import { SearchOutlined } from "@ant-design/icons";
 import logo from "./domoishilogo.png";
@@ -76,9 +76,11 @@ const Header = () => {
             </ul>
           </div>
           <div class="flex md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
-            <button className="bg-[#CB1313] lg:text-[10px] pv:max-ph:text-[5px] pv:max-md:mt-4 text-white font-shopee_bold py-3 px-4 rounded-full 2xl:mt-8 pv:max-md:py-[5px] pv:max-md:px-[10px] pv:max-md:text-[7px]">
-              ORDER NOW
+              <a href="/locationorder" className="w-fit h-fit">
+            <button className="bg-[#CB1313] lg:text-[10px] pv:max-ph:text-[5px] pv:max-md:mt-4 text-white font-shopee_bold py-3 px-4 rounded-full 2xl:mt-8 pv:max-md:py-[5px] pv:max-md:px-[10px] pv:max-md:text-[7px]" >
+            ORDER NOW
             </button>
+            </a>
           </div>
         </div>
       </nav>
