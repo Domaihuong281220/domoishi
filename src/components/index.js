@@ -31,6 +31,9 @@ export { default as WingAndAppetizer } from "./Menu/WingAndAppetizer";
 export {default as PokeBowl} from "./Menu/PokeBowl"
 // Locations
 export { default as CardLocations } from "./Locations/CardLocations";
+export { default as CardLocationsOrder } from "./Locations/CardLocationsOrder";
+
+
 
 //About
 export { default as WhyDomishiAbout } from "./About/WhyDomoishi"
