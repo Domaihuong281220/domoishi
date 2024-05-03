@@ -3,6 +3,7 @@
 import React from "react";
 import img_Franchising_Banner from "../../assets/Franchising/Franchising_banner.png";
 import BGImg from "../../assets/HomePage/AboutBG.png";
+import { Select } from "antd";
 const Franchising = () => {
   return (
     <div>
@@ -14,7 +15,7 @@ const Franchising = () => {
       </div>
 
       <div className="w-[76%] mx-auto pt-10 pv:max-md:w-[95%] md:max-2xl:w-[90%] ">
-        <div className="">
+        <div className="pb-10">
           <p className="font-nexa_bold text-[50px] pv:max-md:text-[24px] md:max-2xl:text-[30px]">
             FRANCHISING
           </p>
@@ -27,6 +28,7 @@ const Franchising = () => {
           </p>
         </div>
 
+        {/* Mobile */}
         <div className=" xl:hidden flex  justify-center gap-10 pt-10 pv:max-md:grid  pv:max-md:grid-cols-1 md:max-2xl:grid  md:max-2xl:grid-cols-2">
           <div className="flex flex-col gap-10">
             <div className="flex items-center justify-between pv:max-md:gap-2 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start 2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start">
@@ -60,19 +62,23 @@ const Franchising = () => {
               <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 COUNTRY :{" "}
               </p>
-              <input
-                className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
-                placeholder="USA"
-              ></input>
+              <select className="w-full pv:max-md:w-full md:max-2xl:w-full 2xl:max-dh_max:w-full   h-14 border-[1px] border-[#707070] rounded-full p-2">
+                <option value="1">option 1</option>
+                <option value="2">option 2</option>
+                <option value="3">option 3</option>
+                <option value="4">option 4</option>
+              </select>
             </div>
             <div className="flex items-center justify-between pv:max-md:gap-2 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start  2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start">
               <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 *STATE PROVIDE:
               </p>
-              <input
-                className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
-                placeholder="Select State"
-              ></input>
+              <select className="w-full pv:max-md:w-full md:max-2xl:w-full 2xl:max-dh_max:w-full   h-14 border-[1px] border-[#707070] rounded-full p-2">
+                <option value="1">option 1</option>
+                <option value="2">option 2</option>
+                <option value="3">option 3</option>
+                <option value="4">option 4</option>
+              </select>
             </div>
             <div className="flex flex-col gap-10 pv:max-md:gap-2 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start  2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start">
               <div className="w-full flex justify-end">
@@ -91,10 +97,12 @@ const Franchising = () => {
               <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 CITY:{" "}
               </p>
-              <input
-                className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
-                placeholder="Location Ex: Virginia "
-              ></input>
+              <select className="w-full pv:max-md:w-full md:max-2xl:w-full 2xl:max-dh_max:w-full   h-14 border-[1px] border-[#707070] rounded-full p-2">
+                <option value="1">option 1</option>
+                <option value="2">option 2</option>
+                <option value="3">option 3</option>
+                <option value="4">option 4</option>
+              </select>
             </div>
             <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start  2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start ">
               <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] pv:max-md:flex-col pv:max-md:items-start md:max-2xl:text-[14px]">
@@ -137,24 +145,28 @@ const Franchising = () => {
                 <p className="font-nexa_bold text-[20px] uppercase pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                   *Net Worth :
                 </p>
-                <input
-                  className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
-                  placeholder="Select"
-                ></input>
+                <select className="w-full pv:max-md:w-full md:max-2xl:w-full 2xl:max-dh_max:w-full   h-14 border-[1px] border-[#707070] rounded-full p-2">
+                  <option value="1">option 1</option>
+                  <option value="2">option 2</option>
+                  <option value="3">option 3</option>
+                  <option value="4">option 4</option>
+                </select>
               </div>
               <div className="flex items-center justify-between pv:max-md:flex-col pv:max-md:items-start   md:max-2xl:flex-col md:max-2xl:items-start   2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start ">
                 <p className="font-nexa_bold text-[20px] uppercase pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                   *Cash Available <br /> for Investment :
                 </p>
-                <input
-                  className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
-                  placeholder="Select"
-                ></input>
+                <select className="w-full pv:max-md:w-full md:max-2xl:w-full 2xl:max-dh_max:w-full   h-14 border-[1px] border-[#707070] rounded-full p-2">
+                  <option value="1">option 1</option>
+                  <option value="2">option 2</option>
+                  <option value="3">option 3</option>
+                  <option value="4">option 4</option>
+                </select>
               </div>
             </div>
           </div>
         </div>
-
+        {/* Desktop  */}
         <div className="grid grid-cols-2 gap-5 pv:max-xl:hidden">
           <div className="grid grid-cols-3 text-right gap-10 items-center ">
             <div className="col-span-1">
@@ -241,11 +253,17 @@ const Franchising = () => {
                 CONTRY :
               </p>
             </div>
-            <div className="col-span-2">
-              <input
+            <div className="col-span-2 ">
+              {/* <input
                 className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
                 placeholder="USA"
-              ></input>
+              ></input> */}
+              <select className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-4">
+                <option value="1">option 1</option>
+                <option value="2">option 2</option>
+                <option value="3">option 3</option>
+                <option value="4">option 4</option>
+              </select>
             </div>
           </div>
           <div className="grid grid-cols-3 text-right gap-10 items-center ">
@@ -267,11 +285,13 @@ const Franchising = () => {
                 *STATE / PROVINCE :
               </p>
             </div>
-            <div className="col-span-2">
-              <input
-                className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
-                placeholder="Select State"
-              ></input>
+            <div className="col-span-2 ">
+              <select className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-4">
+                <option value="1">option 1</option>
+                <option value="2">option 2</option>
+                <option value="3">option 3</option>
+                <option value="4">option 4</option>
+              </select>
             </div>
           </div>
           <div className="grid grid-cols-3 text-right gap-10 items-center ">
@@ -310,10 +330,12 @@ const Franchising = () => {
                 </p>
               </div>
               <div className="col-span-2">
-                <input
-                  className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
-                  placeholder="Select"
-                ></input>
+                <select className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-4">
+                  <option value="1">option 1</option>
+                  <option value="2">option 2</option>
+                  <option value="3">option 3</option>
+                  <option value="4">option 4</option>
+                </select>
               </div>
             </div>
             <div className="grid grid-cols-3 text-right gap-10 items-center ">
@@ -323,10 +345,12 @@ const Franchising = () => {
                 </p>
               </div>
               <div className="col-span-2">
-                <input
-                  className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
-                  placeholder="Select"
-                ></input>
+                <select className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-4">
+                  <option value="1">option 1</option>
+                  <option value="2">option 2</option>
+                  <option value="3">option 3</option>
+                  <option value="4">option 4</option>
+                </select>
               </div>
             </div>
           </div>

@@ -6,11 +6,12 @@ export const path = {
   HOME: "/",
   NEWS: "/news",
   NEWS_DETAIL: "/news_detail",
-
-  ABOUTUS: "/about-us",
+  MENU: "/menu",
+  ABOUTUS: "/about",
   FRANCHISING: "/franchising",
   CAREERS: "/careers",
   LOCATIONS: "/locations",
+  LOCATION_ORDER: "/locationorder",
 };
 
 export const ScrollToTop = () => {

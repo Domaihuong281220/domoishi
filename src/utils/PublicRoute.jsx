@@ -34,7 +34,7 @@ const routes = [
     main: () => <NewsDetail />,
   },
   {
-    path: "/menu",
+    path: path.MENU,
     exact: true,
     component: <Menu />,
     main: () => <Menu />,
@@ -53,18 +53,19 @@ const routes = [
     main: () => <Careers />,
   },
   {
-    path: "/about",
+    path: path.ABOUTUS,
     exact: true,
     component: <About />,
-    main: () => <About />,},
-    {
+    main: () => <About />,
+  },
+  {
     path: path.LOCATIONS,
     exact: true,
     component: <Locations />,
     main: () => <Locations />,
   },
-    {
-    path: '/locationorder',
+  {
+    path: path.LOCATION_ORDER,
     exact: true,
     component: <LocationOrder />,
     main: () => <LocationOrder />,
