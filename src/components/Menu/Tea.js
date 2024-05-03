@@ -137,7 +137,7 @@ const Tea = () => {
                             <rect id="Rectangle_255" data-name="Rectangle 255" width="14" height="14" transform="translate(9.9) rotate(45)" />
                         </svg>
 
-                        <p className="font-nexa_bold text-xl  pv:max-md:text-[8px] pv:max-md:leading-[10px]">MANGO</p>
+                        <p className="font-nexa_bold text-xl  pv:max-md:text-[6px] pv:max-md:leading-[10px]">MANGO</p>
                     </div>
                     <div className="flex justify-start items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19.799" viewBox="0 0 19.799 19.799" className=" pv:max-md:hidden">
@@ -147,7 +147,7 @@ const Tea = () => {
                             <rect id="Rectangle_255" data-name="Rectangle 255" width="14" height="14" transform="translate(9.9) rotate(45)" />
                         </svg>
 
-                        <p className="font-nexa_bold text-xl pv:max-md:text-[8px] pv:max-md:leading-[10px]">STRAWBERRY</p>
+                        <p className="font-nexa_bold text-xl pv:max-md:text-[6px] pv:max-md:leading-[10px]">STRAWBERRY</p>
                     </div>
                     <div className="flex justify-start items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19.799" viewBox="0 0 19.799 19.799" className=" pv:max-md:hidden">
@@ -156,7 +156,7 @@ const Tea = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 19.799 19.799" className=" pv:max-md:block hidden !m-0">
                             <rect id="Rectangle_255" data-name="Rectangle 255" width="14" height="14" transform="translate(9.9) rotate(45)" />
                         </svg>
-                        <p className="font-nexa_bold text-xl pv:max-md:text-[8px] pv:max-md:leading-[10px]">PEACH</p>
+                        <p className="font-nexa_bold text-xl pv:max-md:text-[6px] pv:max-md:leading-[10px]">PEACH</p>
                     </div>
                     <div className="flex justify-start items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19.799" viewBox="0 0 19.799 19.799" className=" pv:max-md:hidden">
@@ -165,7 +165,7 @@ const Tea = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 19.799 19.799" className=" pv:max-md:block hidden !m-0">
                             <rect id="Rectangle_255" data-name="Rectangle 255" width="14" height="14" transform="translate(9.9) rotate(45)" />
                         </svg>
-                        <p className="font-nexa_bold text-xl pv:max-md:text-[8px] pv:max-md:leading-[10px]">PASSION FRUIT</p>
+                        <p className="font-nexa_bold text-xl pv:max-md:text-[6px] pv:max-md:leading-[10px]">PASSION FRUIT</p>
                     </div>
                     <div className="flex justify-start items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19.799" viewBox="0 0 19.799 19.799" className=" pv:max-md:hidden">
@@ -174,7 +174,7 @@ const Tea = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 19.799 19.799" className=" pv:max-md:block hidden !m-0">
                             <rect id="Rectangle_255" data-name="Rectangle 255" width="14" height="14" transform="translate(9.9) rotate(45)" />
                         </svg>
-                        <p className="font-nexa_bold text-xl pv:max-md:text-[8px] pv:max-md:leading-[10px]">LYCHEE</p>
+                        <p className="font-nexa_bold text-xl pv:max-md:text-[6px] pv:max-md:leading-[10px]">LYCHEE</p>
                     </div>
                     <div className="flex justify-start items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19.799" viewBox="0 0 19.799 19.799" className=" pv:max-md:hidden">
@@ -183,7 +183,7 @@ const Tea = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 19.799 19.799" className=" pv:max-md:block hidden !m-0">
                             <rect id="Rectangle_255" data-name="Rectangle 255" width="14" height="14" transform="translate(9.9) rotate(45)" />
                         </svg>
-                        <p className="font-nexa_bold text-xl pv:max-md:text-[8px] pv:max-md:leading-[10px]">PINEAPPLE</p>
+                        <p className="font-nexa_bold text-xl pv:max-md:text-[6px] pv:max-md:leading-[10px]">PINEAPPLE</p>
                     </div>
                     <div className="flex justify-start items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19.799" viewBox="0 0 19.799 19.799" className=" pv:max-md:hidden">
@@ -192,7 +192,7 @@ const Tea = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 19.799 19.799" className=" pv:max-md:block hidden !m-0">
                             <rect id="Rectangle_255" data-name="Rectangle 255" width="14" height="14" transform="translate(9.9) rotate(45)" />
                         </svg>
-                        <p className="font-nexa_bold text-xl pv:max-md:text-[8px] pv:max-md:leading-[10px]">HONEY DEW</p>
+                        <p className="font-nexa_bold text-xl pv:max-md:text-[6px] pv:max-md:leading-[10px]">HONEY DEW</p>
                     </div>
                     <div className="flex justify-start items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19.799" viewBox="0 0 19.799 19.799" className=" pv:max-md:hidden">
@@ -201,7 +201,7 @@ const Tea = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 19.799 19.799" className=" pv:max-md:block hidden !m-0">
                             <rect id="Rectangle_255" data-name="Rectangle 255" width="14" height="14" transform="translate(9.9) rotate(45)" />
                         </svg>
-                        <p className="font-nexa_bold text-xl pv:max-md:text-[8px] pv:max-md:leading-[10px]">WATERMELON</p>
+                        <p className="font-nexa_bold text-xl pv:max-md:text-[6px] pv:max-md:leading-[10px]">WATERMELON</p>
                     </div>
                 </div>
             </div>
@@ -221,7 +221,7 @@ const Tea = () => {
                             <rect id="Rectangle_255" data-name="Rectangle 255" width="14" height="14" transform="translate(9.9) rotate(45)" />
                         </svg>
 
-                        <p className="font-nexa_bold text-xl pv:max-md:text-[8px] pv:max-md:leading-[10px]">JAPANESE MATCHA</p>
+                        <p className="font-nexa_bold text-xl pv:max-md:text-[6px] pv:max-md:leading-[10px]">JAPANESE MATCHA</p>
                     </div>
                     <div className="flex justify-start items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19.799" viewBox="0 0 19.799 19.799" className=" pv:max-md:hidden">
@@ -231,7 +231,7 @@ const Tea = () => {
                             <rect id="Rectangle_255" data-name="Rectangle 255" width="14" height="14" transform="translate(9.9) rotate(45)" />
                         </svg>
 
-                        <p className="font-nexa_bold text-xl pv:max-md:text-[8px] pv:max-md:leading-[10px]">COFFEE</p>
+                        <p className="font-nexa_bold text-xl pv:max-md:text-[6px] pv:max-md:leading-[10px]">COFFEE</p>
                     </div>
                     <div className="flex justify-start items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19.799" viewBox="0 0 19.799 19.799" className=" pv:max-md:hidden">
@@ -241,7 +241,7 @@ const Tea = () => {
                             <rect id="Rectangle_255" data-name="Rectangle 255" width="14" height="14" transform="translate(9.9) rotate(45)" />
                         </svg>
 
-                        <p className="font-nexa_bold text-xl pv:max-md:text-[8px] pv:max-md:leading-[10px]">VANILLA</p>
+                        <p className="font-nexa_bold text-xl pv:max-md:text-[6px] pv:max-md:leading-[10px]">VANILLA</p>
                     </div>
                     <div className="flex justify-start items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19.799" viewBox="0 0 19.799 19.799" className=" pv:max-md:hidden">
@@ -251,7 +251,7 @@ const Tea = () => {
                             <rect id="Rectangle_255" data-name="Rectangle 255" width="14" height="14" transform="translate(9.9) rotate(45)" />
                         </svg>
 
-                        <p className="font-nexa_bold text-xl pv:max-md:text-[8px] pv:max-md:leading-[10px]">CHOCOLATE</p>
+                        <p className="font-nexa_bold text-xl pv:max-md:text-[6px] pv:max-md:leading-[10px]">CHOCOLATE</p>
                     </div>
                     <div className="flex justify-start items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19.799" viewBox="0 0 19.799 19.799" className=" pv:max-md:hidden">
@@ -261,7 +261,7 @@ const Tea = () => {
                             <rect id="Rectangle_255" data-name="Rectangle 255" width="14" height="14" transform="translate(9.9) rotate(45)" />
                         </svg>
 
-                        <p className="font-nexa_bold text-xl pv:max-md:text-[8px] pv:max-md:leading-[10px]">ALMOND CREAM</p>
+                        <p className="font-nexa_bold text-xl pv:max-md:text-[6px] pv:max-md:leading-[10px]">ALMOND CREAM</p>
                     </div>
                     <div className="flex justify-start items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="19.799" viewBox="0 0 19.799 19.799" className=" pv:max-md:hidden">
@@ -271,7 +271,7 @@ const Tea = () => {
                             <rect id="Rectangle_255" data-name="Rectangle 255" width="14" height="14" transform="translate(9.9) rotate(45)" />
                         </svg>
 
-                        <p className="font-nexa_bold text-xl pv:max-md:text-[8px] pv:max-md:leading-[10px]">COCONUT CREAM</p>
+                        <p className="font-nexa_bold text-xl pv:max-md:text-[6px] pv:max-md:leading-[10px]">COCONUT CREAM</p>
                     </div>
                     
                 </div>

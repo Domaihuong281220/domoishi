@@ -9,7 +9,7 @@ import BGImg from "../../assets/HomePage/AboutBG.png"
 const About = () => {
     return (
         <div className="w-full h-fit relative">
-         <img src={BGImg} alt="" className="object-cover"/>
+         <img src={BGImg} alt="" className="object-cover fillavailable"/>
          <div className="w-full absolute h-full top-0 flex flex-col justify-center items-center">
          <p className="font-jonitha xl:text-5xl lg:text-[2rem] w-full">#AboutDOMOISHI</p>
          <p className="font-shopee_regular  pv:max-md:p-0  pv:max-md:text-[10px] xl:text-[1.8rem] lg:text-[1.5rem] pt-6 w-[76%]">

@@ -19,6 +19,8 @@ export { default as Header } from "./Header/Header";
 export { default as Banner } from "./HomePage/Banner";
 export { default as Promo } from "./HomePage/Promo";
 export { default as WhyDommoishi } from "./HomePage/WhyDomoishi";
+export { default as WhyPart1 } from "./HomePage/WhyPart1";
+
 export { default as About } from "./HomePage/About";
 export { default as Footer } from "./Footer";
 

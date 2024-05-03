@@ -2,7 +2,7 @@ import React from "react";
 
 import banner from "../assets/About/banner.png"
 import subtraction from "../assets/About/Subtraction.png";
-import { WhyDomishiAbout, WhyDommoishi } from "../components";
+import { WhyDomishiAbout, WhyDommoishi, WhyPart1 } from "../components";
 
 
 const About = () => {
@@ -22,7 +22,9 @@ const About = () => {
                     </p>
                 </div>
             </div>
-            <WhyDomishiAbout/>
+            <div className="w-full h-fit  pv:max-md:px-[8%] ">
+                <WhyPart1 />
+            </div>
         </div>
 
     );

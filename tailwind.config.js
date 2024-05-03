@@ -39,9 +39,9 @@ module.exports = {
         pv: "280px",
         pvmax: "360px",
         ph: "480px",
-        laptop: "1300px",
+        laptop: "1366px",
         dv: "1440px",
-
+        mediumdt:"1700px",
         dh_max: "1920px",
 
         dh: "5000px",

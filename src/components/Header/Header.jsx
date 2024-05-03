@@ -27,7 +27,7 @@ const Header = () => {
               <li>
                 <a
                   href="/menu"
-                  class="block py-2 px-1  rounded md:bg-transparent  md:p-0 2xl:mt-10"
+                  class="block py-2 px-1  rounded md:bg-transparent md:hover:text-[#CB1313]  md:p-0 2xl:mt-10"
                   aria-current="page"
                 >
                   MENU
@@ -36,7 +36,7 @@ const Header = () => {
               <li>
                 <a
                   href="/locations"
-                  class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  2xl:mt-10"
+                  class="block py-2 px-1 text-gray-900 rounded  md:hover:bg-transparent md:hover:text-[#CB1313] md:p-0  2xl:mt-10"
                 >
                   LOCATIONS
                 </a>
@@ -44,7 +44,7 @@ const Header = () => {
               <li>
                 <a
                   href="/franchising"
-                  class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  2xl:mt-10"
+                  class="block py-2 px-1 text-gray-900 rounded  md:hover:bg-transparent md:hover:text-[#CB1313] md:p-0  2xl:mt-10"
                 >
                   FRANCHISING
                 </a>
@@ -52,7 +52,7 @@ const Header = () => {
               <li>
                 <a
                   href="/about"
-                  class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  2xl:mt-10"
+                  class="block py-2 px-1 text-gray-900 rounded  md:hover:bg-transparent md:hover:text-[#CB1313] md:p-0  2xl:mt-10"
                 >
                   ABOUT US
                 </a>
@@ -60,7 +60,7 @@ const Header = () => {
               <li>
                 <a
                   href="/careers"
-                  class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  2xl:mt-10"
+                  class="block py-2 px-1 text-gray-900 rounded  md:hover:bg-transparent md:hover:text-[#CB1313] md:p-0  2xl:mt-10"
                 >
                   CAREERS
                 </a>
@@ -68,7 +68,7 @@ const Header = () => {
               <li>
                 <a
                   href="/news"
-                  class="block py-2 px-1 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  2xl:mt-10"
+                  class="block py-2 px-1 text-gray-900 rounded  md:hover:bg-transparent md:hover:text-[#CB1313] md:p-0  2xl:mt-10"
                 >
                   NEW
                 </a>
