@@ -356,7 +356,7 @@ const Franchising = () => {
           </div>
         </div>
       </div>
-      <div className="w-[76%] mx-auto flex flex-col gap-10 pt-10 font-nexa_light text-[30px] pv:max-xl:text-[14px] xl:max-2xl:text-[20px]">
+      {/* <div className="w-[76%] mx-auto flex flex-col gap-10 pt-10 font-nexa_light text-[30px] pv:max-xl:text-[14px] xl:max-2xl:text-[20px]">
         <div className="flex gap-4 items-center ">
           <div className="">
             <input className="h-10 w-10" type="checkbox"></input>
@@ -387,7 +387,7 @@ const Franchising = () => {
             <p className="text-start">* I agree.</p>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="w-[76%] mx-auto  gap-10 pt-10 flex justify-center ">
         <div className="">
           <button className="bg-[#cb1313] px-6 py-2 rounded-lg">

@@ -1,23 +1,29 @@
+/** @format */
+
 import React from "react";
 
 import { Row, Col } from "antd";
-import WhyDomoishi1 from "../../assets/HomePage/WhyDomoishi1.png"
-import WhyDomoishi2 from "../../assets/HomePage/WhyDomoishi2.png"
-import WhyDomoishi3 from "../../assets/HomePage/WhyDomoishi3.png"
-import WhyDomoishi4 from "../../assets/HomePage/WhyDomoishi4.png"
-import WhyDomoishi5 from "../../assets/HomePage/WhyDomoishi5.png"
+import WhyDomoishi1 from "../../assets/HomePage/WhyDomoishi1.png";
+import WhyDomoishi2 from "../../assets/HomePage/WhyDomoishi2.png";
+import WhyDomoishi3 from "../../assets/HomePage/WhyDomoishi3.png";
+import WhyDomoishi4 from "../../assets/HomePage/WhyDomoishi4.png";
+import WhyDomoishi5 from "../../assets/HomePage/WhyDomoishi5.png";
 import WhyPart1 from "./WhyPart1";
-
-
+import { path } from "../../utils/Constant";
+import { useNavigate } from "react-router-dom";
 const WhyDomoishi = () => {
-    return (
-
-        <div className="w-full h-fit  pv:max-md:px-[8%] flex flex-col items-center justify-center">
-            <p className="font-chalkboard px-[12%] 2xl:text-[80px] pv:max-md:leading-4 lg:text-5xl leading-[70px] ">Why should you <br></br>choose domoishi ? </p>
-            <p className="font-nexa_bold px-[12%] 2xl:text-[25px] lg:text-lg pv:max-md:text-[7px] pv:max-md:m-4 2xl:leading-[45px] lg:leading-10 2xl:w-[85%] lg:w-[75%] uppercase mt-12">
-                Domoishi strives to be a leader in the fast casual restaurant market and recognizes that customers want
-                great tasting food that is made with fresh quality ingredients and is delivered “fast”.</p>
-            {/* <div class="relative w-[90%] h-[94vh]  pv:max-md:h-48  pv:max-md:mt-6 lg:h-[40rem] 2xl:h-[53rem]">
+  const navigate = useNavigate();
+  return (
+    <div className="w-full h-fit  pv:max-md:px-[8%] flex flex-col items-center justify-center">
+      <p className="font-chalkboard px-[12%] 2xl:text-[80px] pv:max-md:leading-4 lg:text-5xl leading-[70px] ">
+        Why should you <br></br>choose domoishi ?{" "}
+      </p>
+      <p className="font-nexa_bold px-[12%] 2xl:text-[25px] lg:text-lg pv:max-md:text-[7px] pv:max-md:m-4 2xl:leading-[45px] lg:leading-10 2xl:w-[85%] lg:w-[75%] uppercase mt-12">
+        Domoishi strives to be a leader in the fast casual restaurant market and
+        recognizes that customers want great tasting food that is made with
+        fresh quality ingredients and is delivered “fast”.
+      </p>
+      {/* <div class="relative w-[90%] h-[94vh]  pv:max-md:h-48  pv:max-md:mt-6 lg:h-[40rem] 2xl:h-[53rem]">
                 <div class="z-40 absolute 2xl:top-80 lg:top-52 2xl:left-3 lg:left-[-2rem]  flex h-[5rem] 2xl:w-[35rem] xl:w-[29rem] lg:w-[20rem] items-center justify-center">
                     <img src={WhyDomoishi1} alt="" className="object-contain pv:max-md:w-32" />
                     <p className="font-jonitha uppercase 2xl:text-[35px] xl:text-2xl lg:text-[1.2rem] pv:max-md:text-[7px] pv:max-md:top-0 absolute 2xl:top-[-11rem] xl:top-[-6rem] lg:top-[-5rem]">Customers deserve the best</p>
@@ -48,12 +54,16 @@ const WhyDomoishi = () => {
                 </div>
             </div> */}
 
-            <WhyPart1/>
-            <button className=" w-fit bg-black 2xl:text-[20px]  pv:max-md:my-4  lg:text-xl px-8 2xl:py-4 lg:py-2 my-12 rounded-full font-shopee_bold text-white">LEARN MORE</button>
-
-
-        </div>
-
-    );
-}
+      <WhyPart1 />
+      <button
+        className=" w-fit bg-black 2xl:text-[20px]  pv:max-md:my-4  lg:text-xl px-8 2xl:py-4 lg:py-2 my-12 rounded-full font-shopee_bold text-white"
+        onClick={() => {
+          navigate("../" + path.ABOUTUS);
+        }}
+      >
+        LEARN MORE
+      </button>
+    </div>
+  );
+};
 export default WhyDomoishi;

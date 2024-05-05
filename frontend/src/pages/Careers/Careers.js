@@ -13,6 +13,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation, Pagination } from "swiper/modules";
+import { CardCareers } from "../../components";
 
 const Careers = () => {
   return (
@@ -56,152 +57,46 @@ const Careers = () => {
         >
           <SwiperSlide>
             <div className="flex w-[76%] mx-auto  ">
-              <div className="py-10 flex lg:max-2xl:py-52 ">
-                <div className="">
-                  <div className="flex justify-center py-4">
-                    <div className="h-[14px] w-[14px] rotate-45 bg-yellow-300"></div>
-                  </div>
-                  <div className="w-[80%] lg:max-xl:w-[95%] mx-auto border-[1px] border-white rounded-[30px] ">
-                    <p className="text-[#e3c756] font-nexa_bold text-[24px] lg:max-xl:text-[20px] xl:max-2xl:text-[20px] uppercase ">
-                      Cashier
-                    </p>
-                  </div>
-                  <div className="w-full h-[1px] bg-white mt-4"></div>
-
-                  <div className="w-[80%] mx-auto pt-4">
-                    <p className="text-[25px] font-nexa_bold text-left text-white lg:max-xl:text-[20px] xl:max-2xl:text-[20px]">
-                      The cashier’s role is to ensure that each and every
-                      customer is served in a friendly, professional, and timely
-                      manner. This includes greeting customers as they enter the
-                      store, processing customer payments through the POS
-                      system, and resolve customer issues.
-                    </p>
-                  </div>
-                </div>
-                <div className="h-full w-[1px] bg-white"></div>
-              </div>
-              <div className="py-10 flex lg:max-2xl:py-52">
-                <div className="">
-                  <div className="flex justify-center py-4">
-                    <div className="h-[14px] w-[14px] rotate-45 bg-yellow-300"></div>
-                  </div>
-                  <div className="w-[80%] lg:max-xl:w-[90%]  mx-auto border-[1px] border-white rounded-[30px] ">
-                    <p className="text-[#e3c756] font-nexa_bold text-[24px] lg:max-xl:text-[20px] xl:max-2xl:text-[20px] uppercase ">
-                      Barista
-                    </p>
-                  </div>
-                  <div className="w-full h-[1px] bg-white mt-4"></div>
-
-                  <div className="w-[80%] mx-auto pt-4">
-                    <p className="text-[25px] font-nexa_bold text-left lg:max-xl:text-[20px] xl:max-2xl:text-[20px] text-white">
-                      The cashier’s role is to ensure that each and every
-                      customer is served in a friendly, professional, and timely
-                      manner. This includes greeting customers as they enter the
-                      store, processing customer payments through the POS
-                      system, and resolve customer issues.
-                    </p>
-                  </div>
-                </div>
-                <div className="h-full w-[1px] bg-white"></div>
-              </div>
-              <div className="py-10 flex lg:max-2xl:py-52">
-                <div className="">
-                  <div className="flex justify-center py-4">
-                    <div className="h-[14px] w-[14px] rotate-45 bg-yellow-300"></div>
-                  </div>
-                  <div className="w-[80%] lg:max-xl:w-[90%]  mx-auto border-[1px] border-white rounded-[30px] ">
-                    <p className="text-[#e3c756] font-nexa_bold lg:max-xl:text-[20px] text-[24px] xl:max-2xl:text-[20px] uppercase ">
-                      Assistant Manager
-                    </p>
-                  </div>
-                  <div className="w-full h-[1px] bg-white mt-4"></div>
-
-                  <div className="w-[80%] mx-auto pt-4">
-                    <p className="text-[25px] font-nexa_bold text-left lg:max-xl:text-[20px] xl:max-2xl:text-[20px] text-white">
-                      The assistant manager is responsible for providing
-                      operational services in the store. The assistant manager
-                      provides necessary directions to other members of staff
-                      through daily tasks and ensures they perform their
-                      assigned duties in accordance to the store.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <CardCareers
+                title={"Cashier"}
+                desc={
+                  " The cashier’s role is to ensure that each and every customer is served in a friendly, professional, and timely manner. This includes greeting customers as they enter the store, processing customer payments through the POS system, and resolve customer issues. "
+                }
+              />
+              <CardCareers
+                title={"Barista"}
+                desc={
+                  " The cashier’s role is to ensure that each and every customer is served in a friendly, professional, and timely manner. This includes greeting customers as they enter the store, processing customer payments through the POS system, and resolve customer issues."
+                }
+              />
+              <CardCareers
+                title={"  Assistant Manager"}
+                desc={
+                  "The assistant manager is responsible for providing operational services in the store. The assistant manager provides necessary directions to other members of staff through daily tasks and ensures they perform their assigned duties in accordance to the store."
+                }
+              />
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="flex w-[76%] mx-auto ">
-              <div className="py-10 flex">
-                <div className="">
-                  <div className="flex justify-center py-4">
-                    <div className="h-[14px] w-[14px] rotate-45 bg-yellow-300"></div>
-                  </div>
-                  <div className="w-[80%] mx-auto border-[1px] border-white rounded-[30px] ">
-                    <p className="text-[#e3c756] font-nexa_bold text-[24px] uppercase ">
-                      Cashier
-                    </p>
-                  </div>
-                  <div className="w-full h-[1px] bg-white mt-4"></div>
-
-                  <div className="w-[80%] mx-auto pt-4">
-                    <p className="text-[25px] font-nexa_bold text-left text-white">
-                      The cashier’s role is to ensure that each and every
-                      customer is served in a friendly, professional, and timely
-                      manner. This includes greeting customers as they enter the
-                      store, processing customer payments through the POS
-                      system, and resolve customer issues.
-                    </p>
-                  </div>
-                </div>
-                <div className="h-full w-[1px] bg-white"></div>
-              </div>
-              <div className="py-10 flex">
-                <div className="">
-                  <div className="flex justify-center py-4">
-                    <div className="h-[14px] w-[14px] rotate-45 bg-yellow-300"></div>
-                  </div>
-                  <div className="w-[80%] mx-auto border-[1px] border-white rounded-[30px] ">
-                    <p className="text-[#e3c756] font-nexa_bold text-[24px] uppercase ">
-                      Barista
-                    </p>
-                  </div>
-                  <div className="w-full h-[1px] bg-white mt-4"></div>
-
-                  <div className="w-[80%] mx-auto pt-4">
-                    <p className="text-[25px] font-nexa_bold text-left text-white">
-                      The cashier’s role is to ensure that each and every
-                      customer is served in a friendly, professional, and timely
-                      manner. This includes greeting customers as they enter the
-                      store, processing customer payments through the POS
-                      system, and resolve customer issues.
-                    </p>
-                  </div>
-                </div>
-                <div className="h-full w-[1px] bg-white"></div>
-              </div>
-              <div className="py-10 flex">
-                <div className="">
-                  <div className="flex justify-center py-4">
-                    <div className="h-[14px] w-[14px] rotate-45 bg-yellow-300"></div>
-                  </div>
-                  <div className="w-[80%] mx-auto border-[1px] border-white rounded-[30px] ">
-                    <p className="text-[#e3c756] font-nexa_bold text-[24px] uppercase ">
-                      Assistant Manager
-                    </p>
-                  </div>
-                  <div className="w-full h-[1px] bg-white mt-4"></div>
-
-                  <div className="w-[80%] mx-auto pt-4">
-                    <p className="text-[25px] font-nexa_bold text-left text-white">
-                      The assistant manager is responsible for providing
-                      operational services in the store. The assistant manager
-                      provides necessary directions to other members of staff
-                      through daily tasks and ensures they perform their
-                      assigned duties in accordance to the store.
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div className="flex w-[76%] mx-auto  ">
+              <CardCareers
+                title={"Cashier"}
+                desc={
+                  " The cashier’s role is to ensure that each and every customer is served in a friendly, professional, and timely manner. This includes greeting customers as they enter the store, processing customer payments through the POS system, and resolve customer issues. "
+                }
+              />
+              <CardCareers
+                title={"Barista"}
+                desc={
+                  " The cashier’s role is to ensure that each and every customer is served in a friendly, professional, and timely manner. This includes greeting customers as they enter the store, processing customer payments through the POS system, and resolve customer issues."
+                }
+              />
+              <CardCareers
+                title={"  Assistant Manager"}
+                desc={
+                  "The assistant manager is responsible for providing operational services in the store. The assistant manager provides necessary directions to other members of staff through daily tasks and ensures they perform their assigned duties in accordance to the store."
+                }
+              />
             </div>
           </SwiperSlide>
         </Swiper>

@@ -1,9 +1,11 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const router = require('./routes/router');
-const mongoose = require('mongoose');
-require('dotenv/config');
+/** @format */
+
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const router = require("./routes/router");
+const mongoose = require("mongoose");
+require("dotenv/config");
 
 const app = express();
 
@@ -11,22 +13,25 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const corsOptions = {
-    origin: '*',
-    credentials: true,
-    optionSuccessStatus: 200
+  origin: "*",
+  credentials: true,
+  optionSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
-app.use('/', router);
+app.use("/", router);
 
 const dboptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
 // Corrected the .then() placement
-mongoose.connect(process.env.DB_URI, dboptions)
-    .then(() => console.log('DB connected'))
-    .catch(error => console.error('DB connection failed:', error));  // It's a good practice to handle potential errors as well
+mongoose
+  .connect(process.env.DB_URI, dboptions)
+  .then(() => console.log("DB connected"))
+  .catch((error) => console.error("DB connection failed:", error)); // It's a good practice to handle potential errors as well
 
 const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+  console.log(`Server listening on port ${port}`);
 });
+
+console.log(server);

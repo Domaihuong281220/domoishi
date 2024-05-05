@@ -30,15 +30,16 @@ export { default as CardNewsProduct } from "./News/CardNewsProduct";
 
 export { default as Tea } from "./Menu/Tea";
 export { default as WingAndAppetizer } from "./Menu/WingAndAppetizer";
-export {default as PokeBowl} from "./Menu/PokeBowl"
+export { default as PokeBowl } from "./Menu/PokeBowl";
 // Locations
 export { default as CardLocations } from "./Locations/CardLocations";
 export { default as CardLocationsOrder } from "./Locations/CardLocationsOrder";
 
-
-
 //About
-export { default as WhyDomishiAbout } from "./About/WhyDomoishi"
+export { default as WhyDomishiAbout } from "./About/WhyDomoishi";
+
+// Careers
+export { default as CardCareers } from "./Careers/CardCareer";
 
 // export { default as EndSolutions } from "./EndSolutions";
 // export { default as Sustainability } from "./Sustainability";
