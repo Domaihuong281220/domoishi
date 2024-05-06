@@ -107,7 +107,7 @@ const connect = mongoose.createConnection(url, {
 
 
 // others endpoints
-router.post('/image', upload.array('files', 2), async (req, res) => {
+router.post('/news', upload.array('files', 2), async (req, res) => {
     const { title, shortdescription, longdescription } = req.body;
     let titlepic, detailpic;
 
