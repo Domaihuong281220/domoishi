@@ -9,68 +9,63 @@ import axios from "axios";
 import { message } from "antd";
 import { toast } from "react-toastify";
 import { isValidInputProduct } from "../../../../helpers/validInputs";
-
+import { apiCreateNews } from "../../../../services/news";
+import { path } from "./../../../../utils/Constant";
 const CreateEvent = () => {
   const navigate = useNavigate();
-  const [value, setValue] = useState(1);
 
-  const [imageproduct, setimageproduct] = useState("");
-  const [formData, setFormData] = useState({
-    id: "",
-    name: "",
-    price: "",
-    description: "",
-    image: "",
-    categoryId: 1,
-  });
+  const [files, setFiles] = useState([]); // Using an array to store files
+  const [title, setTitle] = useState("");
+  const [longDescription, setLongDescription] = useState("");
+  const [shortDescription, setShortDescription] = useState("");
+  const [gfsInitialized, setGfsInitialized] = useState(false);
 
   useEffect(() => {
-    setFormData({
-      ...formData,
-      image: imageproduct,
-    });
-  }, [imageproduct]);
+    setTimeout(() => setGfsInitialized(true), 1000);
+  }, []);
 
-  const [messageApi, contextHolder] = message.useMessage();
-
-  const [file, setFile] = useState();
-
-  const handleFile = (e) => {
-    setFile(e.target.files[0]);
-  };
-  const handleUpload = () => {
-    const dataimage = new FormData();
-    dataimage.append("profile-pic", file);
-    axios
-      .post("http://103.157.218.126:8000/upload", dataimage)
-      .then((res) => {
-        if (res.status === 200 || res.status === 201) {
-          {
-            setimageproduct(
-              `http://103.157.218.126:8000/images/${res.data.image}`
-            );
-          }
-        }
-      })
-      .catch((err) => console.log(err));
+  // Handle changes to the file inputs
+  const handleFileChange = (event, index) => {
+    const newFiles = [...files]; // Make a copy of the current files array
+    newFiles[index] = event.target.files[0]; // Update the file at the specified index
+    setFiles(newFiles); // Update the state
   };
 
-  const handleaddAPI = async () => {
-    let check = isValidInputProduct(formData, toast);
-    if (check === true) {
-      await axios
-        .post("http://103.157.218.126:8000/admin/addproduct", formData)
-        .then((res) => {
-          if (res.status === 200 || res.status === 201) {
-            toast.success("create product success");
-            navigate("/productmanage");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+  const handleUpload = async () => {
+    if (files.length < 2 || !files[0] || !files[1]) {
+      alert("Please select both files first!");
+      return;
     }
-    return;
+
+    if (!gfsInitialized) {
+      alert(
+        "Image upload functionality not yet ready. Please try again later."
+      );
+      return;
+    }
+
+    const formData = new FormData();
+    files.forEach((file) => formData.append("files", file)); // Append each file in the array
+    formData.append("title", title);
+    formData.append("longdescription", longDescription);
+    formData.append("shortdescription", shortDescription);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/image",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      if (response.status === 200) {
+        navigate("../" + path.EVENTMANAGE);
+      }
+    } catch (error) {
+      alert("Error uploading images: " + error.message);
+    }
   };
 
   return (
@@ -82,52 +77,70 @@ const CreateEvent = () => {
           <p className="text-2xl"> CREATE EVENT</p>
         </div>
         <div className="px-10 py-4 mx-auto w-[50%] ">
+          {/* Title */}
+
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <p className="text-lg">Name Event </p>
             <Input
               className="w-full h-auto border-[1px] p-2"
-              placeholder="Name Event"
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
+              placeholder="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+
+          {/* Short Description */}
+
+          <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
+            <p className="text-lg">Short Description</p>
+            <textarea
+              className="w-full h-[300px] border-[1px] p-2"
+              placeholder="Subtitle"
+              value={shortDescription}
+              onChange={(e) => setShortDescription(e.target.value)}
+            />
+          </div>
+
+          {/* Long Description */}
+
+          <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
+            <p className="text-lg">Long Description</p>
+            <textarea
+              className="w-full h-[300px] border-[1px] p-2"
+              placeholder="Subtitle"
+              value={longDescription}
+              onChange={(e) => setLongDescription(e.target.value)}
             />
           </div>
 
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
-            <p className="text-lg">Description</p>
-            <textarea
-              className="w-full h-[300px] border-[1px] p-2"
-              placeholder="Subtitle"
-              onChange={(e) =>
-                setFormData({ ...formData, description: e.target.value })
-              }
-            />
-          </div>
-          <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
-            <p className="text-lg">Tags</p>
-            <Input
+            <p className="text-lg">Title Image</p>
+            {/* <Input
               className="w-full h-full border-[1px] p-2"
               placeholder="Tags"
               onChange={(e) =>
                 setFormData({ ...formData, price: e.target.value })
               }
+            /> */}
+            <input
+              type="file"
+              accept="image/jpeg, image/png"
+              onChange={(e) => handleFileChange(e, 0)} // Manage the first file
             />
           </div>
 
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
-            <p className="text-lg">Time</p>
-            <Input
-              className="w-full h-full border-[1px] p-2"
-              placeholder="Time"
-              onChange={(e) =>
-                setFormData({ ...formData, price: e.target.value })
-              }
+            <p className="text-lg">Detail Image</p>
+            <input
+              type="file"
+              accept="image/jpeg, image/png"
+              onChange={(e) => handleFileChange(e, 1)} // Manage the second file
             />
           </div>
 
-          <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
+          {/* <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <div className="flex justify-between">
-              <input type="file" onChange={handleFile} className="p-3  " />
+              <input type="file" onChange={""} className="p-3  " />
 
               <button
                 className="h-auto w-auto p-2 bg-blue-400 rounded-lg"
@@ -151,7 +164,7 @@ const CreateEvent = () => {
             </div>
 
             <p className="">jpg , png , jpeg</p>
-          </div>
+          </div> */}
           <div className="flex justify-center items-center gap-x-4">
             <button
               className="w-auto h-auto py-2 px-4 bg-slate-50 border-2 border-blue-300 rounded-lg hover:bg-slate-200 hover:shadow-lg"
@@ -164,7 +177,8 @@ const CreateEvent = () => {
 
             <button
               className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg "
-              // onClick={() => handleaddAPI()}
+              onClick={handleUpload}
+              disabled={!gfsInitialized}
             >
               <p className="">Save</p>
             </button>
