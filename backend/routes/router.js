@@ -6,7 +6,7 @@ const methodOverride = require('method-override');
 const multer = require('multer');
 // const GridFsStorage = require('multer-gridfs-storage');
 const { upload } = require('../multer.js');
- 
+
 
 // Route to fetch user data (sample data)
 router.get('/user', (req, res) => {
@@ -34,7 +34,7 @@ router.get('/user', (req, res) => {
                 "bs": "harness real-time e-markets"
             }
         },
-        
+
     ];
     res.json(userData);
 });
@@ -250,6 +250,46 @@ router.put('/news/:id', async (req, res) => {
     }
 });
 
+router.delete('/news/:id', async (req, res) => {
+    const { id } = req.params;  // Access ID from URL parameters
+
+    if (!id) {
+        return res.status(400).json({
+            success: false,
+            message: 'ID parameter is required'
+        });
+    }
+
+    try {
+        // Attempt to delete the news item by ID
+        const deletedNews = await schema.News.findByIdAndDelete(id);
+
+        if (deletedNews) {
+            res.status(200).json({
+                success: true,
+                message: 'News deleted successfully',
+                data: deletedNews
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: 'No news found with the given ID'
+            });
+        }
+    } catch (err) {
+        if (err.kind === 'ObjectId') {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid ID format'
+            });
+        }
+        res.status(500).json({
+            success: false,
+            message: 'Server error',
+            error: err.message
+        });
+    }
+});
 
 
 
