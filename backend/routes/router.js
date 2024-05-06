@@ -196,6 +196,47 @@ router.get('/news/by-title', async (req, res) => {
 });
 
 
+router.put('/news/update-by-title', async (req, res) => {
+    const { title } = req.query;  // Access title from query parameters
+    const updateData = req.body;  // Data to update
+
+    if (!title) {
+        return res.status(400).json({
+            success: false,
+            message: 'Title parameter is required'
+        });
+    }
+
+    try {
+        // Find the news by title and update it
+        const updatedNews = await schema.News.findOneAndUpdate(
+            { title: new RegExp(title, 'i') }, // Case-insensitive search
+            updateData,
+            { new: true, runValidators: true }
+        );
+
+        if (updatedNews) {
+            res.status(200).json({
+                success: true,
+                message: 'News updated successfully',
+                data: updatedNews
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: 'No news found with the given title'
+            });
+        }
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: 'Server error',
+            error: err.message
+        });
+    }
+});
+
+
 
 
 module.exports = router;
