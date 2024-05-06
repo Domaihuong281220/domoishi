@@ -4,8 +4,9 @@ const schema = require('../model/schemas');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const multer = require('multer');
-const GridFsStorage = require('multer-gridfs-storage');
+// const GridFsStorage = require('multer-gridfs-storage');
 const { upload } = require('../multer.js');
+ 
 
 // Route to fetch user data (sample data)
 router.get('/user', (req, res) => {
@@ -33,29 +34,7 @@ router.get('/user', (req, res) => {
                 "bs": "harness real-time e-markets"
             }
         },
-        {
-            "id": 2,
-            "name": "Ervin Howell",
-            "username": "Antonette",
-            "email": "Shanna@melissa.tv",
-            "address": {
-                "street": "Victor Plains",
-                "suite": "Suite 879",
-                "city": "Wisokyburgh",
-                "zipcode": "90566-7771",
-                "geo": {
-                    "lat": "-43.9509",
-                    "lng": "-34.4618"
-                }
-            },
-            "phone": "010-692-6593 x09125",
-            "website": "anastasia.net",
-            "company": {
-                "name": "Deckow-Crist",
-                "catchPhrase": "Proactive didactic contingency",
-                "bs": "synergize scalable supply-chains"
-            }
-        },
+        
     ];
     res.json(userData);
 });
@@ -107,61 +86,157 @@ const connect = mongoose.createConnection(url, {
 
 
 // others endpoints
-router.route('/image')
-.post(upload.array('files', 2), async(req, res) => {
-    const {title, shortdescription, longdescription, detailpic, titlepic} = req.body;
+router.post('/news', upload.array('files', 2), async (req, res) => {
+    const { title, shortdescription, longdescription } = req.body;
+    let titlepic, detailpic;
+
     if (req.files && req.files.length > 0) {
-        // Declare variables to hold paths
-        let titlepic, detailpic;
-    
-        // Initialize counter outside the forEach loop
-        let i = 0;
-        req.files.forEach(file => {
+        // Loop through the uploaded files
+        req.files.forEach((file, index) => {
             console.log('Uploaded File:', {
                 filename: file.filename,
                 path: file.path,
                 size: file.size,
-                index: i
+                index: index
             });
-    
-            // Use conditional logic to assign values based on index
-            if (i == 0) {
-                titlepic = file.path.substring(7);
-            } else if (i == 1) {
-                detailpic = file.path.substring(7);
+
+            // Assign paths based on the index
+            if (index == 0) {
+                titlepic = file.path.substring(7);  // Adjust 7 according to your path structure
+            } else if (index == 1) {
+                detailpic = file.path.substring(7);  // Adjust 7 according to your path structure
             }
-    
-            i++;  // Increment the index
         });
 
-        console.log('Title Picture:', titlepic);
-        console.log('Detail Picture:', detailpic);
-    
-        // Rest of your logic...
-    
-        const newsData = {title:title, shortdescription:shortdescription, longdescription:longdescription, detailpic:detailpic, titlepic:titlepic}
+        // console.log('Title Picture:', titlepic);
+        // console.log('Detail Picture:', detailpic);
 
-        try{
+        // Construct the news data object
+        const newsData = { title, shortdescription, longdescription, detailpic, titlepic };
+
+        try {
             const newNews = new schema.News(newsData);
             const saveNews = await newNews.save();
+            // console.log('New News ID:', saveNews._id);
             res.status(200).json({
-                
                 message: 'News added successfully',
                 data: saveNews
-            });}
-            catch(err) {
-                res.status(500).json({
-                    message: 'News not added',
-                    error: err.message
-                });
-            
+            });
+        } catch (err) {
+            res.status(500).json({
+                message: 'News not added',
+                error: err.message
+            });
         }
-
     } else {
-        console.log(req.body); // Log body to debug in case of no files
+        console.log('Request Body:', req.body); // Log body to debug in case of no files
         res.status(400).json({ message: 'No files uploaded' });
     }
 });
+
+
+router.get('/news', async (req, res) => {
+    const News = schema.News
+    try {
+        const newsItems = await News.find({});
+        if (newsItems.length > 0) {
+            res.status(200).json({
+                success: true,
+                count: newsItems.length,
+                data: newsItems
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: 'No news found'
+            });
+        }
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: 'Server error',
+            error: err.message
+        });
+    }
+});
+
+
+router.get('/news/by-title', async (req, res) => {
+    const { title } = req.query;  // Access title from query parameters
+
+    if (!title) {
+        return res.status(400).json({
+            success: false,
+            message: 'Title parameter is required'
+        });
+    }
+
+    try {
+        const newsItems = await schema.News.find({ title: new RegExp(title, 'i') });  // Case-insensitive search
+
+        if (newsItems.length > 0) {
+            res.status(200).json({
+                success: true,
+                count: newsItems.length,
+                data: newsItems
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: 'No news found with the given title'
+            });
+        }
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: 'Server error',
+            error: err.message
+        });
+    }
+});
+
+
+router.put('/news/update-by-title', async (req, res) => {
+    const { title } = req.query;  // Access title from query parameters
+    const updateData = req.body;  // Data to update
+
+    if (!title) {
+        return res.status(400).json({
+            success: false,
+            message: 'Title parameter is required'
+        });
+    }
+
+    try {
+        // Find the news by title and update it
+        const updatedNews = await schema.News.findOneAndUpdate(
+            { title: new RegExp(title, 'i') }, // Case-insensitive search
+            updateData,
+            { new: true, runValidators: true }
+        );
+
+        if (updatedNews) {
+            res.status(200).json({
+                success: true,
+                message: 'News updated successfully',
+                data: updatedNews
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: 'No news found with the given title'
+            });
+        }
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: 'Server error',
+            error: err.message
+        });
+    }
+});
+
+
 
 
 module.exports = router;
