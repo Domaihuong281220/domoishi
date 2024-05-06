@@ -162,32 +162,38 @@ router.get('/news', async (req, res) => {
 });
 
 
-router.get('/news/by-title', async (req, res) => {
-    const { title } = req.query;  // Access title from query parameters
+router.get('/news/by-id', async (req, res) => {
+    const { id } = req.query;  // Access id from query parameters
 
-    if (!title) {
+    if (!id) {
         return res.status(400).json({
             success: false,
-            message: 'Title parameter is required'
+            message: 'ID parameter is required'
         });
     }
 
     try {
-        const newsItems = await schema.News.find({ title: new RegExp(title, 'i') });  // Case-insensitive search
+        const newsItem = await schema.News.findById(id);  // Search by document ID
 
-        if (newsItems.length > 0) {
+        if (newsItem) {
             res.status(200).json({
                 success: true,
-                count: newsItems.length,
-                data: newsItems
+                data: newsItem
             });
         } else {
             res.status(404).json({
                 success: false,
-                message: 'No news found with the given title'
+                message: 'No news found with the given ID'
             });
         }
     } catch (err) {
+        if (err.kind === 'ObjectId') {
+            // This handles the error that occurs when the ID format is invalid
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid ID format'
+            });
+        }
         res.status(500).json({
             success: false,
             message: 'Server error',
@@ -197,23 +203,24 @@ router.get('/news/by-title', async (req, res) => {
 });
 
 
-router.put('/news/update-by-title', async (req, res) => {
-    const { title } = req.query;  // Access title from query parameters
+
+router.put('/news/:id', async (req, res) => {
+    const { id } = req.params;  // Access ID from URL parameters
     const updateData = req.body;  // Data to update
 
-    if (!title) {
+    if (!id) {
         return res.status(400).json({
             success: false,
-            message: 'Title parameter is required'
+            message: 'ID parameter is required'
         });
     }
 
     try {
-        // Find the news by title and update it
-        const updatedNews = await schema.News.findOneAndUpdate(
-            { title: new RegExp(title, 'i') }, // Case-insensitive search
+        // Find the news by ID and update it
+        const updatedNews = await schema.News.findByIdAndUpdate(
+            id, // Using the ID directly
             updateData,
-            { new: true, runValidators: true }
+            { new: true, runValidators: true }  // Return the updated object and run model validators
         );
 
         if (updatedNews) {
@@ -225,10 +232,16 @@ router.put('/news/update-by-title', async (req, res) => {
         } else {
             res.status(404).json({
                 success: false,
-                message: 'No news found with the given title'
+                message: 'No news found with the given ID'
             });
         }
     } catch (err) {
+        if (err.kind === 'ObjectId') {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid ID format'
+            });
+        }
         res.status(500).json({
             success: false,
             message: 'Server error',
@@ -236,6 +249,7 @@ router.put('/news/update-by-title', async (req, res) => {
         });
     }
 });
+
 
 
 
