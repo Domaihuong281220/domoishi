@@ -15,8 +15,16 @@ const newsSchema = new Schema({
     titlepic: String,
 });
 
+const careersSchema = new Schema({
+    position: String,
+    description: String,
+    availability: String,
+    linkform : String,
+});
+
 const User = mongoose.model('User', userSchema, 'users');
 const News = mongoose.model('News', newsSchema, 'news');
-const mySchemas = { 'User': User, 'News': News };
+const Careers = mongoose.model('Careers', careersSchema, 'careers');
+const mySchemas = { 'User': User, 'News': News, 'Careers' : Careers};
 
 module.exports = mySchemas;

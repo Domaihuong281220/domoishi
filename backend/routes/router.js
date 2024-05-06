@@ -292,6 +292,178 @@ router.delete('/news/:id', async (req, res) => {
 });
 
 
+router.post('/careers', async (req, res) => {
+    const { position, description, availability, linkform } = req.body;
+    const careersData = { position, description, availability, linkform };
 
+    try {
+        const newCareers = new schema.Careers(careersData);
+        const saveCareers = await newCareers.save();  // Use 'await' to wait for the save operation to complete
+        // console.table(saveCareers);
+
+        res.status(200).json({
+            message: 'Careers added successfully',
+            data: saveCareers,
+            // id: saveCareers._id  // Now this should correctly display the _id
+        });
+    } catch (err) {
+        console.error(err);  // It's good to log the error for debugging
+        res.status(500).json({
+            message: 'Careers not added',
+            error: err.message
+        });
+    }
+});
+
+
+router.get('/careers', async (req, res) => {
+    const careerSchema = schema.Careers
+    try {
+        const careersItems = await careerSchema.find({});
+        if (careersItems.length > 0) {
+            res.status(200).json({
+                success: true,
+                count: careersItems.length,
+                data: careersItems
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: 'No careers found'
+            });
+        };
+    }
+    catch (err) {
+        res.status(500).json({
+            success: false,
+            message: 'Server error',
+            error: err.message
+        });
+    };
+});
+ 
+
+router.get('/careers/by-id', async (req, res) => {
+
+    const { id } = req.query;  // Access id from query parameters
+    if (!id) {
+        return res.status(400).json({
+            success: false,
+            message: 'ID parameter is required'
+        });
+    }
+    try {
+        const careersItem = await schema.Careers.findById(id);  // Search by document ID
+        if (careersItem) {
+            res.status(200).json({
+                success: true,
+                data: careersItem
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: 'No careers found with the given ID'
+            });
+        }
+    } catch (err) {
+        if (err.kind === 'ObjectId') {
+            // This handles the error that occurs when the ID format is invalid
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid ID format'
+            });
+        }
+        res.status(500).json({
+            success: false,
+            message: 'Server error',
+            error: err.message
+        });
+    }
+})
+    
+router.put('/careers/:id', async (req, res) => { 
+    const { id } = req.params;
+    const updateData = req.body;
+    if (!id) {
+        return res.status(400).json({
+            success: false,
+            message: 'ID parameter is required'
+        });
+    }
+    try {
+
+        const updatedCareers = await schema.Careers.findByIdAndUpdate(
+            id, // Using the ID directly
+            updateData,
+            { new: true, runValidators: true }  // Return the updated object and run model validators
+        );
+        if (updatedCareers) {
+            res.status(200).json({
+                success: true,
+                message: 'Careers updated successfully',
+                data: updatedCareers
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: 'No careers found with the given ID'
+            });
+        
+        }
+    } catch (err) {
+        if (err.kind === 'ObjectId') {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid ID format'
+            });
+        }
+        res.status(500).json({
+            success: false,
+            message: 'Server error',
+            error: err.message
+        });
+    }
+})
+
+
+router.delete('/careers/:id', async (req, res) => {
+
+    const { id } = req.params;
+    if (!id) {
+        return res.status(400).json({
+            success: false,
+            message: 'ID parameter is required'
+        });
+    }
+    try {
+        const deletedCareers = await schema.Careers.findByIdAndDelete(id);
+        if (deletedCareers) {
+            res.status(200).json({
+                success: true,
+                message: 'Careers deleted successfully',
+                data: deletedCareers
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: 'No careers found with the given ID'
+            });
+        }
+
+    }
+    catch (err) {
+        if (err.kind === 'ObjectId') {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid ID format'
+            });
+        }
+        res.status(500).json({
+            success: false,
+            message: 'Server error',
+            error: err.message
+        });
+    }
+});
 
 module.exports = router;
