@@ -108,19 +108,44 @@ const connect = mongoose.createConnection(url, {
 
 // others endpoints
 router.route('/image')
-    .post(upload.single("file"), async(req, res, next) => {
-        if (!req.file) {
-            return res.status(400).json({ error: "No file uploaded" });
-        }
-        
-        console.log(req.file)
-        const {filename, path} = req.file;
-        const newsData = {filename, path}
+.post(upload.array('files', 2), async(req, res) => {
+    const {title, shortdescription, longdescription, detailpic, titlepic} = req.body;
+    if (req.files && req.files.length > 0) {
+        // Declare variables to hold paths
+        let titlepic, detailpic;
+    
+        // Initialize counter outside the forEach loop
+        let i = 0;
+        req.files.forEach(file => {
+            console.log('Uploaded File:', {
+                filename: file.filename,
+                path: file.path,
+                size: file.size,
+                index: i
+            });
+    
+            // Use conditional logic to assign values based on index
+            if (i == 0) {
+                titlepic = file.path.substring(7);
+            } else if (i == 1) {
+                detailpic = file.path.substring(7);
+            }
+    
+            i++;  // Increment the index
+        });
+
+        console.log('Title Picture:', titlepic);
+        console.log('Detail Picture:', detailpic);
+    
+        // Rest of your logic...
+    
+        const newsData = {title:title, shortdescription:shortdescription, longdescription:longdescription, detailpic:detailpic, titlepic:titlepic}
+
         try{
             const newNews = new schema.News(newsData);
             const saveNews = await newNews.save();
             res.status(200).json({
-                path:req.file.path,
+                
                 message: 'News added successfully',
                 data: saveNews
             });}
@@ -131,11 +156,12 @@ router.route('/image')
                 });
             
         }
-        
 
-        // return res.json({
-            
-        // });
-    });
+    } else {
+        console.log(req.body); // Log body to debug in case of no files
+        res.status(400).json({ message: 'No files uploaded' });
+    }
+});
+
 
 module.exports = router;

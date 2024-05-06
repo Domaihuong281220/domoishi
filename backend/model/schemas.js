@@ -7,8 +7,12 @@ const userSchema = new Schema({
 });
 
 const newsSchema = new Schema({
+    title: String,
+    shortdescription: String,
+    longdescription: String,
+    detailpic: String,
     filename: String,
-    path: String,
+    titlepic: String,
 });
 
 const User = mongoose.model('User', userSchema, 'users');
