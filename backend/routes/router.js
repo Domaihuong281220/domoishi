@@ -120,7 +120,8 @@ router.post('/news', upload.array('files', 2), async (req, res) => {
             // console.log('New News ID:', saveNews._id);
             res.status(200).json({
                 message: 'News added successfully',
-                data: saveNews
+                data: saveNews,
+                id: saveNews._id
             });
         } catch (err) {
             res.status(500).json({
