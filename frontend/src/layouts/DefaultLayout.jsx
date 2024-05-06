@@ -29,7 +29,7 @@ const DefaultLayout = (props) => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       {/* <Routes>{showContentMenu(routes)}</Routes>
       <Footer /> */}
       <Routes>
@@ -39,7 +39,7 @@ const DefaultLayout = (props) => {
           {showContentMenu(PrivateRoute)}
         </Route>
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
