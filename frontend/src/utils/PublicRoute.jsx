@@ -10,6 +10,7 @@ import {
   About,
   Locations,
   LocationOrder,
+  ImageUploader,
 } from "../pages";
 
 import { path } from "./Constant";
@@ -69,6 +70,12 @@ const routes = [
     exact: true,
     component: <LocationOrder />,
     main: () => <LocationOrder />,
+  },
+  {
+    path: 'upload',
+    exact: true,
+    component: <ImageUploader />,
+    main: () => <ImageUploader />,
   },
 ];
 
