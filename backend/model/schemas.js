@@ -6,8 +6,13 @@ const userSchema = new Schema({
     username: String,
 });
 
-const User = mongoose.model('User', userSchema, 'users');
+const newsSchema = new Schema({
+    filename: String,
+    path: String,
+});
 
-const mySchemas = { 'User': User }
+const User = mongoose.model('User', userSchema, 'users');
+const News = mongoose.model('News', newsSchema, 'news');
+const mySchemas = { 'User': User, 'News': News };
 
 module.exports = mySchemas;

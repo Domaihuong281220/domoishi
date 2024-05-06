@@ -1,7 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const schema = require('../model/schemas');
+const mongoose = require('mongoose');
+const methodOverride = require('method-override');
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const { upload } = require('../multer.js');
 
+// Route to fetch user data (sample data)
 router.get('/user', (req, res) => {
     const userData = [
         {
@@ -49,32 +55,87 @@ router.get('/user', (req, res) => {
                 "catchPhrase": "Proactive didactic contingency",
                 "bs": "synergize scalable supply-chains"
             }
-        },]
+        },
+    ];
     res.json(userData);
-
 });
 
-router.post('/users', async(req, res) => {
+// Route to create a new user document in MongoDB
+router.post('/users', async (req, res) => {
     const { name, username } = req.body;
-    const userData = { name: name, username: username }
-    const newUser = new schema.User(userData);
-    const saveUser = await newUser.save();
-
-    if (saveUser) {
+    const userData = { name, username };
+    try {
+        const newUser = new schema.User(userData);
+        const saveUser = await newUser.save();
         res.status(200).json({
             message: 'User added successfully',
             data: saveUser
         });
-    } else {
+    } catch (err) {
         res.status(500).json({
-            message: 'User not added'
+            message: 'User not added',
+            error: err.message
         });
-        console.log(err);
     }
-
-    
 });
 
+// MongoDB connection setup for GridFS
+const url = process.env.DB_URI; // It's safer to use environment variables for credentials
+const connect = mongoose.createConnection(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
 
+// GridFS stream initialization
+// let gfs;
+// connect.once('open', () => {
+//     gfs = new mongoose.mongo.GridFSBucket(connect.db, {
+//         bucketName: 'images'
+//     });
+// });
+
+// // Route to handle image upload using GridFS
+// router.route('/image')
+//     .post(upload.single('file'), (req, res, next) => {
+//         if (req.file) {
+//             console.table(req.file);
+//             res.status(200).json({ filename: req.file.filename });
+//         } else {
+//             res.status(400).json({ message: 'No file uploaded' });
+//         }
+//     });
+
+
+// others endpoints
+router.route('/image')
+    .post(upload.single("file"), async(req, res, next) => {
+        if (!req.file) {
+            return res.status(400).json({ error: "No file uploaded" });
+        }
+        
+        console.log(req.file)
+        const {filename, path} = req.file;
+        const newsData = {filename, path}
+        try{
+            const newNews = new schema.News(newsData);
+            const saveNews = await newNews.save();
+            res.status(200).json({
+                path:req.file.path,
+                message: 'News added successfully',
+                data: saveNews
+            });}
+            catch(err) {
+                res.status(500).json({
+                    message: 'News not added',
+                    error: err.message
+                });
+            
+        }
+        
+
+        // return res.json({
+            
+        // });
+    });
 
 module.exports = router;

@@ -1,31 +1,41 @@
+/** @format */
+
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const router = require("./routes/router");
 const mongoose = require("mongoose");
 require("dotenv/config");
+const methodOverride = require('method-override');
 
 const app = express();
 
-// Since Express 4.16.0, bodyParser is built-in
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const corsOptions = {
-  origin: "*", // Consider specifying domains in production
+  origin: "*",
   credentials: true,
   optionSuccessStatus: 200,
 };
 
+app.use(express.static('public'))
 app.use(cors(corsOptions));
 app.use("/", router);
 
-// Connect to MongoDB without deprecated options
+
+const dboptions = { useNewUrlParser: true, useUnifiedTopology: true };
+
+// Corrected the .then() placement
 mongoose
-  .connect(process.env.DB_URI)
+  .connect(process.env.DB_URI, dboptions)
   .then(() => console.log("DB connected"))
-  .catch((error) => console.error("DB connection failed:", error));
+  .catch((error) => console.error("DB connection failed:", error)); // It's a good practice to handle potential errors as well
 
 const port = process.env.PORT || 4000;
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
+
+// console.log(server);
