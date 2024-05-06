@@ -107,61 +107,53 @@ const connect = mongoose.createConnection(url, {
 
 
 // others endpoints
-router.route('/image')
-.post(upload.array('files', 2), async(req, res) => {
-    const {title, shortdescription, longdescription, detailpic, titlepic} = req.body;
+router.post('/image', upload.array('files', 2), async (req, res) => {
+    const { title, shortdescription, longdescription } = req.body;
+    let titlepic, detailpic;
+
     if (req.files && req.files.length > 0) {
-        // Declare variables to hold paths
-        let titlepic, detailpic;
-    
-        // Initialize counter outside the forEach loop
-        let i = 0;
-        req.files.forEach(file => {
+        // Loop through the uploaded files
+        req.files.forEach((file, index) => {
             console.log('Uploaded File:', {
                 filename: file.filename,
                 path: file.path,
                 size: file.size,
-                index: i
+                index: index
             });
-    
-            // Use conditional logic to assign values based on index
-            if (i == 0) {
-                titlepic = file.path.substring(7);
-            } else if (i == 1) {
-                detailpic = file.path.substring(7);
+
+            // Assign paths based on the index
+            if (index == 0) {
+                titlepic = file.path.substring(7);  // Adjust 7 according to your path structure
+            } else if (index == 1) {
+                detailpic = file.path.substring(7);  // Adjust 7 according to your path structure
             }
-    
-            i++;  // Increment the index
         });
 
         console.log('Title Picture:', titlepic);
         console.log('Detail Picture:', detailpic);
-    
-        // Rest of your logic...
-    
-        const newsData = {title:title, shortdescription:shortdescription, longdescription:longdescription, detailpic:detailpic, titlepic:titlepic}
 
-        try{
+        // Construct the news data object
+        const newsData = { title, shortdescription, longdescription, detailpic, titlepic };
+
+        try {
             const newNews = new schema.News(newsData);
             const saveNews = await newNews.save();
             res.status(200).json({
-                
                 message: 'News added successfully',
                 data: saveNews
-            });}
-            catch(err) {
-                res.status(500).json({
-                    message: 'News not added',
-                    error: err.message
-                });
-            
+            });
+        } catch (err) {
+            res.status(500).json({
+                message: 'News not added',
+                error: err.message
+            });
         }
-
     } else {
-        console.log(req.body); // Log body to debug in case of no files
+        console.log('Request Body:', req.body); // Log body to debug in case of no files
         res.status(400).json({ message: 'No files uploaded' });
     }
 });
+
 
 
 module.exports = router;
