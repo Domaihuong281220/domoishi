@@ -43,3 +43,7 @@ export { default as CardCareers } from "./Careers/CardCareer";
 
 // export { default as EndSolutions } from "./EndSolutions";
 // export { default as Sustainability } from "./Sustainability";
+
+// Admin
+
+export { default as SidebarAd } from "./SidebarAd/SidebarAd";

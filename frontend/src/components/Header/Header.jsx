@@ -1,12 +1,13 @@
 /** @format */
 
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { path } from "../../utils/Constant";
 import { SearchOutlined } from "@ant-design/icons";
 import logo from "./domoishilogo.png";
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <div className="h-fit bg-red-500">
       <nav class="bg-white   w-full z-20 top-0 start-0 pt-8  pv:max-md:pt-0 ">
@@ -82,6 +83,16 @@ const Header = () => {
               </button>
             </a>
           </div>
+          {/* <div class="flex md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse hover:underline">
+            <button
+              className=" lg:text-[16px] pv:max-ph:text-[5px] pv:max-md:mt-4 text-black font-shopee_bold py-3 px-4 rounded-full 2xl:mt-8 pv:max-md:py-[5px] pv:max-md:px-[10px] pv:max-md:text-[7px]"
+              onClick={() => {
+                navigate("../" + path.LOGIN);
+              }}
+            >
+              Sign with Admin
+            </button>
+          </div> */}
         </div>
       </nav>
     </div>
