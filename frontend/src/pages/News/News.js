@@ -1,10 +1,29 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import { eventProductData } from "../../models/mockdata";
 import { CardNewsProduct } from "../../components";
 const News = () => {
+  const [newsData, setNewsData] = useState([]);
+
+  useEffect(() => {
+    handlegetNews();
+  }, []);
+  // Call API
+
+  // Get News
+  const handlegetNews = async () => {
+    await axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/news`)
+      .then((res) => {
+        setNewsData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className=" w-[76%] mx-auto pv:max-ph:w-[90%] md:max-lg:w-[90%] ">
       <div className="">
@@ -16,16 +35,17 @@ const News = () => {
         </p>
       </div>
       <div className=" ">
-        {eventProductData.map((item, index) => {
-          if (eventProductData) {
+        {newsData.map((item, index) => {
+          if (newsData) {
             return (
               <>
                 <CardNewsProduct
                   title={item.title}
-                  img={item.img}
-                  desc={item.desc}
-                  note={item.note}
-                  code={item.key}
+                  imgTitle={`${process.env.REACT_APP_SERVER_URL}/${item.titlepic}`}
+                  imgDetail={`${process.env.REACT_APP_SERVER_URL}/${item.detailpic}`}
+                  shortdescription={item.shortdescription}
+                  longdescription={item.longdescription}
+                  code={item._id}
                 />
               </>
             );

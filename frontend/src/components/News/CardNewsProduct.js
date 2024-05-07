@@ -3,10 +3,31 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { path } from "../../utils/Constant";
-const CardNewsProduct = ({ title, img, desc, note, code }) => {
+const CardNewsProduct = ({
+  title,
+  shortdescription,
+  longdescription,
+  imgTitle,
+  imgDetail,
+
+  code,
+}) => {
   const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("../" + path.NEWS_DETAIL + `/${code}`);
+  // const handleClick = (record) => {
+  //   navigate("../" + path.NEWS_DETAIL + `/${record._id}`);
+  // };
+
+  const handleClick = (code) => {
+    navigate("../" + path.NEWS_DETAIL + `/${code}`, {
+      state: {
+        title: title,
+        shortdescription: shortdescription,
+        longdescription: longdescription,
+        imgTitle: imgTitle,
+        imgDetail: imgDetail,
+        code: code,
+      },
+    });
   };
 
   return (
@@ -22,7 +43,7 @@ const CardNewsProduct = ({ title, img, desc, note, code }) => {
           <button
             className="text-start text-[#cb1313] font-nexa_bold text-[40px] pv:max-md:text-[16px] md:max-xl:text-[20px] ph:max-md:text-[20px]  hover:underline cursor-pointer "
             onClick={() => {
-              handleClick();
+              handleClick(code);
             }}
           >
             <p className=" ">Detail</p>
@@ -31,15 +52,12 @@ const CardNewsProduct = ({ title, img, desc, note, code }) => {
 
         <div className="">
           <p className="text-start  font-nexa_light text-[30px] pv:max-md:text-[14px] md:max-xl:text-[16px] ">
-            {desc}
-          </p>
-          <p className="text-start  font-nexa_light text-[30px] pv:max-md:text-[14px] md:max-xl:text-[16px] ">
-            {note}
+            {shortdescription}
           </p>
         </div>
       </div>
       <div className="">
-        <img className="" src={img}></img>
+        <img className="" src={imgTitle}></img>
       </div>
       <div className="w-full h-[1px] bg-black mt-20 md:hidden"></div>
     </div>
