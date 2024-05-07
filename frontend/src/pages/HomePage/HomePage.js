@@ -1,7 +1,9 @@
+/** @format */
+
 import React, { useState, useEffect } from "react";
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
 import { About, Banner, Promo, WhyDommoishi } from "../../components";
-import axios from 'axios';
+import axios from "axios";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,30 +18,35 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 const HomePage = () => {
   const [metaTags, setMetaTags] = useState([]);
 
+  const handlegetCareers = async () => {
+    await axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/metatag`)
+      .then((res) => {
+        setMetaTags(res.data.data);
+        // setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   useEffect(() => {
-    // Fetch meta tags from the API
-    const fetchMetaTags = async () => {
-      try {
-        const response = await axios.get('http://localhost:4000/metatag');
-        console.log(response);
-        setMetaTags(response.data.data); // Assume the API returns data in {data: []} format
-      } catch (error) {
-        console.error('Error fetching meta tags:', error);
-      }
-    };
-
-    fetchMetaTags();
+    handlegetCareers();
   }, []);
+  console.log(metaTags, "askjdhs");
 
   return (
     <div className="w-full h-fit">
-      <Helmet>
-        <title>Home - Domoishi</title>
-        {metaTags.map(tag => (
-          <meta name={tag.name} content={tag.content} key={tag._id} />
-        ))}
-      </Helmet>
-      
+      {metaTags === null || metaTags.length === 0 ? (
+        ""
+      ) : (
+        <Helmet>
+          <title>Home - Domoishi</title>
+          {metaTags.map((tag) => (
+            <meta name={tag.name} content={tag.content} key={tag._id} />
+          ))}
+        </Helmet>
+      )}
+
       <Banner />
 
       <Swiper
@@ -55,9 +62,15 @@ const HomePage = () => {
         modules={[Pagination, Navigation, Autoplay]}
         className="mySwiper"
       >
-        <SwiperSlide><Promo /></SwiperSlide>
-        <SwiperSlide><Promo /></SwiperSlide>
-        <SwiperSlide><Promo /></SwiperSlide>
+        <SwiperSlide>
+          <Promo />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Promo />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Promo />
+        </SwiperSlide>
       </Swiper>
 
       <WhyDommoishi />
