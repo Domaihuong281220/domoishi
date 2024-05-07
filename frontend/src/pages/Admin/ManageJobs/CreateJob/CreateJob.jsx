@@ -7,27 +7,35 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { message } from "antd";
 import { toast } from "react-toastify";
+import { path } from "../../../../utils/Constant";
 // import { isValidInputCategory } from "../../../../helpers/validInputs";
 
 const CreateJob = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    id: "",
-    name: "",
+    position: "",
+    description: "",
+    availability: "yes",
+    linkform: "",
   });
-  const handleFile = (e) => {
-    setFile(e.target.files[0]);
+
+  const handleCreateJob = async (id) => {
+    await axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/careers`, formData)
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          toast.success("Create new job successfully!");
+
+          navigate("../" + path.JOBMANAGE);
+        }
+      })
+      .catch((err) => {
+        toast.error("Create job wrong: " + err.message);
+      });
   };
-  const [file, setFile] = useState();
-
-  const [imagecategory, setimagecategory] = useState("");
-
-  const [messageApi, contextHolder] = message.useMessage();
 
   return (
     <div className="">
-      {contextHolder}
-
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <div className="flex p-2">
           <p className="text-2xl"> CREATE JOB</p>
@@ -41,7 +49,7 @@ const CreateJob = () => {
               className="w-full h-auto p-2 border-[1px] border-gray-200"
               placeholder="Name Job"
               onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
+                setFormData({ ...formData, position: e.target.value })
               }
             />
           </div>
@@ -68,7 +76,7 @@ const CreateJob = () => {
             </button>
             <button
               className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg "
-              // onClick={() => handleAddcategoryAPI()}
+              onClick={() => handleCreateJob()}
             >
               <p className="">Save</p>
             </button>

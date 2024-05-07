@@ -93,7 +93,7 @@ const SidebarAd = () => {
                 className="h-5 w-5"
               ></Icon>
             </ListItemPrefix>
-            <p className="">Jobs</p>
+            <p className="">Careers</p>
           </div>
         </ListItem>
         <ListItem
@@ -106,11 +106,11 @@ const SidebarAd = () => {
             <ListItemPrefix>
               <Icon icon="mdi:events-check" className="h-5 w-5"></Icon>
             </ListItemPrefix>
-            <p className="">Events</p>
+            <p className="">News</p>
           </div>
         </ListItem>
 
-        <Accordion open={openEcommerce} className="overflow-hidden">
+        {/* <Accordion open={openEcommerce} className="overflow-hidden">
           <AccordionHeader
             onClick={() => handleOpenEcommerce()}
             className="py-0 text-lg"
@@ -152,7 +152,7 @@ const SidebarAd = () => {
               <p className="">Categories Manage</p>
             </div>
           </AccordionBody>
-        </Accordion>
+        </Accordion> */}
         <ListItem
           className=""
           onClick={() => {

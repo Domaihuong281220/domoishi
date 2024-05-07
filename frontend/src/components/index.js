@@ -47,3 +47,4 @@ export { default as CardCareers } from "./Careers/CardCareer";
 // Admin
 
 export { default as SidebarAd } from "./SidebarAd/SidebarAd";
+export { default as Loading } from "./Loading/Loading";

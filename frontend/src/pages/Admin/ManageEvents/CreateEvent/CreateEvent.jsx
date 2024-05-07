@@ -8,18 +8,17 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { message } from "antd";
 import { toast } from "react-toastify";
-import { isValidInputProduct } from "../../../../helpers/validInputs";
+
+import { isValidNews } from "../../../../helpers/validInputs";
 import { apiCreateNews } from "../../../../services/news";
 import { path } from "./../../../../utils/Constant";
 const CreateEvent = () => {
   const navigate = useNavigate();
-
   const [files, setFiles] = useState([]); // Using an array to store files
   const [title, setTitle] = useState("");
   const [longDescription, setLongDescription] = useState("");
   const [shortDescription, setShortDescription] = useState("");
   const [gfsInitialized, setGfsInitialized] = useState(false);
-
   useEffect(() => {
     setTimeout(() => setGfsInitialized(true), 1000);
   }, []);
@@ -33,14 +32,16 @@ const CreateEvent = () => {
 
   const handleUpload = async () => {
     if (files.length < 2 || !files[0] || !files[1]) {
-      alert("Please select both files first!");
+      // alert("Please select both files first!");
+      toast.info("Please select both files Title Image and Detail Image!");
       return;
     }
 
     if (!gfsInitialized) {
-      alert(
+      toast.info(
         "Image upload functionality not yet ready. Please try again later."
       );
+
       return;
     }
 
@@ -52,7 +53,7 @@ const CreateEvent = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/image",
+        `${process.env.REACT_APP_SERVER_URL}/news`,
         formData,
         {
           headers: {
@@ -62,25 +63,27 @@ const CreateEvent = () => {
       );
       if (response.status === 200) {
         navigate("../" + path.EVENTMANAGE);
+        toast.success("create news successfully!");
+      } else {
+        toast.error("create news wrong: ");
       }
     } catch (error) {
-      alert("Error uploading images: " + error.message);
+      toast.error("create news wrong: " + error.message);
     }
   };
 
   return (
     <div className="">
       {/* Start Form Create Product */}
-
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <div className="flex p-2">
-          <p className="text-2xl"> CREATE EVENT</p>
+          <p className="text-2xl"> CREATE NEWS</p>
         </div>
         <div className="px-10 py-4 mx-auto w-[50%] ">
           {/* Title */}
 
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
-            <p className="text-lg">Name Event </p>
+            <p className="text-lg">Name News </p>
             <Input
               className="w-full h-auto border-[1px] p-2"
               placeholder="Title"
@@ -92,7 +95,12 @@ const CreateEvent = () => {
           {/* Short Description */}
 
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
-            <p className="text-lg">Short Description</p>
+            <p className="text-lg">
+              Short Description
+              <span className="text-[10px] text-red-500">
+                (Content to display on the news page)
+              </span>
+            </p>
             <textarea
               className="w-full h-[300px] border-[1px] p-2"
               placeholder="Subtitle"
@@ -104,7 +112,12 @@ const CreateEvent = () => {
           {/* Long Description */}
 
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
-            <p className="text-lg">Long Description</p>
+            <p className="text-lg">
+              Long Description
+              <span className="text-[10px] text-red-500">
+                (Content to display on the details page)
+              </span>
+            </p>
             <textarea
               className="w-full h-[300px] border-[1px] p-2"
               placeholder="Subtitle"

@@ -67,3 +67,22 @@ export const isValidInputProduct = (formData, toast) => {
 
   return true;
 };
+
+export const isValidNews = (formData, toast) => {
+  var regxPrice = new RegExp("^[0-9]$");
+  if (!formData.name) {
+    toast.error("Event name is required");
+    return false;
+  }
+
+  if (!formData.shortDescription) {
+    toast.error("Short description is required");
+    return false;
+  }
+  if (!formData.LongDescription) {
+    toast.error("Long Description is required");
+    return false;
+  }
+
+  return true;
+};

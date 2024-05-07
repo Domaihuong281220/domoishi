@@ -1,38 +1,18 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { Breadcrumbs } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
 import { Table, message } from "antd";
-import { InputGroup, Input, InputRightElement } from "@chakra-ui/react";
 import axios from "axios";
-
 import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
-// import { path } from "../../../utils/constant";
 import { path } from "../../../utils/Constant";
 const ManageEvents = () => {
   const navigate = useNavigate();
-  const [productData, setproductData] = useState([]);
-  const data = [];
+  const [newsData, setNewsData] = useState([]);
 
-  for (let i = 0; i < productData.length; i++) {
-    data.push({
-      key: i,
-      id: productData[i].id,
-      nameproduct: productData[i].name,
-      image: productData[i].image,
-      description: productData[i].description,
-      price: productData[i].price,
-      quatity: "100",
-      categories: productData[i].categoryId,
-    });
-  }
-
-  // Set state for variable
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const onSelectChange = (newSelectedRowKeys) => {
-    console.log("selectedRowKeys changed: ", newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
   };
   const rowSelection = {
@@ -40,67 +20,81 @@ const ManageEvents = () => {
     onChange: onSelectChange,
   };
 
-  const handleClickView = (id) => {
-    navigate("../" + path.CATEGORYADD + `/${id}`, { state: mockData[id] });
-  };
-  const handlegetProduct = async () => {
-    await axios
-      .get("http://103.157.218.126:8000/public/getallproduct")
-      .then((res) => {
-        setproductData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  // const handledeleteProduct = async (id) => {
-  //   await axios
-  //     .delete(`http://103.157.218.126:8000/admin/deleteproduct/${id}`)
-  //     .then((res) => {
-  //       if (res.status === 200 || res.status === 201) {
-  //         toast.success("delete product success");
-  //         handlegetProduct();
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-  const handleEditEvents = (id) => {
-    navigate("../" + path.EVENTEDIT + `/${id}`, {
-      state: mockData[id],
+  const handleEditEvents = (record) => {
+    navigate("../" + path.EVENTEDIT + `/${record._id}`, {
+      state: record,
     });
   };
 
   const [messageApi, contextHolder] = message.useMessage();
 
   useEffect(() => {
-    handlegetProduct();
+    handlegetNews();
   }, []);
-  // Declare label for variable
+
+  // Call API
+
+  // Get News
+  const handlegetNews = async () => {
+    await axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/news`)
+      .then((res) => {
+        setNewsData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // Delete News
+
+  const hanldedeleNews = async (id) => {
+    await axios
+      .delete(`${process.env.REACT_APP_SERVER_URL}/news/${id}`)
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          toast.success("Delete news successfully!");
+          handlegetNews();
+          navigate("../" + path.EVENTMANAGE);
+        }
+      })
+      .catch((err) => {
+        toast.error("Delete news wrong: " + err.message);
+      });
+  };
+
   const columns = [
     {
-      title: "STT",
-      dataIndex: "key",
-      key: "key",
+      title: "News",
+      dataIndex: "title",
+      key: "title",
       fixed: "left",
-      width: 100,
+      width: 200,
     },
     {
-      title: "Event",
-      dataIndex: "event",
-      key: "event",
-      fixed: "left",
-    },
-    {
-      title: "Image",
-      dataIndex: "image",
-      key: "image",
+      title: "Image Title",
+      dataIndex: "titlepic",
+      key: "titlepic",
       render: (_, record) => (
         <div className="flex items-center justify-center">
           <div className="w-28 h-28">
             <img
-              src={record.image}
+              src={`${process.env.REACT_APP_SERVER_URL}/${record.titlepic}`}
+              className="object-contain w-full h-full"
+            ></img>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Image Detial",
+      dataIndex: "detailpic",
+      key: "detailpic",
+      render: (_, record) => (
+        <div className="flex items-center justify-center">
+          <div className="w-28 h-28">
+            <img
+              src={`${process.env.REACT_APP_SERVER_URL}/${record.detailpic}`}
               className="object-contain w-full h-full"
             ></img>
           </div>
@@ -110,71 +104,37 @@ const ManageEvents = () => {
 
     {
       title: "Description",
-      dataIndex: "description",
-      key: "description",
+      dataIndex: "longdescription",
+      key: "longdescription",
     },
     {
-      title: "Time",
-      dataIndex: "time",
-      key: "time",
+      title: "short Description",
+      dataIndex: "shortdescription",
+      key: "shortdescription",
     },
-
-    { title: "Tags", dataIndex: "tags", key: "tag" },
 
     {
       title: "Action",
       key: "action",
       fixed: "right",
-      width: 200,
+      width: 100,
       render: (_, record) => (
         <div className="flex items-center justify-center gap-x-2">
           <button
             className="hover:underline cursor-pointer hover:text-blue-500 hover:font-bold"
-            onClick={() => handleEditEvents(record?.key - 1)}
+            onClick={() => handleEditEvents(record)}
           >
             <p className="">Edit</p>
           </button>
 
           <button
             className="hover:underline cursor-pointer hover:text-blue-500 hover:font-bold"
-            // onClick={() => handledeleteProduct(record.id)}
+            onClick={() => hanldedeleNews(record._id)}
           >
             <p className="">Delete</p>
           </button>
         </div>
       ),
-    },
-  ];
-  const mockData = [
-    {
-      key: "1",
-      event: "BEST POKE IN TOWN",
-      image:
-        "http://103.157.218.115:8899/static/media/event_product_1.694c447619d6a47557c9.png",
-      description:
-        "Our commitment to exceptional taste extends beyond coffee to our delectable pastries. Our signature creation, the Croffle, is a harmonious blend of croissants and waffles. Crispy on the outside, soft and buttery on the inside, these delightful treats are a symphony of flavors that will leave you craving more. Whether you opt for a sweet or savory Croffle, each bite is a celebration of the perfect balance between textures and tastes.",
-      time: "The event starts on the 6th and ends on November 30th.",
-      tags: "(*) Applies to joyu’s specials.",
-    },
-    {
-      key: "2",
-      event: "PORK RAMEN",
-      image:
-        "http://103.157.218.115:8899/static/media/event_product_2.e7f69f127c4f5cfc582f.png",
-      description:
-        "Our commitment to exceptional taste extends beyond coffee to our delectable pastries. Our signature creation, the Croffle, is a harmonious blend of croissants and waffles. Crispy on the outside, soft and buttery on the inside, these delightful treats are a symphony of flavors that will leave you craving more. Whether you opt for a sweet or savory Croffle, each bite is a celebration of the perfect balance between textures and tastes.",
-      time: "The event starts on the 6th and ends on November 30th.",
-      tags: "(*) Applies to joyu’s specials.",
-    },
-    {
-      key: "3",
-      event: "BUY 1 GET 1 FREE",
-      image:
-        "http://103.157.218.115:8899/static/media/event_product_3.acbcade25f16a73e11c1.png",
-      description:
-        "Our commitment to exceptional taste extends beyond coffee to our delectable pastries. Our signature creation, the Croffle, is a harmonious blend of croissants and waffles. Crispy on the outside, soft and buttery on the inside, these delightful treats are a symphony of flavors that will leave you craving more. Whether you opt for a sweet or savory Croffle, each bite is a celebration of the perfect balance between textures and tastes.",
-      time: "The event starts on the 6th and ends on November 30th.",
-      tags: "(*) Applies to joyu’s specials.",
     },
   ];
 
@@ -184,7 +144,7 @@ const ManageEvents = () => {
 
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <div className="flex p-2">
-          <p className="text-2xl">EVENTS MANAGE</p>
+          <p className="text-2xl">NEWS MANAGEMENT</p>
         </div>
         {/* Start Table Product Manage */}
         <div className="">
@@ -201,14 +161,14 @@ const ManageEvents = () => {
                   width={24}
                   height={24}
                 ></Icon>
-                <p className="">Add New Event</p>
+                <p className="">Add News</p>
               </button>
             </div>
           </div>
           <div className="w-[100%]">
             <Table
               columns={columns}
-              dataSource={mockData}
+              dataSource={newsData}
               pagination={{ pageSize: 5, position: ["bottomCenter"] }}
               // scroll={{
               //   x: 1500,

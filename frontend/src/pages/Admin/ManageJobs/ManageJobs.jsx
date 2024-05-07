@@ -7,43 +7,76 @@ import { InputGroup, Input, InputRightElement } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { path } from "../../../utils/Constant";
-// import {} from "";
+import { toast } from "react-toastify";
+import { Loading } from "../../../components";
 
 const ManageJobs = () => {
   const navigate = useNavigate();
+  const [CareersData, setCareersData] = useState([]);
+  // const [messageApi, contextHolder] = message.useMessage();
+
+  const handleEditJob = async (record) => {
+    navigate("../" + path.JOBEDIT + `/${record._id}`, {
+      state: record,
+    });
+  };
 
   const [messageApi, contextHolder] = message.useMessage();
 
-  const handleEditJob = async (id) => {
-    navigate("../" + path.JOBEDIT + `/${id}`, {
-      state: mockData[id],
-    });
-  };
-  // const handleEditProduct = (id) => {
-  //   navigate("../" + path.PRODUCTEDIT + `/${id}`, {
-  //     state: mockData[id],
-  //   });
-  // };
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    handlegetCareers();
+  }, []);
+  console.log(CareersData, "askjdhs");
 
-  // Declare label for vairiable
+  // Call API
+
+  // Get News
+  const handlegetCareers = async () => {
+    await axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/careers`)
+      .then((res) => {
+        setCareersData(res.data.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // Delete News
+
+  const handledeleCareers = async (id) => {
+    await axios
+      .delete(`${process.env.REACT_APP_SERVER_URL}/careers/${id}`)
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          toast.success("Delete jobs successfully!");
+          handlegetCareers();
+          navigate("../" + path.JOBMANAGE);
+        }
+      })
+      .catch((err) => {
+        toast.error("Delete jobs wrong: " + err.message);
+      });
+  };
+
   const columns = [
     {
-      title: "ID",
-      dataIndex: "id",
-      key: "id",
-      fixed: "left",
-      width: 100,
-    },
-    {
-      title: "Job",
-      dataIndex: "job",
-      key: "job",
+      title: "Position",
+      dataIndex: "position",
+      key: "position",
       fixed: "left",
     },
     {
       title: "Description",
       dataIndex: "description",
       key: "description",
+    },
+    {
+      title: "Availability",
+      dataIndex: "availability",
+      key: "availability",
     },
 
     {
@@ -55,14 +88,14 @@ const ManageJobs = () => {
         <div className="flex items-center justify-center gap-x-2">
           <button
             className="hover:underline cursor-pointer"
-            onClick={() => handleEditJob(record?.id - 1)}
+            onClick={() => handleEditJob(record)}
           >
             <p className="">Edit</p>
           </button>
 
           <button
             className="hover:underline cursor-pointer"
-            // onClick={() => handledeleteProduct(record.id)}
+            onClick={() => handledeleCareers(record._id)}
           >
             <p className="">Delete</p>
           </button>
@@ -122,7 +155,7 @@ const ManageJobs = () => {
           <div className="w-[100%]">
             <Table
               columns={columns}
-              dataSource={mockData}
+              dataSource={CareersData}
               pagination={{ pageSize: 5, position: ["bottomCenter"] }}
 
               // scroll={{
