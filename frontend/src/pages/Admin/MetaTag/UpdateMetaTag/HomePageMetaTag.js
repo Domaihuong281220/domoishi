@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Helmet } from 'react-helmet';
-import { Space, Table, Button, Modal, Form, Input } from 'antd';
+import { Table, Button, Modal, Form, Input } from 'antd';
 import axios from 'axios';
 
-const columns = (handleEdit) => [
+const columns = (handleEdit, handleDelete) => [
   {
     title: 'Title',
     dataIndex: 'title',
@@ -28,7 +28,7 @@ const columns = (handleEdit) => [
   {
     title: 'Delete',
     key: 'delete',
-    render: (_, record) => <Button>Delete</Button>  // You can also implement deletion here
+    render: (_, record) => <Button onClick={() => handleDelete(record._id)}>Delete</Button>
   },
 ];
 
@@ -36,6 +36,7 @@ const HomePageMetaTag = () => {
   const [data, setData] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
+  const [isCreatingNew, setIsCreatingNew] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -44,30 +45,56 @@ const HomePageMetaTag = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get('http://103.157.218.115:8802/metatag');
-      if (response.data.data && Array.isArray(response.data.data)) {
-        const formattedData = response.data.data.map((item, index) => ({
-          key: index,
-          title: item.title,
-          name: item.name,
-          content: item.content
-        }));
-        setData(formattedData);
-      }
+      setData(response.data.data);
     } catch (error) {
       console.error('Failed to fetch data:', error);
     }
   };
 
   const handleEdit = (record) => {
-    setEditingItem(record);
+    setEditingItem({ ...record });
     setIsModalVisible(true);
+    setIsCreatingNew(false);
   };
 
-  const handleOk = () => {
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://103.157.218.115:8802/metatag/${id}`);
+      const newData = data.filter(item => item._id !== id);
+      setData(newData);
+      alert('Deletion successful');
+    } catch (error) {
+      alert('Deletion failed: ' + error.message);
+    }
+  };
+
+  const handleAddNew = () => {
+    setEditingItem({ title: '', name: '', content: '' });
+    setIsModalVisible(true);
+    setIsCreatingNew(true);
+  };
+
+  const handleOk = async () => {
     setIsModalVisible(false);
-    console.log('Edited:', editingItem);
-    // Call an API to update the data on the server
-    // Update the state if needed
+    if (isCreatingNew) {
+      try {
+        const response = await axios.post('http://103.157.218.115:8802/metatag', editingItem);
+        fetchData();
+        alert('MetaTag added successfully');
+      } catch (error) {
+        alert('Failed to add MetaTag: ' + error.message);
+      }
+    } else {
+      if (editingItem) {
+        try {
+          await axios.put(`http://103.157.218.115:8802/metatag/${editingItem._id}`, editingItem);
+          fetchData();
+          alert('Update successful');
+        } catch (error) {
+          alert('Update failed: ' + error.message);
+        }
+      }
+    }
   };
 
   const handleCancel = () => {
@@ -85,8 +112,11 @@ const HomePageMetaTag = () => {
         <title>Home Page</title>
         <meta name="description" content="Home page with dynamic data from API" />
       </Helmet>
-      <Table columns={columns(handleEdit)} dataSource={data} />
-      <Modal title="Edit Item" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+      <Button type="primary" onClick={handleAddNew} style={{ marginBottom: 16 }}>
+        Add New MetaTag
+      </Button>
+      <Table columns={columns(handleEdit, handleDelete)} dataSource={data} />
+      <Modal title={isCreatingNew ? "Add New MetaTag" : "Edit MetaTag"} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
         <Form labelCol={{ span: 8 }} wrapperCol={{ span: 16 }}>
           <Form.Item label="Title">
             <Input name="title" value={editingItem?.title} onChange={handleChange} />
