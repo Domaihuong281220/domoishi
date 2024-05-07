@@ -205,9 +205,10 @@ router.get("/news/by-id", async (req, res) => {
   }
 });
 
-router.put("/news/:id", async (req, res) => {
+router.put("/news/:id",upload.array("files", 2), async (req, res) => {
   const { id } = req.params; // Access ID from URL parameters
   const updateData = req.body; // Data to update
+
 
   if (!id) {
     return res.status(400).json({
@@ -215,6 +216,31 @@ router.put("/news/:id", async (req, res) => {
       message: "ID parameter is required",
     });
   }
+
+  console.log(req.files)
+
+  if (req.files && req.files.length > 0) {
+    // Loop through the uploaded files
+    req.files.forEach((file, index) => {
+      console.log("Uploaded File:", {
+        filename: file.filename,
+        path: file.path,
+        size: file.size,
+        index: index,
+      });
+
+
+      // Assign paths based on the index
+      if (index == 0) {
+        titlepic = file.path.substring(7); // Adjust 7 according to your path structure
+        updateData['titlepic'] = file.filename
+      } else if (index == 1) {
+        detailpic = file.path.substring(7); // Adjust 7 according to your path structure
+        updateData['detailpic'] = file.filename
+      }
+    })
+    }
+
 
   try {
     // Find the news by ID and update it
