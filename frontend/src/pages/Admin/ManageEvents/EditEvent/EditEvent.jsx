@@ -111,7 +111,7 @@ const EditEvent = () => {
               <button className="w-auto h-auto py-2 px-4  border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg">
                 <img
                   className="w-[200px] object-cover"
-                  src={`http://localhost:4000/${newsData.titlepic}`}
+                  src={`${process.env.REACT_APP_SERVER_URL}/${newsData.titlepic}`}
                   onChange={(e) =>
                     setFormData({ ...formData, titlepic: e.target.value })
                   }
@@ -125,7 +125,7 @@ const EditEvent = () => {
               <button className="w-auto h-auto py-2 px-4  border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg">
                 <img
                   className="w-[200px]  object-cover"
-                  src={`http://localhost:4000/${newsData.detailpic}`}
+                  src={`${process.env.REACT_APP_SERVER_URL}/${newsData.detailpic}`}
                   onChange={(e) =>
                     // setFormData({ ...formData, detailpic: e.target.value })
 
