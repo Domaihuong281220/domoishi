@@ -466,4 +466,92 @@ router.delete('/careers/:id', async (req, res) => {
     }
 });
 
+router.post('/metatag', async(req, res) => {
+    const { title, name, content, property } = req.body;
+    const metatagData = { title:title, name:name, content:content, property:property};
+
+    try {
+        const newMetatag = new schema.MetaTag(metatagData);
+        const saveMetatag = await newMetatag.save();  // Use 'await' to wait for the save operation to complete
+        // console.table(saveMetatag);
+        res.status(200).json({
+            message: 'Metatag added successfully',
+            data: saveMetatag,
+            // id: saveMetatag._id  // Now this should correctly display the _id
+        });
+    } catch (err) {
+        console.error(err);  // It's good to log the error for debugging
+        res.status(500).json({
+            message: 'Metatag not added',
+            error: err.message
+        });
+    }
+})
+
+router.get('/metatag', async (req, res) => {
+    const metatagSchema = schema.MetaTag
+    try {
+        const metatagItems = await metatagSchema.find({});
+        if (metatagItems.length > 0) {
+            res.status(200).json({
+                success: true,
+                count: metatagItems.length,
+                data: metatagItems
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: 'No metatag found'
+            });
+        };
+    }
+    catch (err) {
+        res.status(500).json({
+            success: false,
+            message: 'Server error',
+            error: err.message
+        });
+    };
+
+})
+
+router.delete('/metatag/:id', async (req, res) => {
+    const { id } = req.params;
+    if (!id) {
+        return res.status(400).json({
+            success: false,
+            message: 'ID parameter is required'
+        });
+    }
+    try {
+        const deletedMetatag = await schema.MetaTag.findByIdAndDelete(id);
+        if (deletedMetatag) {
+            res.status(200).json({
+                success: true,
+                message: 'Metatag deleted successfully',
+                data: deletedMetatag
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: 'No metatag found with the given ID'
+            });
+        }
+    }
+    catch (err) {
+        if (err.kind === 'ObjectId') {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid ID format'
+            });
+        }
+        res.status(500).json({
+            success: false,
+            message: 'Server error',
+            error: err.message
+        });
+    }
+})
+
+
 module.exports = router;
