@@ -153,7 +153,22 @@ const SidebarAd = () => {
             </div>
           </AccordionBody>
         </Accordion>
-
+        <ListItem
+          className=""
+          onClick={() => {
+            navigate("../" + path.METATAG);
+          }}
+        >
+          <div className="text-lg flex items-center gap-2">
+            <ListItemPrefix>
+              <Icon
+                icon="tabler:tag"
+                className="h-5 w-5"
+              ></Icon>
+            </ListItemPrefix>
+            <p className=""> MetaTag</p>
+          </div>
+        </ListItem>
         <ListItem
           className=" text-lg flex  items-center gap-2"
           onClick={() => {
@@ -165,6 +180,7 @@ const SidebarAd = () => {
           </ListItemPrefix>
           <p className="">Log out</p>
         </ListItem>
+        
       </List>
     </Card>
   );

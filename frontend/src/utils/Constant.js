@@ -43,6 +43,9 @@ export const path = {
   JOBEDIT: "/edit-job",
 
   UPLOADIMAGE: "upload-image",
+
+  //MetaTag
+  METATAG: "/metatag"
 };
 
 export const ScrollToTop = () => {

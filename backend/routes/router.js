@@ -467,8 +467,8 @@ router.delete('/careers/:id', async (req, res) => {
 });
 
 router.post('/metatag', async(req, res) => {
-    const { title, name, content, property } = req.body;
-    const metatagData = { title:title, name:name, content:content, property:property};
+    const { path,title, name, content, property } = req.body;
+    const metatagData = { path:path,title:title, name:name, content:content, property:property};
 
     try {
         const newMetatag = new schema.MetaTag(metatagData);
@@ -514,6 +514,50 @@ router.get('/metatag', async (req, res) => {
     };
 
 })
+
+router.put('/metatag/:id', async(req, res, next) => {
+    const { id } = req.params;
+    const updateData = req.body;
+    if (!id) {
+        return res.status(400).json({
+            success: false,
+            message: 'ID parameter is required'
+        });
+    }
+    try {
+
+        const updatedMetatag = await schema.MetaTag.findByIdAndUpdate(
+            id, // Using the ID directly
+            updateData,
+            { new: true, runValidators: true }  // Return the updated object and run model validators
+        );
+        if (updatedMetatag) {
+            res.status(200).json({
+                success: true,
+                message: 'Metatag updated successfully',
+                data: updatedMetatag
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: 'No metatag found with the given ID'
+            });
+        }
+    } catch (err) {
+        if (err.kind === 'ObjectId') {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid ID format'
+            });
+        }
+        res.status(500).json({
+            success: false,
+            message: 'Server error',
+            error: err.message
+        });
+    
+    }
+});
 
 router.delete('/metatag/:id', async (req, res) => {
     const { id } = req.params;

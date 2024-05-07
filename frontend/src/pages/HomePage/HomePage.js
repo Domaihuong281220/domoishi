@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import { Helmet } from 'react-helmet';
 import { About, Banner, Promo, WhyDommoishi } from "../../components";
 
 // Import Swiper React components
@@ -16,6 +17,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 const HomePage = () => {
   return (
     <div className="w-full h-fit">
+      
       <Banner />
 
       <Swiper

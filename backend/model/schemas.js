@@ -23,6 +23,7 @@ const careersSchema = new Schema({
 });
 
 const metatagSchema = new Schema({
+    path: String,
     title: String,
     name: String,
     content: String,

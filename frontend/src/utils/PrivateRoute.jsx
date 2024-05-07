@@ -1,5 +1,4 @@
 /** @format */
-
 import {
   LoginPage,
   CategoriesEdit,
@@ -25,6 +24,9 @@ import {
   CreateJob,
   EditJob,
   ImageUpload,
+
+  //metatag
+  MetaTag
 } from "../pages";
 import { path } from "./Constant";
 
@@ -178,6 +180,12 @@ const routes = [
     exact: true,
     component: <CreateJob />,
     main: () => <CreateJob />,
+  },
+  {
+    path: path.METATAG,
+    exact: true,
+    component: <MetaTag />,
+    main: () => <MetaTag />,
   },
 ];
 

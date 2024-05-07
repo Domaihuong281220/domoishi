@@ -43,3 +43,7 @@ export { default as EditJob } from "./Admin/ManageJobs/EditJob/EditJob";
 
 // demo upload image
 export { default as ImageUpload } from "./Admin/ImageUpload/ImageUpload";
+
+//MetaTag
+export { default as MetaTag } from "./Admin/MetaTag/MetaTag";
+export {default as HomePageMetaTag} from "./Admin/MetaTag/UpdateMetaTag/HomePageMetaTag";
