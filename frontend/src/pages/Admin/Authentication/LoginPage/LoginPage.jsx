@@ -43,7 +43,7 @@ const LoginPage = ({ setToken }) => {
       loginData.email === "admin@gmail.com" &&
       loginData.password === "123456"
     ) {
-      navigate(path.CATEGORYMANAGE);
+      navigate(path.JOBMANAGE);
       toast.success("login with admin");
     } else {
       toast.error(
