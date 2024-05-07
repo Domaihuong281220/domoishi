@@ -1,12 +1,16 @@
 /** @format */
 
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { path } from "../../utils/Constant";
 import { SearchOutlined } from "@ant-design/icons";
 import logo from "./domoishilogo.png";
 
 const Header = () => {
+  const location = useLocation(); // Get the current location
+
+  // Log the current path
+  console.log('Current path:', location.pathname);
   const navigate = useNavigate();
   return (
     <div className="h-fit bg-red-500">
@@ -28,7 +32,7 @@ const Header = () => {
               <li>
                 <a
                   href="/menu"
-                  class="block py-2 px-1  rounded md:bg-transparent md:hover:text-[#CB1313]  md:p-0 2xl:mt-10"
+                  class={`${(location.pathname === '/menu')?"block py-2 px-1  rounded md:bg-transparent text-[#CB1313]  md:p-0 2xl:mt-10" : "block py-2 px-1  rounded md:bg-transparent md:hover:text-[#CB1313]  md:p-0 2xl:mt-10"}`}
                   aria-current="page"
                 >
                   MENU
@@ -37,7 +41,7 @@ const Header = () => {
               <li>
                 <a
                   href="/locations"
-                  class="block py-2 px-1 text-gray-900 rounded  md:hover:bg-transparent md:hover:text-[#CB1313] md:p-0  2xl:mt-10"
+                  class={`${(location.pathname === '/locations')?"block py-2 px-1  rounded md:bg-transparent text-[#CB1313]  md:p-0 2xl:mt-10" : "block py-2 px-1  rounded md:bg-transparent md:hover:text-[#CB1313]  md:p-0 2xl:mt-10"}`}
                 >
                   LOCATIONS
                 </a>
@@ -45,7 +49,7 @@ const Header = () => {
               <li>
                 <a
                   href="/franchising"
-                  class="block py-2 px-1 text-gray-900 rounded  md:hover:bg-transparent md:hover:text-[#CB1313] md:p-0  2xl:mt-10"
+                  class={`${(location.pathname === '/franchising')?"block py-2 px-1  rounded md:bg-transparent text-[#CB1313]  md:p-0 2xl:mt-10" : "block py-2 px-1  rounded md:bg-transparent md:hover:text-[#CB1313]  md:p-0 2xl:mt-10"}`}
                 >
                   FRANCHISING
                 </a>
@@ -53,7 +57,7 @@ const Header = () => {
               <li>
                 <a
                   href="/about"
-                  class="block py-2 px-1 text-gray-900 rounded  md:hover:bg-transparent md:hover:text-[#CB1313] md:p-0  2xl:mt-10"
+                  class={`${(location.pathname === '/about')?"block py-2 px-1  rounded md:bg-transparent text-[#CB1313]  md:p-0 2xl:mt-10" : "block py-2 px-1  rounded md:bg-transparent md:hover:text-[#CB1313]  md:p-0 2xl:mt-10"}`}
                 >
                   ABOUT US
                 </a>
@@ -61,7 +65,7 @@ const Header = () => {
               <li>
                 <a
                   href="/careers"
-                  class="block py-2 px-1 text-gray-900 rounded  md:hover:bg-transparent md:hover:text-[#CB1313] md:p-0  2xl:mt-10"
+                  class={`${(location.pathname === '/careers')?"block py-2 px-1  rounded md:bg-transparent text-[#CB1313]  md:p-0 2xl:mt-10" : "block py-2 px-1  rounded md:bg-transparent md:hover:text-[#CB1313]  md:p-0 2xl:mt-10"}`}
                 >
                   CAREERS
                 </a>
@@ -69,7 +73,7 @@ const Header = () => {
               <li>
                 <a
                   href="/news"
-                  class="block py-2 px-1 text-gray-900 rounded  md:hover:bg-transparent md:hover:text-[#CB1313] md:p-0  2xl:mt-10"
+                  class={`${(location.pathname === '/news')?"block py-2 px-1  rounded md:bg-transparent text-[#CB1313]  md:p-0 2xl:mt-10" : "block py-2 px-1  rounded md:bg-transparent md:hover:text-[#CB1313]  md:p-0 2xl:mt-10"}`}
                 >
                   NEWS
                 </a>
