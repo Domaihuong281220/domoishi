@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 // import { path } from "";
 import { Icon } from "@iconify/react";
-import { path } from "../../../../utils/Constant";
+import { path, useOnKeyPress } from "../../../../utils/Constant";
 import imgBackground from "../../../../assets/background.png";
 async function loginUser(credentials) {
   return fetch("http://localhost:8080/login", {
@@ -58,6 +58,8 @@ const LoginPage = ({ setToken }) => {
       );
     }
   };
+
+  useOnKeyPress(handleLogin, "Enter");
 
   return (
     <div
