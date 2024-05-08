@@ -30,7 +30,6 @@ const LoginPage = ({ setToken }) => {
       email,
       password,
     });
-    setToken(token);
   };
 
   const [loginData, setLoginData] = useState({
@@ -43,6 +42,7 @@ const LoginPage = ({ setToken }) => {
       loginData.email === "admin@gmail.com" &&
       loginData.password === "123456"
     ) {
+      sessionStorage.setItem("UserInformation", JSON.stringify("akdjsh"));
       navigate(path.JOBMANAGE);
       toast.success("login with admin");
     } else {

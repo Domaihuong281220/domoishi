@@ -60,7 +60,12 @@ const EditJob = () => {
           </div>
 
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
-            <p className="text-lg">Description</p>
+            <p className="text-lg">
+              Description
+              <span className=" text-[10px] text-red-500">
+                ( Limit 50 characters)
+              </span>
+            </p>
             <textarea
               className="w-full h-[300px] border-[1px] p-2"
               placeholder="Description"
@@ -68,6 +73,22 @@ const EditJob = () => {
               onChange={(e) =>
                 setFormData({ ...formData, description: e.target.value })
               }
+            />
+          </div>
+          <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
+            <p className="text-lg">Availability</p>
+            <input
+              className=" border-[1px] p-2"
+              placeholder="Subtitle"
+              type="checkbox"
+              // defaultValue={jobdetail.availability}
+              defaultChecked={jobdetail.availability}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  availability: e.target.checked,
+                });
+              }}
             />
           </div>
 

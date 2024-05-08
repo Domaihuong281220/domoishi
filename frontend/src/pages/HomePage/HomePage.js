@@ -32,7 +32,6 @@ const HomePage = () => {
   useEffect(() => {
     handlegetCareers();
   }, []);
-  console.log(metaTags, "askjdhs");
 
   return (
     <div className="w-full h-fit">

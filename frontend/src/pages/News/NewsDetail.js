@@ -42,10 +42,6 @@ const NewsDetail = () => {
           <p className="font-nexa_light text-[30px] text-left pv:max-md:text-[16px] ">
             {data.longdescription}
           </p>
-          <br></br>
-          <p className="font-nexa_light text-[30px] text-left pv:max-md:text-[16px] ">
-            {data.longdescription}
-          </p>
         </div>
         <div className="flex justify-start pt-[172px] pv:max-md:pt-[16px] ">
           <button className="bg-[#cb1313] px-4 py-2">

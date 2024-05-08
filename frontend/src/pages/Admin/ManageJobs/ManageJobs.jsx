@@ -27,7 +27,6 @@ const ManageJobs = () => {
   useEffect(() => {
     handlegetCareers();
   }, []);
-  console.log(CareersData, "askjdhs");
 
   // Call API
 
@@ -43,6 +42,7 @@ const ManageJobs = () => {
         console.log(err);
       });
   };
+  console.log(CareersData, "check data");
 
   // Delete News
 
@@ -77,6 +77,16 @@ const ManageJobs = () => {
       title: "Availability",
       dataIndex: "availability",
       key: "availability",
+      render: (availability) => (
+        <p
+          className={`${
+            availability === "true" ? "text-green-500" : "text-black"
+          }   
+            `}
+        >
+          {availability === "true" ? "Available" : "Unavailable"}
+        </p>
+      ),
     },
 
     {
@@ -103,26 +113,6 @@ const ManageJobs = () => {
       ),
     },
   ];
-  const mockData = [
-    {
-      id: "1",
-      job: "Cashier",
-      description:
-        "The cashier’s role is to ensure that each and every customer is served in a friendly, professional, and timely manner. This includes greeting customers as they enter the store, processing customer payments through the POS system, and resolve customer issues.",
-    },
-    {
-      id: "2",
-      job: "Barista",
-      description:
-        "The cashier’s role is to ensure that each and every customer is served in a friendly, professional, and timely manner. This includes greeting customers as they enter the store, processing customer payments through the POS system, and resolve customer issues.g",
-    },
-    {
-      id: "3",
-      job: "Assistant Manager",
-      description:
-        " The assistant manager is responsible for providing operational services in the store. The assistant manager provides necessary directions to other members of staff through daily tasks and ensures they perform their assigned duties in accordance to the store.",
-    },
-  ];
 
   return (
     <div className="">
@@ -130,7 +120,7 @@ const ManageJobs = () => {
 
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <div className="flex p-2">
-          <p className="text-2xl">Jobs MANAGE</p>
+          <p className="text-2xl">JOBS MANAGE</p>
         </div>
 
         {/* Start table categories Manage */}

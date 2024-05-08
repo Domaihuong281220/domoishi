@@ -15,9 +15,10 @@ const CreateJob = () => {
   const [formData, setFormData] = useState({
     position: "",
     description: "",
-    availability: "yes",
+    availability: "",
     linkform: "",
   });
+  console.log(formData);
 
   const handleCreateJob = async (id) => {
     await axios
@@ -62,6 +63,21 @@ const CreateJob = () => {
               onChange={(e) =>
                 setFormData({ ...formData, description: e.target.value })
               }
+            />
+          </div>
+
+          <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
+            <p className="text-lg">Availability</p>
+            <input
+              className=" border-[1px] p-2"
+              placeholder="Subtitle"
+              type="checkbox"
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  availability: e.target.checked,
+                });
+              }}
             />
           </div>
 

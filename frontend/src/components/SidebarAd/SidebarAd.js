@@ -59,7 +59,7 @@ const SidebarAd = () => {
             <p className=""> Upload Image</p>
           </div>
         </ListItem> */}
-        <ListItem
+        {/* <ListItem
           className=""
           // onClick={() => {
           //   navigate("../" + path.CONTENTMANAGE);
@@ -74,7 +74,7 @@ const SidebarAd = () => {
             </ListItemPrefix>
             <p className=""> Contents</p>
           </div>
-        </ListItem>
+        </ListItem> */}
         <ListItem
           className=""
           onClick={() => {
@@ -161,10 +161,7 @@ const SidebarAd = () => {
         >
           <div className="text-lg flex items-center gap-2">
             <ListItemPrefix>
-              <Icon
-                icon="tabler:tag"
-                className="h-5 w-5"
-              ></Icon>
+              <Icon icon="tabler:tag" className="h-5 w-5"></Icon>
             </ListItemPrefix>
             <p className=""> MetaTag</p>
           </div>
@@ -180,7 +177,6 @@ const SidebarAd = () => {
           </ListItemPrefix>
           <p className="">Log out</p>
         </ListItem>
-        
       </List>
     </Card>
   );
