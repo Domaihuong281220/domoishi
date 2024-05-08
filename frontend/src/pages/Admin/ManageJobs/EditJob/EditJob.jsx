@@ -63,18 +63,22 @@ const EditJob = () => {
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <p className="text-lg">
               Description
-              <span className=" text-[10px] text-red-500">
-                ( Limit 50 characters)
+              <span className="text-[10px] text-red-500">
+                (Limit 260 characters)
               </span>
             </p>
             <textarea
               className="w-full h-[300px] border-[1px] p-2"
               placeholder="Description"
-              defaultValue={jobdetail.description}
+              maxLength="260"
+              value={formData.description}
               onChange={(e) =>
                 setFormData({ ...formData, description: e.target.value })
               }
             />
+            <div className="text-right w-full text-sm text-gray-600">
+              {formData.description.length}/260
+            </div>
           </div>
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <p className="text-lg">Linkform</p>

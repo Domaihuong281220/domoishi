@@ -11,18 +11,15 @@ const News = () => {
   useEffect(() => {
     handlegetNews();
   }, []);
-  // Call API
 
-  // Get News
   const handlegetNews = async () => {
-    await axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/news`)
-      .then((res) => {
-        setNewsData(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/news`);
+      const reversedData = [...response.data.data].reverse(); // Copy and reverse the array
+      setNewsData(reversedData);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className=" w-[76%] mx-auto pv:max-ph:w-[90%] md:max-lg:w-[90%] ">
