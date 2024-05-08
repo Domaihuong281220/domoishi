@@ -23,7 +23,7 @@ const Careers = () => {
   const [linkform, setLinkform] = useState();
 
   const handleChange = (event) => {
-    console.log("Selected:", event.target.value);
+    // console.log("Selected:", event.target.value);
     setSelected(event.target.value);
   };
 
@@ -32,13 +32,15 @@ const Careers = () => {
     const selectedPosition = availablePositions.find(available => available.position === selected);
     if (selectedPosition) {
       setLinkform(selectedPosition.linkform); // Set the corresponding linkform from the found object
+      // console.log(linkform);
     } else {
-      setLinkform(''); // Clear linkform if no matching position found
+      setLinkform('#'); // Clear linkform if no matching position found
     }
-  }, [selected, availablePositions]); // React to changes in `selected` or `availablePositions`
+  }, [selected, availablePositions,linkform]); // React to changes in `selected` or `availablePositions`
 
   // Add another useEffect to observe changes in linkform
   useEffect(() => {
+    // console.log(linkform);
   }, [linkform]);
 
 
@@ -256,6 +258,7 @@ const Careers = () => {
             className="px-10 py-2 border-[1px] border-black rounded-lg"
             onChange={handleChange}
           >
+              <option value="">Check availability</option>
             {availablePositions.map((position, index) => (
               <option key={index} value={position.position}>
                 {position.position}
