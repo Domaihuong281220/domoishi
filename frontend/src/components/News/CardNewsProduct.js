@@ -31,7 +31,7 @@ const CardNewsProduct = ({
   };
 
   return (
-    <div className="pt-[72px] flex items-center gap-[70px] px-[30px] pv:max-md:grid pv:max-md:grid-cols-1  pv:max-md:pt-10 pv:max-md:gap-0 md:max-xl:grid-cols-2 md:max-xl:grid">
+    <div className="pt-[72px] grid grid-cols-2 gap-10  pv:max-md:grid pv:max-md:grid-cols-1  pv:max-md:pt-10 pv:max-md:gap-0 md:max-xl:grid-cols-2 md:max-xl:grid">
       <div className="flex flex-col gap-[30px] pv:max-ph:gap-4 md:max-xl:gap-4 ph:max-md:gap-2">
         <div className="flex  flex-col  gap-[20px]  pv:max-md:gap-4 ">
           <div className="h-[20px] w-[20px] bg-black rotate-45 pv:max-md:w-[10px] pv:max-md:h-[10px]"></div>
@@ -51,7 +51,7 @@ const CardNewsProduct = ({
         </div>
 
         <div className="">
-          <p className="text-start  font-nexa_light text-[30px] pv:max-md:text-[14px] md:max-xl:text-[16px] ">
+          <p className="text-start line-clamp-5  font-nexa_light text-[30px] pv:max-md:text-[14px] md:max-xl:text-[16px] ">
             {shortdescription}
           </p>
         </div>
