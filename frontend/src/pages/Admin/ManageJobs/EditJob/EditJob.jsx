@@ -16,6 +16,7 @@ const EditJob = () => {
 
   const location = useLocation();
   let jobdetail = location.state;
+  console.log(jobdetail);
   const [formData, setFormData] = useState({
     position: jobdetail.position,
     description: jobdetail.description,
@@ -94,7 +95,8 @@ const EditJob = () => {
               placeholder="Subtitle"
               type="checkbox"
               // defaultValue={jobdetail.availability}
-              defaultChecked={jobdetail.availability}
+              defaultChecked={jobdetail.availability === "false" ? false : true}
+              // checked={jobdetail.availability}
               onChange={(e) => {
                 setFormData({
                   ...formData,
