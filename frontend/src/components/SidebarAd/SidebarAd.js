@@ -15,8 +15,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { path } from "../../utils/Constant";
 // import { path } from "../../../";
+import { Popconfirm } from "antd";
 const SidebarAd = () => {
   // Navigate
+  const confirm = (e) => {
+    navigate("../" + path.HOME);
+    sessionStorage.clear();
+  };
+  const cancel = (e) => {
+    console.log(e);
+  };
 
   const navigate = useNavigate();
 
@@ -166,17 +174,27 @@ const SidebarAd = () => {
             <p className=""> MetaTag</p>
           </div>
         </ListItem>
-        <ListItem
-          className=" text-lg flex  items-center gap-2"
-          onClick={() => {
-            navigate("../" + path.HOME);
-            sessionStorage.clear();
-          }}
-        >
-          <ListItemPrefix>
-            <PowerIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          <p className="">Log out</p>
+        <ListItem className=" ">
+          <Popconfirm
+            // onClick={() => {
+            //   navigate("../" + path.HOME);
+            //   sessionStorage.clear();
+            // }}
+            placement="bottomRight"
+            title="Log out"
+            description="Are you sure log out ?"
+            onConfirm={confirm}
+            onCancel={cancel}
+            okText="Log out"
+            cancelText="No"
+          >
+            <div className="text-lg flex  items-center gap-2">
+              <ListItemPrefix>
+                <PowerIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              <p className="">Log out</p>
+            </div>
+          </Popconfirm>
         </ListItem>
       </List>
     </Card>
