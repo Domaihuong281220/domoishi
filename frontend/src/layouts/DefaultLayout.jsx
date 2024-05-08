@@ -75,7 +75,7 @@ const DefaultLayout = (props) => {
             <ProtectedRoute
               isAllowed={user ? allowedRoles.includes(user.role) : false}
             >
-              <PublicLayout />
+              <PrivateLayout />
             </ProtectedRoute>
           }
         >
