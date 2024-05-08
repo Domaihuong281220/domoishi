@@ -33,7 +33,7 @@ const Footer = () => {
       <div className="flex  pv:max-md:w-[76%]">
         <button className="w-[40%] relative">
           <img src={FooterAssets} alt="" className="object-contain" />
-          <p className="absolute top-1/2 left-24  transform -translate-x-1/2 -translate-y-1/2  pv:max-md:text-[13px]  pv:max-md:left-14  pv:max-md:w-full font-shopee_bold text-xl">
+          <p className="absolute top-1/2 left-[5.5rem]  transform -translate-x-1/2 -translate-y-1/2  pv:max-md:text-[13px]  pv:max-md:left-14  pv:max-md:w-full font-shopee_bold text-xl">
             FOLLOW US
           </p>
         </button>
