@@ -170,6 +170,7 @@ const SidebarAd = () => {
           className=" text-lg flex  items-center gap-2"
           onClick={() => {
             navigate("../" + path.HOME);
+            sessionStorage.clear();
           }}
         >
           <ListItemPrefix>
