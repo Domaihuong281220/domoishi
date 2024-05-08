@@ -13,19 +13,52 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation, Pagination } from "swiper/modules";
 import { CardCareers } from "../../components";
+import { SelectOutlined } from "@ant-design/icons";
 
 const Careers = () => {
   const [careerData, setCareerData] = useState([]);
+  const [careersCount, setCareersCount] = useState(0);
+  const [availablePositions, setAvailablePositions] = useState([]);
+  const [selected, setSelected] = useState();
+  const [linkform, setLinkform] = useState();
+
+  const handleChange = (event) => {
+    console.log("Selected:", event.target.value);
+    setSelected(event.target.value);
+  };
+
+  // Updates the linkform state when selected position changes
+  useEffect(() => {
+    const selectedPosition = availablePositions.find(available => available.position === selected);
+    if (selectedPosition) {
+      setLinkform(selectedPosition.linkform); // Set the corresponding linkform from the found object
+    } else {
+      setLinkform(''); // Clear linkform if no matching position found
+    }
+  }, [selected, availablePositions]); // React to changes in `selected` or `availablePositions`
+
+  // Add another useEffect to observe changes in linkform
+  useEffect(() => {
+  }, [linkform]);
+
 
   useEffect(() => {
     const fetchCareers = async () => {
       try {
         const response = await axios.get("http://103.157.218.115:8802/careers");
-        setCareerData(response.data.data)
-        console.log(response);
-        if (Array.isArray(response.data)) {
-          // Ensure you're setting the state to the correct path of your data
-          setCareerData(response.data.data); // Adjusted if necessary depending on your API structure
+        // Log the response to ensure your API returns the expected structure
+        // console.log(response.data);
+
+        // Check if the data is in the expected array format
+        if (Array.isArray(response.data.data)) {
+          // Filter the data to only include items where availability is "true"
+          const availableCareers = response.data.data.filter(career => career.availability === "true");
+          // console.log(availableCareers);
+          setCareerData(availableCareers);
+          setCareersCount(availableCareers.length); // Update the count based on filtered data
+          setAvailablePositions(availableCareers.map(item => {
+            return { position: item.position, linkform: item.linkform };
+          }));
         } else {
           console.error("Received data is not an array:", response.data);
         }
@@ -36,8 +69,7 @@ const Careers = () => {
 
     fetchCareers();
   }, []);
-
-  console.log(careerData);
+  // console.log(linkform);
 
   return (
     <div>
@@ -71,19 +103,174 @@ const Careers = () => {
           className="mySwiper"
         >
           <SwiperSlide>
-            <div className="flex w-[76%] mx-auto">
-              {careerData.map(item => (
-                <CardCareers
-                  key={item.id} // Ensure 'id' is unique
-                  title={item.position}
-                  desc={item.description}
-                />
+            <div className="w-[76%] mx-auto grid grid-cols-3">
+              {careerData.map((item, index) => (
+                index < 3 && (
+                  <CardCareers
+                    key={item.id}  // Ensuring 'id' is unique
+                    title={item.position}
+                    desc={item.description}
+                  // Pass index if needed for something specific
+                  />
+                )
               ))}
+            </div>
+          </SwiperSlide>
+          {careersCount > 3 &&
+            <SwiperSlide>
+              <div className=" w-[76%] mx-auto grid grid-cols-3">
+                {careerData.map((item, index) => (
+                  index > 2 && index < 6 && (
+                    <CardCareers
+                      key={item.id}  // Ensuring 'id' is unique
+                      title={item.position}
+                      desc={item.description}
+                    // Pass index if needed for something specific
+                    />
+                  )
+                ))}
+              </div>
+            </SwiperSlide>}
+          {careersCount > 6 &&
+            <SwiperSlide>
+              <div className=" w-[76%] mx-auto grid grid-cols-3">
+                {careerData.map((item, index) => (
+                  index > 5 && index < 9 && (
+                    <CardCareers
+                      key={item.id}  // Ensuring 'id' is unique
+                      title={item.position}
+                      desc={item.description}
+                    // Pass index if needed for something specific
+                    />
+                  )
+                ))}
+              </div>
+            </SwiperSlide>}
+        </Swiper>
+      </div>
+      {/* mobile */}
+      <div
+        className="  h-[50vh] bg-cover bg-no-repeat w-full   lg:hidden "
+        style={{ backgroundImage: `url(${img_subbg_Career})` }}
+      >
+        <Swiper
+          spaceBetween={30}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Pagination, Navigation]}
+        >
+          <SwiperSlide>
+            <div className="py-10 flex md:max-lg:py-20 ">
+              <div className="">
+                <div className="flex justify-center py-4">
+                  <div className="h-[14px] w-[14px] rotate-45 bg-yellow-300"></div>
+                </div>
+                <div className="w-[80%] ph:max-md:w-[50%] mx-auto border-[1px] border-white rounded-[30px] ">
+                  <p className="text-[#e3c756] md:max-lg:text-[24px] font-nexa_bold  uppercase ">
+                    Cashier
+                  </p>
+                </div>
+                <div className="w-full h-[1px] bg-white mt-4"></div>
+
+                <div className="w-[80%] ph:max-md:w-[50%] mx-auto pt-4">
+                  <p className=" font-nexa_bold text-left text-white md:max-lg:text-[20px]">
+                    The cashier’s role is to ensure that each and every customer
+                    is served in a friendly, professional, and timely manner.
+                    This includes greeting customers as they enter the store,
+                    processing customer payments through the POS system, and
+                    resolve customer issues.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="py-10 flex md:max-lg:py-20">
+              <div className="">
+                <div className="flex justify-center py-4">
+                  <div className="h-[14px] w-[14px] rotate-45 bg-yellow-300"></div>
+                </div>
+                <div className="w-[80%]  ph:max-md:w-[50%] mx-auto border-[1px] border-white rounded-[30px] ">
+                  <p className="text-[#e3c756] md:max-lg:text-[24px] font-nexa_bold uppercase ">
+                    Barista
+                  </p>
+                </div>
+                <div className="w-full h-[1px] bg-white mt-4"></div>
+
+                <div className="w-[80%] mx-auto pt-4 ph:max-md:w-[50%]">
+                  <p className=" font-nexa_bold text-left text-white md:max-lg:text-[20px]">
+                    The cashier’s role is to ensure that each and every customer
+                    is served in a friendly, professional, and timely manner.
+                    This includes greeting customers as they enter the store,
+                    processing customer payments through the POS system, and
+                    resolve customer issues.
+                  </p>
+                </div>
+              </div>
+              <div className="h-full w-[1px] bg-white"></div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="py-10 flex md:max-lg:py-20">
+              <div className="">
+                <div className="flex justify-center py-4">
+                  <div className="h-[14px] w-[14px] rotate-45 bg-yellow-300"></div>
+                </div>
+                <div className="w-[80%]  ph:max-md:w-[50%] mx-auto border-[1px] border-white rounded-[30px] ">
+                  <p className="text-[#e3c756] font-nexa_bold uppercase md:max-lg:text-[24px] ">
+                    Assistant Manager
+                  </p>
+                </div>
+                <div className="w-full h-[1px] bg-white mt-4"></div>
+
+                <div className="w-[80%] ph:max-md:w-[50%]  mx-auto pt-4">
+                  <p className="font-nexa_bold text-left text-white md:max-lg:text-[20px]">
+                    The assistant manager is responsible for providing
+                    operational services in the store. The assistant manager
+                    provides necessary directions to other members of staff
+                    through daily tasks and ensures they perform their assigned
+                    duties in accordance to the store.
+                  </p>
+                </div>
+              </div>
             </div>
           </SwiperSlide>
         </Swiper>
       </div>
-      {/* Other parts of the component */}
+      <div className="">
+        <p className="font-jonitha text-[70px] pv:max-md:text-[20px]  ">
+          <span className="uppercase">#Domoishi</span>
+          <span>Career</span>
+          <span className="uppercase">Search</span>
+        </p>
+      </div>
+      <div className="font-nexa_bold text-[24px] pt-[45px] pv:max-md:text-[16px] pv:pt-2">
+        <p className="uppercase">Position availability at each store:</p>
+      </div>
+      <div className="flex justify-center gap-4 items-center pt-[25px] pv:max-sm:flex-col">
+        <div className="">
+          <select
+            name="positions"
+            className="px-10 py-2 border-[1px] border-black rounded-lg"
+            onChange={handleChange}
+          >
+            {availablePositions.map((position, index) => (
+              <option key={index} value={position.position}>
+                {position.position}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="">
+          <button className="px-4 py-2 rounded-lg bg-[#b2cc60]">
+            <a href={linkform} className="text-white font-nexa_bold text-[22px] pv:max-md:text-[16px]">
+              FILL YOUR APPLICATION HERE
+            </a>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
