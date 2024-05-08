@@ -60,10 +60,15 @@ const CreateJob = () => {
             <textarea
               className="w-full h-[100px] border-[1px] p-2"
               placeholder="Subtitle"
+              maxLength="260"
+              value={formData.description}
               onChange={(e) =>
                 setFormData({ ...formData, description: e.target.value })
               }
             />
+            <div className="text-right w-full text-sm text-gray-600">
+              {formData.description.length}/260
+            </div>
           </div>
 
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
