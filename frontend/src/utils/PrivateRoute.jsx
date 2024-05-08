@@ -26,49 +26,18 @@ import {
   ImageUpload,
 
   //metatag
-  MetaTag
+  MetaTag,
 } from "../pages";
 import { path } from "./Constant";
+export const allowedRoles = ["admin"];
 
 const routes = [
-  // manage user
-  // {
-  //   path: "/dashboard",
-  //   exact: true,
-  //   component: <DashBoard />,
-  //   main: () => <DashBoard />,
-  // },
-  // {
-  //   path: "/userlist",
-  //   exact: true,
-  //   component: <UserList />,
-  //   main: () => <UserList />,
-  // },
-  // {
-  //   path: "/useredit",
-  //   exact: true,
-  //   component: <UserEdit />,
-  //   main: () => <UserEdit />,
-  // },
-  // {
-  //   path: "/useradd",
-  //   exact: true,
-  //   component: <UserAdd />,
-  //   main: () => <UserAdd />,
-  // },
-
-  // {
-  //   path: "/userview",
-  //   exact: true,
-  //   component: <UserView />,
-  //   main: () => <UserView />,
-  // },
-
   {
     path: path.LOGIN,
     exact: true,
     component: <LoginPage />,
     main: () => <LoginPage />,
+    // role: ["user"],
   },
   // manage product
   {
@@ -76,30 +45,35 @@ const routes = [
     exact: true,
     component: <ImageUpload />,
     main: () => <ImageUpload />,
+    role: ["admin"],
   },
   {
     path: path.PRODUCTMANAGE,
     exact: true,
     component: <ProductManage />,
     main: () => <ProductManage />,
+    role: ["admin"],
   },
   {
     path: path.PRODUCTADD,
     exact: true,
     component: <ProductAdd />,
     main: () => <ProductAdd />,
+    role: ["admin"],
   },
   {
     path: `${path.PRODUCTEDIT}/:id`,
     exact: true,
     component: <ProductEdit />,
     main: () => <ProductEdit />,
+    role: ["admin"],
   },
   {
     path: `${path.PRODUCTVIEW}/:id`,
     exact: true,
     component: <ProductView />,
     main: () => <ProductView />,
+    role: ["admin"],
   },
 
   // Categories
@@ -108,18 +82,21 @@ const routes = [
     exact: true,
     component: <CategoriesManage />,
     main: () => <CategoriesManage />,
+    role: ["admin"],
   },
   {
     path: `${path.CATEGORYEDIT}/:id`,
     exact: true,
     component: <CategoriesEdit />,
     main: () => <CategoriesEdit />,
+    role: ["admin"],
   },
   {
     path: path.CATEGORYADD,
     exact: true,
     component: <CategoriesAdd />,
     main: () => <CategoriesAdd />,
+    role: ["admin"],
   },
 
   // Content
@@ -128,18 +105,21 @@ const routes = [
     exact: true,
     component: <ManageContents />,
     main: () => <ManageContents />,
+    role: ["admin"],
   },
   {
     path: `${path.CONTENTEDIT}/:id`,
     exact: true,
     component: <EditContent />,
     main: () => <EditContent />,
+    role: ["admin"],
   },
   {
     path: path.CONTENTCREATE,
     exact: true,
     component: <CreateContent />,
     main: () => <CreateContent />,
+    role: ["admin"],
   },
 
   // Event
@@ -148,18 +128,21 @@ const routes = [
     exact: true,
     component: <ManageEvents />,
     main: () => <ManageEvents />,
+    role: ["admin"],
   },
   {
     path: `${path.EVENTEDIT}/:id`,
     exact: true,
     component: <EditEvent />,
     main: () => <EditEvent />,
+    role: ["admin"],
   },
   {
     path: path.EVENTCREATE,
     exact: true,
     component: <CreateEvent />,
     main: () => <CreateEvent />,
+    role: ["admin"],
   },
 
   // Content
@@ -168,24 +151,28 @@ const routes = [
     exact: true,
     component: <ManageJobs />,
     main: () => <ManageJobs />,
+    role: ["admin"],
   },
   {
     path: `${path.JOBEDIT}/:id`,
     exact: true,
     component: <EditJob />,
     main: () => <EditJob />,
+    role: ["admin"],
   },
   {
     path: path.JOBCREATE,
     exact: true,
     component: <CreateJob />,
     main: () => <CreateJob />,
+    role: ["admin"],
   },
   {
     path: path.METATAG,
     exact: true,
     component: <MetaTag />,
     main: () => <MetaTag />,
+    role: ["admin"],
   },
 ];
 

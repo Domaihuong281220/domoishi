@@ -45,7 +45,9 @@ export const path = {
   UPLOADIMAGE: "upload-image",
 
   //MetaTag
-  METATAG: "/metatag"
+  METATAG: "/metatag",
+
+  ERROR: "*",
 };
 
 export const ScrollToTop = () => {

@@ -48,3 +48,4 @@ export { default as CardCareers } from "./Careers/CardCareer";
 
 export { default as SidebarAd } from "./SidebarAd/SidebarAd";
 export { default as Loading } from "./Loading/Loading";
+export { default as ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";

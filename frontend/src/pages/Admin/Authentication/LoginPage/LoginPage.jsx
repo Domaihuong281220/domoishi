@@ -42,7 +42,14 @@ const LoginPage = ({ setToken }) => {
       loginData.email === "admin@gmail.com" &&
       loginData.password === "123456"
     ) {
-      sessionStorage.setItem("UserInformation", JSON.stringify("akdjsh"));
+      sessionStorage.setItem(
+        "UserInformation",
+        JSON.stringify({
+          email: "admin@gmail.com",
+          password: "123456",
+          role: "admin",
+        })
+      );
       navigate(path.JOBMANAGE);
       toast.success("login with admin");
     } else {

@@ -46,4 +46,5 @@ export { default as ImageUpload } from "./Admin/ImageUpload/ImageUpload";
 
 //MetaTag
 export { default as MetaTag } from "./Admin/MetaTag/MetaTag";
-export {default as HomePageMetaTag} from "./Admin/MetaTag/UpdateMetaTag/HomePageMetaTag";
+export { default as HomePageMetaTag } from "./Admin/MetaTag/UpdateMetaTag/HomePageMetaTag";
+export { default as ErrorPage } from "./ErrorPage/ErrorPage";
