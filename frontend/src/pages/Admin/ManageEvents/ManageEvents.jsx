@@ -40,7 +40,7 @@ const ManageEvents = () => {
       .get(`${process.env.REACT_APP_SERVER_URL}/news`)
       .then((res) => {
         setNewsData(res.data.data);
-        console.table(res.data)
+        console.table(newsData)
       })
       .catch((err) => {
         console.log(err);

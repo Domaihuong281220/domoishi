@@ -91,6 +91,7 @@ const EditEvent = () => {
         </div>
         <div className="w-full flex flex-col gap-y-2 pb-6">
           <p className="text-lg">Image Title</p>
+          <img src={process.env.REACT_APP_SERVER_URL+"/"+newsData.titlepic} alt="1"/>
           <input
             type="file"
             accept="image/jpeg, image/png"
@@ -108,6 +109,7 @@ const EditEvent = () => {
 
         <div className="w-full flex flex-col gap-y-2 pb-6">
           <p className="text-lg">Image Detail</p>
+          <img src={process.env.REACT_APP_SERVER_URL+"/"+newsData.detailpic} alt="1"/>
           <input
             type="file"
             accept="image/jpeg, image/png"
@@ -120,7 +122,7 @@ const EditEvent = () => {
             <img
               src={URL.createObjectURL(detailImage)}
               alt="Detail"
-              className="w-[200px] h-[200px] object-cover"
+              className="w-full object-contain h-[200px] "
             />
           )}
         </div>
