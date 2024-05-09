@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { Breadcrumbs, Input } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
-import DatePicker from "react-datepicker";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
@@ -27,55 +26,35 @@ const UserEdit = () => {
 
   const [formData, setFormData] = useState({
     name: userDetail.name,
-    address: userDetail.address,
-    avatar: userDetail.avatar,
-    dateofbirth: userDetail.dateofbirth,
-    email: userDetail.email,
     phone: userDetail.phone,
     role: userDetail.role,
   });
-  const ApiEditUser = async (id) => {
-    let check = isValidInputsUser(formData, toast);
-    if (check) {
-      await axios
-        .put(`http://103.157.218.126:8000/admin/updateuser/${id}`, formData)
-        .then((res) => {
-          if (res.status === 200 || res.status === 201) {
-            console.log("edit success");
-            navigate("/userlist");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    return;
-  };
+
+  // const handleEditUser = (record) => {
+  //   navigate("../" + path.EVENTEDIT + `/${record._id}`, {
+  //     state: record,
+  //   });
+  // };
+  // const ApiEditUser = async (id) => {
+  //   let check = isValidInputsUser(formData, toast);
+  //   if (check) {
+  //     await axios
+  //       .put(`http://103.157.218.126:8000/admin/updateuser/${id}`, formData)
+  //       .then((res) => {
+  //         if (res.status === 200 || res.status === 201) {
+  //           console.log("edit success");
+  //           navigate("/userlist");
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+  //   return;
+  // };
 
   return (
     <div className="">
-      {/* Start Breadcrumbs */}
-      <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1 flex justify-between">
-        {/* <Breadcrumbs
-          separator={
-            <Icon icon="ep:arrow-right-bold" className="text-blue-500"></Icon>
-          }
-        >
-          <div
-            className="hover:font-bold hover:text-blue-400 flex  items-center gap-x-2"
-            onClick={() => {
-              navigate("/dashboard");
-            }}
-          >
-            <Icon icon="wpf:administrator" width={24} height={24}></Icon>
-            <p className="">Admin</p>
-          </div>
-          <div className="hover:font-bold hover:text-blue-400">Users</div>
-          <div className="font-bold text-blue-400">UserEdit</div>
-        </Breadcrumbs> */}
-      </div>
-      {/* End Breadcrumbs  */}
-
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <div className="flex p-2 justify-between">
           <p className="text-2xl">USER EDIT</p>
@@ -120,7 +99,7 @@ const UserEdit = () => {
                   }}
                 />
               </div>
-              <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
+              {/* <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
                 <p className="text-lg">Email</p>
                 <Input
                   className="w-full h-auto"
@@ -130,7 +109,7 @@ const UserEdit = () => {
                     setFormData({ ...formData, email: e.target.value })
                   }
                 />
-              </div>
+              </div> */}
               <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
                 <p className="text-lg">Phone Number</p>
                 <Input
@@ -142,7 +121,7 @@ const UserEdit = () => {
                   }}
                 />
               </div>
-              <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
+              {/* <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
                 <p className="text-lg">Date of birth</p>
 
                 <input
@@ -153,7 +132,7 @@ const UserEdit = () => {
                   //   setFormData({ ...formData, dateofbirth: e.target.value })
                   // }
                 ></input>
-              </div>
+              </div> */}
               <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
                 <p className="text-lg">Role</p>
                 <Select
@@ -173,21 +152,21 @@ const UserEdit = () => {
                   </option>
                 </Select>
               </div>
-              <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
+              {/* <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
                 <p className="text-lg">Avatar</p>
                 <button className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg">
                   <img src={userDetail.avatar} className="w-20 h-20"></img>
                 </button>
                 <p className="">jpg , png , jpeg</p>
-              </div>
+              </div> */}
 
               <div className="flex justify-between items-center">
-                <button className="w-auto h-auto py-2 px-4 bg-slate-50 border-2 border-blue-300 rounded-lg hover:bg-slate-200 hover:shadow-lg">
+                {/* <button className="w-auto h-auto py-2 px-4 bg-slate-50 border-2 border-blue-300 rounded-lg hover:bg-slate-200 hover:shadow-lg">
                   <p className="">Reset</p>
-                </button>
+                </button> */}
                 <button
                   className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg"
-                  onClick={() => ApiEditUser(userDetail.id)}
+                  // onClick={() => ApiEditUser(userDetail.id)}
                 >
                   <p className="">Save</p>
                 </button>

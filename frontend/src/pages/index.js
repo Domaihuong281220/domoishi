@@ -1,4 +1,5 @@
 /** @format */
+import UserAdd from "./Admin/User/UserAdd/UserAdd";
 
 export { default as HomePage } from "./HomePage/HomePage";
 export { default as Menu } from "./Menu";
@@ -48,3 +49,9 @@ export { default as ImageUpload } from "./Admin/ImageUpload/ImageUpload";
 export { default as MetaTag } from "./Admin/MetaTag/MetaTag";
 export { default as HomePageMetaTag } from "./Admin/MetaTag/UpdateMetaTag/HomePageMetaTag";
 export { default as ErrorPage } from "./ErrorPage/ErrorPage";
+
+// Users
+export { default as ManageUser } from "./Admin/User/ManageUser/ManageUser";
+export { default as UserAdd } from "./Admin/User/UserAdd/UserAdd";
+export { default as UserEdit } from "./Admin/User/UserEdit/UserEdit";
+export { default as UserView } from "./Admin/User/UserView/UserView";

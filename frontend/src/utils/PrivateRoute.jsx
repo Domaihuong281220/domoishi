@@ -27,6 +27,10 @@ import {
 
   //metatag
   MetaTag,
+  ManageUser,
+  UserAdd,
+  UserEdit,
+  UserView,
 } from "../pages";
 import { path } from "./Constant";
 export const allowedRoles = ["admin"];
@@ -172,6 +176,37 @@ const routes = [
     exact: true,
     component: <MetaTag />,
     main: () => <MetaTag />,
+    role: ["admin"],
+  },
+
+  {
+    path: path.USERMANAGE,
+    exact: true,
+    component: <ManageUser />,
+    main: () => <ManageUser />,
+    role: ["admin"],
+  },
+
+  {
+    path: path.CREATEUSER,
+    exact: true,
+    component: <UserAdd />,
+    main: () => <UserAdd />,
+    role: ["admin"],
+  },
+  {
+    path: path.EDITUSER,
+    exact: true,
+    component: <UserEdit />,
+    main: () => <UserEdit />,
+    role: ["admin"],
+  },
+
+  {
+    path: path.USERVIEW,
+    exact: true,
+    component: <UserView />,
+    main: () => <UserView />,
     role: ["admin"],
   },
 ];

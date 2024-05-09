@@ -47,6 +47,12 @@ export const path = {
   //MetaTag
   METATAG: "/metatag",
 
+  // Users
+  USERMANAGE: "/manage-user",
+  CREATEUSER: "/create-user",
+  EDITUSER: "/edit-user",
+  USERVIEW: "/view-user",
+
   ERROR: "*",
 };
 
