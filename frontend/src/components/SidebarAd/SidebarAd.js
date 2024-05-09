@@ -188,29 +188,24 @@ const SidebarAd = () => {
             <p className="">Users</p>
           </div>
         </ListItem>
-
-        <ListItem className=" ">
-          <Popconfirm
-            // onClick={() => {
-            //   navigate("../" + path.HOME);
-            //   sessionStorage.clear();
-            // }}
-            placement="bottomRight"
-            title="Log out"
-            description="Are you sure log out ?"
-            onConfirm={confirm}
-            onCancel={cancel}
-            okText="Log out"
-            cancelText="No"
-          >
+        <Popconfirm
+          placement="bottomRight"
+          title="Log out"
+          description="Are you sure log out ?"
+          onConfirm={confirm}
+          onCancel={cancel}
+          okText="Log out"
+          cancelText="No"
+        >
+          <ListItem className=" ">
             <div className="text-lg flex  items-center gap-2">
               <ListItemPrefix>
                 <PowerIcon className="h-5 w-5" />
               </ListItemPrefix>
               <p className="">Log out</p>
             </div>
-          </Popconfirm>
-        </ListItem>
+          </ListItem>
+        </Popconfirm>
       </List>
     </Card>
   );

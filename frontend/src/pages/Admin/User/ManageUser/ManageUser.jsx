@@ -10,32 +10,58 @@ import { toast } from "react-toastify";
 import { path } from "../../../../utils/Constant";
 const ManageUser = () => {
   const [messageApi, contextHolder] = message.useMessage();
+  const [userData, setUserData] = useState([]);
 
-  // const handleDeleteuser = async (id) => {
-  //   await axios
-  //     .delete(`http://103.157.218.126:8000/admin/deleteuser/${id}`)
-  //     .then((res) => {
-  //       if (res.status === 200 || res.status === 201) {
-  //         messageApi.success("delete user success");
-  //         handleGetUserList();
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+  // API Get ALL user
+  const handlegetUsers = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/users`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "x-secret-key": "Domoishi2024",
+          },
+        }
+      );
 
-  // const handleGetUserList = async () => {
-  //   await axios
-  //     .get("http://103.157.218.126:8000/admin/getalluser")
-  //     .then((res) => {
-  //       setuserData(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+      if (response.status === 200 || response.status === 201) {
+        setUserData(response.data);
+      } else {
+        setUserData([]);
+      }
+    } catch (error) {
+      console.log("error ", error);
+    }
+  };
+  // API delete User
 
+  const handledeleUser = async (id) => {
+    await axios
+      .delete(`${process.env.REACT_APP_SERVER_URL}/user/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          // "x-secret-key": `${process.env.REACT_APP_SECRET_KEY}`,
+          "x-secret-key": "Domoishi2024",
+        },
+      })
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          toast.success("Delete User successfully!");
+          handlegetUsers();
+          navigate("../" + path.USERMANAGE);
+        }
+      })
+      .catch((err) => {
+        toast.error("Delete User wrong: " + err.message);
+      });
+  };
+  useEffect(() => {
+    handlegetUsers();
+  }, []);
+  console.log(userData);
+
+  // console.log(user)
   const handleEditUser = (record) => {
     navigate("../" + path.EDITUSER, {
       state: record,
@@ -51,6 +77,12 @@ const ManageUser = () => {
       key: "name",
       fixed: "left",
     },
+    {
+      title: " User Name",
+      dataIndex: "username",
+      key: "username",
+      fixed: "left",
+    },
     // {
     //   title: "Avatar",
     //   dataIndex: "avatar",
@@ -64,8 +96,8 @@ const ManageUser = () => {
     // },
     {
       title: "Phone Number",
-      dataIndex: "phone",
-      key: "phone",
+      dataIndex: "phonenumber",
+      key: "phonenumber",
       // width: 100,
     },
     // {
@@ -75,6 +107,8 @@ const ManageUser = () => {
     //   // width: 200
     // },
     { title: "Role", dataIndex: "role", key: "role" },
+    { title: "Password", dataIndex: "password", key: "password" },
+
     // {
     //   title: "Date Of Birth",
     //   dataIndex: "dateofbirth",
@@ -98,7 +132,7 @@ const ManageUser = () => {
 
           <button
             className="hover:underline cursor-pointer hover:text-blue-500 hover:font-bold"
-            // onClick={() => hanldedeleNews(record._id)}
+            onClick={() => handledeleUser(record._id)}
           >
             <p className="">Delete</p>
           </button>
@@ -118,21 +152,21 @@ const ManageUser = () => {
       dateofbirth: "20/12/2000",
     },
   ];
-  const [userData, setuserData] = useState([]);
-  for (let i = 0; i < userData.length; i++) {
-    data.push({
-      key: i,
-      id: userData[i].id,
-      name: userData[i].name,
-      avatar: userData[i].avatar,
-      phone: userData[i].phone,
-      address: userData[i].address,
-      email: userData[i].email,
-      role: userData[i].role,
-      dateofbirth: "20/12/2000",
-      // status: ["Online"],
-    });
-  }
+  // const [userData, setuserData] = useState([]);
+  // for (let i = 0; i < userData.length; i++) {
+  //   data.push({
+  //     key: i,
+  //     id: userData[i].id,
+  //     name: userData[i].name,
+  //     avatar: userData[i].avatar,
+  //     phone: userData[i].phone,
+  //     address: userData[i].address,
+  //     email: userData[i].email,
+  //     role: userData[i].role,
+  //     dateofbirth: "20/12/2000",
+  //     // status: ["Online"],
+  //   });
+  // }
 
   // useEffect(() => {
   //   handleGetUserList();
@@ -164,7 +198,7 @@ const ManageUser = () => {
             <div className="w-[95%]">
               <Table
                 columns={columns}
-                dataSource={data}
+                dataSource={userData}
                 pagination={{ pageSize: 5, position: ["bottomCenter"] }}
                 scroll={{
                   x: "max-content",
