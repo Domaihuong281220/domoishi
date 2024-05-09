@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { Breadcrumbs, Input } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
 import { toast } from "react-toastify";
-import "react-datepicker/dist/react-datepicker.css";
+// import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Radio, message } from "antd";
@@ -43,72 +43,54 @@ const UserAdd = () => {
   });
 
   // set state for variable
-  const [file, setFile] = useState();
-  const handleFile = (e) => {
-    setFile(e.target.files[0]);
-  };
-  const handleUpload = () => {
-    const dataimage = new FormData();
-    dataimage.append("profile-pic", file);
-    axios
-      .post("http://103.157.218.126:8000/upload", dataimage)
-      .then((res) => {
-        if (res.status === 200 || res.status === 201) {
-          {
-            setimageAvatar(
-              `http://103.157.218.126:8000/images/${res.data.image}`
-            );
-          }
-        }
-      })
-      .catch((err) => console.log(err));
-  };
+  // const [file, setFile] = useState();
+  // const handleFile = (e) => {
+  //   setFile(e.target.files[0]);
+  // };
+  // const handleUpload = () => {
+  //   const dataimage = new FormData();
+  //   dataimage.append("profile-pic", file);
+  //   axios
+  //     .post("http://103.157.218.126:8000/upload", dataimage)
+  //     .then((res) => {
+  //       if (res.status === 200 || res.status === 201) {
+  //         {
+  //           setimageAvatar(
+  //             `http://103.157.218.126:8000/images/${res.data.image}`
+  //           );
+  //         }
+  //       }
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   // declare navigate
   const navigate = useNavigate();
 
-  const handleGetAPI = async () => {
-    // validation  input user
+  // const handleGetAPI = async () => {
+  //   // validation  input user
 
-    let check = isValidInputsUser(formData, toast);
-    if (check === true) {
-      await axios
-        .post("http://103.157.218.126:8000/admin/adduser", formData)
-        .then((res) => {
-          if (res.status === 200 || res.status === 201) {
-            toast.success("create new user success");
-            navigate("/userlist");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    return;
-  };
+  //   let check = isValidInputsUser(formData, toast);
+  //   if (check === true) {
+  //     await axios
+  //       .post("http://103.157.218.126:8000/admin/adduser", formData)
+  //       .then((res) => {
+  //         if (res.status === 200 || res.status === 201) {
+  //           toast.success("create new user success");
+  //           navigate("/userlist");
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+  //   return;
+  // };
 
   return (
     <div className="">
       {/* {contextHolder} */}
-      {/* Start Breadcrums */}
-      <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
-        {/* <Breadcrumbs
-          separator={
-            <Icon icon="ep:arrow-right-bold" className="text-blue-500"></Icon>
-          }
-        >
-          <div
-            className="hover:font-bold hover:text-blue-400 flex  items-center gap-x-2"
-            onClick={() => navigate("/dashboard")}
-          >
-            <Icon icon="wpf:administrator" width={24} height={24}></Icon>
-            <p className="">Admin</p>
-          </div>
-          <div className="hover:font-bold hover:text-blue-400">Users</div>
-          <div className="font-bold text-blue-400">UserAdd</div>
-        </Breadcrumbs> */}
-      </div>
-      {/* End Breadcrumbs */}
+
       {/* Start form Add User */}
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <div className="flex p-2 justify-between">
@@ -130,10 +112,10 @@ const UserAdd = () => {
           </div>
 
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6 relative">
-            <p className="text-lg">Full Name</p>
+            <p className="text-lg">User Name</p>
             <input
               className="w-full h-auto border-b-2 border-gray-300 p-2 outline-none focus:border-blue-400 focus:ease-out duration-200"
-              placeholder="Full Name"
+              placeholder="User Name"
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
@@ -149,7 +131,7 @@ const UserAdd = () => {
               }
             />
           </div>
-          <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
+          {/* <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <p className="text-lg">Email</p>
             <input
               className="w-full h-auto border-b-2 border-gray-300 p-2 outline-none focus:border-blue-400 focus:ease-out duration-200"
@@ -158,8 +140,8 @@ const UserAdd = () => {
                 setFormData({ ...formData, email: e.target.value })
               }
             />
-          </div>
-          <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
+          </div> */}
+          {/* <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <p className="text-lg">Date of birth</p>
 
             <input
@@ -172,7 +154,7 @@ const UserAdd = () => {
                 })
               }
             ></input>
-          </div>
+          </div> */}
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <p className="text-lg">Address</p>
             <input
@@ -193,7 +175,7 @@ const UserAdd = () => {
               value={formData.role}
             ></Radio.Group>
           </div>
-          <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
+          {/* <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <div className="flex justify-between">
               <input type="file" onChange={handleFile} className="p-3  " />
 
@@ -219,7 +201,7 @@ const UserAdd = () => {
             </div>
 
             <p className="">jpg , png , jpeg</p>
-          </div>
+          </div> */}
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <p className="text-lg">Password</p>
             <input
@@ -233,13 +215,11 @@ const UserAdd = () => {
           <div className="flex justify-center items-center gap-x-4">
             <button
               className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg "
-              onClick={() => handleGetAPI()}
+              // onClick={() => handleGetAPI()}
             >
               <p className="">Save</p>
             </button>
-            <button className="w-auto h-auto py-2 px-4 bg-slate-50 border-2 border-blue-300 rounded-lg hover:bg-slate-200 hover:shadow-lg">
-              <p className="">Reset</p>
-            </button>
+
             <button
               className="w-auto h-auto py-2 px-4 bg-red-50 border-2 border-red-300 rounded-lg hover:bg-red-200 hover:shadow-lg"
               onClick={() => navigate(-1)}

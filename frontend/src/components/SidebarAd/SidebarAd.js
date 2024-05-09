@@ -174,6 +174,21 @@ const SidebarAd = () => {
             <p className=""> MetaTag</p>
           </div>
         </ListItem>
+
+        <ListItem
+          className=""
+          onClick={() => {
+            navigate("../" + path.USERMANAGE);
+          }}
+        >
+          <div className="text-lg flex items-center gap-2">
+            <ListItemPrefix>
+              <Icon icon="mdi:user-outline" className="h-5 w-5"></Icon>
+            </ListItemPrefix>
+            <p className="">Users</p>
+          </div>
+        </ListItem>
+
         <ListItem className=" ">
           <Popconfirm
             // onClick={() => {
