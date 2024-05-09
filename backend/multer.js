@@ -3,6 +3,7 @@ const multer = require('multer');
 require("dotenv/config");
 const crypto = require("crypto");
 const path = require("path");
+const fs = require('fs');
 
 
 const storage = multer.diskStorage({
@@ -15,6 +16,28 @@ const storage = multer.diskStorage({
   },
 });
 
+function deleteFile(filename, callback) {
+  const filePath = path.join(__dirname, 'public', filename);
+
+  fs.access(filePath, fs.constants.F_OK, (err) => {
+      if (err) {
+          console.error("File does not exist.");
+          return callback(new Error("File does not exist."), null);
+      }
+
+      fs.unlink(filePath, (err) => {
+          if (err) {
+              console.error("Error deleting the file.");
+              return callback(err, null);
+          }
+
+          console.log("File successfully deleted.");
+          callback(null, "File successfully deleted.");
+      });
+  });
+}
+
+
 const upload = multer({ storage });
 
-module.exports = { upload };
+module.exports = { upload, deleteFile };

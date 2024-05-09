@@ -268,7 +268,7 @@ const Careers = () => {
         </div>
         <div className="">
           <button className="px-4 py-2 rounded-lg bg-[#b2cc60]">
-            <a href={linkform} className="text-white font-nexa_bold text-[22px] pv:max-md:text-[16px]">
+            <a href={linkform} className="text-white font-nexa_bold text-[22px] pv:max-md:text-[16px]" target="1">
               FILL YOUR APPLICATION HERE
             </a>
           </button>

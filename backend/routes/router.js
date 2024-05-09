@@ -7,42 +7,42 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const multer = require("multer");
 // const GridFsStorage = require('multer-gridfs-storage');
-const { upload } = require("../multer.js");
+// MongoDB connection setup for GridFS
+const url = process.env.DB_URI; // It's safer to use environment variables for credentials
+const { upload, deleteFile } = require("../multer.js");
+
 
 // Route to fetch user data (sample data)
-router.get("/user", (req, res) => {
-  const userData = [
-    {
-      id: 1,
-      name: "Leanne Graham",
-      username: "Bret",
-      email: "Sincere@april.biz",
-      address: {
-        street: "Kulas Light",
-        suite: "Apt. 556",
-        city: "Gwenborough",
-        zipcode: "92998-3874",
-        geo: {
-          lat: "-37.3159",
-          lng: "81.1496",
-        },
-      },
-      phone: "1-770-736-8031 x56442",
-      website: "hildegard.org",
-      company: {
-        name: "Romaguera-Crona",
-        catchPhrase: "Multi-layered client-server neural-net",
-        bs: "harness real-time e-markets",
-      },
-    },
-  ];
-  res.json(userData);
+router.get("/users", checkSecretKey, async(req, res) => {
+  const Users = schema.User;
+  try {
+    const userData = await Users.find();
+    res.json(userData);
+  } catch (err) {
+    res.status(500).json({
+      message: "User not found",
+      error: err.message,
+    });
+  }
 });
 
+function checkSecretKey(req, res, next) {
+  const secretKey = req.headers['x-secret-key'];  // Typically, custom headers are prefixed with 'x-'
+  const mySecretKey = process.env.MY_SECRET_KEY;  // Your secret key stored in environment variables
+
+  if (!secretKey || secretKey !== mySecretKey) {
+    return res.status(401).json({
+      message: "Invalid or missing secret key"
+    });
+  }
+  
+  next();  // Proceed to the next middleware or route handler
+}
+
 // Route to create a new user document in MongoDB
-router.post("/users", async (req, res) => {
-  const { name, username } = req.body;
-  const userData = { name, username };
+router.post("/user",checkSecretKey, async (req, res) => {
+  const { name, username, password, email, role, phonenumber } = req.body;
+  const userData = { name, username, password, email, role, phonenumber };
   try {
     const newUser = new schema.User(userData);
     const saveUser = await newUser.save();
@@ -58,31 +58,72 @@ router.post("/users", async (req, res) => {
   }
 });
 
-// MongoDB connection setup for GridFS
-const url = process.env.DB_URI; // It's safer to use environment variables for credentials
-const connect = mongoose.createConnection(url, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+
+router.delete("/user/:id", checkSecretKey, async (req, res) => {
+  const { id } = req.params;
+
+  try {
+      // Find the user by ID and delete
+      const deletedUser = await schema.User.findByIdAndDelete(id);
+
+      if (!deletedUser) {
+          return res.status(404).json({ message: "User not found" });
+      }
+
+      res.status(200).json({ message: "User deleted successfully" });
+  } catch (err) {
+      res.status(500).json({
+          message: "Failed to delete user",
+          error: err.message
+      });
+  }
 });
 
-// GridFS stream initialization
-// let gfs;
-// connect.once('open', () => {
-//     gfs = new mongoose.mongo.GridFSBucket(connect.db, {
-//         bucketName: 'images'
-//     });
-// });
 
-// // Route to handle image upload using GridFS
-// router.route('/image')
-//     .post(upload.single('file'), (req, res, next) => {
-//         if (req.file) {
-//             console.table(req.file);
-//             res.status(200).json({ filename: req.file.filename });
-//         } else {
-//             res.status(400).json({ message: 'No file uploaded' });
-//         }
-//     });
+
+
+const bcrypt = require('bcrypt');
+
+// PUT route to reset a user's password
+router.put("/user/reset-password", checkSecretKey, async (req, res) => {
+    const { username, phonenumber, newpassword } = req.body;
+    console.log(req.body);
+
+    try {
+        // Find the user by username
+        const user = await schema.User.findOne({ username });
+        console.log(user);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Check if the phone number matches the one on file
+        if (user.phonenumber !== phonenumber) {
+            return res.status(400).json({ message: "Invalid phone number" });
+        }
+
+        // Hash the new password
+        const hashedPassword = await bcrypt.hash(newpassword, 10);
+
+        // Update the user's password
+        user.password = hashedPassword;
+        await user.save();
+
+        res.status(200).json({ message: "Password reset successfully" });
+    } catch (err) {
+        res.status(500).json({
+            message: "Password could not be reset",
+            error: err.message
+        });
+    }
+});
+
+
+
+
+
+
+
 
 // others endpoints
 router.post("/news", upload.array("files", 2), async (req, res) => {
@@ -290,7 +331,7 @@ router.delete("/news/:id", async (req, res) => {
   try {
     // Attempt to delete the news item by ID
     const deletedNews = await schema.News.findByIdAndDelete(id);
-
+    console.log(deletedNews);
     if (deletedNews) {
       res.status(200).json({
         success: true,
@@ -613,5 +654,32 @@ router.delete("/metatag/:id", async (req, res) => {
     });
   }
 });
+
+router.post('/delete-file', (req, res) => {
+  const { filename } = req.body; // Extract filename from POST request body
+
+  if (!filename) {
+      return res.status(400).json({
+          success: false,
+          message: "Filename is required in the request body"
+      });
+  }
+
+  // Call deleteFile function to attempt file deletion
+  deleteFile(filename, (err, message) => {
+      if (err) {
+          return res.status(500).json({
+              success: false,
+              message: err.message
+          });
+      }
+
+      res.status(200).json({
+          success: true,
+          message: "File successfully deleted"
+      });
+  });
+});
+
 
 module.exports = router;

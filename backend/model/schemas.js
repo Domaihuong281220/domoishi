@@ -1,9 +1,34 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
+
 const userSchema = new Schema({
-    name: String,
-    username: String,
+    name: {
+        type: String,
+        required: [true, 'Name is required']  // Custom error message
+    },
+    username: {
+        type: String,
+        required: [true, 'Username is required'],
+        unique: true  // Ensures username is unique across the collection
+    },
+    email: {
+        type: String,
+        // email is optional in this setup; add required if it should be mandatory
+    },
+    phonenumber: {
+        type: String,
+        required: [true, 'Phonenumber is required'],
+        unique: true  // Ensures phonenumber is unique across the collection
+    },
+    password: {
+        type: String,
+        required: [true, 'Password is required']
+    },
+    role: {
+        type: String,
+        required: [true, 'Role is required']
+    }
 });
 
 const newsSchema = new Schema({
