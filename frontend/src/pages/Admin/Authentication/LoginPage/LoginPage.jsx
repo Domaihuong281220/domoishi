@@ -38,25 +38,25 @@ const LoginPage = ({ setToken }) => {
   });
 
   const handleLogin = () => {
-    if (
-      loginData.email === "admin@gmail.com" &&
-      loginData.password === "123456"
-    ) {
-      sessionStorage.setItem(
-        "UserInformation",
-        JSON.stringify({
-          email: "admin@gmail.com",
-          password: "123456",
-          role: "admin",
-        })
-      );
-      navigate(path.JOBMANAGE);
-      toast.success("login with admin");
-    } else {
-      toast.error(
-        "The email or password you entered is not connected to any account"
-      );
-    }
+    // if (
+    //   loginData.email === "admin@gmail.com" &&
+    //   loginData.password === "123456"
+    // ) {
+    //   sessionStorage.setItem(
+    //     "UserInformation",
+    //     JSON.stringify({
+    //       email: "admin@gmail.com",
+    //       password: "123456",
+    //       role: "admin",
+    //     })
+    //   );
+    //   navigate(path.JOBMANAGE);
+    //   toast.success("login with admin");
+    // } else {
+    //   toast.error(
+    //     "The email or password you entered is not connected to any account"
+    //   );
+    // }
   };
 
   useOnKeyPress(handleLogin, "Enter");

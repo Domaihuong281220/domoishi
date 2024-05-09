@@ -18,7 +18,6 @@ const CreateJob = () => {
     availability: "",
     linkform: "",
   });
-  console.log(formData);
 
   const handleCreateJob = async (id) => {
     await axios

@@ -42,7 +42,6 @@ const ManageJobs = () => {
         console.log(err);
       });
   };
-  console.log(CareersData, "check data");
 
   // Delete News
 
