@@ -79,7 +79,7 @@ const Careers = () => {
         <img className="object-cover w-full" src={img_Careers_Banner} alt="Careers Banner"></img>
       </div>
 
-      <div className="w-[76%] mx-auto py-10 pv:max-md:py-2 pv:max-md:w-[90%]">
+      <div className="w-[73%] mx-auto py-10 pv:max-md:py-2 pv:max-md:w-[90%]">
         <div className="flex flex-col gap-4 pv:max-md:gap-2">
           <p className="font-nexa_bold text-[50px] pv:max-md:text-[16px] md:max-lg:text-[24px]">
             JOIN OUR TEAM
@@ -105,7 +105,7 @@ const Careers = () => {
           className="mySwiper"
         >
           <SwiperSlide>
-            <div className="w-[76%] mx-auto grid grid-cols-3">
+            <div className="w-[73%] mx-auto grid grid-cols-3">
               {careerData.map((item, index) => (
                 index < 3 && (
                   <CardCareers
@@ -163,6 +163,7 @@ const Careers = () => {
           navigation={true}
           modules={[Pagination, Navigation]}
         >
+          {careerData.map((item, index) => (
           <SwiperSlide>
             <div className="py-10 flex md:max-lg:py-20 ">
               <div className="">
@@ -171,74 +172,20 @@ const Careers = () => {
                 </div>
                 <div className="w-[80%] ph:max-md:w-[50%] mx-auto border-[1px] border-white rounded-[30px] ">
                   <p className="text-[#e3c756] md:max-lg:text-[24px] font-nexa_bold  uppercase ">
-                    Cashier
+                    {item.position}
                   </p>
                 </div>
                 <div className="w-full h-[1px] bg-white mt-4"></div>
 
                 <div className="w-[80%] ph:max-md:w-[50%] mx-auto pt-4">
                   <p className=" font-nexa_bold text-left text-white md:max-lg:text-[20px]">
-                    The cashier’s role is to ensure that each and every customer
-                    is served in a friendly, professional, and timely manner.
-                    This includes greeting customers as they enter the store,
-                    processing customer payments through the POS system, and
-                    resolve customer issues.
+                    {item.description}
                   </p>
                 </div>
               </div>
             </div>
           </SwiperSlide>
-          <SwiperSlide>
-            <div className="py-10 flex md:max-lg:py-20">
-              <div className="">
-                <div className="flex justify-center py-4">
-                  <div className="h-[14px] w-[14px] rotate-45 bg-yellow-300"></div>
-                </div>
-                <div className="w-[80%]  ph:max-md:w-[50%] mx-auto border-[1px] border-white rounded-[30px] ">
-                  <p className="text-[#e3c756] md:max-lg:text-[24px] font-nexa_bold uppercase ">
-                    Barista
-                  </p>
-                </div>
-                <div className="w-full h-[1px] bg-white mt-4"></div>
-
-                <div className="w-[80%] mx-auto pt-4 ph:max-md:w-[50%]">
-                  <p className=" font-nexa_bold text-left text-white md:max-lg:text-[20px]">
-                    The cashier’s role is to ensure that each and every customer
-                    is served in a friendly, professional, and timely manner.
-                    This includes greeting customers as they enter the store,
-                    processing customer payments through the POS system, and
-                    resolve customer issues.
-                  </p>
-                </div>
-              </div>
-              <div className="h-full w-[1px] bg-white"></div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="py-10 flex md:max-lg:py-20">
-              <div className="">
-                <div className="flex justify-center py-4">
-                  <div className="h-[14px] w-[14px] rotate-45 bg-yellow-300"></div>
-                </div>
-                <div className="w-[80%]  ph:max-md:w-[50%] mx-auto border-[1px] border-white rounded-[30px] ">
-                  <p className="text-[#e3c756] font-nexa_bold uppercase md:max-lg:text-[24px] ">
-                    Assistant Manager
-                  </p>
-                </div>
-                <div className="w-full h-[1px] bg-white mt-4"></div>
-
-                <div className="w-[80%] ph:max-md:w-[50%]  mx-auto pt-4">
-                  <p className="font-nexa_bold text-left text-white md:max-lg:text-[20px]">
-                    The assistant manager is responsible for providing
-                    operational services in the store. The assistant manager
-                    provides necessary directions to other members of staff
-                    through daily tasks and ensures they perform their assigned
-                    duties in accordance to the store.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
+          ))}
         </Swiper>
       </div>
       <div className="">
