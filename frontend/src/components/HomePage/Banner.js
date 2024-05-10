@@ -10,7 +10,7 @@ import Rectangle316 from "../../assets/HomePage/Rectangle316.png"
 const Banner = () => {
     return (
 
-        <div className="w-full h-[100vh] ph:max-md:h-[15rem] pv:max-ph:h-[13rem] pv:max-md:px-[12%] lg:h-fit relative">
+        <div className="w-full h-[100vh] ph:max-md:h-[15rem] pv:max-ph:h-[13rem] pv:max-md:px-[12%] relative">
             <img src={BannerImg} alt="Healthy meal" className=" img_healthy w-full object-contain pv:max-md:h-fit pv:max-md:pl-0 pv:max-md:pt-0 pv:max-md:w-[20rem] 2xl:pr-20 pl-56 pt-16 h-[100vh] lg:h-fit lg:pt-0 lg:object-cover " />
             <div className="absolute z-40 top-0 h-[100vh] md:h-[25rem] lg:ml-[12%] pv:max-md:h-fit flex flex-col justify-center  2xl:ml-[20rem] xl:ml-60 xl:pt-[25%] lg:pt-32 pv:max-md:mt-12">
                 <p className="font-nexa_light text-left 2xl:text-[70px] lg:text-[50px] 2xl:leading-[68px] lg:leading-[45px] pv:max-md:leading-[16px]  ">DON'T <br></br> EAT LESS. <br></br>JUST <br></br>EAT REAL.</p>

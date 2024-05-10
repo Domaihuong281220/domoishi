@@ -15,11 +15,11 @@ const Header = () => {
   return (
     <div className="h-fit bg-red-500">
       <nav class="bg-white   w-full z-20 top-0 start-0 pt-8  pv:max-md:pt-0 ">
-        <div class="ww-full flex flex-wrap items-center justify-between mx-[12%] ph:max-md:mx-[8%] pv:max-ph:mx-[6%] 2xl:pb-4">
+        <div class="flex flex-wrap items-center justify-between mx-[10%] ph:max-md:mx-[8%] pv:max-ph:mx-[6%] 2xl:pb-4">
           <a href="/" class="flex items-center space-x-1 rtl:space-x-reverse">
             <img
               src={logo}
-              class="2xl:h-fit lg:w-56 lg:mb-4 2xl:mb-0 pv:max-md:w-12  pv:max-md:mt-4"
+              class="2xl:h-fit lg:w-56 2xl:w-80 lg:mb-4 2xl:mb-0 pv:max-md:w-12  pv:max-md:mt-4"
               alt="Logo"
             />
           </a>
@@ -82,7 +82,7 @@ const Header = () => {
           </div>
           <div class="flex md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
             <a href="/locationorder" className="w-fit h-fit">
-              <button className="bg-[#CB1313] lg:text-[16px] pv:max-ph:text-[5px] pv:max-md:mt-4 text-white font-shopee_bold py-3 px-4 rounded-full 2xl:mt-8 pv:max-md:py-[5px] pv:max-md:px-[10px] pv:max-md:text-[7px]">
+              <button className="bg-[#CB1313]  pv:max-md:mt-4 text-white font-shopee_bold text-[1.1vw] py-[1.1vw] px-[3.3vw]  rounded-full 2xl:mt-8 pv:max-md:py-[5px] pv:max-md:px-[10px] pv:max-md:text-[7px]">
                 ORDER NOW
               </button>
             </a>
