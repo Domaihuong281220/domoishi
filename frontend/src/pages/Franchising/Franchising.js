@@ -414,9 +414,10 @@ const Franchising = () => {
         <div className="w-full absolute h-full top-0 flex flex-col space-y-8 pv:max-md:space-y-1  justify-center items-center">
           <p className="font-jonitha lg:text-5xl w-full">#AboutDOMOISHI</p>
           <p className="font-nexa_bold uppercase text-lg pt-6 lg:text-[1rem] lg:pt-0 w-[60%] pv:max-md:text-[10px] pv:max-md:w-[90%] pv:max-md:leading-[11px] pv:max-md:pt-0">
-            “The moment we tried the product, we fell in love. The brand creates
-            an obsession and when I found it, it seemed like something our
-            Virginia area would love. So far, that has been more than true.”
+            Not only do many of our ingredients come from the regions of origin
+            in Asia, but our recipes are rooted in the traditional meals of
+            those Asian regions that are unchanged after hundreds and hundreds
+            of years.
           </p>
         </div>
       </div>
