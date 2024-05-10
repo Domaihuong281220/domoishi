@@ -38,23 +38,33 @@
 }
 
 .mySwiper .swiper-button-prev {
-  height: 80px;
-  width: 80px;
+  height: 3.7vw;
+  width: 2.7vw;
   color: white;
   font-weight: bold;
   position: absolute;
-  left: 5%;
+  left: 10%;
   top: 50%;
   z-index: 10;
+  background-image: url("./assets/HomePage/Group\ 128.png");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
+
 .mySwiper .swiper-button-next {
-  height: 80px;
-  width: 80px;
+  height: 3.7vw;
+  width: 2.7vw;
   color: white;
   font-weight: bold;
-  right: 5%;
+  right: 10%;
   top: 50%;
   z-index: 10;
+  background-image: url("./assets/HomePage/Group\ 141.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after,.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+  display: none;
 }
 
 .img_healthy{

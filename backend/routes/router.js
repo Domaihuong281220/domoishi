@@ -13,7 +13,7 @@ const { upload, deleteFile } = require("../multer.js");
 
 
 // Route to fetch user data (sample data)
-router.get("/users", checkSecretKey, async(req, res) => {
+router.get("/users", checkSecretKey, async (req, res) => {
   const Users = schema.User;
   try {
     const userData = await Users.find();
@@ -35,12 +35,12 @@ function checkSecretKey(req, res, next) {
       message: "Invalid or missing secret key"
     });
   }
-  
+
   next();  // Proceed to the next middleware or route handler
 }
 
 // Route to create a new user document in MongoDB
-router.post("/user",checkSecretKey, async (req, res) => {
+router.post("/user", checkSecretKey, async (req, res) => {
   const { name, username, password, email, role, phonenumber } = req.body;
   const userData = { name, username, password, email, role, phonenumber };
   try {
@@ -56,54 +56,59 @@ router.post("/user",checkSecretKey, async (req, res) => {
       error: err.message,
     });
   }
+
+  // try {
+  //   const { name, username, password, email, role, phonenumber } = req.body;
+  //   const exist = await schema.User.findOne({ username });
+  //   // console.log(exist);
+  //   if (exist) {
+  //     return res.json({
+  //       error: "user name already exist",
+  //     });
+  //   }
+  //   const exist_1 = await schema.User.findOne({ phonenumber });
+  //   // console.log(exist);
+  //   if (exist_1) {
+  //     return res.json({
+  //       error: "phone number already exist",
+  //     });
+  //   }
+  //   const user = await schema.User.save({
+  //     name,
+  //     username,
+  //     password,
+  //     email,
+  //     role,
+  //     phonenumber
+
+  //   });
+  //   return res.json(user);
+  // } catch (error) {
+  //   console.log(error);
+
+  // }
+
+
 });
-
-app.post("/login", async (req, res) => {
-  const { username, password } = req.body;
-
-  if (!username || !password) {
-    return res.status(400).json({ message: "Username and password are required" });
-  }
-
-  try {
-    const user = await User.findOne({ username });
-
-    if (!user || user.password !== password) {
-      return res.status(401).json({ message: "Invalid credentials" });
-    }
-
-    res.json({
-      message: "Logged in successfully",
-      userId: user._id
-    });
-  } catch (err) {
-    res.status(500).json({
-      message: "Server error",
-      error: err.message
-    });
-  }
-});
-
-
 
 
 router.delete("/user/:id", checkSecretKey, async (req, res) => {
   const { id } = req.params;
 
   try {
-      // Find the user by ID and delete
-      const deletedUser = await schema.User.findByIdAndDelete(id);
+    // Find the user by ID and delete
+    const deletedUser = await schema.User.findByIdAndDelete(id);
 
-      if (!deletedUser) {
-          return res.status(404).json({ message: "User not found" });
-      }
+    if (!deletedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
-      res.status(200).json({ message: "User deleted successfully" });
+    res.status(200).json({ message: "User deleted successfully" });
   } catch (err) {
-      res.status(500).json({
-          message: "Failed to delete user",
-          error: err.message
-      });
+    res.status(500).json({
+      message: "Failed to delete user",
+      error: err.message
+    });
   }
 });
 
@@ -114,40 +119,64 @@ const bcrypt = require('bcrypt');
 
 // PUT route to reset a user's password
 router.put("/user/reset-password", checkSecretKey, async (req, res) => {
-    const { username, phonenumber, newpassword } = req.body;
-    console.log(req.body);
+  const { username, phonenumber, newpassword } = req.body;
+  // console.log(req.body);
 
-    try {
-        // Find the user by username
-        const user = await schema.User.findOne({ username });
-        console.log(user);
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
-
-        // Check if the phone number matches the one on file
-        if (user.phonenumber !== phonenumber) {
-            return res.status(400).json({ message: "Invalid phone number" });
-        }
-
-        // Hash the new password
-        const hashedPassword = await bcrypt.hash(newpassword, 10);
-
-        // Update the user's password
-        user.password = hashedPassword;
-        await user.save();
-
-        res.status(200).json({ message: "Password reset successfully" });
-    } catch (err) {
-        res.status(500).json({
-            message: "Password could not be reset",
-            error: err.message
-        });
+  try {
+    // Find the user by username
+    const user = await schema.User.findOne({ username });
+    // console.log(user);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
     }
+
+    // Check if the phone number matches the one on file
+    if (user.phonenumber !== phonenumber) {
+      return res.status(400).json({ message: "Invalid phone number" });
+    }
+
+    // Hash the new password
+    // const hashedPassword = await bcrypt.hash(newpassword, 10);
+
+    // Update the user's password
+    user.password = newpassword;
+    await user.save();
+
+    res.status(200).json({ message: "Password reset successfully" });
+  } catch (err) {
+    res.status(500).json({
+      message: "Password could not be reset",
+      error: err.message
+    });
+  }
 });
 
 
+router.post("/login", checkSecretKey, async (req, res) => {
+  const { username, password } = req.body;
 
+  if (!username || !password) {
+    return res.status(400).json({ message: "Username and password are required" });
+  }
+
+  try {
+    const user = await schema.User.findOne({ username });
+
+    if (!user || user.password !== password) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    res.json({
+      message: "Logged in successfully",
+      user
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: "Server error",
+      error: err.message
+    });
+  }
+});
 
 
 
@@ -161,12 +190,14 @@ router.post("/news", upload.array("files", 2), async (req, res) => {
   if (req.files && req.files.length > 0) {
     // Loop through the uploaded files
     req.files.forEach((file, index) => {
-      console.log("Uploaded File:", {
-        filename: file.filename,
-        path: file.path,
-        size: file.size,
-        index: index,
-      });
+      //   console.log("Uploaded File:", {
+      //     filename: file.filename,
+      //     path: file.path,
+      //     size: file.size,
+      //     index: index,
+
+      //   }
+      // );
 
       // Assign paths based on the index
       if (index == 0) {
@@ -274,7 +305,7 @@ router.get("/news/by-id", async (req, res) => {
   }
 });
 
-router.put("/news/:id",upload.array("files", 2), async (req, res) => {
+router.put("/news/:id", upload.array("files", 2), async (req, res) => {
   const { id } = req.params; // Access ID from URL parameters
   const updateData = req.body; // Data to update
 
@@ -308,7 +339,7 @@ router.put("/news/:id",upload.array("files", 2), async (req, res) => {
         updateData['detailpic'] = file.filename
       }
     })
-    }
+  }
 
 
   try {
@@ -347,7 +378,7 @@ router.put("/news/:id",upload.array("files", 2), async (req, res) => {
 });
 
 router.delete("/news/:id", async (req, res) => {
-  const { id } = req.params; // Access ID from URL parameters
+  const { id } = req.params;
 
   if (!id) {
     return res.status(400).json({
@@ -357,21 +388,35 @@ router.delete("/news/:id", async (req, res) => {
   }
 
   try {
-    // Attempt to delete the news item by ID
     const deletedNews = await schema.News.findByIdAndDelete(id);
-    console.log(deletedNews);
-    if (deletedNews) {
-      res.status(200).json({
-        success: true,
-        message: "News deleted successfully",
-        data: deletedNews,
-      });
-    } else {
-      res.status(404).json({
+    if (!deletedNews) {
+      return res.status(404).json({
         success: false,
         message: "No news found with the given ID",
       });
     }
+
+    // Deletion of files using callback handling
+    deleteFile(deletedNews.detailpic, (err) => {
+      if (err) {
+        console.error("Error deleting detail picture:", err);
+        // Consider how you want to handle partial deletion failures
+      }
+    });
+
+    deleteFile(deletedNews.titlepic, (err) => {
+      if (err) {
+        console.error("Error deleting title picture:", err);
+        // Consider how you want to handle partial deletion failures
+      }
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "News deleted successfully",
+      data: deletedNews,
+    });
+
   } catch (err) {
     if (err.kind === "ObjectId") {
       return res.status(400).json({
@@ -687,25 +732,25 @@ router.post('/delete-file', (req, res) => {
   const { filename } = req.body; // Extract filename from POST request body
 
   if (!filename) {
-      return res.status(400).json({
-          success: false,
-          message: "Filename is required in the request body"
-      });
+    return res.status(400).json({
+      success: false,
+      message: "Filename is required in the request body"
+    });
   }
 
   // Call deleteFile function to attempt file deletion
   deleteFile(filename, (err, message) => {
-      if (err) {
-          return res.status(500).json({
-              success: false,
-              message: err.message
-          });
-      }
-
-      res.status(200).json({
-          success: true,
-          message: "File successfully deleted"
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: err.message
       });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "File successfully deleted"
+    });
   });
 });
 

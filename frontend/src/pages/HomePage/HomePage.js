@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { About, Banner, Promo, WhyDommoishi } from "../../components";
+import { About, Banner, Promo, Promo2, Promo3, WhyDommoishi } from "../../components";
 import axios from "axios";
 
 // Import Swiper React components
@@ -32,6 +32,7 @@ const HomePage = () => {
   useEffect(() => {
     handlegetCareers();
   }, []);
+  
 
   return (
     <div className="w-full h-fit">
@@ -54,7 +55,7 @@ const HomePage = () => {
           clickable: true,
         }}
         autoplay={{
-          delay: 4000,
+          delay: 400000,
           disableOnInteraction: false,
         }}
         navigation={true}
@@ -65,10 +66,10 @@ const HomePage = () => {
           <Promo />
         </SwiperSlide>
         <SwiperSlide>
-          <Promo />
+          <Promo2 />
         </SwiperSlide>
         <SwiperSlide>
-          <Promo />
+          <Promo3  />
         </SwiperSlide>
       </Swiper>
 
