@@ -11,7 +11,7 @@ import { path } from "../../../../utils/Constant";
 const ManageUser = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const [userData, setUserData] = useState([]);
-
+  const [ismarked, setIsMasked] = useState(true);
   // API Get ALL user
   const handlegetUsers = async () => {
     try {
@@ -107,7 +107,19 @@ const ManageUser = () => {
     //   // width: 200
     // },
     { title: "Role", dataIndex: "role", key: "role" },
-    { title: "Password", dataIndex: "password", key: "password" },
+
+    {
+      title: "Password",
+      dataIndex: "password",
+      key: "password",
+      render: (password) => {
+        return (
+          <p className="">
+            {ismarked ? "*".repeat(password.length) : password}
+          </p>
+        );
+      },
+    },
 
     // {
     //   title: "Date Of Birth",

@@ -9,6 +9,7 @@ function PrivateLayout() {
 
   const user = JSON.parse(sessionStorage.getItem("UserInformation"));
 
+  // console.log(user.user.role);
   return (
     <>
       {/* <HeaderAd /> */}
