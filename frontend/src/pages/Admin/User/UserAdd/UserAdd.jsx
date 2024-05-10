@@ -12,7 +12,7 @@ import { Radio, message } from "antd";
 import { isValidInputsUser } from "../../../../helpers/validInputs";
 import { path } from "../../../../utils/Constant";
 const UserAdd = () => {
-  const RoleOption = ["admin", "user"];
+  const RoleOption = ["admin"];
 
   const [formData, setFormData] = useState({
     username: "",
@@ -23,26 +23,6 @@ const UserAdd = () => {
   });
   // console.log(formData)
   const handleCreateUser = async () => {
-    // await axios
-    //   .post(`${process.env.REACT_APP_SERVER_URL}/user`, formData, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-
-    //       "x-secret-key": "Domoishi2024",
-    //     },
-    //   })
-    //   // console.log(res)
-
-    //   .then((res) => {
-    //     if (res.status === 200 || res.status === 201) {
-    //       toast.success("Create new user successfully!");
-    //       navigate("../" + path.USERMANAGE);
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     toast.error("Create user wrong: " + err.message);
-    //   });
-
     try {
       const response = await axios.post(
         // `${process.env.REACT_APP_SERVER_URL}/user`,
@@ -55,15 +35,27 @@ const UserAdd = () => {
           },
         }
       );
-      if (response.status === 200 || response.status === 201) {
+      // const errorfind = response.data.find(data => data=== "error");
+      // console.log(response.data.error);
+
+      // if (response.status === 200 || response.status === 201) {
+      //   toast.success("Create new user successfully!");
+      //   navigate("../" + path.USERMANAGE);
+      // }
+
+      if (Object.keys(response.data).length < 2) {
+        toast.error(response.data.error);
+      }
+      else {
         toast.success("Create new user successfully!");
         navigate("../" + path.USERMANAGE);
       }
     } catch (error) {
-      if (error.response && error.response.status === 401) {
+      if (error.response && error.response.status === 500) {
+        // console.log(response);
         toast.error("User name or password  is wrong");
       } else {
-        console.error("Login failed:", error);
+        console.error("create failed:", error);
       }
     }
   };
