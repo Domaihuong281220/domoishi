@@ -21,25 +21,51 @@ const UserAdd = () => {
     password: "",
     role: "",
   });
+  // console.log(formData)
   const handleCreateUser = async () => {
-    await axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/user`, formData, {
-        headers: {
-          "Content-Type": "application/json",
-          // "x-secret-key": `${process.env.REACT_APP_SECRET_KEY}`,
-          "x-secret-key": "Domoishi2024",
-        },
-      })
+    // await axios
+    //   .post(`${process.env.REACT_APP_SERVER_URL}/user`, formData, {
+    //     headers: {
+    //       "Content-Type": "application/json",
 
-      .then((res) => {
-        if (res.status === 200 || res.status === 201) {
-          toast.success("Create new user successfully!");
-          navigate("../" + path.USERMANAGE);
+    //       "x-secret-key": "Domoishi2024",
+    //     },
+    //   })
+    //   // console.log(res)
+
+    //   .then((res) => {
+    //     if (res.status === 200 || res.status === 201) {
+    //       toast.success("Create new user successfully!");
+    //       navigate("../" + path.USERMANAGE);
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     toast.error("Create user wrong: " + err.message);
+    //   });
+
+    try {
+      const response = await axios.post(
+        // `${process.env.REACT_APP_SERVER_URL}/user`,
+        `${process.env.REACT_APP_SERVER_URL}/user`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "x-secret-key": "Domoishi2024",
+          },
         }
-      })
-      .catch((err) => {
-        toast.error("Create user wrong: " + err.message);
-      });
+      );
+      if (response.status === 200 || response.status === 201) {
+        toast.success("Create new user successfully!");
+        navigate("../" + path.USERMANAGE);
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        toast.error("User name or password  is wrong");
+      } else {
+        console.error("Login failed:", error);
+      }
+    }
   };
 
   const navigate = useNavigate();

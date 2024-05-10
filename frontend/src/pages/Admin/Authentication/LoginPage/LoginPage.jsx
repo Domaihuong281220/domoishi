@@ -42,7 +42,7 @@ const LoginPage = () => {
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        toast.error("Password is wrong");
+        toast.error("User name or password  is wrong");
       } else {
         console.error("Login failed:", error);
       }
