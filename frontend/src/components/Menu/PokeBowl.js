@@ -25,7 +25,7 @@ const PokeBowl = () => {
                 </div>
                 <div className="w-[18%] relative">
                     <img src={brownrice} alt="" className="object-contain" />
-                    <p className="font-nexa_bold pv:max-md:text-[10px] absolute top-2/3 left-1/2 transform -translate-x-1/2  -translate-y-1/2 w-full text-md 2xl:text-2xl">BRORN RICE</p>
+                    <p className="font-nexa_bold text-white pv:max-md:text-[10px] absolute top-2/3 left-1/2 transform -translate-x-1/2  -translate-y-1/2 w-full text-md 2xl:text-2xl">BRORN RICE</p>
                 </div>
                 <div className="w-[18%] relative">
                     <img src={springmix} alt="" className="object-contain" />

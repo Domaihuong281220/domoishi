@@ -23,14 +23,14 @@ const UserEdit = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let userDetail = location.state;
-  console.log(userDetail);
+  // console.log(userDetail);
   const [formData, setFormData] = useState({
     username: userDetail.username,
     phonenumber: userDetail.phonenumber,
     newpassword: userDetail.password,
     // newpassword: userDetail.password,
   });
-  console.log(formData);
+  // console.log(formData);
   const handleEdit = async () => {
     await axios
       .put(
@@ -44,6 +44,7 @@ const UserEdit = () => {
           },
         }
       )
+      
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
           toast.success("Edit User successfully!");

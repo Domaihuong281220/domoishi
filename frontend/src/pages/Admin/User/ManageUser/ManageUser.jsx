@@ -59,7 +59,7 @@ const ManageUser = () => {
   useEffect(() => {
     handlegetUsers();
   }, []);
-  console.log(userData);
+  // console.log(userData);
 
   // console.log(user)
   const handleEditUser = (record) => {
@@ -135,12 +135,12 @@ const ManageUser = () => {
       width: 100,
       render: (_, record) => (
         <div className="flex items-center justify-center gap-x-2">
-          <button
+          {/* <button
             className="hover:underline cursor-pointer hover:text-blue-500 hover:font-bold"
             onClick={() => handleEditUser(record)}
           >
             <p className="">Edit</p>
-          </button>
+          </button> */}
 
           <button
             className="hover:underline cursor-pointer hover:text-blue-500 hover:font-bold"
