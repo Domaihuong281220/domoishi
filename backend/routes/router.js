@@ -58,6 +58,34 @@ router.post("/user",checkSecretKey, async (req, res) => {
   }
 });
 
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  if (!username || !password) {
+    return res.status(400).json({ message: "Username and password are required" });
+  }
+
+  try {
+    const user = await User.findOne({ username });
+
+    if (!user || user.password !== password) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    res.json({
+      message: "Logged in successfully",
+      userId: user._id
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: "Server error",
+      error: err.message
+    });
+  }
+});
+
+
+
 
 router.delete("/user/:id", checkSecretKey, async (req, res) => {
   const { id } = req.params;
