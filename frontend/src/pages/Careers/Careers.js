@@ -90,7 +90,7 @@ const Careers = () => {
         ></img>
       </div>
 
-      <div className="w-[73%] mx-auto py-10 pv:max-md:py-2 pv:max-md:w-[90%]">
+      <div className="w-[73%] mx-auto py-10 pv:max-md:py-2 pv:max-md:w-[95%]">
         <div className="flex flex-col gap-4 pv:max-md:gap-2">
           <p className="font-nexa_bold text-[50px] pv:max-md:text-[16px] md:max-lg:text-[24px]">
             JOIN OUR TEAM
@@ -98,7 +98,7 @@ const Careers = () => {
           <p className="font-nexa_bold text-[24px] pv:max-md:text-[14px] md:max-lg:text-[20px]">
             THE OPPORTUNITIES ARE ENDLESS.
           </p>
-          <p className="font-nexa_light text-[20px] w-[1222px] mx-auto uppercase pv:max-md:w-full pv:max-md:text-[14px] md:max-lg:text-[16px] md:max-lg:w-[100%] lg:max-2xl:w-[90%]">
+          <p className="font-nexa_light text-[20px] w-[1222px] mx-auto uppercase pv:max-md:w-full pv:max-md:text-[12px] md:max-lg:text-[16px] md:max-lg:w-[100%] lg:max-2xl:w-[90%] leading-6">
             Working in a DOMOISHI store is a stepping stone toward a promising
             career. We are on a fast track to innovate the way we view Asian
             cuisine, be a part of the revolution.
@@ -147,12 +147,13 @@ const Careers = () => {
         style={{ backgroundImage: `url(${img_subbg_Career})` }}
       >
         <Swiper
-          spaceBetween={30}
           pagination={{
             clickable: true,
           }}
+          loop={true}
           navigation={true}
-          modules={[Pagination, Navigation]}
+          modules={[Pagination, Navigation, FreeMode]}
+          className="mySwiper w-[80%] mx-auto"
         >
           {careerData.map((item, index) => (
             <SwiperSlide>
@@ -166,10 +167,10 @@ const Careers = () => {
                       {item.position}
                     </p>
                   </div>
-                  <div className="w-full h-[1px] bg-white mt-4"></div>
+                  <div className="w-full h-[1px] bg-white mt-4 pv:max-md:w-[80%] mx-auto"></div>
 
                   <div className="w-[80%] ph:max-md:w-[50%] mx-auto pt-4">
-                    <p className=" font-nexa_bold text-left text-white md:max-lg:text-[20px]">
+                    <p className=" font-nexa_bold text-left text-white md:max-lg:text-[20px] line-clamp-6">
                       {item.description}
                     </p>
                   </div>
@@ -179,7 +180,7 @@ const Careers = () => {
           ))}
         </Swiper>
       </div>
-      <div className="">
+      <div className="pv:max-md:pt-4">
         <p className="font-jonitha text-[70px] pv:max-md:text-[20px]  ">
           <span className="uppercase">#Domoishi</span>
           <span>Career</span>
@@ -190,7 +191,7 @@ const Careers = () => {
         <p className="uppercase">Position availability at each store:</p>
       </div>
       <div className="flex justify-center gap-4 items-center pt-[25px] pv:max-sm:flex-col">
-        <div className="custom-select">
+        <div className="custom-select ">
           <select
             name="positions"
             className="px-10 py-2 border-[1px] border-black rounded-lg"

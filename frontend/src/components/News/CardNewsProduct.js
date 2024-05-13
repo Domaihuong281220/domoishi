@@ -50,8 +50,8 @@ const CardNewsProduct = ({
           </button>
         </div>
 
-        <div className="">
-          <p className="text-start line-clamp-5  font-nexa_light text-[30px] pv:max-md:text-[14px] md:max-xl:text-[16px] ">
+        <div className="pv:max-md:pb-5">
+          <p className="text-start line-clamp-5 font-nexa_light text-[30px] pv:max-md:text-[14px] md:max-xl:text-[16px] ">
             {shortdescription}
           </p>
         </div>
