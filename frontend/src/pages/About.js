@@ -23,6 +23,13 @@ const About = () => {
                 </div>
             </div>
             <div className="w-full h-fit  pv:max-md:px-[8%] ">
+                <p className="font-chalkboard px-[12%] text-[4.4vw] leading-[4vw] pt-[3vw]">
+                    What why when <br></br> domoishi ?{" "}
+                </p>
+                <p className="font-nexa_light font-black px-[13%] text-[1.3vw] pv:max-md:m-4 leading-[3vw] w-full uppercase mt-12">
+                    We handpick authentic ingredients from diverse regions in Asia, infusing our recipes with a delightful fusion of popular Korean, Japanese, and other Asian dishes such as Poke,
+                    Soy Garlic Crunchy Chicken, Tonkotsu Ramen, Bubble Tea, and a plethora of enticing fusion creations. This ensures that each culinary encounter with us is a truly exceptional experience.
+                </p>
                 <WhyPart1 />
             </div>
         </div>

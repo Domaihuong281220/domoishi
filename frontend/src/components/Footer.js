@@ -27,7 +27,7 @@ const Footer = () => {
           NEW
         </a>
       </div>
-      <p className="font-shopee_regular text-xl  pv:max-md:text-[10px]  pv:max-md:py-1 py-4">
+      <p className="font-shopee_regular text-xl  pv:max-md:text-[10px]  pv:max-md:py-1">
         ALL RIGHTS RESERVED | DOMOISHI ©2024
       </p>
       <div className="flex  pv:max-md:w-[76%]">

@@ -21,19 +21,19 @@ const PokeBowl = () => {
             <div className="w-full flex justify-center space-x-4 my-16">
                 <div className="w-[18%] relative">
                     <img src={sushirice} alt="" className="object-contain" />
-                    <p className="font-nexa_bold pv:max-md:text-[10px] absolute top-2/3 left-1/2 transform -translate-x-1/2  -translate-y-1/2 w-full text-md 2xl:text-2xl">SUSHI RICE</p>
+                    <p className="font-nexa_bold pv:max-md:text-[10px] absolute top-2/3 left-1/2 transform -translate-x-1/2  -translate-y-1/2 w-full text-md 2xl: text-[1.7vw]">SUSHI RICE</p>
                 </div>
                 <div className="w-[18%] relative">
                     <img src={brownrice} alt="" className="object-contain" />
-                    <p className="font-nexa_bold text-white pv:max-md:text-[10px] absolute top-2/3 left-1/2 transform -translate-x-1/2  -translate-y-1/2 w-full text-md 2xl:text-2xl">BRORN RICE</p>
+                    <p className="font-nexa_bold text-white pv:max-md:text-[10px] absolute top-2/3 left-1/2 transform -translate-x-1/2  -translate-y-1/2 w-full text-md 2xl: text-[1.7vw]">BRORN RICE</p>
                 </div>
                 <div className="w-[18%] relative">
                     <img src={springmix} alt="" className="object-contain" />
-                    <p className="font-nexa_bold pv:max-md:text-[10px] absolute top-2/3 left-1/2 transform -translate-x-1/2  -translate-y-1/2 w-full text-md 2xl:text-2xl">SPRING MIX</p>
+                    <p className="font-nexa_bold pv:max-md:text-[10px] absolute top-2/3 left-1/2 transform -translate-x-1/2  -translate-y-1/2 w-full text-md 2xl: text-[1.7vw]">SPRING MIX</p>
                 </div>
                 <div className="w-[18%] relative">
                     <img src={mixany2} alt="" className="object-contain" />
-                    <p className="font-nexa_bold pv:max-md:text-[10px] absolute top-2/3 left-1/2 transform -translate-x-1/2  -translate-y-1/2 w-full text-md 2xl:text-2xl">MIX ANY 2</p>
+                    <p className="font-nexa_bold pv:max-md:text-[10px] absolute top-2/3 left-1/2 transform -translate-x-1/2  -translate-y-1/2 w-full text-md 2xl: text-[1.7vw]">MIX ANY 2</p>
                 </div>
             </div>
 
@@ -47,21 +47,21 @@ const PokeBowl = () => {
             </div>
             <div class="flex flex-col my-12">
                 <div class="-m-1.5 overflow-x-auto">
-                    <div class="px-[12%] inline-block align-middle">
+                    <div class="px-[8%] inline-block align-middle">
                         <div class="border rounded-lg shadow overflow-hidden border-black">
                             <table class=" divide-y divide-black table-fixed w-full">
 
                                 <tbody class="divide-y divide-black">
                                     <tr className="divide-x divide-black">
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Organic Tofu</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Shrimp <span className="text-[#B6CF69]">COOKED</span></td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Salmon <span className="text-[#B6CF69]">RAW</span></td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Organic Tofu</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Shrimp <span className="text-[#B6CF69]">COOKED</span></td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Salmon <span className="text-[#B6CF69]">RAW</span></td>
 
                                     </tr>
                                     <tr className="divide-x divide-black">
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Chicken</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Tuna <span className="text-[#B6CF69]">RAW</span></td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Spicy Tuna <br></br> <span className="text-[#B6CF69]">RAW <span className="text-[#CA1C19]">SPICY</span></span></td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Chicken</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Tuna <span className="text-[#B6CF69]">RAW</span></td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Spicy Tuna <br></br> <span className="text-[#B6CF69]">RAW <span className="text-[#CA1C19]">SPICY</span></span></td>
 
                                     </tr>
 
@@ -82,30 +82,30 @@ const PokeBowl = () => {
             </div>
             <div class="flex flex-col my-12">
                 <div class="-m-1.5 overflow-x-auto">
-                    <div class="px-[12%] inline-block align-middle">
+                    <div class="px-[8%] inline-block align-middle">
                         <div class="border rounded-lg shadow overflow-hidden border-black">
                             <table class=" divide-y divide-black table-fixed w-full">
 
                                 <tbody class="divide-y divide-black">
                                     <tr className="divide-x divide-black">
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Avocado</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Green Onion</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Mango</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Avocado</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Green Onion</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Mango</td>
                                     </tr>
                                     <tr className="divide-x divide-black">
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Cucumber</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Jalapeño <span className="text-[#CA1C19]">RAW</span></td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Red Onion</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Cucumber</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Jalapeño <span className="text-[#CA1C19]">RAW</span></td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Red Onion</td>
                                     </tr>
                                     <tr className="divide-x divide-black">
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Edamame</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Japanese Ginger</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Seaweed Salad</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Edamame</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Japanese Ginger</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Seaweed Salad</td>
                                     </tr>
                                     <tr className="divide-x divide-black">
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Fish Egg <span className="text-[#B6CF69]">RAW</span></td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Crab Salad</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Sweet Corn</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Fish Egg <span className="text-[#B6CF69]">RAW</span></td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Crab Salad</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Sweet Corn</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -124,30 +124,30 @@ const PokeBowl = () => {
             </div>
             <div class="flex flex-col my-12">
                 <div class="-m-1.5 overflow-x-auto">
-                    <div class="px-[12%] inline-block align-middle">
+                    <div class="px-[8%] inline-block align-middle">
                         <div class="border rounded-lg shadow overflow-hidden border-black ">
                             <table class=" divide-y divide-black table-fixed w-full">
 
                                 <tbody class="divide-y divide-black">
                                     <tr className="divide-x divide-black bg-[#CA1C19] text-white">
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">NON SPICY</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">MILD SPICY</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">SPICY</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">NON SPICY</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">MILD SPICY</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">SPICY</td>
                                     </tr>
                                     <tr className="divide-x divide-black">
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Citrus Mango</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Ginger Seasame</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Ponzu Jalapeno</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Citrus Mango</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Ginger Seasame</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Ponzu Jalapeno</td>
                                     </tr>
                                     <tr className="divide-x divide-black">
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Dangcing Eel</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Yum Yum</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Sriracha Mayo</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Dangcing Eel</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Yum Yum</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Sriracha Mayo</td>
                                     </tr>
                                     <tr className="divide-x divide-black">
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">House Poké</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Yuzu Lite</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Sweet Wasabi</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">House Poké</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Yuzu Lite</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Sweet Wasabi</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -166,16 +166,16 @@ const PokeBowl = () => {
             </div>
             <div class="flex flex-col my-12">
                 <div class="-m-1.5 overflow-x-auto">
-                    <div class="px-[12%] inline-block align-middle">
+                    <div class="px-[8%] inline-block align-middle">
                         <div class="border-2 rounded-lg shadow overflow-hidden border-gray-300 ">
                             <table class=" divide-y divide-gray-600 table-fixed w-full">
 
                                 <tbody class="divide-y divide-gray-600">
                                     <tr className="divide-x divide-gray-600 bg-[#B6CF69]">
-                                    <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Fried Onion</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Garlic Crisp</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Roasted Seaweed</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Nori Sesame</td>
+                                    <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Fried Onion</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Garlic Crisp</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Roasted Seaweed</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Nori Sesame</td>
                                     </tr>
                                     
                                 </tbody>
@@ -186,29 +186,29 @@ const PokeBowl = () => {
             </div>
 
             {/* Step 6 */}
-            <p className="font-nexa_light uppercase font-black text-[3vw]">rice bowl</p>
-            <p className="font-nexa_light font-black text-[1.8vw]">Served With White Rice Or Brown Rice</p>
+            <p className="font-nexa_light uppercase font-black text-[3vw] pv:max-lg:text-[6vw]">rice bowl</p>
+            <p className="font-nexa_light font-black text-[1.8vw] pv:max-lg:text-[3.8vw]">Served With White Rice Or Brown Rice</p>
             <div class="flex flex-col my-12">
                 <div class="-m-1.5 overflow-x-auto">
-                    <div class="px-[12%] inline-block align-middle">
+                    <div class="px-[8%] inline-block align-middle">
                         <div class="border rounded-lg shadow overflow-hidden border-black">
                             <table class=" divide-y divide-black table-fixed w-full">
 
                                 <tbody class="divide-y divide-black">
                                     <tr className="divide-x divide-black">
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Thai Style Orange Chicken</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Soy Garlic Chicken Bowl</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Curry Chicken Katsu</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Thai Style Orange Chicken</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Soy Garlic Chicken Bowl</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Curry Chicken Katsu</td>
                                     </tr>
                                     <tr className="divide-x divide-black">
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Thai Style Seasame Chicken</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Spicy Soy Garlic Chicken Bowl</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Gyudon Beef Bowl</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Thai Style Seasame Chicken</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Spicy Soy Garlic Chicken Bowl</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Gyudon Beef Bowl</td>
                                     </tr>
                                     <tr className="divide-x divide-black">
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Tokyo Chicken Katsu</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Beef Curry Bowl</td>
-                                        <td class="px-[10px] py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">Unadon Eal Bowl</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Tokyo Chicken Katsu</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Beef Curry Bowl</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Unadon Eal Bowl</td>
                                     </tr>
                                     
                                 </tbody>

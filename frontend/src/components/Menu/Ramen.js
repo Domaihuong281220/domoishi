@@ -19,7 +19,7 @@ const Ramen = () => {
       <img
         src={bestseller}
         alt=""
-        className="absolute top-[5rem]  pv:max-md:top-24 lg:w-44  pv:max-md:w-20 right-0 z-40 xl:w-60"
+        className="absolute top-[5rem]  pv:max-md:top-28 lg:w-44  pv:max-md:w-20 right-0 z-40 xl:w-60"
       />
       <p className="font-nexa_bold text-5xl 2xl:text-6xl pv:max-md:text-4xl">
         RAMEN
@@ -86,7 +86,7 @@ const Ramen = () => {
       </p>
 
       {/* CARDS */}
-      <div className="w-full flex justify-center space-x-4 my-16  pv:max-md:my-8">
+      <div className="w-full flex justify-center space-x-[1vw] my-16  pv:max-md:my-8">
         <div className="w-[11%] relative">
           <img src={tofu} alt="" className="object-contain" />
           <p className="font-nexa_bold absolute top-2/3 left-1/2 transform -translate-x-1/2  -translate-y-1/2 w-full text-md 2xl:text-2xl pv:max-md:text-[10px]">
