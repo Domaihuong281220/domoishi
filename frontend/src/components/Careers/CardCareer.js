@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const CardCareer = ({ title, desc }) => {
+const CardCareer = ({ title, desc, isLast }) => {
   return (
     <div className="py-10 flex lg:max-2xl:py-52 ">
       <div className="">
@@ -17,12 +17,16 @@ const CardCareer = ({ title, desc }) => {
         <div className="w-full h-[1px] bg-white mt-4"></div>
 
         <div className="w-[80%] mx-auto pt-4">
-          <p className="text-[25px] font-nexa_bold text-left text-white lg:max-xl:text-[20px] xl:max-2xl:text-[20px]">
+          <p className="text-center text-[25px] font-nexa_bold  text-white lg:max-xl:text-[20px] xl:max-2xl:text-[20px]">
             {desc}
           </p>
         </div>
       </div>
-      <div className="h-full w-[1px] bg-white"></div>
+      <div
+        className={`${
+          isLast === true ? "hidden" : ""
+        } h-[500px] w-[1px] bg-white`}
+      ></div>
     </div>
   );
 };
