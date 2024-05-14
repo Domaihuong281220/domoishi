@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { About, Banner, Promo, Promo2, Promo3, WhyDommoishi } from "../../components";
 import axios from "axios";
+import PromoBG from "../../assets/HomePage/Promo.png"
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -60,8 +61,9 @@ const HomePage = () => {
         }}
         navigation={true}
         modules={[Pagination, Navigation, Autoplay]}
-        className="mySwiper"
+        className="mySwiper relative"
       >
+        <img src={PromoBG} alt="Promo" className="object-cover" />
         <SwiperSlide>
           <Promo />
         </SwiperSlide>
