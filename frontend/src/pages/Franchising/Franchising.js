@@ -229,7 +229,7 @@ const Franchising = () => {
                 className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
                 placeholder="Zip / Postal Code"
               ></input>
-            </div>
+            </div>  
           </div>
           <div className="grid grid-cols-3 text-right gap-10 items-center ">
             <div className="col-span-1">
@@ -362,38 +362,7 @@ const Franchising = () => {
           </div>
         </div>
       </div>
-      {/* <div className="w-[76%] mx-auto flex flex-col gap-10 pt-10 font-nexa_light text-[30px] pv:max-xl:text-[14px] xl:max-2xl:text-[20px]">
-        <div className="flex gap-4 items-center ">
-          <div className="">
-            <input className="h-10 w-10" type="checkbox"></input>
-          </div>
-          <div className="">
-            <p className="text-start">
-              * I would like to receive offers, news and information via email.
-            </p>
-          </div>
-        </div>
-        <div className="flex gap-4 items-center ">
-          <div className="">
-            <input className="h-10 w-10" type="checkbox"></input>
-          </div>
-          <div className="">
-            <p className="text-start">
-              * I provide consent to receive offers and information via Text at
-              the mobile number provided above. Message and data rates may
-              apply. To unsubscribe, text STOP and for help text HELP anytime.
-            </p>
-          </div>
-        </div>
-        <div className="flex gap-4 items-center">
-          <div className="">
-            <input className="h-10 w-10" type="checkbox"></input>
-          </div>
-          <div className="">
-            <p className="text-start">* I agree.</p>
-          </div>
-        </div>
-      </div> */}
+
       <div className="w-[76%] mx-auto  gap-10 pt-10 flex justify-center ">
         <div className="">
           <button className="bg-[#cb1313] px-6 py-2 rounded-lg">
