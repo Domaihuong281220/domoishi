@@ -12,9 +12,9 @@ const About = () => {
             <img src={banner} alt="" className="object-cover" />
             <div className="w-full h-fit relative mt-[-2rem]">
                 <img src={subtraction} alt="" className="object-cover" />
-                <div className="w-full absolute h-full top-0 flex flex-col space-y-8 pv:max-md:space-y-1  justify-center items-center">
-                    <p className="font-jonitha lg:text-5xl w-full">#AboutDOMOISHI</p>
-                    <p className="font-nexa_bold uppercase text-[1.255vw]  pt-6 lg:pt-0 w-[70%] pv:max-md:text-[6px] pv:max-md:leading-[11px] pv:max-md:pt-0">
+                <div className="w-full absolute h-full top-0 flex flex-col space-y-[1vw] pv:max-md:space-y-1  justify-center items-center">
+                    <p className="font-jonitha text-[4vw] w-full">#AboutDOMOISHI</p>
+                    <p className="font-nexa_bold uppercase text-[1.255vw]  pt-[2vw] lg:pt-0 w-[70%] pv:max-md:text-[5px] pv:max-md:leading-[11px] pv:max-md:pt-0">
                         Domoishi is a fast-growing Asian casual restaurant chain.  Domoishi offers a variety of
                         addictive Asian favorites! Whether its fresh Ramen sourced from Japan, Hawaiian Poke bowls,
                         Taiwan’s Bubble Teas, or our savory Korean style wings, your Asian food and beverage cravings

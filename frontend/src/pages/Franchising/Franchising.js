@@ -2,7 +2,7 @@
 
 import React from "react";
 import img_Franchising_Banner from "../../assets/Franchising/Franchising_banner.png";
-import BGImg from "../../assets/HomePage/AboutBG.png";
+import BGImg from "../../assets/Franchising/Subtraction 1.png";
 import { Select } from "antd";
 const Franchising = () => {
   return (
@@ -366,7 +366,7 @@ const Franchising = () => {
         </div>
       </div>
 
-      <div className="w-[76%] mx-auto  gap-10 pt-10 flex justify-center ">
+      <div className="w-[76%] mx-auto space-x-[2vw] gap-10 pt-10 flex justify-center ">
         <div className="">
           <button className="bg-[#cb1313] px-6 py-2 rounded-lg">
             <p className=" text-white font-shopee_bold text-[27px] pv:max-xl:text-[16px] xl:max-2xl:text-[20px]">
@@ -390,13 +390,13 @@ const Franchising = () => {
         <img
           src={BGImg}
           alt=""
-          className="  h-[400px] pv:max-md:h-[200px] md:max-xl:h-[300px] xl:max-2xl:h-[400px] w-full object-cover"
+          className="  h-fit pv:max-md:h-[200px] md:max-xl:h-[300px] xl:max-2xl:h-[400px] w-full object-contain"
         />
         <div className="w-full absolute h-full top-0 flex flex-col space-y-8  pv:max-lg:space-y-1  justify-center items-center">
-          <p className="font-jonitha text-[3vw] w-full pv:max-ph:text-[4vw]">
+          <p className="font-jonitha text-[4vw] w-full pv:max-ph:text-[4vw]">
             #AboutDOMOISHI
           </p>
-          <p className=" custom_lineHeight font-nexa font-medium  text-center uppercase text-[1.7vw] pt-6  lg:pt-0 w-[80%]  pv:max-md:w-[95%] leading-10 pv:max-md:pt-0">
+          <p className=" custom_lineHeight font-nexa font-medium  text-center uppercase text-[1.5vw] pt-6  lg:pt-0 w-[80%]  pv:max-md:w-[90%] leading-10 pv:max-md:pt-0">
             NOT ONLY DO MANY OF OUR INGREDIENTS COME FROM THE REGIONS OF ORIGIN
             IN ASIA, BUT OUR RECIPES ARE ROOTED IN THE TRADITIONAL MEALS OF
             THOSE ASIAN REGIONS THAT ARE UNCHANGED AFTER HUNDREDS AND HUNDREDS
