@@ -384,14 +384,14 @@ const Franchising = () => {
       </div>
 
       <div
-        className="w-[100%] h-[35vw]   mx-auto  relative mt-[1rem]"
-        style={{ backgroundImage: `url(${BGImg})` }}
+        className="w-[100%] h-fit   mx-auto  relative mt-[1rem]"
+        // style={{ backgroundImage: `url(${BGImg})` }}
       >
-        {/* <img
+        <img
           src={BGImg}
           alt=""
-          className="  h-[400px] pv:max-md:h-[200px]  object-cover"
-        /> */}
+          className="  h-[400px] pv:max-md:h-[200px] md:max-xl:h-[300px] xl:max-2xl:h-[400px] w-full object-cover"
+        />
         <div className="w-full absolute h-full top-0 flex flex-col space-y-8 pv:max-md:space-y-1  justify-center items-center">
           <p className="font-jonitha text-[3vw] w-full">#AboutDOMOISHI</p>
           <p
