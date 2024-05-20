@@ -126,7 +126,10 @@ select {
 .custom-select select:focus + .dropdown-content {
   display: block;
 }
+.custom_lineHeight{
+  line-height: 3.4vw;
 
+}
 /* responsive  */
 @media (min-width: 320px) and (max-width: 768px) {
   .custom_lineHeight {
@@ -161,6 +164,10 @@ select {
  
 }
 @media (min-width: 768px) and (max-width: 1024px) {
+  .custom_lineHeight{
+    line-height: 3.4vw;
+  
+  }
   .mySwiper .swiper-button-prev {
     height: 8vw;
     width: 4vw;
