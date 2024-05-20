@@ -392,12 +392,11 @@ const Franchising = () => {
           alt=""
           className="  h-[400px] pv:max-md:h-[200px] md:max-xl:h-[300px] xl:max-2xl:h-[400px] w-full object-cover"
         />
-        <div className="w-full absolute h-full top-0 flex flex-col space-y-8 pv:max-md:space-y-1  justify-center items-center">
-          <p className="font-jonitha text-[3vw] w-full">#AboutDOMOISHI</p>
-          <p
-            className=" custom_lineHeight font-nexa font-medium  text-center uppercase text-[1.7vw] pt-6  lg:pt-0 w-[80%]  pv:max-md:w-[95%] leading-10 pv:max-md:pt-0"
-            // style={{ lineHeight: "60px" }}
-          >
+        <div className="w-full absolute h-full top-0 flex flex-col space-y-8  pv:max-lg:space-y-1  justify-center items-center">
+          <p className="font-jonitha text-[3vw] w-full pv:max-ph:text-[4vw]">
+            #AboutDOMOISHI
+          </p>
+          <p className=" custom_lineHeight font-nexa font-medium  text-center uppercase text-[1.7vw] pt-6  lg:pt-0 w-[80%]  pv:max-md:w-[95%] leading-10 pv:max-md:pt-0">
             NOT ONLY DO MANY OF OUR INGREDIENTS COME FROM THE REGIONS OF ORIGIN
             IN ASIA, BUT OUR RECIPES ARE ROOTED IN THE TRADITIONAL MEALS OF
             THOSE ASIAN REGIONS THAT ARE UNCHANGED AFTER HUNDREDS AND HUNDREDS
