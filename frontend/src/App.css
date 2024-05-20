@@ -129,6 +129,9 @@ select {
 
 /* responsive  */
 @media (min-width: 320px) and (max-width: 768px) {
+  .custom_lineHeight {
+    line-height: 5vw;
+  }
   .mySwiper .swiper-button-prev {
     height: 8vw;
     width: 4vw;
