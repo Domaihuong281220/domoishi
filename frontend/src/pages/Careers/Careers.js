@@ -78,7 +78,7 @@ const Careers = () => {
 
     fetchCareers();
   }, []);
-  // console.log(linkform);
+  console.log(careerData);
 
   return (
     <div>
@@ -153,7 +153,7 @@ const Careers = () => {
           loop={true}
           navigation={true}
           modules={[Pagination, Navigation, FreeMode]}
-          className="mySwiper w-[80%] mx-auto"
+          className="mySwiper w-[90%] mx-auto"
         >
           {careerData.map((item, index) => (
             <SwiperSlide>
@@ -170,7 +170,7 @@ const Careers = () => {
                   <div className="w-full h-[1px] bg-white mt-4 pv:max-md:w-[80%] mx-auto"></div>
 
                   <div className="w-[80%] ph:max-md:w-[50%] mx-auto pt-4">
-                    <p className=" font-nexa_bold text-left text-white md:max-lg:text-[20px] line-clamp-6">
+                    <p className=" font-nexa_bold text-center text-white md:max-lg:text-[20px] line-clamp-4 ">
                       {item.description}
                     </p>
                   </div>
@@ -181,26 +181,28 @@ const Careers = () => {
         </Swiper>
       </div>
       <div className="pv:max-md:pt-4">
-        <p className="font-jonitha text-[70px] pv:max-md:text-[20px]  ">
+        <p className="font-jonitha text-[2.5vw] pv:max-md:text-[3vw]  ">
           <span className="uppercase">#Domoishi</span>
           <span>Career</span>
           <span className="uppercase">Search</span>
         </p>
       </div>
-      <div className="font-nexa_bold text-[24px] pt-[45px] pv:max-md:text-[16px] pv:pt-2">
+      <div className="font-nexa_bold text-[2.5vw] pt-[45px] pv:max-md:text-[3vw]   pv:pt-2">
         <p className="uppercase">Position availability at each store:</p>
       </div>
       <div className="flex justify-center gap-4 items-center pt-[25px] pv:max-sm:flex-col">
-        <div className="custom-select ">
+        <div className="custom-select pv:max-md:text-[16px]">
           <select
             name="positions"
             className="px-10 py-2 border-[1px] border-black rounded-lg"
             onChange={handleChange}
           >
-            <option value="">Check availability</option>
+            <option value="" clas>
+              Check availability
+            </option>
             {availablePositions.map((position, index) => (
               <option key={index} value={position.position}>
-                {position.position}
+                <p className=" "> {position.position}</p>
               </option>
             ))}
           </select>

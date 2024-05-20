@@ -77,6 +77,8 @@
 
 
 
+
+
 /* Select */
 
 .custom-select {
@@ -125,3 +127,62 @@ select {
   display: block;
 }
 
+/* responsive  */
+@media (min-width: 320px) and (max-width: 768px) {
+  .mySwiper .swiper-button-prev {
+    height: 8vw;
+    width: 4vw;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    left: 0%;
+    top: 60%;
+    z-index: 10;
+    background-image: url("./assets/HomePage/Group\ 128.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  .mySwiper .swiper-button-next {
+    height: 8vw;
+    width: 4vw;
+    color: white;
+    font-weight: bold;
+    right: 0%;
+    top: 60%;
+    z-index: 10;
+    background-image: url("./assets/HomePage/Group\ 141.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+ 
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .mySwiper .swiper-button-prev {
+    height: 8vw;
+    width: 4vw;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    left: 0%;
+    top: 60%;
+    z-index: 10;
+    background-image: url("./assets/HomePage/Group\ 128.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  .mySwiper .swiper-button-next {
+    height: 8vw;
+    width: 4vw;
+    color: white;
+    font-weight: bold;
+    right: 0%;
+    top: 60%;
+    z-index: 10;
+    background-image: url("./assets/HomePage/Group\ 141.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+ 
+}

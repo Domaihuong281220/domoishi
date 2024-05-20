@@ -17,7 +17,7 @@ const CardCareer = ({ title, desc, isLast }) => {
         <div className="w-full h-[1px] bg-white mt-4"></div>
 
         <div className="w-[80%] mx-auto pt-4">
-          <p className="text-center text-[25px] font-nexa_bold  text-white lg:max-xl:text-[20px] xl:max-2xl:text-[20px]">
+          <p className="text-center text-[25px] font-nexa_bold  text-white lg:max-xl:text-[20px] xl:max-2xl:text-[20px] line-clamp-6">
             {desc}
           </p>
         </div>
