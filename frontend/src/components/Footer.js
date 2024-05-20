@@ -6,8 +6,8 @@ import FooterAssets from "../assets/Footer.png";
 import { path } from "../utils/Constant";
 const Footer = () => {
   return (
-    <div className="w-full h-fit relative flex flex-col items-center justify-center py-14  pv:max-md:py-8">
-      <div className="flex space-x-8  pv:max-md:space-x-2 justify-center items-center w-[60%]  pv:max-md:w-[76%]  pv:max-md:text-[10px] text-[1.2rem]">
+    <div className="w-full h-[22.5vw] pv:max-md:h-[40.5vw] relative flex flex-col space-y-[1.5vw] pv:max-md:space-y-[1vw] items-center justify-center">
+      <div className="flex space-x-8  pv:max-md:space-x-2 justify-center items-center w-full  text-[1.7vw] pv:max-md:text-[2.5vw] ">
         <a href="/menu" className="font-shopee_bold">
           MENU
         </a>
@@ -21,10 +21,10 @@ const Footer = () => {
           ABOUT US
         </a>
         <a href={path.CAREERS} className="font-shopee_bold">
-          CARRERS
+          CAREERS
         </a>
         <a href={path.NEWS} className="font-shopee_bold">
-          NEW
+          NEWS
         </a>
       </div>
       <p className="font-shopee_regular text-xl  pv:max-md:text-[10px]  pv:max-md:py-1">
@@ -33,7 +33,7 @@ const Footer = () => {
       <div className="flex  pv:max-md:w-[76%]">
         <button className="w-[40%] relative">
           <img src={FooterAssets} alt="" className="object-contain" />
-          <p className="absolute top-1/2 left-[5.5rem]  transform -translate-x-1/2 -translate-y-1/2  pv:max-md:text-[13px]  pv:max-md:left-14  pv:max-md:w-full font-shopee_bold text-xl">
+          <p className="absolute top-1/2 left-[4.5vw]  transform -translate-x-1/2 -translate-y-1/2  text-[1.1vw] pv:max-md:text-[3.1vw] md:max-mdmax:text-[2.6vw] md:max-mdmax:left-[11vw] pv:max-md:left-[12.5vw] mdmax:max-lgmax:left-[8.5vw] sm:max-md:left-[10.5vw] mdmax:max-lgmax:text-[2vw] font-shopee_bold ">
             FOLLOW US
           </p>
         </button>

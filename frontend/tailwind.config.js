@@ -38,6 +38,8 @@ module.exports = {
       screens: {
         pv: "280px",
         pvmax: "360px",
+        mdmax:"830px",
+        lgmax:"1100px",
         ph: "480px",
         laptop: "1366px",
         dv: "1440px",

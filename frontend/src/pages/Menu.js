@@ -17,7 +17,7 @@ const Menu = () => {
   const [menu4, setMenu4] = useState(false);
   const navigate = useNavigate();
   return (
-    <div className="w-full h-[100vh]  pv:max-md:h-fit lg:h-fit">
+    <div className="w-full h-fit  pv:max-md:h-fit lg:h-fit">
       <p className="w-full text-center font-jonitha text-5xl 2xl:text-6xl">
         MENU
       </p>
@@ -53,7 +53,7 @@ const Menu = () => {
             />
           </svg>
           <button
-            className={` pv:max-md:text-[12px] pv:max-md:px-5 pv:max-md:py-[1px] focus:border-solid focus:border-2 focus:border-black rounded-full px-6 py-2 font-nexa text-3xl font-bold ${
+            className={` pv:max-md:text-[10px] pv:max-md:px-5 pv:max-md:py-[1px] focus:border-solid focus:border-2 focus:border-black rounded-full px-6 py-2 font-nexa text-3xl md:max-lg:text-[3vw] md:max-lag:text-[3vw] font-bold ${
               menu1
                 ? "border-solid border-2 border-black rounded-full px-6 py-2"
                 : "!border-none"
@@ -87,7 +87,7 @@ const Menu = () => {
             />
           </svg>
           <button
-            className={`pv:max-md:text-[12px] pv:max-md:px-5 pv:max-md:py-[1px] focus:border-solid focus:border-2 focus:border-black rounded-full px-6 py-2 font-nexa text-3xl font-bold  ${
+            className={`pv:max-md:text-[10px] pv:max-md:px-5 pv:max-md:py-[1px] focus:border-solid focus:border-2 focus:border-black rounded-full px-6 py-2 font-nexa text-3xl md:max-lg:text-[3vw] font-bold  ${
               menu2
                 ? "border-solid border-2 border-black rounded-full px-6 py-2"
                 : "!border-none"
@@ -121,7 +121,7 @@ const Menu = () => {
             />
           </svg>
           <button
-            className={`pv:max-md:text-[12px] pv:max-md:px-5 pv:max-md:py-[1px] focus:border-solid focus:border-2 focus:border-black rounded-full px-6 py-2 font-nexa text-3xl font-bold  ${
+            className={`pv:max-md:text-[10px] pv:max-md:px-5 pv:max-md:py-[1px] focus:border-solid focus:border-2 focus:border-black rounded-full px-6 py-2 font-nexa text-3xl md:max-lg:text-[3vw] font-bold  ${
               menu3
                 ? "border-solid border-2 border-black rounded-full px-6 py-2"
                 : "!border-none"
@@ -155,7 +155,7 @@ const Menu = () => {
             />
           </svg>
           <button
-            className={`pv:max-md:text-[12px] pv:max-md:px-5 pv:max-md:py-[1px] focus:border-solid focus:border-2 focus:border-black rounded-full px-6 py-2 font-nexa text-3xl font-bold  ${
+            className={`pv:max-md:text-[10px] pv:max-md:px-5 pv:max-md:py-[1px] focus:border-solid focus:border-2 focus:border-black rounded-full px-6 py-2 font-nexa text-3xl md:max-lg:text-[3vw] font-bold  ${
               menu4
                 ? "border-solid border-2 border-black rounded-full px-6 py-2"
                 : "!border-none"

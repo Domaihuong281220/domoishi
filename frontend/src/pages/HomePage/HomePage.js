@@ -61,7 +61,7 @@ const HomePage = () => {
         }}
         navigation={true}
         modules={[Pagination, Navigation, Autoplay]}
-        className="mySwiper relative"
+        className="mySwiper relative PromoSwiper"
       >
         <img src={PromoBG} alt="Promo" className="object-cover" />
         <SwiperSlide>

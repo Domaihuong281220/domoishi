@@ -127,6 +127,18 @@ select {
   display: block;
 }
 
+.svg-wings{
+  width: 1.2vw;
+  height: 1.2vw;
+}
+
+.PromoSwiper>.swiper-button-prev {
+  left: 10% !important;
+}
+.PromoSwiper>.swiper-button-next {
+  right: 10% !important;
+}
+
 /* responsive  */
 @media (min-width: 320px) and (max-width: 768px) {
   .mySwiper .swiper-button-prev {

@@ -4,9 +4,9 @@ import React from "react";
 
 const WingAndAppetizer = () => {
   return (
-    <div className="w-full h-[100vh]  pv:max-md:h-fit lg:h-fit relative">
+    <div className="w-full h-fit  pv:max-md:h-fit lg:h-fit relative">
       <div class="flex flex-col my-12">
-        <div class="-m-1.5 overflow-x-auto">
+        <div class="-my-1.5 overflow-x-auto">
           <div class="px-[12%] pv:max-lg:px-[8%] inline-block align-middle">
             <div class="border rounded-lg shadow overflow-hidden border-black">
               <table class=" divide-y divide-black table-fixed w-full">
@@ -56,20 +56,20 @@ const WingAndAppetizer = () => {
       </div>
 
       <div class="flex flex-col my-12 2xl:pl-32 text-left">
-        <div class="-m-1.5 overflow-x-auto">
+        <div class="-my-1.5 overflow-x-auto">
           <div class="px-[12%]  pv:max-lg:px-[8%] inline-block align-middle">
             <div class="  overflow-hidden ">
               <table class=" table-fixed w-full">
                 <tbody class="">
                   <tr className="">
-                    <td class="   lg:py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[10px]  pv:max-md:px-[10px]">
-                      <div className="flex justify-start items-center lg: lg:space-x-2">
+                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
+                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
                           height="19.799"
                           viewBox="0 0 19.799 19.799"
-                          className="pv:max-md:hidden"
+                          className="  svg-wings"
                         >
                           <rect
                             id="Rectangle_255"
@@ -84,14 +84,14 @@ const WingAndAppetizer = () => {
                         <p>French Fries</p>
                       </div>
                     </td>
-                    <td class="   lg:py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[10px]  pv:max-md:px-[10px]">
-                      <div className="flex justify-start items-center  lg:space-x-2">
+                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
+                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
                           height="19.799"
                           viewBox="0 0 19.799 19.799"
-                          className="pv:max-md:hidden"
+                          className="  svg-wings"
                         >
                           <rect
                             id="Rectangle_255"
@@ -106,14 +106,14 @@ const WingAndAppetizer = () => {
                         <p>Beef Gyoza (6)</p>
                       </div>
                     </td>
-                    <td class="   lg:py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[10px]  pv:max-md:px-[10px]">
-                      <div className="flex justify-start items-center  lg:space-x-2">
+                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw] h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
+                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
                           height="19.799"
                           viewBox="0 0 19.799 19.799"
-                          className="pv:max-md:hidden"
+                          className="  svg-wings"
                         >
                           <rect
                             id="Rectangle_255"
@@ -130,14 +130,14 @@ const WingAndAppetizer = () => {
                     </td>
                   </tr>
                   <tr className="">
-                    <td class="   lg:py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[10px]  pv:max-md:px-[10px]">
-                      <div className="flex justify-start items-center  lg:space-x-2 text-start">
+                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw] h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
+                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
                           height="19.799"
                           viewBox="0 0 19.799 19.799"
-                          className="pv:max-md:hidden"
+                          className="  svg-wings"
                         >
                           <rect
                             id="Rectangle_255"
@@ -157,14 +157,14 @@ const WingAndAppetizer = () => {
                         <br></br>
                       </div>
                     </td>
-                    <td class="   lg:py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[10px]  pv:max-md:px-[10px]">
-                      <div className="flex justify-start items-center  lg:space-x-2">
+                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw] h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
+                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
                           height="19.799"
                           viewBox="0 0 19.799 19.799"
-                          className="pv:max-md:hidden"
+                          className="  svg-wings"
                         >
                           <rect
                             id="Rectangle_255"
@@ -179,14 +179,14 @@ const WingAndAppetizer = () => {
                         <p>Crab Meat Salad</p>
                       </div>{" "}
                     </td>
-                    <td class="   lg:py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[10px]  pv:max-md:px-[10px]">
-                      <div className="flex justify-start items-center  lg:space-x-2 text-start">
+                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw] h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
+                      <div className=" flex justify-start items-center lg:space-x-2 text-start text-start">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
                           height="19.799"
                           viewBox="0 0 19.799 19.799"
-                          className="pv:max-md:hidden"
+                          className="  svg-wings"
                         >
                           <rect
                             id="Rectangle_255"
@@ -211,14 +211,14 @@ const WingAndAppetizer = () => {
 
                   {/*  */}
                   <tr className="">
-                    <td class="   lg:py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[10px]  pv:max-md:px-[10px]">
-                      <div className="flex justify-start items-center  lg:space-x-2">
+                    <td class="  py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
+                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
                           height="19.799"
                           viewBox="0 0 19.799 19.799"
-                          className="pv:max-md:hidden"
+                          className="  svg-wings"
                         >
                           <rect
                             id="Rectangle_255"
@@ -237,14 +237,14 @@ const WingAndAppetizer = () => {
                         </p>
                       </div>
                     </td>
-                    <td class="   lg:py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[10px]  pv:max-md:px-[10px]">
-                      <div className="flex justify-start items-center  lg:space-x-2">
+                    <td class=" py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
+                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
                           height="19.799"
                           viewBox="0 0 19.799 19.799"
-                          className="pv:max-md:hidden"
+                          className="  svg-wings"
                         >
                           <rect
                             id="Rectangle_255"
@@ -256,7 +256,7 @@ const WingAndAppetizer = () => {
                         </svg>
                          
 
-                        <p>
+                        <p className="pv:max-lg:leading-[2vw]">
                           Karaage
                           <br></br>{" "}
                           <span className=" font-nexa">
@@ -265,14 +265,14 @@ const WingAndAppetizer = () => {
                         </p>
                       </div>
                     </td>
-                    <td class="   lg:py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[10px]  pv:max-md:px-[10px]">
-                      <div className="flex justify-start items-center  lg:space-x-2">
+                    <td class="  py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
+                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
                           height="19.799"
                           viewBox="0 0 19.799 19.799"
-                          className="pv:max-md:hidden"
+                          className="  svg-wings"
                         >
                           <rect
                             id="Rectangle_255"
@@ -289,14 +289,14 @@ const WingAndAppetizer = () => {
                     </td>
                   </tr>
                   <tr className="">
-                    <td class="   lg:py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[10px]  pv:max-md:px-[10px]">
-                      <div className="flex justify-start items-center  lg:space-x-2 text-start">
+                    <td class="  py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
+                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
                           height="19.799"
                           viewBox="0 0 19.799 19.799"
-                          className="pv:max-md:hidden"
+                          className="  svg-wings"
                         >
                           <rect
                             id="Rectangle_255"
@@ -312,14 +312,14 @@ const WingAndAppetizer = () => {
                         <br></br>
                       </div>
                     </td>
-                    <td class="   lg:py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[10px]  pv:max-md:px-[10px]">
-                      <div className="flex justify-start items-center  lg:space-x-2">
+                    <td class=" py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
+                      <div className="flex justify-start items-center lg:space-x-2 text-start ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
                           height="19.799"
                           viewBox="0 0 19.799 19.799"
-                          className="pv:max-md:hidden"
+                          className="  svg-wings"
                         >
                           <rect
                             id="Rectangle_255"
@@ -334,14 +334,14 @@ const WingAndAppetizer = () => {
                         <p>Crab Rangoon (6)</p>
                       </div>{" "}
                     </td>
-                    <td class="   lg:py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[10px]  pv:max-md:px-[10px]">
-                      <div className="flex justify-start items-center  lg:space-x-2 text-start">
+                    <td class=" py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
+                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
                           height="19.799"
                           viewBox="0 0 19.799 19.799"
-                          className="pv:max-md:hidden"
+                          className="  svg-wings"
                         >
                           <rect
                             id="Rectangle_255"

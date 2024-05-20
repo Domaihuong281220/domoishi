@@ -36,7 +36,7 @@ const WhyPart1 = () => {
                     </div>
                     <div className="absolute bottom-0 right-[15.8%] pv:max-md:right-[9%] w-[30.5vw] h-[31vw] ">
                         <img src={WhyDomoishi4} alt="" className="object-contain" />
-                        <div className="w-full h-full flex flex-col justify-center  absolute top-0 left-0">
+                        <div className="w-full h-full flex flex-col justify-center  absolute top-0 left-0 text-white">
                             <p className="font-jonitha uppercase  text-[1.9vw]">GREAT TASTE</p>
                             <p className="font-nexa font-extralight text-[1.3vw] md:leading-[2vw] tracking-[0.115vw]  p-[2vw]  text-center">
                                 By carefully selecting top-quality ingredients and flavors from Asia and leveraging our expertise, we tailor tastes to suit each region perfectly.

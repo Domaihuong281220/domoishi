@@ -46,7 +46,7 @@ const PokeBowl = () => {
                 <p className="font-nexa_light font-bold text-3xl 2xl:text-5xl pv:max-md:text-xl">STEP 2: PROTEINS</p>
             </div>
             <div class="flex flex-col my-12">
-                <div class="-m-1.5 overflow-x-auto">
+                <div class="-my-1.5 overflow-x-auto">
                     <div class="px-[8%] inline-block align-middle">
                         <div class="border rounded-lg shadow overflow-hidden border-black">
                             <table class=" divide-y divide-black table-fixed w-full">
@@ -81,7 +81,7 @@ const PokeBowl = () => {
                 <p className="font-nexa_light font-bold text-3xl 2xl:text-5xl pv:max-md:text-xl">STEP 3: TOPPINGS</p>
             </div>
             <div class="flex flex-col my-12">
-                <div class="-m-1.5 overflow-x-auto">
+                <div class="-my-1.5 overflow-x-auto">
                     <div class="px-[8%] inline-block align-middle">
                         <div class="border rounded-lg shadow overflow-hidden border-black">
                             <table class=" divide-y divide-black table-fixed w-full">
@@ -123,7 +123,7 @@ const PokeBowl = () => {
                 <p className="font-nexa_light font-bold text-3xl 2xl:text-5xl pv:max-md:text-xl">STEP 4: SAUCE</p>
             </div>
             <div class="flex flex-col my-12">
-                <div class="-m-1.5 overflow-x-auto">
+                <div class="-my-1.5 overflow-x-auto">
                     <div class="px-[8%] inline-block align-middle">
                         <div class="border rounded-lg shadow overflow-hidden border-black ">
                             <table class=" divide-y divide-black table-fixed w-full">
@@ -165,7 +165,7 @@ const PokeBowl = () => {
                 <p className="font-nexa_light font-bold text-3xl 2xl:text-5xl pv:max-md:text-xl">STEP 5: GARNISH</p>
             </div>
             <div class="flex flex-col my-12">
-                <div class="-m-1.5 overflow-x-auto">
+                <div class="-my-1.5 overflow-x-auto">
                     <div class="px-[8%] inline-block align-middle">
                         <div class="border-2 rounded-lg shadow overflow-hidden border-gray-300 ">
                             <table class=" divide-y divide-gray-600 table-fixed w-full">
@@ -189,7 +189,7 @@ const PokeBowl = () => {
             <p className="font-nexa_light uppercase font-black text-[3vw] pv:max-lg:text-[6vw]">rice bowl</p>
             <p className="font-nexa_light font-black text-[1.8vw] pv:max-lg:text-[3.8vw]">Served With White Rice Or Brown Rice</p>
             <div class="flex flex-col my-12">
-                <div class="-m-1.5 overflow-x-auto">
+                <div class="-my-1.5 overflow-x-auto">
                     <div class="px-[8%] inline-block align-middle">
                         <div class="border rounded-lg shadow overflow-hidden border-black">
                             <table class=" divide-y divide-black table-fixed w-full">

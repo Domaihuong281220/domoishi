@@ -21,7 +21,7 @@ const Tea = () => {
     return (
 
         <div className="w-full px-[12%] pv:max-lg:px-[8%] relative">
-            <img src={xoxo} alt="" className="absolute top-[50rem] 2xl:top-[65rem]  pv:max-md:w-24  pv:max-md:top-[23rem] lg:w-44 right-0 z-40 2xl:w-60" />
+            <img src={xoxo} alt="" className="absolute top-[50rem] 2xl:top-[65rem]  pv:max-md:w-20  pv:max-md:top-[23rem] md:max-mdmax:w-32 md:max-mdmax:top-[65vw]  lg:w-44 lg:max-xl:top-[61vw] right-0 z-40 2xl:w-60" />
             <p className="font-nexa_bold text-5xl 2xl:text-6xl pv:max-md:text-4xl">SPECIAL DRINKS</p>
 
             <div class="grid grid-cols-4 gap-4 my-[3vw]">
@@ -88,7 +88,7 @@ const Tea = () => {
             </div>
             
             <div class="flex flex-col my-12 ">
-                <div class="-m-1.5 overflow-x-auto">
+                <div class="-my-1.5 overflow-x-auto">
                     <div class=" inline-block align-middle">
                         <div class="border rounded-lg shadow overflow-hidden border-black ">
                             <table class=" divide-y divide-black table-fixed w-full">
@@ -96,10 +96,10 @@ const Tea = () => {
                                 <tbody class="divide-y divide-black">
                                     
                                     <tr className="divide-x divide-black">
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[7px]">GOLDEN FRUIT TEA</td>
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[7px]">LYCHEE ROSE TEA</td>
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[7px]">PINE STRAWBERRY TEA</td>
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[7px]">WATERMELON TEA</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold  text-[1.5vw] ">GOLDEN FRUIT TEA</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw]  ">LYCHEE ROSE TEA</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw] ">PINE STRAWBERRY TEA</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw] ">WATERMELON TEA</td>
                                     </tr>
                                     
                                 </tbody>
@@ -318,31 +318,31 @@ const Tea = () => {
             </div>
             <p className="w-full text-center font-jonitha text-[3vw] pt-[4vw]">TOPPINGS</p>
             <div class="flex flex-col my-12 ">
-                <div class="-m-1.5 overflow-x-auto">
+                <div class="-my-1.5 overflow-x-auto">
                     <div class=" inline-block align-middle">
                         <div class="border rounded-lg shadow overflow-hidden border-black ">
                             <table class=" divide-y divide-black table-fixed w-full">
 
                                 <tbody class="divide-y divide-black">
                                     <tr className="divide-x divide-black bg-black text-white">
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">BOBA</td>
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">JELLIES</td>
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">POPPING BOBA</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw]">BOBA</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw]">JELLIES</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw]">POPPING BOBA</td>
                                     </tr>
                                     <tr className="divide-x divide-black">
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">AMBER</td>
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">RAINBOW</td>
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">YOGURT</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw]">AMBER</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw]">RAINBOW</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw]">YOGURT</td>
                                     </tr>
                                     <tr className="divide-x divide-black">
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">HONEY</td>
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">LYCHEE</td>
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">PEACH</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw]">HONEY</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw]">LYCHEE</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw]">PEACH</td>
                                     </tr>
                                     <tr className="divide-x divide-black">
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">CRYSTAL</td>
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">STRAWBERRY</td>
-                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-2xl  pv:max-md:text-[8px]">PASSION FRUIT</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw]">CRYSTAL</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw]">STRAWBERRY</td>
+                                        <td class="0 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw]">PASSION FRUIT</td>
                                     </tr>
                                 </tbody>
                             </table>

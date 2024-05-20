@@ -2,12 +2,6 @@
 
 import React from "react";
 
-import { Row, Col } from "antd";
-import WhyDomoishi1 from "../../assets/HomePage/WhyDomoishi1.png";
-import WhyDomoishi2 from "../../assets/HomePage/WhyDomoishi2.png";
-import WhyDomoishi3 from "../../assets/HomePage/WhyDomoishi3.png";
-import WhyDomoishi4 from "../../assets/HomePage/WhyDomoishi4.png";
-import WhyDomoishi5 from "../../assets/HomePage/WhyDomoishi5.png";
 import WhyPart1 from "./WhyPart1";
 import { path } from "../../utils/Constant";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +12,7 @@ const WhyDomoishi = () => {
       <p className="font-chalkboard px-[12%] text-[4.4vw] leading-[4vw] ">
         What why when <br></br> domoishi ?{" "}
       </p>
-      <p className="font-nexa_light font-black px-[13%] text-[1.3vw] pv:max-md:m-4 leading-[3vw] w-full uppercase mt-12">
+      <p className="font-nexa font-black px-[13%] text-[1.15vw] pv:max-md:m-4 leading-[3vw] w-full uppercase mt-12">
       We handpick authentic ingredients from diverse regions in Asia, infusing our recipes with a delightful fusion of popular Korean, Japanese, and other Asian dishes such as Poke, 
       Soy Garlic Crunchy Chicken, Tonkotsu Ramen, Bubble Tea, and a plethora of enticing fusion creations. This ensures that each culinary encounter with us is a truly exceptional experience.
       </p>
