@@ -19,7 +19,7 @@ const Ramen = () => {
       <img
         src={bestseller}
         alt=""
-        className="absolute top-[5rem]  pv:max-md:top-28 lg:w-44  pv:max-md:w-20 md:max-mdmax:top-[19vw] md:max-mdmax:w-[20vw] right-0 z-40 xl:w-60"
+        className="absolute top-[5rem]  pv:max-md:top-28 lg:w-44  pv:max-md:w-20 md:max-mdmax:top-[19vw] md:max-mdmax:w-[20vw] right-0 z-40 xl:w-60 pv:max-lg:hidden"
       />
       <p className="font-nexa_bold text-5xl 2xl:text-6xl pv:max-md:text-4xl">
         RAMEN
@@ -57,17 +57,17 @@ const Ramen = () => {
               <table class=" divide-y divide-gray-600 table-fixed w-full">
                 <tbody class="divide-y divide-black">
                   <tr className="divide-x divide-gray-600">
-                    <td class="px-6 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw] pv:max-md:text-[8px] pv:max-md:leading-4">
+                    <td class="  py-4 whitespace-nowrap font-nexa_bold text-[1.5vw] pv:max-md:text-[8px] pv:max-md:leading-4">
                       Shoyu Base
                       <br></br>(Soy Broth)
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw] pv:max-md:text-[8px] pv:max-md:leading-4">
+                    <td class="  py-4 whitespace-nowrap font-nexa_bold text-[1.5vw] pv:max-md:text-[8px] pv:max-md:leading-4">
                       Tonkotsu <br></br>(Pork Broth)
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw] pv:max-md:text-[8px] pv:max-md:leading-4">
+                    <td class="  py-4 whitespace-nowrap font-nexa_bold text-[1.5vw] pv:max-md:text-[8px] pv:max-md:leading-4">
                       Miso Soup
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap font-nexa_bold text-[1.5vw] pv:max-md:text-[8px] pv:max-md:leading-4">
+                    <td class="  py-4 whitespace-nowrap font-nexa_bold text-[1.5vw] pv:max-md:text-[8px] pv:max-md:leading-4">
                       Miso Base
                     </td>
                   </tr>

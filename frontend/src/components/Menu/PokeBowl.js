@@ -196,19 +196,19 @@ const PokeBowl = () => {
 
                                 <tbody class="divide-y divide-black">
                                     <tr className="divide-x divide-black">
-                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Thai Style Orange Chicken</td>
-                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Soy Garlic Chicken Bowl</td>
-                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Curry Chicken Katsu</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[7px]">Thai Style Orange Chicken</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[7px]">Soy Garlic Chicken Bowl</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[7px]">Curry Chicken Katsu</td>
                                     </tr>
                                     <tr className="divide-x divide-black">
-                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Thai Style Seasame Chicken</td>
-                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Spicy Soy Garlic Chicken Bowl</td>
-                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Gyudon Beef Bowl</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[7px]">Thai Style Seasame Chicken</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[7px]">Spicy Soy Garlic Chicken Bowl</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[7px]">Gyudon Beef Bowl</td>
                                     </tr>
                                     <tr className="divide-x divide-black">
-                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Tokyo Chicken Katsu</td>
-                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Beef Curry Bowl</td>
-                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[8px]">Unadon Eal Bowl</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[7px]">Tokyo Chicken Katsu</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[7px]">Beef Curry Bowl</td>
+                                        <td class="  py-4 whitespace-nowrap font-nexa_bold  text-[1.7vw]  pv:max-md:text-[7px]">Unadon Eal Bowl</td>
                                     </tr>
                                     
                                 </tbody>

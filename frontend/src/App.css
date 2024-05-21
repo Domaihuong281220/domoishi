@@ -129,11 +129,6 @@ select {
 .custom_lineHeight{
   line-height: 3.4vw;
 
-.svg-wings{
-  width: 1.2vw;
-  height: 1.2vw;
-}
-
 .PromoSwiper>.swiper-button-prev {
   left: 10% !important;
 }
@@ -141,6 +136,10 @@ select {
   right: 10% !important;
 }
 
+}
+.svg-wings{
+  width: 1.2vw;
+  height: 1.2vw;
 }
 /* responsive  */
 @media (min-width: 320px) and (max-width: 768px) {
@@ -172,6 +171,12 @@ select {
     background-image: url("./assets/HomePage/Group\ 141.png");
     background-repeat: no-repeat;
     background-size: contain;
+  }
+  .PromoSwiper>.swiper-button-prev {
+    left: 10% !important;
+  }
+  .PromoSwiper>.swiper-button-next {
+    right: 10% !important;
   }
  
 }
@@ -206,5 +211,10 @@ select {
     background-repeat: no-repeat;
     background-size: contain;
   }
- 
+  .PromoSwiper>.swiper-button-prev {
+    left: 10% !important;
+  }
+  .PromoSwiper>.swiper-button-next {
+    right: 10% !important;
+  }
 }

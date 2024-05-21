@@ -16,7 +16,7 @@ const WingAndAppetizer = () => {
                       colSpan={3}
                       class="   py-4 whitespace-nowrap font-nexa_bold bg-black text-white text-center text-2xl  pv:max-md:text-[10px]  pv:max-md:px-[10px] "
                     >
-                      <div className="flex justify-center items-center  lg:space-x-2">
+                      <div className="flex justify-center items-center  lg:space-x-2 pv:space-x-[1vw]">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="14"
@@ -62,8 +62,8 @@ const WingAndAppetizer = () => {
               <table class=" table-fixed w-full">
                 <tbody class="">
                   <tr className="">
-                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
-                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
+                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[5px]">
+                      <div className=" flex justify-start items-center lg:space-x-2 pv:space-x-[1vw] text-start">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
@@ -84,8 +84,8 @@ const WingAndAppetizer = () => {
                         <p>French Fries</p>
                       </div>
                     </td>
-                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
-                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
+                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[5px]">
+                      <div className="  flex justify-start items-center lg:space-x-2 text-start pv:space-x-[1vw] ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
@@ -106,8 +106,8 @@ const WingAndAppetizer = () => {
                         <p>Beef Gyoza (6)</p>
                       </div>
                     </td>
-                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw] h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
-                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
+                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw] h-[11vw] xl:h-[7vw] pv:max-md:px-[5px]">
+                      <div className="  flex justify-start items-center lg:space-x-2 text-start pv:space-x-[1vw] ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
@@ -130,8 +130,8 @@ const WingAndAppetizer = () => {
                     </td>
                   </tr>
                   <tr className="">
-                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw] h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
-                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
+                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw] h-[11vw] xl:h-[7vw] pv:max-md:px-[5px]">
+                      <div className="  flex justify-start items-center lg:space-x-2 text-start pv:space-x-[1vw] ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
@@ -157,8 +157,8 @@ const WingAndAppetizer = () => {
                         <br></br>
                       </div>
                     </td>
-                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw] h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
-                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
+                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw] h-[11vw] xl:h-[7vw] pv:max-md:px-[5px]">
+                      <div className="  flex justify-start items-center lg:space-x-2 text-start pv:space-x-[1vw] ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
@@ -179,8 +179,8 @@ const WingAndAppetizer = () => {
                         <p>Crab Meat Salad</p>
                       </div>{" "}
                     </td>
-                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw] h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
-                      <div className=" flex justify-start items-center lg:space-x-2 text-start text-start">
+                    <td class="   py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw] h-[11vw] xl:h-[7vw] pv:max-md:px-[5px]">
+                      <div className="  flex justify-start items-center lg:space-x-2 text-start pv:space-x-[1vw]  text-start">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
@@ -211,8 +211,8 @@ const WingAndAppetizer = () => {
 
                   {/*  */}
                   <tr className="">
-                    <td class="  py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
-                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
+                    <td class="  py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[5px]">
+                      <div className="  flex justify-start items-center lg:space-x-2 text-start pv:space-x-[1vw] ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
@@ -237,8 +237,8 @@ const WingAndAppetizer = () => {
                         </p>
                       </div>
                     </td>
-                    <td class=" py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
-                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
+                    <td class=" py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[5px]">
+                      <div className="  flex justify-start items-center lg:space-x-2 text-start pv:space-x-[1vw] ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
@@ -265,8 +265,8 @@ const WingAndAppetizer = () => {
                         </p>
                       </div>
                     </td>
-                    <td class="  py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
-                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
+                    <td class="  py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[5px]">
+                      <div className="  flex justify-start items-center lg:space-x-2 text-start pv:space-x-[1vw] ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
@@ -289,8 +289,8 @@ const WingAndAppetizer = () => {
                     </td>
                   </tr>
                   <tr className="">
-                    <td class="  py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
-                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
+                    <td class="  py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[5px]">
+                      <div className="  flex justify-start items-center lg:space-x-2 text-start pv:space-x-[1vw] ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
@@ -312,8 +312,8 @@ const WingAndAppetizer = () => {
                         <br></br>
                       </div>
                     </td>
-                    <td class=" py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
-                      <div className="flex justify-start items-center lg:space-x-2 text-start ">
+                    <td class=" py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[5px]">
+                      <div className=" flex justify-start items-center lg:space-x-2 text-start pv:space-x-[1vw]  ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"
@@ -334,8 +334,8 @@ const WingAndAppetizer = () => {
                         <p>Crab Rangoon (6)</p>
                       </div>{" "}
                     </td>
-                    <td class=" py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[10px]">
-                      <div className=" flex justify-start items-center lg:space-x-2 text-start">
+                    <td class=" py-[0.5vw] whitespace-nowrap font-nexa_bold text-[1.7vw] pv:max-lg:text-[2vw]  h-[11vw] xl:h-[7vw] pv:max-md:px-[5px]">
+                      <div className="  flex justify-start items-center lg:space-x-2 text-start pv:space-x-[1vw] ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="19.799"

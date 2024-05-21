@@ -21,7 +21,7 @@ const Tea = () => {
     return (
 
         <div className="w-full px-[12%] pv:max-lg:px-[8%] relative">
-            <img src={xoxo} alt="" className="absolute top-[50rem] 2xl:top-[65rem]  pv:max-md:w-20  pv:max-md:top-[23rem] md:max-mdmax:w-32 md:max-mdmax:top-[65vw]  lg:w-44 lg:max-xl:top-[61vw] right-0 z-40 2xl:w-60" />
+            <img src={xoxo} alt="" className="absolute top-[50rem] 2xl:top-[65rem]  pv:max-md:w-20  pv:max-md:top-[23rem] md:max-mdmax:w-32 md:max-mdmax:top-[65vw]  lg:w-44 lg:max-xl:top-[61vw] right-0 z-40 2xl:w-60 pv:max-lg:hidden" />
             <p className="font-nexa_bold text-5xl 2xl:text-6xl pv:max-md:text-4xl">SPECIAL DRINKS</p>
 
             <div class="grid grid-cols-4 gap-4 my-[3vw]">

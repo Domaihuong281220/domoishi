@@ -38,6 +38,7 @@ module.exports = {
       screens: {
         pv: "280px",
         pvmax: "360px",
+        mdmid: "810px",
         mdmax:"830px",
         lgmax:"1100px",
         ph: "480px",
