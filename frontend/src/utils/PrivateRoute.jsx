@@ -34,6 +34,8 @@ import {
   LocationManage,
   CreateLocation,
   EditLocation,
+  LocationFrame,
+  EditLocationFrame,
 } from "../pages";
 import { path } from "./Constant";
 export const allowedRoles = ["admin"];
@@ -231,6 +233,20 @@ const routes = [
     exact: true,
     component: <EditLocation />,
     main: () => <EditLocation />,
+    role: ["admin"],
+  },
+  {
+    path: path.LOCATIONFRAME,
+    exact: true,
+    component: <LocationFrame />,
+    main: () => <LocationFrame />,
+    role: ["admin"],
+  },
+  {
+    path: path.EDITLOCATIONFRAME,
+    exact: true,
+    component: <EditLocationFrame />,
+    main: () => <EditLocationFrame />,
     role: ["admin"],
   },
 ];

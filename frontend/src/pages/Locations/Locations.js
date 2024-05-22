@@ -4,10 +4,34 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import React, { useState, useEffect } from "react";
 import GoogleMapReact from "google-map-react";
 import { CardLocations } from "../../components";
-// import { mapStyles } from "./MapStyles";
+import axios from "axios";
 
 const Locations = () => {
   const src="https://www.google.com/maps/d/u/0/embed?mid=1UziMpWMTGXokRZmDvWFOPym63M3YnPg&ehbc=2E312F"
+
+  useEffect(() => {
+    handleGetLocation();
+  }, []);
+  const [locationData, setLocationData] = useState([
+    {
+      name: "",
+      address: "",
+      phone: "",
+      website: "",
+    },
+  ]);
+  const handleGetLocation = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/locations`
+      );
+      // const fetchData = [...response.data.data].reverse(); // Copy and reverse the array
+      setLocationData(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  console.log(locationData);
 
   const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
@@ -34,48 +58,17 @@ const Locations = () => {
           </button>
         </div>
         <div className="pt-10 h-[500px] overflow-y-scroll pv:max-md:h-[300px]  xl:max-2xl:h-[550px] ">
-          <CardLocations
-            title={"Battlefield"}
-            address={"146 S. Battlefield Blvd STE 12 Chesapeake, VA, 23322"}
-            phone={"(757) 453 - 4888"}
-            status={"Coming Soon"}
-          />
-          <CardLocations
-            title={"Chesterfield"}
-            address={"146 S. Battlefield Blvd STE 12 Chesapeake, VA, 23322"}
-            phone={"(757) 453 - 4888"}
-            status={"PICK UP"}
-          />
-          <CardLocations
-            title={"Battlefield"}
-            address={"146 S. Battlefield Blvd STE 12 Chesapeake, VA, 23322"}
-            phone={"(757) 453 - 4888"}
-            status={"Coming Soon"}
-          />
-          <CardLocations
-            title={"Battlefield"}
-            address={"146 S. Battlefield Blvd STE 12 Chesapeake, VA, 23322"}
-            phone={"(757) 453 - 4888"}
-            status={"Coming Soon"}
-          />
-          <CardLocations
-            title={"Battlefield"}
-            address={"146 S. Battlefield Blvd STE 12 Chesapeake, VA, 23322"}
-            phone={"(757) 453 - 4888"}
-            status={"Coming Soon"}
-          />
-          <CardLocations
-            title={"Battlefield"}
-            address={"146 S. Battlefield Blvd STE 12 Chesapeake, VA, 23322"}
-            phone={"(757) 453 - 4888"}
-            status={"Coming Soon"}
-          />
-          <CardLocations
-            title={"Battlefield"}
-            address={"146 S. Battlefield Blvd STE 12 Chesapeake, VA, 23322"}
-            phone={"(757) 453 - 4888"}
-            status={"Coming Soon"}
-          />
+          {locationData.map((item, index) => {
+            return (
+              <CardLocations
+                title={item.name}
+                address={item.address}
+                phone={item.phone}
+                status={"Pick up"}
+                website={item.website}
+              />
+            );
+          })}
         </div>
         <div className="w-full h-[1px] bg-gray-400 mt-2 md:hidden"></div>
       </div>

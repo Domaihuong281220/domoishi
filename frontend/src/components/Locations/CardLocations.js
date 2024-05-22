@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
-const CardLocations = ({ title, address, phone, status }) => {
+const CardLocations = ({ title, address, phone, status, website }) => {
   return (
     <div>
       <div className="flex flex-col gap-2">
@@ -21,9 +21,9 @@ const CardLocations = ({ title, address, phone, status }) => {
         </div>
 
         <div className="flex justify-start pt-4">
-          <button className=" px-4 py-2 bg-[#cb1313] rounded-lg">
+          <a className=" px-4 py-2 bg-[#cb1313] rounded-lg" href={website}>
             <p className="text-white font-nexa_bold ">{status}</p>
-          </button>
+          </a>
         </div>
         <div className="w-full h-[1px] bg-black my-4"></div>
       </div>
