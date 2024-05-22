@@ -887,6 +887,7 @@ router.get("/locationframe", async (req, res) => {
 router.put('/locationframe/:id', async (req, res) => {
   const { id } = req.params;
   const updateData = req.body;
+
   if (!id) {
     return res.status(400).json({
       success: false,

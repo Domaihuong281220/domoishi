@@ -7,10 +7,11 @@ import { CardLocations } from "../../components";
 import axios from "axios";
 
 const Locations = () => {
-  const src="https://www.google.com/maps/d/u/0/embed?mid=1UziMpWMTGXokRZmDvWFOPym63M3YnPg&ehbc=2E312F"
+  const [src,setSrc]= useState()
 
   useEffect(() => {
     handleGetLocation();
+    handleGetLocationFrame();
   }, []);
   const [locationData, setLocationData] = useState([
     {
@@ -31,9 +32,21 @@ const Locations = () => {
       console.log(err);
     }
   };
+  const handleGetLocationFrame = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/locationframe`
+      );
+      // const fetchData = [...response.data.data].reverse(); // Copy and reverse the array
+      setSrc(response.data[0].src);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   console.log(locationData);
 
-  const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
 
   return (
     <div className="w-[76%] mx-auto grid grid-cols-5 pv:max-md:w-[95%] lg:max-xl:w-[95%]   pv:max-lg:grid-cols-1">
@@ -77,7 +90,7 @@ const Locations = () => {
           className="h-[800px] w-full pv:max-lg:h-[50vh] lg:max-2xl:h-[70vh]"
           // style={{ height: "800px", width: "100%" }}
         >
-          <iframe src={src} className="w-full h-full mapframe" title="map"></iframe>
+          <iframe src={src} className="w-full h-full mapframe" title="map" style={{frameBorder: "0",}}></iframe>
         </div>
       </div>
     </div>
