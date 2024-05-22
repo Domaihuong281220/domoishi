@@ -57,38 +57,6 @@ router.post("/user", checkSecretKey, async (req, res) => {
     });
   }
 
-  // try {
-  //   const { name, username, password, email, role, phonenumber } = req.body;
-  //   const exist = await schema.User.findOne({ username });
-  //   // console.log(exist);
-  //   if (exist) {
-  //     return res.json({
-  //       error: "user name already exist",
-  //     });
-  //   }
-  //   const exist_1 = await schema.User.findOne({ phonenumber });
-  //   // console.log(exist);
-  //   if (exist_1) {
-  //     return res.json({
-  //       error: "phone number already exist",
-  //     });
-  //   }
-  //   const user = await schema.User.save({
-  //     name,
-  //     username,
-  //     password,
-  //     email,
-  //     role,
-  //     phonenumber
-
-  //   });
-  //   return res.json(user);
-  // } catch (error) {
-  //   console.log(error);
-
-  // }
-
-
 });
 
 
@@ -753,6 +721,199 @@ router.post('/delete-file', (req, res) => {
     });
   });
 });
+
+// Route to fetch location data (sample data)
+router.get("/locations", async (req, res) => {
+  const Location = schema.Location;
+  try {
+    const locationData = await Location.find();
+    res.json(locationData);
+  } catch (err) {
+    res.status(500).json({
+      message: "User not found",
+      error: err.message,
+    });
+  }
+});
+
+router.post("/locations", async (req, res) => {
+  const {name, address,phone,website} = req.body;
+  const locationData = { name: name, address: address, phone: phone, website: website};
+
+  try {
+    const newLocation = new schema.Location(locationData);
+    const saveLocation = await newLocation.save(); // Use 'await' to wait for the save operation to complete
+    res.status(200).json({
+      message: "Location added successfully",
+      data: saveLocation,
+      // id: saveLocation._id  // Now this should correctly display the _id
+    });
+  } catch (err) {
+    console.error(err); // It's good to log the error for debugging
+    res.status(500).json({
+      message: "Location not added",
+      error: err.message,
+    });
+  }
+})
+
+router.put("/locations/:id", async (req, res) => {
+  const { id } = req.params;
+  const updateData = req.body;
+  if (!id) {
+    return res.status(400).json({
+      success: false,
+      message: "ID parameter is required",
+    });
+  
+    }
+  try {
+    const updatedLocation = await schema.Location.findByIdAndUpdate(
+      id, // Using the ID directly
+      updateData,
+      { new: true, runValidators: true } // Return the updated object and run model validators
+    );
+    if (updatedLocation) {
+      res.status(200).json({
+        success: true,
+        message: "Location updated successfully",
+        data: updatedLocation,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        message: "No location found with the given ID",
+      });
+    }
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid ID format",
+      });
+    }
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: err.message,
+    });
+  }
+})
+
+router.delete("/locations/:id", async (req, res) => {
+  const id = req.params.id;
+  if (!id) {
+    return res.status(400).json({
+      success: false,
+      message: "ID parameter is required",
+    });
+  }
+
+  try {
+    const deletedLocation = await schema.Location.findByIdAndDelete(id);
+    if (deletedLocation) {
+      res.status(200).json({
+        success: true,
+        message: "Location deleted successfully",
+        data: deletedLocation,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        message: "No location found with the given ID",
+      });
+    }
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid ID format",
+      });
+    }
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: err.message,
+    });
+  }
+})
+
+router.get("/locations/:id", async (req, res) => {
+  const id = req.params.id;
+  if (!id) {
+    return res.status(400).json({
+      success: false,
+      message: "ID parameter is required",
+    });
+  }
+  try {
+    const location = await schema.Location.findById(id);
+    if (location) {
+      res.status(200).json({
+        success: true,
+        data: location,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        message: "No location found with the given ID",
+      });
+    }
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid ID format",
+      });
+    }
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: err.message,
+    });
+  }
+});
+
+router.get("/locationframe", async (req, res) => {
+  const LocationFrame = schema.LocationFrame;
+  try {
+    const locationData = await LocationFrame.find();
+    res.json(locationData);
+  } catch (err) {
+    res.status(500).json({
+      message: "User not found",
+      error: err.message,
+    });
+  }
+});
+router.put('/locationframe', async(req, res) => {
+  try {
+    const locationFrame = await schema.LocationFrame.find();
+    if (locationFrame) {
+      res.status(200).json({
+        success: true,
+        data: locationFrame,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        message: "No location found with the given ID",
+      });
+    }
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid ID format",
+      });
+    }
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: err.message,
+    });
+  }
+})
 
 
 module.exports = router;
