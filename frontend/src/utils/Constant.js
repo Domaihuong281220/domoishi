@@ -53,6 +53,12 @@ export const path = {
   EDITUSER: "/edit-user",
   USERVIEW: "/view-user",
 
+  // Locations
+
+  LOCATIONMANAGE: "/manage-location",
+  CREATELOCATION: "/create-location",
+  EDITLOCATION: "/edit-location",
+
   ERROR: "*",
 };
 

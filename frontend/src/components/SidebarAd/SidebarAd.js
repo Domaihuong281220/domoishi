@@ -188,6 +188,19 @@ const SidebarAd = () => {
             <p className="">Users</p>
           </div>
         </ListItem>
+        <ListItem
+          className=""
+          onClick={() => {
+            navigate("../" + path.LOCATIONMANAGE);
+          }}
+        >
+          <div className="text-lg flex items-center gap-2">
+            <ListItemPrefix>
+              <Icon icon="mdi:user-outline" className="h-5 w-5"></Icon>
+            </ListItemPrefix>
+            <p className="">Locations</p>
+          </div>
+        </ListItem>
         <Popconfirm
           placement="bottomRight"
           title="Log out"

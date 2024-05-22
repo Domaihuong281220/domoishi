@@ -55,3 +55,8 @@ export { default as ManageUser } from "./Admin/User/ManageUser/ManageUser";
 export { default as UserAdd } from "./Admin/User/UserAdd/UserAdd";
 export { default as UserEdit } from "./Admin/User/UserEdit/UserEdit";
 export { default as UserView } from "./Admin/User/UserView/UserView";
+
+// Locations
+export { default as LocationManage } from "./Admin/Locations/LocationsManage";
+export { default as CreateLocation } from "./Admin/Locations/CreateLocation/CreateLocation";
+export { default as EditLocation } from "./Admin/Locations/EditLocation/EditLocation";
