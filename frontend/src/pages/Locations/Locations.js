@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import GoogleMapReact from "google-map-react";
 import { CardLocations } from "../../components";
 import axios from "axios";
+import "./style.css"
 
 const Locations = () => {
   const [src,setSrc]= useState()
@@ -70,7 +71,7 @@ const Locations = () => {
             ></Icon>
           </button>
         </div>
-        <div className="pt-10 h-[500px] overflow-y-scroll pv:max-md:h-[300px]  xl:max-2xl:h-[550px] ">
+        <div className="pt-10 h-fit overflow-y-scroll pv:max-md:h-[300px]  xl:max-2xl:h-[550px] ">
           {locationData.map((item, index) => {
             return (
               <CardLocations
@@ -85,12 +86,13 @@ const Locations = () => {
         </div>
         <div className="w-full h-[1px] bg-gray-400 mt-2 md:hidden"></div>
       </div>
-      <div className="col-span-3 py-10">
+      <div className="col-span-3 md:pb-10">
         <div
-          className="h-[800px] w-full pv:max-lg:h-[50vh] lg:max-2xl:h-[70vh]"
+          className="h-[800px] w-full pv:max-lg:h-[50vh] lg:max-2xl:h-[70vh] relative"
           // style={{ height: "800px", width: "100%" }}
         >
-          <iframe src={src} className="w-full h-full mapframe" title="map" style={{frameBorder: "0",}}></iframe>
+          <div className="w-full absolute h-[5vw] top-0 bg-white pv:max-md:h-[16vw] md:max-mdmax:h-[8vw] mdmax:max-lgmax:h-[6vw]"></div>
+          <iframe src={src} className="w-full h-full mapframe" title="map" frameborder="0" ></iframe>
         </div>
       </div>
     </div>
