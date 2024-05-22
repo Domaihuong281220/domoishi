@@ -1,10 +1,67 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import img_Franchising_Banner from "../../assets/Franchising/Franchising_banner.png";
 import BGImg from "../../assets/Franchising/Subtraction 1.png";
-import { Select } from "antd";
+import axios from "axios";
+
 const Franchising = () => {
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    address: "",
+    country: "",
+    stateProvince: "",
+    city: "",
+    zipPostalCode: "",
+    email: "",
+    mobile: "",
+    preferredCity1: "",
+    businessBackground: "",
+    netWorth: "",
+    cashAvailable: ""
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:4000/api/sendEmail", formData);
+      console.log(response);
+      alert("Form submitted successfully!");
+    } catch (error) {
+      console.error("Error submitting form", error);
+      alert("Failed to submit form.");
+    }
+  };
+
+  const handleReset = () => {
+    setFormData({
+      firstName: "",
+      lastName: "",
+      address: "",
+      country: "",
+      stateProvince: "",
+      city: "",
+      zipPostalCode: "",
+      email: "",
+      mobile: "",
+      preferredCity1: "",
+      businessBackground: "",
+      netWorth: "",
+      cashAvailable: ""
+    });
+    window.location.reload();
+  };
+
   return (
     <div>
       <div className="">
@@ -36,6 +93,9 @@ const Franchising = () => {
                 *FIRST NAME :
               </p>
               <input
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
                 className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
                 placeholder="First Name"
               ></input>
@@ -45,6 +105,9 @@ const Franchising = () => {
                 *LAST NAME :{" "}
               </p>
               <input
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
                 className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
                 placeholder="Last Name:"
               ></input>
@@ -54,6 +117,9 @@ const Franchising = () => {
                 *ADDRESS :{" "}
               </p>
               <input
+               name="address"
+               value={formData.address}
+               onChange={handleChange}
                 className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
                 placeholder="Address"
               ></input>
@@ -63,6 +129,9 @@ const Franchising = () => {
                 COUNTRY :{" "}
               </p>
               <input
+                name="country"
+                value={formData.country}
+                onChange={handleChange}
                 className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
                 placeholder="Country"
               ></input>
@@ -72,6 +141,9 @@ const Franchising = () => {
                 *STATE PROVIDE:
               </p>
               <input
+               name="stateProvince"
+               value={formData.stateProvince}
+               onChange={handleChange}
                 className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
                 placeholder="State/Province"
               ></input>
@@ -84,7 +156,11 @@ const Franchising = () => {
                 </p>
               </div>
               <div className="flex justify-end pv:max-md:w-full md:max-2xl:w-full 2xl:max-dh_max:w-full">
-                <input className=" w-full pv:max-md:w-full md:max-2xl:w-full 2xl:max-dh_max:w-full   h-14 border-[1px] border-[#707070] rounded-full p-2"></input>
+                <input
+                 name="businessBackground"
+                 value={formData.businessBackground}
+                 onChange={handleChange}
+                className=" w-full pv:max-md:w-full md:max-2xl:w-full 2xl:max-dh_max:w-full   h-14 border-[1px] border-[#707070] rounded-full p-2"></input>
               </div>
             </div>
           </div>
@@ -94,6 +170,9 @@ const Franchising = () => {
                 CITY:{" "}
               </p>
               <input
+               name="city"
+               value={formData.city}
+               onChange={handleChange}
                 className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
                 placeholder="City"
               ></input>
@@ -103,6 +182,9 @@ const Franchising = () => {
                 ZIP/POSTAL CODE:{" "}
               </p>
               <input
+              name="zipPostalCode"
+              value={formData.zipPostalCode}
+              onChange={handleChange}
                 className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
                 placeholder="Zip / Postal Code"
               ></input>
@@ -112,6 +194,10 @@ const Franchising = () => {
                 *EMAIL :{" "}
               </p>
               <input
+               name="email"
+               type="email"
+               value={formData.email}
+               onChange={handleChange}
                 className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
                 placeholder="Email Ex: Doce@gmail.com"
               ></input>
@@ -121,6 +207,9 @@ const Franchising = () => {
                 *MOBILE :{" "}
               </p>
               <input
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleChange}
                 className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
                 placeholder="Phone Ex: +1 (757) xxxxx"
               ></input>
@@ -130,6 +219,9 @@ const Franchising = () => {
                 *PREFERRED CITY 1:{" "}
               </p>
               <input
+              name="netWorth"
+              value={formData.netWorth}
+              onChange={handleChange}
                 className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
                 placeholder="Preferred City 1"
               ></input>
@@ -152,6 +244,9 @@ const Franchising = () => {
                   *Cash Available for Investment :
                 </p>
                 <input
+                 name="cashAvailable"
+                 value={formData.cashAvailable}
+                 onChange={handleChange}
                 className="w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full p-2"
                 placeholder="Cash Available for Investment"
               ></input>
@@ -183,6 +278,9 @@ const Franchising = () => {
             </div>
             <div className="col-span-2">
               <input
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
                 className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
                 placeholder="Location Ex: Virginia "
               ></input>
@@ -196,6 +294,9 @@ const Franchising = () => {
             </div>
             <div className="col-span-2">
               <input
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
                 className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
                 placeholder="Last Name:"
               ></input>
@@ -209,6 +310,9 @@ const Franchising = () => {
             </div>
             <div className="col-span-2">
               <input
+              name="zipPostalCode"
+              value={formData.zipPostalCode}
+              onChange={handleChange}
                 className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
                 placeholder="Zip / Postal Code"
               ></input>
@@ -222,6 +326,9 @@ const Franchising = () => {
             </div>
             <div className="col-span-2">
               <input
+               name="address"
+               value={formData.address}
+               onChange={handleChange}
                 className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
                 placeholder="Address"
               ></input>
@@ -235,6 +342,10 @@ const Franchising = () => {
             </div>
             <div className="col-span-2">
               <input
+               name="email"
+               type="email"
+               value={formData.email}
+               onChange={handleChange}
                 className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
                 placeholder="Email Ex: Doce@gmail.com"
               ></input>
@@ -248,6 +359,9 @@ const Franchising = () => {
             </div>
             <div className="col-span-2">
               <input
+                name="country"
+                value={formData.country}
+                onChange={handleChange}
                 className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
                 placeholder="Country"
               ></input>
@@ -261,6 +375,9 @@ const Franchising = () => {
             </div>
             <div className="col-span-2">
               <input
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleChange}
                 className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
                 placeholder="Phone Ex: +1 (757) xxxxx"
               ></input>
@@ -274,6 +391,9 @@ const Franchising = () => {
             </div>
             <div className="col-span-2">
               <input
+               name="stateProvince"
+               value={formData.stateProvince}
+               onChange={handleChange}
                 className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
                 placeholder="State/Province"
               ></input>
@@ -287,6 +407,9 @@ const Franchising = () => {
             </div>
             <div className="col-span-2">
               <input
+               name="city"
+               value={formData.city}
+               onChange={handleChange}
                 className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
                 placeholder="Preferred City 1"
               ></input>
@@ -302,6 +425,9 @@ const Franchising = () => {
             </div>
             <div className="col-span-3 ">
               <input
+               name="businessBackground"
+               value={formData.businessBackground}
+               onChange={handleChange}
                 className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
                 placeholder=""
               ></input>
@@ -316,6 +442,9 @@ const Franchising = () => {
               </div>
               <div className="col-span-2">
               <input
+              name="netWorth"
+              value={formData.netWorth}
+              onChange={handleChange}
                 className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
                 placeholder="Net Worth"
               ></input>
@@ -329,6 +458,9 @@ const Franchising = () => {
               </div>
               <div className="col-span-2">
               <input
+               name="cashAvailable"
+               value={formData.cashAvailable}
+               onChange={handleChange}
                 className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
                 placeholder="Cash Available for Investment"
               ></input>
@@ -340,14 +472,14 @@ const Franchising = () => {
 
       <div className="w-[76%] mx-auto space-x-[2vw] gap-10 pt-10 flex justify-center ">
         <div className="">
-          <button className="bg-[#cb1313] px-6 py-2 rounded-lg">
+          <button className="bg-[#cb1313] px-6 py-2 rounded-lg" onClick={handleSubmit}>
             <p className=" text-white font-shopee_bold text-[27px] pv:max-xl:text-[16px] xl:max-2xl:text-[20px]">
               SUBMIT
             </p>
           </button>
         </div>
         <div className="">
-          <button className="bg-black px-6 py-2 rounded-lg">
+          <button className="bg-black px-6 py-2 rounded-lg" onClick={handleReset}>
             <p className="text-white text-[27px] pv:max-xl:text-[16px] xl:max-2xl:text-[20px] font-bold">
               RESET
             </p>

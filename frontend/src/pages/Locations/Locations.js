@@ -2,7 +2,6 @@
 
 import { Icon } from "@iconify/react/dist/iconify.js";
 import React, { useState, useEffect } from "react";
-import GoogleMapReact from "google-map-react";
 import { CardLocations } from "../../components";
 import axios from "axios";
 import "./style.css"
