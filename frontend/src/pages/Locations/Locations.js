@@ -90,7 +90,7 @@ const Locations = () => {
           className="h-[800px] w-full pv:max-lg:h-[50vh] lg:max-2xl:h-[70vh]"
           // style={{ height: "800px", width: "100%" }}
         >
-          <GoogleMapReact
+          {/* <GoogleMapReact
             bootstrapURLKeys={{
               key: "AIzaSyB116ei7Yo4JSPj9_7zOVJJc06eykeZRmQ",
             }}
@@ -102,7 +102,8 @@ const Locations = () => {
               lng={30.337844}
               text="My Marker"
             />
-          </GoogleMapReact>
+          </GoogleMapReact> */}
+          <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1UziMpWMTGXokRZmDvWFOPym63M3YnPg&ehbc=2E312F" className="w-full h-full mapframe"></iframe>
         </div>
       </div>
     </div>
