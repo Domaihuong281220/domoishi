@@ -14,12 +14,33 @@ const EditLocation = () => {
   let data = location.state;
   console.log(data);
   const [formData, setFormData] = useState({
-    locationName: data.locationName,
-    locationDetail: data.locationDetail,
-    phoneNumber: data.phoneNumber,
-    linkOrder: data.linkOrder,
+    name: data.name,
+    address: data.address,
+    phone: data.phone,
+    website: data.website,
+    _id: data._id,
   });
+  const handleEdit = async (id) => {
+    await axios
+      .put(`${process.env.REACT_APP_SERVER_URL}/locations/${id}`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+          // "x-secret-key": `${process.env.REACT_APP_SECRET_KEY}`,
+          "x-secret-key": "Domoishi2024",
+        },
+      })
 
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          toast.success("Edit Loction successfully!");
+
+          navigate("../" + path.LOCATIONMANAGE);
+        }
+      })
+      .catch((err) => {
+        toast.error("Edit Location wrong: " + err.message);
+      });
+  };
   return (
     <div className="">
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
@@ -43,9 +64,9 @@ const EditLocation = () => {
             <Input
               className="w-full h-auto p-2"
               placeholder="User Name"
-              defaultValue={data.locationName}
+              defaultValue={data.name}
               onChange={(e) => {
-                setFormData({ ...formData, locationName: e.target.value });
+                setFormData({ ...formData, name: e.target.value });
               }}
             />
           </div>
@@ -54,10 +75,10 @@ const EditLocation = () => {
             <p className="text-lg">Location Detail</p>
             <Input
               className="w-full h-auto"
-              placeholder="Phone Number p-2"
-              defaultValue={data.locationDetail}
+              placeholder="Location Detail "
+              defaultValue={data.address}
               onChange={(e) => {
-                setFormData({ ...formData, locationDetail: e.target.value });
+                setFormData({ ...formData, address: e.target.value });
               }}
             />
           </div>
@@ -66,9 +87,9 @@ const EditLocation = () => {
             <Input
               className="w-full h-auto p-2"
               placeholder="Phone Number"
-              defaultValue={data.phoneNumber}
+              defaultValue={data.phone}
               onChange={(e) => {
-                setFormData({ ...formData, phoneNumber: e.target.value });
+                setFormData({ ...formData, phone: e.target.value });
               }}
             />
           </div>
@@ -77,9 +98,9 @@ const EditLocation = () => {
             <Input
               className="w-full h-auto"
               placeholder="Link Order"
-              defaultValue={data.linkOrder}
+              defaultValue={data.website}
               onChange={(e) => {
-                setFormData({ ...formData, linkOrder: e.target.value });
+                setFormData({ ...formData, website: e.target.value });
               }}
             />
           </div>
@@ -87,7 +108,9 @@ const EditLocation = () => {
           <div className="flex justify-between items-center">
             <button
               className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg"
-              onClick={() => {}}
+              onClick={() => {
+                handleEdit(data._id);
+              }}
             >
               <p className="">Save</p>
             </button>

@@ -59,6 +59,9 @@ export const path = {
   CREATELOCATION: "/create-location",
   EDITLOCATION: "/edit-location",
 
+  // Location Frame
+  LOCATIONFRAME: "/location-frame",
+  EDITLOCATIONFRAME: "/edit-location-frame",
   ERROR: "*",
 };
 

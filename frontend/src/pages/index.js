@@ -60,3 +60,7 @@ export { default as UserView } from "./Admin/User/UserView/UserView";
 export { default as LocationManage } from "./Admin/Locations/LocationsManage";
 export { default as CreateLocation } from "./Admin/Locations/CreateLocation/CreateLocation";
 export { default as EditLocation } from "./Admin/Locations/EditLocation/EditLocation";
+
+// Location Frame
+export { default as LocationFrame } from "./Admin/LocationFrame/LocationFrame";
+export { default as EditLocationFrame } from "./Admin/LocationFrame/EditLocaionFrame/EditLocationFrame";
