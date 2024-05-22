@@ -308,8 +308,6 @@ router.put("/news/:id", upload.array("files", 2), async (req, res) => {
       }
     })
   }
-
-
   try {
     // Find the news by ID and update it
     const updatedNews = await schema.News.findByIdAndUpdate(
@@ -886,34 +884,53 @@ router.get("/locationframe", async (req, res) => {
     });
   }
 });
-router.put('/locationframe', async(req, res) => {
+router.put('/locationframe/:id', async (req, res) => {
+  const { id } = req.params;
+  const updateData = req.body;
+  if (!id) {
+    return res.status(400).json({
+      success: false,
+      message: "ID parameter is required",
+    });
+  }
+
   try {
-    const locationFrame = await schema.LocationFrame.find();
-    if (locationFrame) {
-      res.status(200).json({
-        success: true,
-        data: locationFrame,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-        message: "No location found with the given ID",
-      });
-    }
-  } catch (err) {
-    if (err.kind === "ObjectId") {
+    // Check if the ID is a valid ObjectId
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({
         success: false,
         message: "Invalid ID format",
       });
     }
+
+    // Update the document
+    const updatedLocationFrame = await schema.LocationFrame.findByIdAndUpdate(
+      id, // Using the ID directly
+      updateData,
+      { new: true, runValidators: true } // Return the updated object and run model validators
+    );
+
+    if (updatedLocationFrame) {
+      res.status(200).json({
+        success: true,
+        message: "Frame updated successfully",
+        data: updatedLocationFrame,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        message: "Frame not found with the given ID",
+      });
+    }
+  } catch (err) {
+    console.error('Error during update:', err);
     res.status(500).json({
       success: false,
       message: "Server error",
       error: err.message,
     });
   }
-})
+});
 
 
 module.exports = router;

@@ -118,7 +118,7 @@ const News = mongoose.model('News', newsSchema, 'news');
 const MetaTag = mongoose.model('MetaTag', metatagSchema, 'metatag');
 const Product = mongoose.model('Product', ProductSchema, 'products');
 const Location = mongoose.model('Location', locationSchema, 'locations');
-const LocationFrame = mongoose.model('LocationFrame', locationSchema, 'locationframe');
+const LocationFrame = mongoose.model('LocationFrame', locationFrame, 'locationframe');
 
 const Careers = mongoose.model('Careers', careersSchema, 'careers');
 const mySchemas = { 'User': User, 'News': News, 'Careers' : Careers, 'MetaTag': MetaTag, 'Product': Product, 'Location': Location, 'LocationFrame': LocationFrame};
