@@ -737,7 +737,6 @@ router.get("/locations", async (req, res) => {
 });
 
 router.post("/locations", async (req, res) => {
-  console.log(req.body);
   const {name, address,phone,website} = req.body;
   const locationData = { name: name, address: address, phone: phone, website: website};
 

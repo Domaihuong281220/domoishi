@@ -7,13 +7,7 @@ import { CardLocations } from "../../components";
 // import { mapStyles } from "./MapStyles";
 
 const Locations = () => {
-  const defaultProps = {
-    center: {
-      lat: 10.99835602,
-      lng: 77.01502627,
-    },
-    zoom: 11,
-  };
+  const src="https://www.google.com/maps/d/u/0/embed?mid=1UziMpWMTGXokRZmDvWFOPym63M3YnPg&ehbc=2E312F"
 
   const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
@@ -90,20 +84,7 @@ const Locations = () => {
           className="h-[800px] w-full pv:max-lg:h-[50vh] lg:max-2xl:h-[70vh]"
           // style={{ height: "800px", width: "100%" }}
         >
-          {/* <GoogleMapReact
-            bootstrapURLKeys={{
-              key: "AIzaSyB116ei7Yo4JSPj9_7zOVJJc06eykeZRmQ",
-            }}
-            defaultCenter={defaultProps.center}
-            defaultZoom={defaultProps.zoom}
-          >
-            <AnyReactComponent
-              lat={59.955413}
-              lng={30.337844}
-              text="My Marker"
-            />
-          </GoogleMapReact> */}
-          <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1UziMpWMTGXokRZmDvWFOPym63M3YnPg&ehbc=2E312F" className="w-full h-full mapframe"></iframe>
+          <iframe src={src} className="w-full h-full mapframe" title="map"></iframe>
         </div>
       </div>
     </div>
