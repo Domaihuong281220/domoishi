@@ -31,6 +31,9 @@ import {
   UserAdd,
   UserEdit,
   UserView,
+  LocationManage,
+  CreateLocation,
+  EditLocation,
 } from "../pages";
 import { path } from "./Constant";
 export const allowedRoles = ["admin"];
@@ -207,6 +210,27 @@ const routes = [
     exact: true,
     component: <UserView />,
     main: () => <UserView />,
+    role: ["admin"],
+  },
+  {
+    path: path.LOCATIONMANAGE,
+    exact: true,
+    component: <LocationManage />,
+    main: () => <LocationManage />,
+    role: ["admin"],
+  },
+  {
+    path: path.CREATELOCATION,
+    exact: true,
+    component: <CreateLocation />,
+    main: () => <CreateLocation />,
+    role: ["admin"],
+  },
+  {
+    path: path.EDITLOCATION,
+    exact: true,
+    component: <EditLocation />,
+    main: () => <EditLocation />,
     role: ["admin"],
   },
 ];
