@@ -34,7 +34,7 @@ const Franchising = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/api/sendEmail", formData);
+      const response = await axios.post("http://103.157.218.115:8802/api/sendEmail", formData);
       console.log(response);
       alert("Form submitted successfully!");
     } catch (error) {

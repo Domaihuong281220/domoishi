@@ -42,6 +42,7 @@ module.exports = {
         mdmax:"830px",
         lgmax:"1100px",
         ph: "480px",
+        prexl:"1340px",
         laptop: "1366px",
         dv: "1440px",
         mediumdt:"1700px",

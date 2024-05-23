@@ -39,7 +39,7 @@ export { default as CardLocations } from "./Locations/CardLocations";
 export { default as CardLocationsOrder } from "./Locations/CardLocationsOrder";
 
 //About
-export { default as WhyDomishiAbout } from "./About/WhyDomoishi";
+// export { default as WhyDomishiAbout } from "./About/WhyDomoishi";
 
 // Careers
 export { default as CardCareers } from "./Careers/CardCareer";

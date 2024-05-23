@@ -2,7 +2,7 @@
 
 import { Icon } from "@iconify/react/dist/iconify.js";
 import React, { useState, useEffect } from "react";
-import GoogleMapReact from "google-map-react";
+
 import { CardLocationsOrder } from "../components";
 // import { mapStyles } from "./MapStyles";
 
@@ -90,19 +90,7 @@ const LocationOrder = () => {
                     className="h-[800px] w-full pv:max-lg:h-[50vh] lg:max-2xl:h-[70vh]"
                 // style={{ height: "800px", width: "100%" }}
                 >
-                    <GoogleMapReact
-                        bootstrapURLKeys={{
-                            key: "AIzaSyB116ei7Yo4JSPj9_7zOVJJc06eykeZRmQ",
-                        }}
-                        defaultCenter={defaultProps.center}
-                        defaultZoom={defaultProps.zoom}
-                    >
-                        <AnyReactComponent
-                            lat={59.955413}
-                            lng={30.337844}
-                            text="My Marker"
-                        />
-                    </GoogleMapReact>
+                    
                 </div>
             </div>
         </div>
