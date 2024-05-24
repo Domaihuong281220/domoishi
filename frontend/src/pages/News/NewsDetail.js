@@ -43,13 +43,13 @@ const NewsDetail = () => {
             {data.longdescription}
           </p>
         </div>
-        <div className="flex justify-start pt-[172px] pv:max-md:pt-[16px] ">
+        {/* <div className="flex justify-start pt-[172px] pv:max-md:pt-[16px] ">
           <button className="bg-[#cb1313] px-4 py-2">
             <p className="text-white font-shopee_bold text-[20px] pv:max-ph:text-[16px]  ">
               ORDER NOW
             </p>
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -29,6 +29,7 @@ const Franchising = () => {
       ...prevData,
       [name]: value
     }));
+    console.log(formData);
   };
 
   const handleSubmit = async (e) => {
@@ -150,17 +151,17 @@ const Franchising = () => {
             </div>
             <div className="flex flex-col gap-10 pv:max-md:gap-4 pv:max-md:flex-col pv:max-md:items-start md:max-2xl:flex-col md:max-2xl:items-start  2xl:max-dh_max:flex-col 2xl:max-dh_max:items-start">
               <div className="w-full flex justify-end">
-                <p className="w-[600px] text-right pv:max-md:text-center md:max-2xl:text-right  text-[20px] font-nexa_bold md:max-2xl:text-[2.3vw]  2xl:max-dh_max:text-left pv:max-md:text-[14px] uppercase ">
+                <p className="w-[600px] text-right pv:max-md:text-center md:max-2xl:text-right  text-[14px] font-nexa_bold  2xl:max-dh_max:text-left pv:max-md:text-[14px] uppercase ">
                   *Please describe your business background/restaurant
                   experience including name(s) of franchise brands :
                 </p>
               </div>
               <div className="flex justify-end pv:max-md:w-full md:max-2xl:w-full 2xl:max-dh_max:w-full">
-                <input
+                <textarea
                  name="businessBackground"
                  value={formData.businessBackground}
                  onChange={handleChange}
-                className=" w-full pv:max-md:w-full md:max-2xl:w-full 2xl:max-dh_max:w-full   h-14 border-[1px] border-[#707070] rounded-full p-2"></input>
+                className=" w-full pv:max-md:w-full md:max-2xl:w-full 2xl:max-dh_max:w-full   h-fit border-[1px] border-[#707070] rounded-md p-2"/>
               </div>
             </div>
           </div>
@@ -258,7 +259,7 @@ const Franchising = () => {
         <div className="grid grid-cols-2 gap-5 pv:max-xl:hidden">
           <div className="grid grid-cols-3 text-right gap-10 items-center ">
             <div className="col-span-1">
-              <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
+              <p className="font-nexa_bold text-[1vw] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 *FIRST NAME :
               </p>
             </div>
@@ -272,7 +273,7 @@ const Franchising = () => {
           </div>
           <div className="grid grid-cols-3 text-right gap-10 items-center ">
             <div className="col-span-1">
-              <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
+              <p className="font-nexa_bold text-[1vw] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 CITY :
               </p>
             </div>
@@ -288,7 +289,7 @@ const Franchising = () => {
           </div>
           <div className="grid grid-cols-3 text-right gap-10 items-center ">
             <div className="col-span-1">
-              <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
+              <p className="font-nexa_bold text-[1vw] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 *LAST NAME :
               </p>
             </div>
@@ -304,8 +305,8 @@ const Franchising = () => {
           </div>
           <div className="grid grid-cols-3 text-right gap-10 items-center ">
             <div className="col-span-1">
-              <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
-                ZIP / POSTAL CODE:
+              <p className="font-nexa_bold text-[1vw] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
+                ZIP/POSTAL CODE:
               </p>
             </div>
             <div className="col-span-2">
@@ -320,7 +321,7 @@ const Franchising = () => {
           </div>
           <div className="grid grid-cols-3 text-right gap-10 items-center ">
             <div className="col-span-1">
-              <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
+              <p className="font-nexa_bold text-[1vw] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 *ADDRESS :
               </p>
             </div>
@@ -336,7 +337,7 @@ const Franchising = () => {
           </div>
           <div className="grid grid-cols-3 text-right gap-10 items-center ">
             <div className="col-span-1">
-              <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
+              <p className="font-nexa_bold text-[1vw] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 *EMAIL :
               </p>
             </div>
@@ -353,7 +354,7 @@ const Franchising = () => {
           </div>
           <div className="grid grid-cols-3 text-right gap-10 items-center ">
             <div className="col-span-1">
-              <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
+              <p className="font-nexa_bold text-[1vw] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 COUNTRY :
               </p>
             </div>
@@ -369,7 +370,7 @@ const Franchising = () => {
           </div>
           <div className="grid grid-cols-3 text-right gap-10 items-center ">
             <div className="col-span-1">
-              <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
+              <p className="font-nexa_bold text-[1vw] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 *MOBILE :
               </p>
             </div>
@@ -385,7 +386,7 @@ const Franchising = () => {
           </div>
           <div className="grid grid-cols-3 text-right gap-10 items-center ">
             <div className="col-span-1">
-              <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
+              <p className="font-nexa_bold text-[1vw] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                 *STATE / PROVINCE :
               </p>
             </div>
@@ -401,8 +402,8 @@ const Franchising = () => {
           </div>
           <div className="grid grid-cols-3 text-right gap-10 items-center ">
             <div className="col-span-1">
-              <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
-                PREFERRED CITY 1 :
+              <p className="font-nexa_bold text-[1vw] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
+                PREFERRED CITY 1:
               </p>
             </div>
             <div className="col-span-2">
@@ -418,25 +419,25 @@ const Franchising = () => {
 
           <div className="grid grid-cols-3 text-right gap-5  items-center ">
             <div className="col-span-3">
-              <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px] uppercase">
+              <p className="font-nexa_bold text-[1vw] pv:max-md:text-[14px] md:max-2xl:text-[14px] uppercase">
                 *Please describe your business background/restaurant experience
                 including name(s) of franchise brands :
               </p>
             </div>
             <div className="col-span-3 ">
-              <input
+              <textarea
                name="businessBackground"
                value={formData.businessBackground}
                onChange={handleChange}
-                className=" w-full pv:max-md:w-full md:max-2xl:w-full h-14 border-[1px] border-[#707070] rounded-full py-2 px-6"
+                className=" w-full pv:max-md:w-full md:max-2xl:w-full h-fit border-[1px] border-[#707070] rounded-md py-2 px-6"
                 placeholder=""
-              ></input>
+              />
             </div>
           </div>
           <div className="">
             <div className="grid grid-cols-3 text-right gap-10 items-center py-5">
               <div className="col-span-1">
-                <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
+                <p className="font-nexa_bold text-[1vw] pv:max-md:text-[14px] md:max-2xl:text-[14px]">
                   *NET WORTH :
                 </p>
               </div>
@@ -452,7 +453,7 @@ const Franchising = () => {
             </div>
             <div className="grid grid-cols-3 text-right gap-10 items-center ">
               <div className="col-span-1">
-                <p className="font-nexa_bold text-[20px] pv:max-md:text-[14px] md:max-2xl:text-[14px] uppercase">
+                <p className="font-nexa_bold text-[1vw] pv:max-md:text-[14px] md:max-2xl:text-[14px] uppercase">
                   Cash Available for Investment :
                 </p>
               </div>
