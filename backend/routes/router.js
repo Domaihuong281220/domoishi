@@ -941,8 +941,8 @@ router.post('/api/sendEmail', (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: "domaihuong.28.12.20@gmail.com",
-      pass: "ltbk kpqm opqb bkpw"
+      user: "infodomoishi@gmail.com",
+      pass: "dkxu dqik ezpx ramg"
     }
   });
 
@@ -1002,8 +1002,8 @@ router.post('/api/sendEmail', (req, res) => {
   `;
 
   const mailOptions = {
-    from: "domaihuong.28.12.20@gmail.com",
-    to: 'huongdm@1cinnovation.com',
+    from: "infodomoishi@gmail.com",
+    to: 'infodomoishi@gmail.com',
     subject: 'New Franchise Inquiry',
     html: emailHTML
   };
