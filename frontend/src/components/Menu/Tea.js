@@ -23,8 +23,6 @@ const Tea = () => {
             Price: 599.99,
             Date: new Date(),
         })
-        const event = clevertap.event.getDetails('Product Viewed')
-        console.log(event)
     }
     return (
         <div className='w-full px-[12%] pv:max-lg:px-[8%] relative'>

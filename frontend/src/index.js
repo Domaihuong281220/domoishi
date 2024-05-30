@@ -9,6 +9,7 @@ clevertap.privacy.push({optOut: false}) // Set the flag to true, if the user of 
 clevertap.privacy.push({useIP: false})  // Set the flag to true, if the user agrees to share their IP data
 // clevertap.spa = true
 clevertap.init('TEST-Z8R-KK4-876Z', 'sg1') // Replace with values applicable to you. Refer below
+clevertap.setLogLevel(3)
 const tagManagerArgs = {
   gtmId: 'GTM-K79HF867',
   auth: 'W1M5jYd6-mA03DuobURe9Q&gtm_preview=env-1'
