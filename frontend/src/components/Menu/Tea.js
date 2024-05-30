@@ -14,10 +14,19 @@ import peachoolong from "../../assets/Menu/peachoolong.png"
 import xoxo from "../../assets/Menu/xoxo.png"
 import smoothies from "../../assets/Menu/Group 143.png"
 import snowcream from "../../assets/Menu/CREAM.png"
+import clevertap from "clevertap-web-sdk";
 
 
 
 const Tea = () => {
+    const handleUpEvent=()=>{
+        clevertap.event.push("Product Viewed", {
+          "Product name":"HOUSE MILK TEA",
+          "Category":"Milk tea",
+          "Price":599.99,
+          "Date": new Date()
+        });
+      }
     return (
 
         <div className="w-full px-[12%] pv:max-lg:px-[8%] relative">
@@ -25,7 +34,7 @@ const Tea = () => {
             <p className="font-nexa_bold text-5xl 2xl:text-6xl pv:max-md:text-4xl">SPECIAL DRINKS</p>
 
             <div class="grid grid-cols-4 gap-4 my-[3vw]">
-                <div>
+                <div onClick={handleUpEvent}>
                     <img src={housemilktea} alt="" className="object-contain" />
                     <p className="font-nexa_bold w-full  text-[1vw] pv:max-md:text-[8px] 2xl:text-2xl">HOUSE MILK TEA</p>
                     <p className="font-svn_rust font-semibold  text-[1vw] pv:max-md:text-[8px] px-4  pv:max-md:px-0 pv:max-md:leading-[10px]  py-2">Fresh Brewed Thai Tea W. Premium Cream & Boba</p>
