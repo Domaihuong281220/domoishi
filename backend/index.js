@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const router = require("./routes/router");
+const joyu = require("./routes/joyu");
 const mongoose = require("mongoose");
 require("dotenv/config");
 const methodOverride = require('method-override');
@@ -23,6 +24,7 @@ const corsOptions = {
 app.use(express.static('public'))
 app.use(cors(corsOptions));
 app.use("/", router);
+app.use("/",joyu)
 
 
 const dboptions = { useNewUrlParser: true, useUnifiedTopology: true };
