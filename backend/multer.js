@@ -37,7 +37,38 @@ function deleteFile(filename, callback) {
   });
 }
 
+const joyuStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "joyupics/");
+  },
+  filename: function (req, file, cb) {
+    // console.log(file);
+    cb(null, file.fieldname + "-" + Date.now() + file.originalname);
+  },
+});
+
+function deleteFileJoyu(filename, callback) {
+  const filePath = path.join(__dirname, 'joyupics', filename);
+
+  fs.access(filePath, fs.constants.F_OK, (err) => {
+      if (err) {
+          console.error("File does not exist.");
+          return callback(new Error("File does not exist."), null);
+      }
+
+      fs.unlink(filePath, (err) => {
+          if (err) {
+              console.error("Error deleting the file.");
+              return callback(err, null);
+          }
+
+          console.log("File successfully deleted.");
+          callback(null, "File successfully deleted.");
+      });
+  });
+}
 
 const upload = multer({ storage });
+const uploadJoyu = multer({ storage: joyuStorage });
 
-module.exports = { upload, deleteFile };
+module.exports = { upload, deleteFile, uploadJoyu,deleteFileJoyu };
