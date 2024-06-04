@@ -9,7 +9,7 @@ const { uploadJoyu, deleteFileJoyu } = require("../multer.js");
 
 
 // Route to fetch user data (sample data)
-router.get("/joyu/users", checkSecretKey, async (req, res) => {
+joyu.get("/joyu/users", checkSecretKey, async (req, res) => {
   const Admin = joyuSchemas.Admin;
   try {
     const AdminData = await Admin.find();
@@ -36,7 +36,7 @@ function checkSecretKey(req, res, next) {
 }
 
 // Route to create a new user document in MongoDB
-router.post("/joyu/user", checkSecretKey, async (req, res) => {
+joyu.post("/joyu/user", checkSecretKey, async (req, res) => {
   const { name, username, password, email, role, phonenumber } = req.body;
   const AdminData = { name, username, password, email, role, phonenumber };
   try {
@@ -56,7 +56,7 @@ router.post("/joyu/user", checkSecretKey, async (req, res) => {
 });
 
 
-router.delete("/joyu/user/:id", checkSecretKey, async (req, res) => {
+joyu.delete("/joyu/user/:id", checkSecretKey, async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -79,7 +79,7 @@ router.delete("/joyu/user/:id", checkSecretKey, async (req, res) => {
 
 
 // PUT route to reset a user's password
-router.put("/joyu/user/reset-password", checkSecretKey, async (req, res) => {
+joyu.put("/joyu/user/reset-password", checkSecretKey, async (req, res) => {
   const { username, phonenumber, newpassword } = req.body;
   // console.log(req.body);
 
@@ -113,7 +113,7 @@ router.put("/joyu/user/reset-password", checkSecretKey, async (req, res) => {
 });
 
 
-router.post("/joyu/login", checkSecretKey, async (req, res) => {
+joyu.post("/joyu/login", checkSecretKey, async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -144,7 +144,7 @@ router.post("/joyu/login", checkSecretKey, async (req, res) => {
 
 
 // others endpoints
-router.post("/news", upload.array("files", 2), async (req, res) => {
+joyu.post("/joyu/news", uploadJoyu.array("files", 2), async (req, res) => {
   const { title, shortdescription, longdescription } = req.body;
   let titlepic, detailpic;
 
@@ -181,7 +181,7 @@ router.post("/news", upload.array("files", 2), async (req, res) => {
     };
 
     try {
-      const newNews = new schema.News(newsData);
+      const newNews = new joyuSchemas.JoyuNews(newsData);
       const saveNews = await newNews.save();
       // console.log('New News ID:', saveNews._id);
       res.status(200).json({
@@ -201,8 +201,8 @@ router.post("/news", upload.array("files", 2), async (req, res) => {
   }
 });
 
-router.get("/news", async (req, res) => {
-  const News = schema.News;
+joyu.get("/joyu/news", async (req, res) => {
+  const News = joyuSchemas.JoyuNews;
   try {
     const newsItems = await News.find({});
     if (newsItems.length > 0) {
@@ -226,7 +226,7 @@ router.get("/news", async (req, res) => {
   }
 });
 
-router.get("/news/by-id", async (req, res) => {
+joyu.get("/joyu/news/by-id", async (req, res) => {
   const { id } = req.query; // Access id from query parameters
 
   if (!id) {
@@ -237,7 +237,7 @@ router.get("/news/by-id", async (req, res) => {
   }
 
   try {
-    const newsItem = await schema.News.findById(id); // Search by document ID
+    const newsItem = await joyuSchemas.JoyuNews.findById(id); // Search by document ID
 
     if (newsItem) {
       res.status(200).json({
@@ -266,7 +266,7 @@ router.get("/news/by-id", async (req, res) => {
   }
 });
 
-router.put("/news/:id", upload.array("files", 2), async (req, res) => {
+joyu.put("/joyu/news/:id", uploadJoyu.array("files", 2), async (req, res) => {
   const { id } = req.params; // Access ID from URL parameters
   const updateData = req.body; // Data to update
 
@@ -303,7 +303,7 @@ router.put("/news/:id", upload.array("files", 2), async (req, res) => {
   }
   try {
     // Find the news by ID and update it
-    const updatedNews = await schema.News.findByIdAndUpdate(
+    const updatedNews = await joyuSchemas.JoyuNews.findByIdAndUpdate(
       id, // Using the ID directly
       updateData,
       { new: true, runValidators: true } // Return the updated object and run model validators
@@ -336,7 +336,7 @@ router.put("/news/:id", upload.array("files", 2), async (req, res) => {
   }
 });
 
-router.delete("/news/:id", async (req, res) => {
+joyu.delete("/joyu/news/:id", async (req, res) => {
   const { id } = req.params;
 
   if (!id) {
@@ -347,7 +347,7 @@ router.delete("/news/:id", async (req, res) => {
   }
 
   try {
-    const deletedNews = await schema.News.findByIdAndDelete(id);
+    const deletedNews = await joyuSchemas.JoyuNews.findByIdAndDelete(id);
     if (!deletedNews) {
       return res.status(404).json({
         success: false,
@@ -391,12 +391,12 @@ router.delete("/news/:id", async (req, res) => {
   }
 });
 
-router.post("/careers", async (req, res) => {
+joyu.post("/joyu/careers", async (req, res) => {
   const { position, description, availability, linkform } = req.body;
   const careersData = { position, description, availability, linkform };
 
   try {
-    const newCareers = new schema.Careers(careersData);
+    const newCareers = new joyuSchemas.JoyuCareers(careersData);
     const saveCareers = await newCareers.save(); // Use 'await' to wait for the save operation to complete
     // console.table(saveCareers);
 
@@ -414,8 +414,8 @@ router.post("/careers", async (req, res) => {
   }
 });
 
-router.get("/careers", async (req, res) => {
-  const careerSchema = schema.Careers;
+joyu.get("/joyu/careers", async (req, res) => {
+  const careerSchema = joyuSchemas.JoyuCareers;
   try {
     const careersItems = await careerSchema.find({});
     if (careersItems.length > 0) {
@@ -439,7 +439,7 @@ router.get("/careers", async (req, res) => {
   }
 });
 
-router.get("/careers/by-id", async (req, res) => {
+joyu.get("/joyu/careers/:id", async (req, res) => {
   const { id } = req.query; // Access id from query parameters
   if (!id) {
     return res.status(400).json({
@@ -448,7 +448,7 @@ router.get("/careers/by-id", async (req, res) => {
     });
   }
   try {
-    const careersItem = await schema.Careers.findById(id); // Search by document ID
+    const careersItem = await joyuSchemas.JoyuCareers.findById(id); // Search by document ID
     if (careersItem) {
       res.status(200).json({
         success: true,
@@ -476,7 +476,7 @@ router.get("/careers/by-id", async (req, res) => {
   }
 });
 
-router.put("/careers/:id", async (req, res) => {
+joyu.put("/joyu/careers/:id", async (req, res) => {
   const { id } = req.params;
   const updateData = req.body;
   if (!id) {
@@ -486,7 +486,7 @@ router.put("/careers/:id", async (req, res) => {
     });
   }
   try {
-    const updatedCareers = await schema.Careers.findByIdAndUpdate(
+    const updatedCareers = await joyuSchemas.JoyuCareers.findByIdAndUpdate(
       id, // Using the ID directly
       updateData,
       { new: true, runValidators: true } // Return the updated object and run model validators
@@ -518,7 +518,7 @@ router.put("/careers/:id", async (req, res) => {
   }
 });
 
-router.delete("/careers/:id", async (req, res) => {
+joyu.delete("/joyu/careers/:id", async (req, res) => {
   const { id } = req.params;
   if (!id) {
     return res.status(400).json({
@@ -527,7 +527,7 @@ router.delete("/careers/:id", async (req, res) => {
     });
   }
   try {
-    const deletedCareers = await schema.Careers.findByIdAndDelete(id);
+    const deletedCareers = await joyuSchemas.JoyuCareers.findByIdAndDelete(id);
     if (deletedCareers) {
       res.status(200).json({
         success: true,
@@ -555,7 +555,7 @@ router.delete("/careers/:id", async (req, res) => {
   }
 });
 
-router.post("/metatag", async (req, res) => {
+joyu.post("/joyu/metatag", async (req, res) => {
   const { path, title, name, content, property } = req.body;
   const metatagData = {
     path: path,
@@ -566,7 +566,7 @@ router.post("/metatag", async (req, res) => {
   };
 
   try {
-    const newMetatag = new schema.MetaTag(metatagData);
+    const newMetatag = new joyuSchemas.JoyuMetaTag(metatagData);
     const saveMetatag = await newMetatag.save(); // Use 'await' to wait for the save operation to complete
     // console.table(saveMetatag);
     res.status(200).json({
@@ -583,8 +583,8 @@ router.post("/metatag", async (req, res) => {
   }
 });
 
-router.get("/metatag", async (req, res) => {
-  const metatagSchema = schema.MetaTag;
+joyu.get("/joyu/metatag", async (req, res) => {
+  const metatagSchema = joyuSchemas.JoyuMetaTag;
   try {
     const metatagItems = await metatagSchema.find({});
     if (metatagItems.length > 0) {
@@ -608,7 +608,7 @@ router.get("/metatag", async (req, res) => {
   }
 });
 
-router.put("/metatag/:id", async (req, res, next) => {
+joyu.put("/joyu/metatag/:id", async (req, res, next) => {
   const { id } = req.params;
   const updateData = req.body;
   if (!id) {
@@ -618,7 +618,7 @@ router.put("/metatag/:id", async (req, res, next) => {
     });
   }
   try {
-    const updatedMetatag = await schema.MetaTag.findByIdAndUpdate(
+    const updatedMetatag = await joyuSchemas.JoyuMetaTag.findByIdAndUpdate(
       id, // Using the ID directly
       updateData,
       { new: true, runValidators: true } // Return the updated object and run model validators
@@ -650,7 +650,7 @@ router.put("/metatag/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/metatag/:id", async (req, res) => {
+joyu.delete("/joyu/metatag/:id", async (req, res) => {
   const { id } = req.params;
   if (!id) {
     return res.status(400).json({
@@ -659,7 +659,7 @@ router.delete("/metatag/:id", async (req, res) => {
     });
   }
   try {
-    const deletedMetatag = await schema.MetaTag.findByIdAndDelete(id);
+    const deletedMetatag = await joyuSchemas.JoyuMetaTag.findByIdAndDelete(id);
     if (deletedMetatag) {
       res.status(200).json({
         success: true,
@@ -687,7 +687,7 @@ router.delete("/metatag/:id", async (req, res) => {
   }
 });
 
-router.post('/delete-file', (req, res) => {
+joyu.post('/joyu/delete-file', (req, res) => {
   const { filename } = req.body; // Extract filename from POST request body
 
   if (!filename) {
@@ -698,7 +698,7 @@ router.post('/delete-file', (req, res) => {
   }
 
   // Call deleteFile function to attempt file deletion
-  deleteFile(filename, (err, message) => {
+  deleteFileJoyu(filename, (err, message) => {
     if (err) {
       return res.status(500).json({
         success: false,
@@ -714,8 +714,8 @@ router.post('/delete-file', (req, res) => {
 });
 
 // Route to fetch location data (sample data)
-router.get("/locations", async (req, res) => {
-  const Location = schema.Location;
+joyu.get("/joyu/locations", async (req, res) => {
+  const Location = joyuSchemas.JoyuLocation;
   try {
     const locationData = await Location.find();
     res.json(locationData);
@@ -727,12 +727,12 @@ router.get("/locations", async (req, res) => {
   }
 });
 
-router.post("/locations", async (req, res) => {
+joyu.post("/locations", async (req, res) => {
   const { name, address, phone, website } = req.body;
   const locationData = { name: name, address: address, phone: phone, website: website };
 
   try {
-    const newLocation = new schema.Location(locationData);
+    const newLocation = new joyuSchemas.JoyuLocation(locationData);
     const saveLocation = await newLocation.save(); // Use 'await' to wait for the save operation to complete
     res.status(200).json({
       message: "Location added successfully",
@@ -748,7 +748,7 @@ router.post("/locations", async (req, res) => {
   }
 })
 
-router.put("/locations/:id", async (req, res) => {
+joyu.put("/joyu/locations/:id", async (req, res) => {
   const { id } = req.params;
   const updateData = req.body;
   if (!id) {
@@ -759,7 +759,7 @@ router.put("/locations/:id", async (req, res) => {
 
   }
   try {
-    const updatedLocation = await schema.Location.findByIdAndUpdate(
+    const updatedLocation = await joyuSchemas.JoyuLocation.findByIdAndUpdate(
       id, // Using the ID directly
       updateData,
       { new: true, runValidators: true } // Return the updated object and run model validators
@@ -791,7 +791,7 @@ router.put("/locations/:id", async (req, res) => {
   }
 })
 
-router.delete("/locations/:id", async (req, res) => {
+joyu.delete("/joyu/locations/:id", async (req, res) => {
   const id = req.params.id;
   if (!id) {
     return res.status(400).json({
@@ -801,7 +801,7 @@ router.delete("/locations/:id", async (req, res) => {
   }
 
   try {
-    const deletedLocation = await schema.Location.findByIdAndDelete(id);
+    const deletedLocation = await joyuSchemas.JoyuLocation.findByIdAndDelete(id);
     if (deletedLocation) {
       res.status(200).json({
         success: true,
@@ -829,7 +829,7 @@ router.delete("/locations/:id", async (req, res) => {
   }
 })
 
-router.get("/locations/:id", async (req, res) => {
+joyu.get("/joyu/locations/:id", async (req, res) => {
   const id = req.params.id;
   if (!id) {
     return res.status(400).json({
@@ -838,7 +838,7 @@ router.get("/locations/:id", async (req, res) => {
     });
   }
   try {
-    const location = await schema.Location.findById(id);
+    const location = await joyuSchemas.JoyuLocation.findById(id);
     if (location) {
       res.status(200).json({
         success: true,
@@ -865,8 +865,8 @@ router.get("/locations/:id", async (req, res) => {
   }
 });
 
-router.get("/locationframe", async (req, res) => {
-  const LocationFrame = schema.LocationFrame;
+joyu.get("/joyu/locationframe", async (req, res) => {
+  const LocationFrame = joyuSchemas.JoyuLocationFrame;
   try {
     const locationData = await LocationFrame.find();
     res.json(locationData);
@@ -877,7 +877,7 @@ router.get("/locationframe", async (req, res) => {
     });
   }
 });
-router.put('/locationframe/:id', async (req, res) => {
+joyu.put('/locationframe/:id', async (req, res) => {
   const { id } = req.params;
   const updateData = req.body;
 
@@ -898,7 +898,7 @@ router.put('/locationframe/:id', async (req, res) => {
     }
 
     // Update the document
-    const updatedLocationFrame = await schema.LocationFrame.findByIdAndUpdate(
+    const updatedLocationFrame = await joyuSchemas.JoyuLocationFrame.findByIdAndUpdate(
       id, // Using the ID directly
       updateData,
       { new: true, runValidators: true } // Return the updated object and run model validators
