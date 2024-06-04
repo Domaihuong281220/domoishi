@@ -22,6 +22,7 @@ const corsOptions = {
 };
 
 app.use(express.static('public'))
+app.use(express.static('joyupics'))
 app.use(cors(corsOptions));
 app.use("/", router);
 app.use("/",joyu)
