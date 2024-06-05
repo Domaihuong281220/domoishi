@@ -42,12 +42,13 @@ const joyuStorage = multer.diskStorage({
     cb(null, "joyupics/");
   },
   filename: function (req, file, cb) {
-    // console.log(file);
+    
     cb(null, file.fieldname + "-" + Date.now() + file.originalname);
   },
 });
 
 function deleteFileJoyu(filename, callback) {
+  console.log(filename);
   const filePath = path.join(__dirname, 'joyupics', filename);
 
   fs.access(filePath, fs.constants.F_OK, (err) => {

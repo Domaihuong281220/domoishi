@@ -152,9 +152,9 @@ joyu.post("/joyu/news", uploadJoyu.array("files", 2), async (req, res) => {
     // Loop through the uploaded files
     req.files.forEach((file, index) => {
       if (index == 0) {
-        titlepic = file.path.substring(7); // Adjust 7 according to your path structure
+        titlepic = file.path.substring(9); // Adjust 7 according to your path structure
       } else if (index == 1) {
-        detailpic = file.path.substring(7); // Adjust 7 according to your path structure
+        detailpic = file.path.substring(9); // Adjust 7 according to your path structure
       }
     });
     const newsData = {
@@ -341,14 +341,14 @@ joyu.delete("/joyu/news/:id", async (req, res) => {
     }
 
     // Deletion of files using callback handling
-    deleteFile(deletedNews.detailpic, (err) => {
+    deleteFileJoyu(deletedNews.detailpic, (err) => {
       if (err) {
         console.error("Error deleting detail picture:", err);
         // Consider how you want to handle partial deletion failures
       }
     });
 
-    deleteFile(deletedNews.titlepic, (err) => {
+    deleteFileJoyu(deletedNews.titlepic, (err) => {
       if (err) {
         console.error("Error deleting title picture:", err);
         // Consider how you want to handle partial deletion failures
