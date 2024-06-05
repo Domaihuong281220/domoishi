@@ -1066,15 +1066,17 @@ const Product = joyuSchemas.JoyuProduct;
 // Create a new product
 joyu.post("/joyu/products",uploadJoyu.single("image"), async (req, res) => {
     const { name, price, categoryID } = req.body;
-
+    console.log(req.body);
     const image = req.file.filename.replace(/ /g, "%20")
     
     try {
       
         const newProduct = new Product({ name, price, image, categoryID });
+        console.log(newProduct);
         const savedProduct = await newProduct.save();
         res.status(201).json({ message: "Product added successfully", data: savedProduct });
     } catch (error) {
+      console.log(error);
         res.status(500).json({ message: "Product not added", error: error.message });
     }
 });

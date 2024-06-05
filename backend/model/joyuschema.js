@@ -96,7 +96,8 @@ const CategorySchema = new Schema({
 const ProductSchema = new Schema({
     name: { type: String, required: true, maxlength: 50 },
     price: { type: Number, required: true, min: 0 },
-    image: { type: String}
+    image: { type: String},
+    categoryID: { type: String, required: true }
 });
 
 

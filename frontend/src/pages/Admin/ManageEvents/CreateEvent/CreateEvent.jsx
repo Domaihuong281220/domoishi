@@ -128,13 +128,6 @@ const CreateEvent = () => {
 
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <p className="text-lg">Title Image</p>
-            {/* <Input
-              className="w-full h-full border-[1px] p-2"
-              placeholder="Tags"
-              onChange={(e) =>
-                setFormData({ ...formData, price: e.target.value })
-              }
-            /> */}
             <input
               type="file"
               accept="image/jpeg, image/png"
@@ -151,33 +144,7 @@ const CreateEvent = () => {
             />
           </div>
 
-          {/* <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
-            <div className="flex justify-between">
-              <input type="file" onChange={""} className="p-3  " />
-
-              <button
-                className="h-auto w-auto p-2 bg-blue-400 rounded-lg"
-                onClick={handleUpload}
-              >
-                Upload
-              </button>
-            </div>
-            <div className="">
-              {imageproduct ? (
-                <img
-                  src={imageproduct}
-                  className="object-cover w-32 h-32 rounded-lg"
-                />
-              ) : (
-                <img
-                  src="https://t3.ftcdn.net/jpg/02/18/21/86/360_F_218218632_jF6XAkcrlBjv1mAg9Ow0UBMLBaJrhygH.jpg"
-                  className="object-cover w-32 h-32 rounded-lg"
-                />
-              )}
-            </div>
-
-            <p className="">jpg , png , jpeg</p>
-          </div> */}
+          
           <div className="flex justify-center items-center gap-x-4">
             <button
               className="w-auto h-auto py-2 px-4 bg-slate-50 border-2 border-blue-300 rounded-lg hover:bg-slate-200 hover:shadow-lg"
