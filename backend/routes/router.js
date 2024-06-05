@@ -82,10 +82,6 @@ router.delete("/user/:id", checkSecretKey, async (req, res) => {
 });
 
 
-
-
-const bcrypt = require('bcrypt');
-
 // PUT route to reset a user's password
 router.put("/user/reset-password", checkSecretKey, async (req, res) => {
   const { username, phonenumber, newpassword } = req.body;
@@ -159,14 +155,6 @@ router.post("/news", upload.array("files", 2), async (req, res) => {
   if (req.files && req.files.length > 0) {
     // Loop through the uploaded files
     req.files.forEach((file, index) => {
-      //   console.log("Uploaded File:", {
-      //     filename: file.filename,
-      //     path: file.path,
-      //     size: file.size,
-      //     index: index,
-
-      //   }
-      // );
 
       // Assign paths based on the index
       if (index == 0) {

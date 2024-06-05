@@ -54,34 +54,6 @@ const metatagSchema = new Schema({
     property: String,
 })
 
-const productSchema = new Schema({
-    productCode: {
-        type: String,
-        require: true
-    },
-    productName: {
-        unique: true,
-        type: String,
-        require: true
-    },
-    productDescription: {
-        type: String,
-        trim: true
-    },
-    price: {
-        type: String,
-        trim: true
-    },
-    category: {
-        type: String,
-        trim: true,
-        require: true
-    },
-    imagePath: {
-        type: String,
-        trim: true
-    }
-});
 
 const locationSchema = new Schema({
     name: {
@@ -117,16 +89,27 @@ const joyuUserSchema = new Schema({
     },
 });
 
+const CategorySchema = new Schema({
+    name: { type: String, required: true, maxlength: 50 }
+});
+
+const ProductSchema = new Schema({
+    name: { type: String, required: true, maxlength: 50 },
+    price: { type: Number, required: true, min: 0 },
+    image: { type: String}
+});
+
 
 
 const Admin = mongoose.model('Admin', adminSchema, 'joyuadmin');
 const JoyuNews = mongoose.model('JoyuNews', newsSchema, 'joyunews');
-const JoyuMetaTag = mongoose.model('JoyuMetaTag', metatagSchema, 'joyunmetatags');
-const JoyuProduct = mongoose.model('JoyuProduct', productSchema, 'joyunproduct');
-const JoyuLocation = mongoose.model('JoyuLocation', locationSchema, 'joyunlocation');
-const JoyuLocationFrame = mongoose.model('JoyuLocationFrame', locationFrame, 'joyunlocationframe');
-const JoyuCareers = mongoose.model('JoyuCareers', careersSchema, 'joyuncareers');
+const JoyuMetaTag = mongoose.model('JoyuMetaTag', metatagSchema, 'joyumetatags');
+const JoyuProduct = mongoose.model('JoyuProduct', ProductSchema, 'joyuproduct');
+const JoyuLocation = mongoose.model('JoyuLocation', locationSchema, 'joyulocation');
+const JoyuLocationFrame = mongoose.model('JoyuLocationFrame', locationFrame, 'joyulocationframe');
+const JoyuCareers = mongoose.model('JoyuCareers', careersSchema, 'joyucareers');
 const JoyuUser = mongoose.model('JoyuUser', joyuUserSchema, 'joyucustomeremails');
-const joyuSchemas = { 'JoyuUser': JoyuUser, 'Admin':Admin, 'JoyuNews':JoyuNews, 'JoyuMetaTag':JoyuMetaTag, 'JoyuProduct':JoyuProduct, 'JoyuLocation': JoyuLocation, 'JoyuLocationFrame':JoyuLocationFrame, 'JoyuCareers':JoyuCareers };
+const JoyuCategory = mongoose.model('JoyuCategory', CategorySchema, 'joyuCategory');
+const joyuSchemas = { 'JoyuUser': JoyuUser, 'Admin':Admin, 'JoyuNews':JoyuNews, 'JoyuMetaTag':JoyuMetaTag, 'JoyuProduct':JoyuProduct, 'JoyuLocation': JoyuLocation, 'JoyuLocationFrame':JoyuLocationFrame, 'JoyuCareers':JoyuCareers, 'JoyuCategory':JoyuCategory };
 
 module.exports = joyuSchemas;
