@@ -100,6 +100,12 @@ const ProductSchema = new Schema({
     categoryID: { type: Schema.Types.ObjectId, ref: "JoyuCategory", required: true }
 });
 
+const BannerSchema = new Schema({
+    image: {type: String, require: true}
+})
+
+
+
 
 
 const Admin = mongoose.model('Admin', adminSchema, 'joyuadmin');
@@ -111,6 +117,7 @@ const JoyuLocationFrame = mongoose.model('JoyuLocationFrame', locationFrame, 'jo
 const JoyuCareers = mongoose.model('JoyuCareers', careersSchema, 'joyucareers');
 const JoyuUser = mongoose.model('JoyuUser', joyuUserSchema, 'joyucustomeremails');
 const JoyuCategory = mongoose.model('JoyuCategory', CategorySchema, 'joyuCategory');
-const joyuSchemas = { 'JoyuUser': JoyuUser, 'Admin':Admin, 'JoyuNews':JoyuNews, 'JoyuMetaTag':JoyuMetaTag, 'JoyuProduct':JoyuProduct, 'JoyuLocation': JoyuLocation, 'JoyuLocationFrame':JoyuLocationFrame, 'JoyuCareers':JoyuCareers, 'JoyuCategory':JoyuCategory };
+const JoyuBanner = mongoose.model('JoyuBanner', BannerSchema, 'joyubanner')
+const joyuSchemas = { 'JoyuUser': JoyuUser, 'Admin':Admin, 'JoyuNews':JoyuNews, 'JoyuMetaTag':JoyuMetaTag, 'JoyuProduct':JoyuProduct, 'JoyuLocation': JoyuLocation, 'JoyuLocationFrame':JoyuLocationFrame, 'JoyuCareers':JoyuCareers, 'JoyuCategory':JoyuCategory, 'JoyuBanner':JoyuBanner };
 
 module.exports = joyuSchemas;
