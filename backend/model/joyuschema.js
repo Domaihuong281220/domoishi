@@ -97,7 +97,7 @@ const ProductSchema = new Schema({
     name: { type: String, required: true, maxlength: 50 },
     price: { type: Number, required: true, min: 0 },
     image: { type: String},
-    categoryID: { type: String, required: true }
+    categoryID: { type: Schema.Types.ObjectId, ref: "JoyuCategory", required: true }
 });
 
 

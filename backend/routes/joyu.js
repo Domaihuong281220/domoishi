@@ -1065,45 +1065,44 @@ const Product = joyuSchemas.JoyuProduct;
 
 // Create a new product
 joyu.post("/joyu/products",uploadJoyu.single("image"), async (req, res) => {
+  try {
     const { name, price, categoryID } = req.body;
-    console.log(req.body);
-    const image = req.file.filename.replace(/ /g, "%20")
-    
-    try {
-      
-        const newProduct = new Product({ name, price, image, categoryID });
-        console.log(newProduct);
-        const savedProduct = await newProduct.save();
-        res.status(201).json({ message: "Product added successfully", data: savedProduct });
-    } catch (error) {
-      console.log(error);
-        res.status(500).json({ message: "Product not added", error: error.message });
-    }
+    const image = req.file ? req.file.filename : null;
+
+    const product = new Product({ name, price, image, categoryID });
+    await product.save();
+    res.status(201).json({ success: true, data: product });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server error", error: error.message });
+  }
 });
 
 // Get all products
 joyu.get("/joyu/products", async (req, res) => {
-    try {
-        const products = await Product.find();
-        res.status(200).json({ success: true, count: products.length, data: products });
-    } catch (error) {
-        res.status(500).json({ success: false, message: "Server error", error: error.message });
-    }
+  try {
+    const products = await Product.find().populate('categoryID', 'name');
+    res.status(200).json({ success: true, count: products.length, data: products });
+} catch (error) {
+    res.status(500).json({ success: false, message: "Server error", error: error.message });
+}
 });
 
 // Get product by ID
 joyu.get("/joyu/products/:productId", async (req, res) => {
-    const { productId } = req.params;
+  const { productId } = req.params;
 
-    try {
-        const product = await Product.findById(productId);
-        if (!product) {
-            return res.status(404).json({ success: false, message: "Product not found" });
-        }
-        res.status(200).json({ success: true, data: product });
-    } catch (error) {
-        res.status(500).json({ success: false, message: "Server error", error: error.message });
-    }
+  try {
+      // Find the product by ID and populate the categoryID field with the category name
+      const product = await Product.findById(productId).populate('categoryID', 'name');
+      
+      if (!product) {
+          return res.status(404).json({ success: false, message: "Product not found" });
+      }
+
+      res.status(200).json({ success: true, data: product });
+  } catch (error) {
+      res.status(500).json({ success: false, message: "Server error", error: error.message });
+  }
 });
 
 // Update product
