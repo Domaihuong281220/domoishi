@@ -1110,8 +1110,8 @@ const Product = joyuSchemas.JoyuProduct;
 joyu.post("/joyu/products",uploadJoyu.single("image"), async (req, res) => {
   try {
     const { name, price, categoryID } = req.body;
-    const image = req.file ? req.file.filename : null;
-
+    const img = req.file ? req.file.filename : null;
+    const image = img.replace(/ /g,"%20")
     const product = new Product({ name, price, image, categoryID });
     await product.save();
     res.status(201).json({ success: true, data: product });
