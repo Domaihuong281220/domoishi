@@ -1012,21 +1012,27 @@ joyu.get("/joyu/categories", async (req, res) => {
         res.status(500).json({ success: false, message: "Server error", error: error.message });
     }
 });
-
-// Get category by ID
+// Get category by ID and its related products
 joyu.get("/joyu/categories/:categoryId", async (req, res) => {
-    const { categoryId } = req.params;
+  const { categoryId } = req.params;
 
-    try {
-        const category = await Category.findById(categoryId);
-        if (!category) {
-            return res.status(404).json({ success: false, message: "Category not found" });
-        }
-        res.status(200).json({ success: true, data: category });
-    } catch (error) {
-        res.status(500).json({ success: false, message: "Server error", error: error.message });
-    }
+  try {
+      // Find the category by ID
+      const category = await Category.findById(categoryId);
+      if (!category) {
+          return res.status(404).json({ success: false, message: "Category not found" });
+      }
+
+      // Find all products related to this category
+      const products = await Product.find({ categoryID: categoryId });
+
+      // Return the category and its related products
+      res.status(200).json({ success: true, category: category, products: products });
+  } catch (error) {
+      res.status(500).json({ success: false, message: "Server error", error: error.message });
+  }
 });
+
 
 // Update category
 joyu.put("/joyu/categories/:categoryId", async (req, res) => {
@@ -1044,20 +1050,33 @@ joyu.put("/joyu/categories/:categoryId", async (req, res) => {
     }
 });
 
-// Delete category
+// Delete category and related products
 joyu.delete("/joyu/categories/:categoryId", async (req, res) => {
-    const { categoryId } = req.params;
+  const { categoryId } = req.params;
 
-    try {
-        const deletedCategory = await Category.findByIdAndDelete(categoryId);
-        if (!deletedCategory) {
-            return res.status(404).json({ success: false, message: "Category not found" });
-        }
-        res.status(200).json({ success: true, message: "Category deleted successfully" });
-    } catch (error) {
-        res.status(500).json({ success: false, message: "Server error", error: error.message });
-    }
+  try {
+      // Step 1: Find all products related to the category
+      const productsToDelete = await Product.find({ categoryID: categoryId });
+
+      // Logging products found before deletion
+      console.log(`Products found for deletion in category ${categoryId}:`, productsToDelete);
+
+      // Step 2: Delete all products related to the category
+      const deletedProducts = await Product.deleteMany({ categoryID: categoryId });
+
+      // Step 3: Delete the category
+      const deletedCategory = await Category.findByIdAndDelete(categoryId);
+
+      if (!deletedCategory) {
+          return res.status(404).json({ success: false, message: "Category not found" });
+      }
+
+      res.status(200).json({ success: true, message: "Category and related products deleted successfully" });
+  } catch (error) {
+      res.status(500).json({ success: false, message: "Server error", error: error.message });
+  }
 });
+
 //#end region
 
 //#region Product 
