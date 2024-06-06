@@ -1106,13 +1106,14 @@ joyu.get("/joyu/products/:productId", async (req, res) => {
 });
 
 // Update product
-joyu.put("/joyu/products/:productId", uploadJoyu.single("image"), async (req, res) => {
+joyu.put("/joyu/products/:productId", async (req, res) => {
   const { productId } = req.params;
   const { name, price, categoryID } = req.body;
 
   // Handle the uploaded image
-  const image = req.file.filename.replace(/%20/g, " ");
-  const updateData = { name, price, image, categoryID };
+  console.log(req);
+  // const image = req.file.image.replace(/%20/g, " ");
+  const updateData = { name, price, categoryID };
 
   try {
       // Find the existing product by ID
