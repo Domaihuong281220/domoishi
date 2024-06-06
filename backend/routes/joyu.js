@@ -1077,6 +1077,30 @@ joyu.delete("/joyu/categories/:categoryId", async (req, res) => {
   }
 });
 
+// Endpoint to get all categories and their products
+joyu.get('/joyu/menu', async (req, res) => {
+  try {
+      // Step 1: Get all categories
+      const categories = await joyuSchemas.JoyuCategory.find();
+
+      // Step 2: Get all products and populate the category information
+      const products = await joyuSchemas.JoyuProduct.find().populate('categoryID');
+
+      // Step 3: Create a map to store categories and their products
+      const menu = categories.map(category => {
+          return {
+              category: category.name,
+              products: products.filter(product => product.categoryID._id.toString() === category._id.toString())
+          };
+      });
+
+      // Step 4: Send the response
+      res.status(200).json({ success: true, data: menu });
+  } catch (error) {
+      res.status(500).json({ success: false, message: "Server error", error: error.message });
+  }
+});
+
 //#end region
 
 //#region Product 
@@ -1125,13 +1149,12 @@ joyu.get("/joyu/products/:productId", async (req, res) => {
 });
 
 // Update product
-joyu.put("/joyu/products/:productId", async (req, res) => {
+joyu.put("/joyu/products/:productId", uploadJoyu.single("image"), async (req, res) => {
   const { productId } = req.params;
   const { name, price, categoryID } = req.body;
 
   // Handle the uploaded image
   console.log(req);
-  // const image = req.file.image.replace(/%20/g, " ");
   const updateData = { name, price, categoryID };
 
   try {
