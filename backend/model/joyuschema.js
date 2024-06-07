@@ -68,8 +68,16 @@ const locationSchema = new Schema({
         type: String,
         require: true
     },
-    website: {
+    pickuplink: {
         type: String,
+        require: true
+    },
+    deliverylink: {
+        type: String,
+        require: true
+    },
+    available: {
+        type: Boolean,
         require: true
     }
 });

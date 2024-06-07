@@ -714,8 +714,8 @@ joyu.get("/joyu/locations", async (req, res) => {
 });
 
 joyu.post("/joyu/locations", async (req, res) => {
-  const { name, address, phone, website } = req.body;
-  const locationData = { name: name, address: address, phone: phone, website: website };
+  const { name, address, phone, pickuplink, deliverylink, available } = req.body;
+  const locationData = { name: name, address: address, phone: phone, pickuplink: pickuplink, deliverylink: deliverylink, available: available };
 
   try {
     const newLocation = new joyuSchemas.JoyuLocation(locationData);
@@ -1039,12 +1039,23 @@ joyu.delete("/joyu/categories/:categoryId", async (req, res) => {
     const productsToDelete = await Product.find({ categoryID: categoryId });
 
     // Logging products found before deletion
-    console.log(`Products found for deletion in category ${categoryId}:`, productsToDelete);
+    // console.log(`Products found for deletion in category ${categoryId}:`, productsToDelete);
+    // console.log(productsToDelete);
+    const imagetodelete = productsToDelete.map(product => {
+      const validimagetodelete = product.image.replace(/%20/g," ")
+      console.log(validimagetodelete);
+      deleteFileJoyu(validimagetodelete,(err) => {
+        if (err) {
+          console.error("Error deleting picture:", err);
+          // Consider how you want to handle partial deletion failures
+        }
+      })
+    });
 
-    // Step 2: Delete all products related to the category
+    // // Step 2: Delete all products related to the category
     const deletedProducts = await Product.deleteMany({ categoryID: categoryId });
 
-    // Step 3: Delete the category
+    // // Step 3: Delete the category
     const deletedCategory = await Category.findByIdAndDelete(categoryId);
 
     if (!deletedCategory) {
