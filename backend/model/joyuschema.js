@@ -42,11 +42,13 @@ const newsSchema = new Schema({
 const careersSchema = new Schema({
     position: String,
     description: String,
+    responsibility: String,
     availability: String,
-    linkform: String,
+    address: String,
 });
 
 const metatagSchema = new Schema({
+    page:String,
     path: String,
     title: String,
     name: String,
@@ -93,6 +95,7 @@ const locationFrame = new Schema({
 const joyuUserSchema = new Schema({
     email: {
         type: String,
+        unique: true
         // email is optional in this setup; add required if it should be mandatory
     },
 });
@@ -104,11 +107,13 @@ const CategorySchema = new Schema({
 const ProductSchema = new Schema({
     name: { type: String, required: true, maxlength: 50 },
     price: { type: Number, required: true, min: 0 },
+    description: { type: String, required: true, maxlength: 500 },
     image: { type: String},
     categoryID: { type: Schema.Types.ObjectId, ref: "JoyuCategory", required: true }
 });
 
 const BannerSchema = new Schema({
+    bannerType: { type: String, required: true },
     image: {type: String, require: true}
 })
 

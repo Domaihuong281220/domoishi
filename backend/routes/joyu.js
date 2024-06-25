@@ -212,9 +212,9 @@ joyu.get("/joyu/news", async (req, res) => {
   }
 });
 
-joyu.get("/joyu/news/by-id", async (req, res) => {
-  const { id } = req.query; // Access id from query parameters
-
+joyu.get("/joyu/news/:id", async (req, res) => {
+  const { id } = req.params; // Access id from query parameters
+  console.log(id);
   if (!id) {
     return res.status(400).json({
       success: false,
@@ -378,8 +378,8 @@ joyu.delete("/joyu/news/:id", async (req, res) => {
 });
 
 joyu.post("/joyu/careers", async (req, res) => {
-  const { position, description, availability, linkform } = req.body;
-  const careersData = { position, description, availability, linkform };
+  const { position, description, availability, address, responsibility } = req.body;
+  const careersData = { position, description, availability, address, re };
 
   try {
     const newCareers = new joyuSchemas.JoyuCareers(careersData);
@@ -542,13 +542,14 @@ joyu.delete("/joyu/careers/:id", async (req, res) => {
 });
 
 joyu.post("/joyu/metatag", async (req, res) => {
-  const { path, title, name, content, property } = req.body;
+  const { path, title, name, content, property, page } = req.body;
   const metatagData = {
     path: path,
     title: title,
     name: name,
     content: content,
     property: property,
+    page: page,
   };
 
   try {
@@ -909,6 +910,7 @@ joyu.get("/joyu/customer", async (req, res) => {
 
 joyu.post("/joyu/customer", async (req, res, next) => {
   const { email } = req.body;
+  console.log(email);
   try {
     const saveUser = await joyuSchemas.JoyuUser.create({
       email,
@@ -925,46 +927,95 @@ joyu.post("/joyu/customer", async (req, res, next) => {
   }
 });
 
+joyu.delete("/joyu/customer/:id", async (req, res) => {
+  const id = req.params.id;
+  if (!id) {
+    return res.status(400).json({
+      success: false,
+      message: "ID parameter is required",
+    });
+  }
+  else {
+    try {
+      const deletedUser = await joyuSchemas.JoyuUser.findByIdAndDelete(id);
+      if (deletedUser) {
+        res.status(200).json({
+          success: true,
+          message: "User deleted successfully",
+          data: deletedUser,
+        });
+      } else {
+        res.status(404).json({
+          success: false,
+          message: "No user found with the given ID",
+        });
+      }
+    } catch (err) {
+      if (err.kind === "ObjectId") {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid ID format",
+        });
+      }
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: err.message,
+      });
+    }
+  }
+
+});
+
+// Middleware to parse form data
+joyu.use(express.urlencoded({ extended: true }));
+
 joyu.post("/joyu/sendemail", async (req, res) => {
   const JoyuUser = joyuSchemas.JoyuUser;
-  const emailData = req.body; // Assuming req.body contains the data to send
+  const emailData = req.body.emailData; // Extract emailData from the request body
+
+  console.log('Received request with emailData:', emailData);
+
   try {
     const userData = await JoyuUser.find();
     const emails = userData.map(user => user.email);
-    // console.log(emails);
+    // console.log('Sending emails to:', emails);
 
     // Create a transporter object using SMTP transport
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com', // Replace with your SMTP server
+      host: 'smtp.gmail.com',
       port: 587,
-      secure: false, // true for 465, false for other ports
+      secure: false,
       auth: {
-        user: 'domaihuong.28.12.20@gmail.com', // Replace with your email
-        pass: 'ltbk kpqm opqb bkpw', // Replace with your email password
+        user: 'info@joyuteacoffee.com', // Replace with your email
+        pass: 'wixz iswj yodr utjw', // Replace with your app-specific password
       },
     });
 
     // Send emails to all users
     for (const email of emails) {
       const mailOptions = {
-        from: '"Your Name" <your-email@example.com>', // Sender address
+        from: '"Your Name" <your-email@gmail.com>', // Sender address
         to: email, // List of receivers
         subject: 'Subject of your email', // Subject line
-        text: `Plain text version of the message: ${JSON.stringify(emailData)}`, // Plain text body
-        html: `<p>HTML version of the message: ${JSON.stringify(emailData)}</p>`, // HTML body
+        text: `Plain text version of the message: ${emailData}`, // Plain text body
+        html: `<p>HTML version of the message: ${emailData}</p>`, // HTML body
       };
 
+      console.log(`Sending email to ${email}...`);
       await transporter.sendMail(mailOptions);
+      console.log(`Email sent to ${email}`);
     }
 
-    res.json(userData);
+    res.json({ success: true, message: 'Emails sent successfully', data: userData });
   } catch (err) {
+    console.error('Error sending emails:', err);
     res.status(500).json({
-      message: "User not found",
+      message: "Failed to send emails",
       error: err.message,
     });
   }
-})
+});
 
 //#region Category 
 const Category = joyuSchemas.JoyuCategory;
@@ -1101,10 +1152,10 @@ const Product = joyuSchemas.JoyuProduct;
 joyu.post("/joyu/products", uploadJoyu.single("image"), async (req, res) => {
   try {
     // console.log(req);
-    const { name, price, categoryID } = req.body;
+    const { name, price, categoryID, description } = req.body;
     const img = req.file ? req.file.filename : null;
     const image = img.replace(/ /g, "%20")
-    const product = new Product({ name, price, image, categoryID });
+    const product = new Product({ name, price, image, categoryID, description });
     await product.save();
     res.status(201).json({ success: true, data: product });
   } catch (error) {
@@ -1140,33 +1191,31 @@ joyu.get("/joyu/products/:productId", async (req, res) => {
   }
 });
 
-// Update product
 joyu.put("/joyu/products/:productId", uploadJoyu.single("image"), async (req, res) => {
   const { productId } = req.params;
-  const { name, price, categoryID } = req.body;
-
-  // Handle the uploaded image
-  // console.log(req);
-  const updateData = { name, price, categoryID };
+  const { name, price, description, categoryID } = req.body;
+  const updateData = { name, price, description, categoryID };
 
   try {
-    // Find the existing product by ID
     const existingProduct = await Product.findById(productId);
 
     if (!existingProduct) {
       return res.status(404).json({ success: false, message: "Product not found" });
     }
 
-    // Log the existing product data
-    // console.log(existingProduct.image.replace(/%20/g, " "));
-    deleteFileJoyu(existingProduct.image, (err) => {
-      if (err) {
-        console.error("Error deleting detail picture:", err);
-        // Consider how you want to handle partial deletion failures
-      }
-    })
+    if (req.file) {
+      const imagePath = req.file.filename.replace(/ /g,"%20");
+      updateData.image = imagePath;
 
-    // Update the product
+      const imagetodelete = existingProduct.image.replace(/%20/g," ")
+      
+      deleteFileJoyu(imagetodelete, (err) => {
+        if (err) {
+          console.error("Error deleting previous image:", err);
+        }
+      });
+    }
+
     const updatedProduct = await Product.findByIdAndUpdate(productId, updateData, { new: true });
 
     res.status(200).json({ success: true, data: updatedProduct });
@@ -1201,11 +1250,14 @@ joyu.delete("/joyu/products/:productId", async (req, res) => {
 const Banner = joyuSchemas.JoyuBanner
 // Create a new banner
 joyu.post("/joyu/banner", uploadJoyu.single("image"), async (req, res) => {
+  // console.log(req.body);
   try {
-    // console.log(req);
+
+    const {bannerType} = req.body;
+    console.log(bannerType);
     const img = req.file ? req.file.filename : null;
     const image = img.replace(/ /g, "%20")
-    const banner = new Banner({ image });
+    const banner = new Banner({ image, bannerType});
     await banner.save();
     res.status(201).json({ success: true, data: banner });
   } catch (error) {
