@@ -1310,4 +1310,89 @@ joyu.get("/joyu/banner", async (req, res) => {
     res.status(500).json({ success: false, message: "Server error", error: error.message });
   }
 });
+
+
+//Send email Franshising information
+joyu.post('/api/sendEmailFranchising', (req, res) => {
+  const formData = req.body;
+  
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: 'info@joyuteacoffee.com', 
+      pass: 'wixz iswj yodr utjw'
+    }
+  });
+
+  // Format the email body as HTML
+  const emailHTML = `
+    <h2>New Franchise Inquiry</h2>
+    <table >
+      <tr>
+        <td><strong>First Name:</strong></td>
+        <td>${formData.firstName}</td>
+      </tr>
+      <tr>
+        <td><strong>Last Name:</strong></td>
+        <td>${formData.lastName}</td>
+      </tr>
+      <tr>
+        <td><strong>Address:</strong></td>
+        <td>${formData.address}</td>
+      </tr>
+      <tr>
+        <td><strong>Country:</strong></td>
+        <td>${formData.country}</td>
+      </tr>
+      <tr>
+        <td><strong>State/Province:</strong></td>
+        <td>${formData.stateProvince}</td>
+      </tr>
+      <tr>
+        <td><strong>City:</strong></td>
+        <td>${formData.city}</td>
+      </tr>
+      <tr>
+        <td><strong>zip Postal Code:</strong></td>
+        <td>${formData.zipPostalCode}</td>
+      </tr>
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td>${formData.email}</td>
+      </tr>
+      <tr>
+        <td><strong>Mobile:</strong></td>
+        <td>${formData.mobile}</td>
+      </tr>
+      <tr>
+        <td><strong>Business Background:</strong></td>
+        <td>${formData.businessBackground}</td>
+      </tr>
+      <tr>
+        <td><strong>Net Worth:</strong></td>
+        <td>${formData.netWorth}</td>
+      </tr>
+      <tr>
+        <td><strong>Cash Available:</strong></td>
+        <td>${formData.cashAvailable}</td>
+      </tr>
+    </table>
+  `;
+
+  const mailOptions = {
+    from: "info@joyuteacoffee.com",
+    to: 'info@joyuteacoffee.com',
+    subject: 'New Franchise Inquiry',
+    html: emailHTML
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error('Error sending email:', error);
+      return res.status(500).json({ error: 'Failed to send email', details: error.message });
+    }
+    console.log('Email sent:', info.response);
+    res.status(200).json({ message: 'Email sent successfully', info: info.response });
+  });
+});
 module.exports = joyu;
