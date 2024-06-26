@@ -50,7 +50,9 @@ const Careers = () => {
   useEffect(() => {
     const fetchCareers = async () => {
       try {
-        const response = await axios.get("http://103.157.218.115:8802/careers");
+        const response = await axios.get(
+          `${process.env.REACT_APP_SERVER_URL}/careers`
+        );
         // Log the response to ensure your API returns the expected structure
         // console.log(response.data);
 

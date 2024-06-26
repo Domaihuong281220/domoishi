@@ -10,8 +10,7 @@ const multer = require("multer");
 // MongoDB connection setup for GridFS
 const url = process.env.DB_URI; // It's safer to use environment variables for credentials
 const { upload, deleteFile } = require("../multer.js");
-const nodemailer = require('nodemailer');
-
+const nodemailer = require("nodemailer");
 
 // Route to fetch user data (sample data)
 router.get("/users", checkSecretKey, async (req, res) => {
@@ -28,16 +27,16 @@ router.get("/users", checkSecretKey, async (req, res) => {
 });
 
 function checkSecretKey(req, res, next) {
-  const secretKey = req.headers['x-secret-key'];  // Typically, custom headers are prefixed with 'x-'
-  const mySecretKey = process.env.MY_SECRET_KEY;  // Your secret key stored in environment variables
+  const secretKey = req.headers["x-secret-key"]; // Typically, custom headers are prefixed with 'x-'
+  const mySecretKey = process.env.MY_SECRET_KEY; // Your secret key stored in environment variables
 
   if (!secretKey || secretKey !== mySecretKey) {
     return res.status(401).json({
-      message: "Invalid or missing secret key"
+      message: "Invalid or missing secret key",
     });
   }
 
-  next();  // Proceed to the next middleware or route handler
+  next(); // Proceed to the next middleware or route handler
 }
 
 // Route to create a new user document in MongoDB
@@ -57,9 +56,7 @@ router.post("/user", checkSecretKey, async (req, res) => {
       error: err.message,
     });
   }
-
 });
-
 
 router.delete("/user/:id", checkSecretKey, async (req, res) => {
   const { id } = req.params;
@@ -76,11 +73,10 @@ router.delete("/user/:id", checkSecretKey, async (req, res) => {
   } catch (err) {
     res.status(500).json({
       message: "Failed to delete user",
-      error: err.message
+      error: err.message,
     });
   }
 });
-
 
 // PUT route to reset a user's password
 router.put("/user/reset-password", checkSecretKey, async (req, res) => {
@@ -111,17 +107,18 @@ router.put("/user/reset-password", checkSecretKey, async (req, res) => {
   } catch (err) {
     res.status(500).json({
       message: "Password could not be reset",
-      error: err.message
+      error: err.message,
     });
   }
 });
-
 
 router.post("/login", checkSecretKey, async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    return res.status(400).json({ message: "Username and password are required" });
+    return res
+      .status(400)
+      .json({ message: "Username and password are required" });
   }
 
   try {
@@ -133,19 +130,15 @@ router.post("/login", checkSecretKey, async (req, res) => {
 
     res.json({
       message: "Logged in successfully",
-      user
+      user,
     });
   } catch (err) {
     res.status(500).json({
       message: "Server error",
-      error: err.message
+      error: err.message,
     });
   }
 });
-
-
-
-
 
 // others endpoints
 router.post("/news", upload.array("files", 2), async (req, res) => {
@@ -155,7 +148,6 @@ router.post("/news", upload.array("files", 2), async (req, res) => {
   if (req.files && req.files.length > 0) {
     // Loop through the uploaded files
     req.files.forEach((file, index) => {
-
       // Assign paths based on the index
       if (index == 0) {
         titlepic = file.path.substring(7); // Adjust 7 according to your path structure
@@ -266,7 +258,6 @@ router.put("/news/:id", upload.array("files", 2), async (req, res) => {
   const { id } = req.params; // Access ID from URL parameters
   const updateData = req.body; // Data to update
 
-
   if (!id) {
     return res.status(400).json({
       success: false,
@@ -274,7 +265,7 @@ router.put("/news/:id", upload.array("files", 2), async (req, res) => {
     });
   }
 
-  console.log(req.files)
+  console.log(req.files);
 
   if (req.files && req.files.length > 0) {
     // Loop through the uploaded files
@@ -286,16 +277,15 @@ router.put("/news/:id", upload.array("files", 2), async (req, res) => {
         index: index,
       });
 
-
       // Assign paths based on the index
       if (index == 0) {
         titlepic = file.path.substring(7); // Adjust 7 according to your path structure
-        updateData['titlepic'] = file.filename
+        updateData["titlepic"] = file.filename;
       } else if (index == 1) {
         detailpic = file.path.substring(7); // Adjust 7 according to your path structure
-        updateData['detailpic'] = file.filename
+        updateData["detailpic"] = file.filename;
       }
-    })
+    });
   }
   try {
     // Find the news by ID and update it
@@ -371,7 +361,6 @@ router.delete("/news/:id", async (req, res) => {
       message: "News deleted successfully",
       data: deletedNews,
     });
-
   } catch (err) {
     if (err.kind === "ObjectId") {
       return res.status(400).json({
@@ -683,13 +672,13 @@ router.delete("/metatag/:id", async (req, res) => {
   }
 });
 
-router.post('/delete-file', (req, res) => {
+router.post("/delete-file", (req, res) => {
   const { filename } = req.body; // Extract filename from POST request body
 
   if (!filename) {
     return res.status(400).json({
       success: false,
-      message: "Filename is required in the request body"
+      message: "Filename is required in the request body",
     });
   }
 
@@ -698,13 +687,13 @@ router.post('/delete-file', (req, res) => {
     if (err) {
       return res.status(500).json({
         success: false,
-        message: err.message
+        message: err.message,
       });
     }
 
     res.status(200).json({
       success: true,
-      message: "File successfully deleted"
+      message: "File successfully deleted",
     });
   });
 });
@@ -724,8 +713,13 @@ router.get("/locations", async (req, res) => {
 });
 
 router.post("/locations", async (req, res) => {
-  const {name, address,phone,website} = req.body;
-  const locationData = { name: name, address: address, phone: phone, website: website};
+  const { name, address, phone, website } = req.body;
+  const locationData = {
+    name: name,
+    address: address,
+    phone: phone,
+    website: website,
+  };
 
   try {
     const newLocation = new schema.Location(locationData);
@@ -742,7 +736,7 @@ router.post("/locations", async (req, res) => {
       error: err.message,
     });
   }
-})
+});
 
 router.put("/locations/:id", async (req, res) => {
   const { id } = req.params;
@@ -752,8 +746,7 @@ router.put("/locations/:id", async (req, res) => {
       success: false,
       message: "ID parameter is required",
     });
-  
-    }
+  }
   try {
     const updatedLocation = await schema.Location.findByIdAndUpdate(
       id, // Using the ID directly
@@ -785,7 +778,7 @@ router.put("/locations/:id", async (req, res) => {
       error: err.message,
     });
   }
-})
+});
 
 router.delete("/locations/:id", async (req, res) => {
   const id = req.params.id;
@@ -823,7 +816,7 @@ router.delete("/locations/:id", async (req, res) => {
       error: err.message,
     });
   }
-})
+});
 
 router.get("/locations/:id", async (req, res) => {
   const id = req.params.id;
@@ -873,7 +866,7 @@ router.get("/locationframe", async (req, res) => {
     });
   }
 });
-router.put('/locationframe/:id', async (req, res) => {
+router.put("/locationframe/:id", async (req, res) => {
   const { id } = req.params;
   const updateData = req.body;
 
@@ -913,7 +906,7 @@ router.put('/locationframe/:id', async (req, res) => {
       });
     }
   } catch (err) {
-    console.error('Error during update:', err);
+    console.error("Error during update:", err);
     res.status(500).json({
       success: false,
       message: "Server error",
@@ -922,16 +915,17 @@ router.put('/locationframe/:id', async (req, res) => {
   }
 });
 
-
-router.post('/api/sendEmail', (req, res) => {
+router.post("/api/sendEmail", (req, res) => {
   const formData = req.body;
-  console.log(formData);
+  console.log(formData, "check data");
   const transporter = nodemailer.createTransport({
-    service: 'Gmail',
+    service: "Gmail",
     auth: {
       user: "infodomoishi@gmail.com",
-      pass: "dkxu dqik ezpx ramg"
-    }
+      pass: "dkxu dqik ezpx ramg",
+      // user: "domaihuong.28.12.20@gmail.com",
+      // pass: "rone hngt cuba lrah",
+    },
   });
 
   // Format the email body as HTML
@@ -991,18 +985,22 @@ router.post('/api/sendEmail', (req, res) => {
 
   const mailOptions = {
     from: "infodomoishi@gmail.com",
-    to: 'infodomoishi@gmail.com',
-    subject: 'New Franchise Inquiry',
-    html: emailHTML
+    to: "infodomoishi@gmail.com",
+    subject: "New Franchise Inquiry",
+    html: emailHTML,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error('Error sending email:', error);
-      return res.status(500).json({ error: 'Failed to send email', details: error.message });
+      console.error("Error sending email:", error);
+      return res
+        .status(500)
+        .json({ error: "Failed to send email", details: error.message });
     }
-    console.log('Email sent:', info.response);
-    res.status(200).json({ message: 'Email sent successfully', info: info.response });
+    console.log("Email sent:", info.response);
+    res
+      .status(200)
+      .json({ message: "Email sent successfully", info: info.response });
   });
 });
 
