@@ -1410,11 +1410,10 @@ joyu.get("/joyu/banner", async (req, res) => {
 //Send email Franshising information
 joyu.post("/api/sendEmailFranchising", (req, res) => {
   const formData = req.body;
-
   const transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-      user: "info@joyuteacoffee.com",
+      user: "joyutea@gmail.com",
       pass: "wixz iswj yodr utjw",
     },
   });
@@ -1475,8 +1474,8 @@ joyu.post("/api/sendEmailFranchising", (req, res) => {
   `;
 
   const mailOptions = {
-    from: "info@joyuteacoffee.com",
-    to: "info@joyuteacoffee.com",
+    from: "joyutea@gmail.com",
+    to: "joyutea@gmail.com",
     subject: "New Franchise Inquiry",
     html: emailHTML,
   };
@@ -1503,7 +1502,7 @@ joyu.post("/api/sendEmailCatering", (req, res) => {
   const transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-      user: "info@joyuteacoffee.com",
+      user: "joyutea@gmail.com",
       pass: "wixz iswj yodr utjw",
     },
   });
@@ -1553,8 +1552,8 @@ joyu.post("/api/sendEmailCatering", (req, res) => {
   `;
 
   const mailOptions = {
-    from: "info@joyuteacoffee.com",
-    to: "info@joyuteacoffee.com",
+    from: "joyutea@gmail.com",
+    to: "joyutea@gmail.com",
     subject: "New Franchise Inquiry",
     html: emailHTML,
   };
