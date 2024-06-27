@@ -1509,42 +1509,42 @@ joyu.post("/api/sendEmailCatering", (req, res) => {
 
   // Format the email body as HTML
   const emailHTML = `
-    <h2>New Franchise Inquiry</h2>
+    <h2>New Catering </h2>
     <table >
       <tr>
-        <td><strong>First Name:</strong></td>
+        <td><strong>Name: </strong></td>
         <td>${formData.name}</td>
       </tr>
       <tr>
-        <td><strong>Last Name:</strong></td>
+        <td><strong>Phone number: </strong></td>
         <td>${formData.phone}</td>
       </tr>
       <tr>
-        <td><strong>Address:</strong></td>
+        <td><strong>Email: </strong></td>
         <td>${formData.email}</td>
       </tr>
       <tr>
-        <td><strong>Country:</strong></td>
+        <td><strong>Dat: e</strong></td>
         <td>${formData.date}</td>
       </tr>
       <tr>
-        <td><strong>State/Province:</strong></td>
+        <td><strong>Type: </strong></td>
         <td>${formData.type}</td>
       </tr>
       <tr>
-        <td><strong>City:</strong></td>
+        <td><strong>Location: </strong></td>
         <td>${formData.location}</td>
       </tr>
       <tr>
-        <td><strong>zip Postal Code:</strong></td>
+        <td><strong>Guest count: </strong></td>
         <td>${formData.guestCount}</td>
       </tr>
       <tr>
-        <td><strong>Email:</strong></td>
+        <td><strong>Event detail: </strong></td>
         <td>${formData.eventDetail}</td>
       </tr>
       <tr>
-        <td><strong>Mobile:</strong></td>
+        <td><strong>Special request: </strong></td>
         <td>${formData.specicalRequest}</td>
       </tr>
       
@@ -1554,7 +1554,7 @@ joyu.post("/api/sendEmailCatering", (req, res) => {
   const mailOptions = {
     from: "joyutea@gmail.com",
     to: "joyutea@gmail.com",
-    subject: "New Franchise Inquiry",
+    subject: "New Catering Inquiry",
     html: emailHTML,
   };
 
