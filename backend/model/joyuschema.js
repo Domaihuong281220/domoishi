@@ -56,6 +56,20 @@ const metatagSchema = new Schema({
   property: String,
 });
 
+const hoursSchema = new Schema(
+  {
+    start: {
+      type: String,
+      required: false,
+    },
+    end: {
+      type: String,
+      required: false,
+    },
+  },
+  { _id: false }
+);
+
 const locationSchema = new Schema({
   name: {
     type: String,
@@ -80,6 +94,15 @@ const locationSchema = new Schema({
   available: {
     type: Boolean,
     require: true,
+  },
+  hours: {
+    monday: hoursSchema,
+    tuesday: hoursSchema,
+    wednesday: hoursSchema,
+    thursday: hoursSchema,
+    friday: hoursSchema,
+    saturday: hoursSchema,
+    sunday: hoursSchema,
   },
 });
 
