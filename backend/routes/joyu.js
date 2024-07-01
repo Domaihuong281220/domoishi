@@ -713,6 +713,7 @@ joyu.post("/joyu/locations", async (req, res) => {
     pickuplink: pickuplink,
     deliverylink: deliverylink,
     available: available,
+
   };
 
   try {
@@ -968,57 +969,6 @@ joyu.delete("/joyu/customer/:id", async (req, res) => {
 
 // Middleware to parse form data
 joyu.use(express.urlencoded({ extended: true }));
-
-joyu.post("/joyu/sendemail", async (req, res) => {
-  const JoyuUser = joyuSchemas.JoyuUser;
-  const emailData = req.body.emailData; // Extract emailData from the request body
-
-  console.log("Received request with emailData:", emailData);
-
-  try {
-    const userData = await JoyuUser.find();
-    const emails = userData.map((user) => user.email);
-    // console.log('Sending emails to:', emails);
-
-    // Create a transporter object using SMTP transport
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: "info@joyuteacoffee.com", // Replace with your email
-        pass: "wixz iswj yodr utjw", // Replace with your app-specific password
-      },
-    });
-
-    // Send emails to all users
-    for (const email of emails) {
-      const mailOptions = {
-        from: '"Your Name" <your-email@gmail.com>', // Sender address
-        to: email, // List of receivers
-        subject: "Subject of your email", // Subject line
-        text: `Plain text version of the message: ${emailData}`, // Plain text body
-        html: `<p>HTML version of the message: ${emailData}</p>`, // HTML body
-      };
-
-      console.log(`Sending email to ${email}...`);
-      await transporter.sendMail(mailOptions);
-      console.log(`Email sent to ${email}`);
-    }
-
-    res.json({
-      success: true,
-      message: "Emails sent successfully",
-      data: userData,
-    });
-  } catch (err) {
-    console.error("Error sending emails:", err);
-    res.status(500).json({
-      message: "Failed to send emails",
-      error: err.message,
-    });
-  }
-});
 
 //#region Category
 const Category = joyuSchemas.JoyuCategory;
@@ -1404,6 +1354,56 @@ joyu.get("/joyu/banner", async (req, res) => {
     res
       .status(500)
       .json({ success: false, message: "Server error", error: error.message });
+  }
+});
+joyu.post("/joyu/sendemail", async (req, res) => {
+  const JoyuUser = joyuSchemas.JoyuUser;
+  const data = req.body; // Extract emailData from the request body
+
+  console.log(data);
+
+  try {
+    const userData = await JoyuUser.find();
+    const emails = userData.map((user) => user.email);
+    // console.log('Sending emails to:', emails);
+
+    // Create a transporter object using SMTP transport
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      auth: {
+        user: "joyutea@gmail.com", // Replace with your email
+        pass: "wixz iswj yodr utjw", // Replace with your app-specific password
+      },
+    });
+
+    // Send emails to all users
+    for (const email of emails) {
+      const mailOptions = {
+        from: "Joyu teacoffee : joyutea@gmail.com", // Sender address
+        to: email, // List of receivers
+        subject: data.subject, // Subject line
+        // text: `Plain text version of the message: ${emailData}`, // Plain text body
+        html: `<p>Content: ${data.emailData}</p>`, // HTML body
+      };
+
+      console.log(`Sending email to ${email}...`);
+      await transporter.sendMail(mailOptions);
+      console.log(`Email sent to ${email}`);
+    }
+
+    res.json({
+      success: true,
+      message: "Emails sent successfully",
+      data: userData,
+    });
+  } catch (err) {
+    console.error("Error sending emails:", err);
+    res.status(500).json({
+      message: "Failed to send emails",
+      error: err.message,
+    });
   }
 });
 

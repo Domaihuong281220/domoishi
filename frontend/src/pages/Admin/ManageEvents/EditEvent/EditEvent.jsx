@@ -9,6 +9,7 @@ const EditEvent = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const newsData = location.state;
+  console.log(newsData, "check data");
 
   const [formData, setFormData] = useState({
     title: newsData.title,
@@ -28,21 +29,23 @@ const EditEvent = () => {
     }
   };
 
-
   const handleEdit = async (id) => {
     const formDataToSend = new FormData();
-    formDataToSend.append('title', formData.title);
-    formDataToSend.append('shortdescription', formData.shortdescription);
-    formDataToSend.append('longdescription', formData.longdescription);
+    formDataToSend.append("title", formData.title);
+    formDataToSend.append("shortdescription", formData.shortdescription);
+    formDataToSend.append("longdescription", formData.longdescription);
 
-    formDataToSend.append('files', titleImage);
-    formDataToSend.append('files', detailImage);
-
+    formDataToSend.append("files", titleImage);
+    formDataToSend.append("files", detailImage);
 
     try {
-      const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}/news/${id}`, formDataToSend, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      });
+      const response = await axios.put(
+        `${process.env.REACT_APP_SERVER_URL}/news/${id}`,
+        formDataToSend,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
       if (response.status === 200 || response.status === 201) {
         // console.log(formDataToSend);
         toast.success("Edit news successfully!");
@@ -52,8 +55,6 @@ const EditEvent = () => {
       toast.error("Edit news wrong: " + err.message);
     }
   };
-
-
 
   return (
     <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
@@ -68,7 +69,9 @@ const EditEvent = () => {
             className="w-full h-auto border-[1px] p-2"
             placeholder="Name Event"
             defaultValue={newsData.title}
-            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, title: e.target.value })
+            }
           />
         </div>
         <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
@@ -77,7 +80,9 @@ const EditEvent = () => {
             className="w-full h-[300px] border-[1px] p-2"
             placeholder="Description"
             defaultValue={newsData.longdescription}
-            onChange={(e) => setFormData({ ...formData, longdescription: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, longdescription: e.target.value })
+            }
           />
         </div>
         <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
@@ -86,16 +91,21 @@ const EditEvent = () => {
             className="w-full h-[200px] border-[1px] p-2"
             placeholder="Short description"
             defaultValue={newsData.shortdescription}
-            onChange={(e) => setFormData({ ...formData, shortdescription: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, shortdescription: e.target.value })
+            }
           />
         </div>
         <div className="w-full flex flex-col gap-y-2 pb-6">
           <p className="text-lg">Image Title</p>
-          <img src={process.env.REACT_APP_SERVER_URL+"/"+newsData.titlepic} alt="1"/>
+          <img
+            src={process.env.REACT_APP_SERVER_URL + "/" + newsData.titlepic}
+            alt="1"
+          />
           <input
             type="file"
             accept="image/jpeg, image/png"
-            onChange={(e) => handleImageChange(e, setTitleImage, 'titlepic')}
+            onChange={(e) => handleImageChange(e, setTitleImage, "titlepic")}
             className="w-full"
           />
           {titleImage && (
@@ -109,11 +119,14 @@ const EditEvent = () => {
 
         <div className="w-full flex flex-col gap-y-2 pb-6">
           <p className="text-lg">Image Detail</p>
-          <img src={process.env.REACT_APP_SERVER_URL+"/"+newsData.detailpic} alt="1"/>
+          <img
+            src={process.env.REACT_APP_SERVER_URL + "/" + newsData.detailpic}
+            alt="1"
+          />
           <input
             type="file"
             accept="image/jpeg, image/png"
-            onChange={(e) => handleImageChange(e, setDetailImage, 'detailpic')}
+            onChange={(e) => handleImageChange(e, setDetailImage, "detailpic")}
             // onChange={(e) => setFormData({ ...formData, detailpic: e.target.files[0] })}
 
             className="w-full"
