@@ -704,7 +704,7 @@ joyu.get("/joyu/locations", async (req, res) => {
 });
 
 joyu.post("/joyu/locations", async (req, res) => {
-  const { name, address, phone, pickuplink, deliverylink, available } =
+  const { name, address, phone, pickuplink, deliverylink, available, hours } =
     req.body;
   const locationData = {
     name: name,
@@ -713,6 +713,7 @@ joyu.post("/joyu/locations", async (req, res) => {
     pickuplink: pickuplink,
     deliverylink: deliverylink,
     available: available,
+    hours: hours
   };
 
   try {
