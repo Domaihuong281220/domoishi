@@ -1,3 +1,5 @@
+/** @format */
+
 const express = require("express");
 const joyu = express.Router();
 const schema = require("../model/schemas");
@@ -181,7 +183,7 @@ joyu.post("/joyu/news", uploadJoyu.array("files", 2), async (req, res) => {
 joyu.get("/joyu/news", async (req, res) => {
   const News = joyuSchemas.JoyuNews;
   try {
-    const newsItems = await News.find({});
+    const newsItems = await News.find({}).sort({ createdAt: -1 });
     if (newsItems.length > 0) {
       res.status(200).json({
         success: true,
@@ -895,6 +897,7 @@ joyu.put("/joyu/locationframe/:id", upload.none(), async (req, res) => {
   }
 });
 
+// get all customer
 joyu.get("/joyu/customer", async (req, res) => {
   const JoyuUser = joyuSchemas.JoyuUser;
   try {
@@ -909,7 +912,7 @@ joyu.get("/joyu/customer", async (req, res) => {
     });
   }
 });
-
+// Create custommer
 joyu.post("/joyu/customer", async (req, res, next) => {
   const { email } = req.body;
   console.log(email);
@@ -929,6 +932,7 @@ joyu.post("/joyu/customer", async (req, res, next) => {
   }
 });
 
+// delete customer
 joyu.delete("/joyu/customer/:id", async (req, res) => {
   const id = req.params.id;
   if (!id) {
@@ -964,6 +968,54 @@ joyu.delete("/joyu/customer/:id", async (req, res) => {
         error: err.message,
       });
     }
+  }
+});
+
+// Create  list customer
+
+joyu.post("/joyu/customers", async (req, res) => {
+  const { emails } = req.body; // Assuming emails is an array of email addresses
+
+  try {
+    // Validate if emails is an array
+    if (!Array.isArray(emails)) {
+      return res.status(400).json({
+        success: false,
+        message: "Emails should be provided in an array format",
+      });
+    }
+
+    // Array to hold created users
+    const createdUsers = [];
+
+    // Iterate through each email and insert if it doesn't exist
+    for (const email of emails) {
+      // Check if email already exists
+      const existingUser = await joyuSchemas.JoyuUser.findOne({ email });
+
+      if (existingUser) {
+        console.log(
+          `Email '${email}' already exists in the database. Skipping insertion.`
+        );
+        continue; // Skip to the next email
+      }
+
+      // Create a new user
+      const newUser = await joyuSchemas.JoyuUser.create({ email });
+      createdUsers.push(newUser); // Push created user to array
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Customers added successfully",
+      data: createdUsers,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to add customers",
+      error: err.message,
+    });
   }
 });
 
@@ -1356,9 +1408,10 @@ joyu.get("/joyu/banner", async (req, res) => {
       .json({ success: false, message: "Server error", error: error.message });
   }
 });
-joyu.post("/joyu/sendemail", async (req, res) => {
+joyu.post("/joyu/sendemail", upload.single("image"), async (req, res) => {
   const JoyuUser = joyuSchemas.JoyuUser;
-  const data = req.body; // Extract emailData from the request body
+  const data = req.body; // Lấy emailData từ body của yêu cầu
+  const image = req.file; // Extract emailData from the request body
 
   console.log(data);
 
@@ -1384,8 +1437,27 @@ joyu.post("/joyu/sendemail", async (req, res) => {
         from: "Joyu teacoffee : joyutea@gmail.com", // Sender address
         to: email, // List of receivers
         subject: data.subject, // Subject line
-        // text: `Plain text version of the message: ${emailData}`, // Plain text body
-        html: `<p>Content: ${data.emailData}</p>`, // HTML body
+        html: `
+        
+                  <div>
+            <p>Content: ${data.emailData}</p>
+            ${
+              image ? `<img src="cid:${data.img}" />` : ""
+            } <!-- Include image if it exists -->
+            <p>If you want to unsubscribe, please click the link: <a href="${
+              process.env.REACT_APP_SERVER_URL
+            }/joyu/unsubscribe/${email}">Click here</a></p>
+          </div>
+          
+         `, // HTML body
+        attachments: [
+          image && {
+            // Attach image only if it exists
+            filename: image.originalname,
+            content: image.buffer,
+            cid: data.img, // Use img from the frontend as the CID
+          },
+        ].filter(Boolean),
       };
 
       console.log(`Sending email to ${email}...`);
@@ -1404,6 +1476,22 @@ joyu.post("/joyu/sendemail", async (req, res) => {
       message: "Failed to send emails",
       error: err.message,
     });
+  }
+});
+
+// Uunscribe
+
+joyu.get("/joyu/unsubscribe/:email", async (req, res) => {
+  const JoyuUser = joyuSchemas.JoyuUser;
+  const email = req.params.email;
+
+  try {
+    await JoyuUser.deleteOne({ email });
+    // res.status(200).send("You have been unsubscribed.");
+    res.redirect(`${process.env.REACT_APP_REDIRECT}`);
+  } catch (error) {
+    console.error("Error unsubscribing:", error);
+    res.status(500).send("Failed to unsubscribe.");
   }
 });
 
@@ -1524,7 +1612,7 @@ joyu.post("/api/sendEmailCatering", (req, res) => {
         <td>${formData.email}</td>
       </tr>
       <tr>
-        <td><strong>Dat: e</strong></td>
+        <td><strong>Date: </strong></td>
         <td>${formData.date}</td>
       </tr>
       <tr>

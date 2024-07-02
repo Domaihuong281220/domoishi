@@ -1,3 +1,5 @@
+/** @format */
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -30,14 +32,17 @@ const adminSchema = new Schema({
   },
 });
 
-const newsSchema = new Schema({
-  title: String,
-  shortdescription: String,
-  longdescription: String,
-  detailpic: String,
-  filename: String,
-  titlepic: String,
-});
+const newsSchema = new Schema(
+  {
+    title: String,
+    shortdescription: String,
+    longdescription: String,
+    detailpic: String,
+    filename: String,
+    titlepic: String,
+  },
+  { timestamps: true }
+);
 
 const careersSchema = new Schema({
   position: String,
