@@ -367,10 +367,20 @@ joyu.delete("/joyu/news/:id", async (req, res) => {
   }
 });
 
-joyu.post("/joyu/careers", async (req, res) => {
+joyu.post("/joyu/careers", uploadJoyu.single("image"), async (req, res) => {
   const { position, description, availability, address, responsibility } =
     req.body;
-  const careersData = { position, description, availability, address, re };
+
+  const img = req.file ? req.file.filename : null;
+  const image = img ? img.replace(/ /g, "%20") : null;
+  const careersData = {
+    position: position,
+    description: description,
+    availability: availability,
+    address: address,
+    responsibility: responsibility,
+    image: image,
+  };
 
   try {
     const newCareers = new joyuSchemas.JoyuCareers(careersData);
@@ -453,9 +463,14 @@ joyu.get("/joyu/careers/:id", async (req, res) => {
   }
 });
 
-joyu.put("/joyu/careers/:id", async (req, res) => {
+joyu.put("/joyu/careers/:id", uploadJoyu.single("image"), async (req, res) => {
   const { id } = req.params;
+
+  const { position, description, responsibility, availability, address } =
+    req.body;
+
   const updateData = req.body;
+  // console.log(updatedData);
   if (!id) {
     return res.status(400).json({
       success: false,
@@ -463,11 +478,24 @@ joyu.put("/joyu/careers/:id", async (req, res) => {
     });
   }
   try {
+    if (req.image) {
+      const imagePath = req.image.filename.replace(/ /g, "%20");
+      updateData.image = imagePath;
+
+      const imagetodelete = existingProduct.image.replace(/%20/g, " ");
+
+      deleteFileJoyu(imagetodelete, (err) => {
+        if (err) {
+          console.error("Error deleting previous image:", err);
+        }
+      });
+    }
     const updatedCareers = await joyuSchemas.JoyuCareers.findByIdAndUpdate(
       id, // Using the ID directly
       updateData,
       { new: true, runValidators: true } // Return the updated object and run model validators
     );
+
     if (updatedCareers) {
       res.status(200).json({
         success: true,

@@ -50,6 +50,7 @@ const careersSchema = new Schema({
   responsibility: String,
   availability: String,
   address: String,
+  image: String,
 });
 
 const metatagSchema = new Schema({
