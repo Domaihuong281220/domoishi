@@ -1472,9 +1472,9 @@ joyu.post("/joyu/sendemail", upload.single("image"), async (req, res) => {
             ${
               image ? `<img src="cid:${data.img}" />` : ""
             } <!-- Include image if it exists -->
-            <p>If you want to unsubscribe, please click the link: <a href="${
-              process.env.REACT_APP_SERVER_URL
-            }/joyu/unsubscribe/${email}">Click here</a></p>
+             <a href="${
+               process.env.REACT_APP_SERVER_URL
+             }/joyu/unsubscribe/${email}">UnSubcribed</a></p>
           </div>
           
          `, // HTML body
@@ -1516,7 +1516,7 @@ joyu.get("/joyu/unsubscribe/:email", async (req, res) => {
   try {
     await JoyuUser.deleteOne({ email });
     // res.status(200).send("You have been unsubscribed.");
-    res.redirect(`${process.env.REACT_APP_REDIRECT}`);
+    res.redirect(`${process.env.REACT_APP_REDIRECT}/unsubscribe`);
   } catch (error) {
     console.error("Error unsubscribing:", error);
     res.status(500).send("Failed to unsubscribe.");
