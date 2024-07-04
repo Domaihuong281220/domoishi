@@ -1472,7 +1472,7 @@ joyu.post("/joyu/sendemail", upload.single("image"), async (req, res) => {
             ${
               image ? `<img src="cid:${data.img}" />` : ""
             } <!-- Include image if it exists -->
-            <p>If you want to unsubscribe, please click the link: <a href="${
+            <p><b>Unsubcribe</b>: <a href="${
               process.env.REACT_APP_SERVER_URL
             }/joyu/unsubscribe/${email}">Click here</a></p>
           </div>
