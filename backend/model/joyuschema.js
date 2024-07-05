@@ -53,6 +53,15 @@ const careersSchema = new Schema({
   image: String,
 });
 
+const careerspositionaddressSchema = new Schema({
+  address: String,
+  careerId: {
+    type: Schema.Types.ObjectId,
+    ref: "JoyuCareers",
+    required: true,
+  },
+});
+
 const metatagSchema = new Schema({
   page: String,
   path: String,
@@ -167,6 +176,13 @@ const JoyuLocationFrame = mongoose.model(
   "joyulocationframe"
 );
 const JoyuCareers = mongoose.model("JoyuCareers", careersSchema, "joyucareers");
+
+const JoyuCareersPositionAddress = mongoose.model(
+  "JoyuCareersPositionAddress",
+  careerspositionaddressSchema,
+  "JoyuCareersPositionAddress"
+);
+
 const JoyuUser = mongoose.model(
   "JoyuUser",
   joyuUserSchema,
@@ -189,6 +205,7 @@ const joyuSchemas = {
   JoyuCareers: JoyuCareers,
   JoyuCategory: JoyuCategory,
   JoyuBanner: JoyuBanner,
+  JoyuCareersPositionAddress: JoyuCareersPositionAddress,
 };
 
 module.exports = joyuSchemas;

@@ -367,9 +367,9 @@ joyu.delete("/joyu/news/:id", async (req, res) => {
   }
 });
 
+// Careers
 joyu.post("/joyu/careers", uploadJoyu.single("image"), async (req, res) => {
-  const { position, description, availability, address, responsibility } =
-    req.body;
+  const { position, description, availability, responsibility } = req.body;
 
   const img = req.file ? req.file.filename : null;
   const image = img ? img.replace(/ /g, "%20") : null;
@@ -377,7 +377,6 @@ joyu.post("/joyu/careers", uploadJoyu.single("image"), async (req, res) => {
     position: position,
     description: description,
     availability: availability,
-    address: address,
     responsibility: responsibility,
     image: image,
   };
@@ -400,6 +399,7 @@ joyu.post("/joyu/careers", uploadJoyu.single("image"), async (req, res) => {
     });
   }
 });
+// get all position
 
 joyu.get("/joyu/careers", async (req, res) => {
   const careerSchema = joyuSchemas.JoyuCareers;
@@ -426,8 +426,34 @@ joyu.get("/joyu/careers", async (req, res) => {
   }
 });
 
+// get all positions
+joyu.get("/joyu/careers/positions", async (req, res) => {
+  const careerSchema = joyuSchemas.JoyuCareers;
+  try {
+    const positions = await careerSchema.distinct("position");
+    if (positions.length > 0) {
+      res.status(200).json({
+        success: true,
+        count: positions.length,
+        data: positions,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        message: "No positions found",
+      });
+    }
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: err.message,
+    });
+  }
+});
+
 joyu.get("/joyu/careers/:id", async (req, res) => {
-  const { id } = req.query; // Access id from query parameters
+  const { id } = req.params; // Access id from query parameters
   if (!id) {
     return res.status(400).json({
       success: false,
@@ -557,6 +583,120 @@ joyu.delete("/joyu/careers/:id", async (req, res) => {
       message: "Server error",
       error: err.message,
     });
+  }
+});
+
+// Position Address Careers
+
+const Address = joyuSchemas.JoyuCareersPositionAddress;
+
+// Create a new adress
+joyu.post("/joyu/address", async (req, res) => {
+  try {
+    const { address, careerId } = req.body;
+
+    const addresscareer = new Address({
+      address,
+      careerId,
+    });
+
+    await addresscareer.save();
+    res.status(201).json({ success: true, data: addresscareer });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ success: false, message: "Server error", error: error.message });
+  }
+});
+
+// Get all address
+joyu.get("/joyu/address", async (req, res) => {
+  try {
+    const address = await Address.find().populate("careerId", "position");
+    res
+      .status(200)
+      .json({ success: true, count: address.length, data: address });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ success: false, message: "Server error", error: error.message });
+  }
+});
+// Get address by ID
+joyu.get("/joyu/address/:addressId", async (req, res) => {
+  const { addressId } = req.params;
+
+  try {
+    // Find the product by ID and populate the categoryID field with the category name
+    const address = await Address.findById(addressId).populate(
+      "careerId",
+      "address"
+    );
+
+    if (!address) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Address not found" });
+    }
+
+    res.status(200).json({ success: true, data: address });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ success: false, message: "Server error", error: error.message });
+  }
+});
+
+// update address by id
+
+joyu.put("/joyu/address/:addressId", async (req, res) => {
+  const { addressId } = req.params;
+  const { address, careerId } = req.body;
+  const updateData = { address, careerId };
+
+  try {
+    const existingAddress = await Address.findById(addressId);
+
+    if (!existingAddress) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found" });
+    }
+
+    const updatedAddress = await Address.findByIdAndUpdate(
+      addressId,
+      updateData,
+      { new: true }
+    );
+
+    res.status(200).json({ success: true, data: updatedProduct });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: error.message,
+    });
+  }
+});
+// Delete Address by id
+joyu.delete("/joyu/address/:addressId", async (req, res) => {
+  const { addressId } = req.params;
+
+  try {
+    const deleteAddress = await Address.findByIdAndDelete(addressId);
+    if (!deleteAddress) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found" });
+    }
+
+    res
+      .status(200)
+      .json({ success: true, message: "Address deleted successfully" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ success: false, message: "Server error", error: error.message });
   }
 });
 
@@ -1224,6 +1364,7 @@ joyu.post("/joyu/products", uploadJoyu.single("image"), async (req, res) => {
     // console.log(req);
     const { name, price, categoryID, description } = req.body;
     const img = req.file ? req.file.filename : null;
+    duct;
     const image = img.replace(/ /g, "%20");
     const product = new Product({
       name,
@@ -1467,15 +1608,29 @@ joyu.post("/joyu/sendemail", upload.single("image"), async (req, res) => {
         subject: data.subject, // Subject line
         html: `
         
+          <!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  
                   <div>
-            <p>Content: ${data.emailData}</p>
+            <p className = "text-red-200">Content: ${data.emailData}</p>
             ${
               image ? `<img src="cid:${data.img}" />` : ""
             } <!-- Include image if it exists -->
              <a href="${
                process.env.REACT_APP_SERVER_URL
              }/joyu/unsubscribe/${email}">UnSubcribed</a></p>
+
+
+
           </div>
+</body>
+</html>
           
          `, // HTML body
         attachments: [
