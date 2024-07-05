@@ -593,11 +593,12 @@ const Address = joyuSchemas.JoyuCareersPositionAddress;
 // Create a new adress
 joyu.post("/joyu/address", async (req, res) => {
   try {
-    const { address, careerId } = req.body;
+    const { address, careerId, availability } = req.body;
 
     const addresscareer = new Address({
       address,
       careerId,
+      availability,
     });
 
     await addresscareer.save();
@@ -630,7 +631,8 @@ joyu.get("/joyu/address/:addressId", async (req, res) => {
     // Find the product by ID and populate the categoryID field with the category name
     const address = await Address.findById(addressId).populate(
       "careerId",
-      "address"
+      "address",
+      "position "
     );
 
     if (!address) {
@@ -651,8 +653,8 @@ joyu.get("/joyu/address/:addressId", async (req, res) => {
 
 joyu.put("/joyu/address/:addressId", async (req, res) => {
   const { addressId } = req.params;
-  const { address, careerId } = req.body;
-  const updateData = { address, careerId };
+  const { address, careerId, availability } = req.body;
+  const updateData = { address, careerId, availability };
 
   try {
     const existingAddress = await Address.findById(addressId);
@@ -660,7 +662,7 @@ joyu.put("/joyu/address/:addressId", async (req, res) => {
     if (!existingAddress) {
       return res
         .status(404)
-        .json({ success: false, message: "Product not found" });
+        .json({ success: false, message: "Address not found" });
     }
 
     const updatedAddress = await Address.findByIdAndUpdate(
@@ -669,7 +671,7 @@ joyu.put("/joyu/address/:addressId", async (req, res) => {
       { new: true }
     );
 
-    res.status(200).json({ success: true, data: updatedProduct });
+    res.status(200).json({ success: true, data: updatedAddress });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -1364,7 +1366,7 @@ joyu.post("/joyu/products", uploadJoyu.single("image"), async (req, res) => {
     // console.log(req);
     const { name, price, categoryID, description } = req.body;
     const img = req.file ? req.file.filename : null;
-    duct;
+
     const image = img.replace(/ /g, "%20");
     const product = new Product({
       name,
@@ -1625,6 +1627,7 @@ joyu.post("/joyu/sendemail", upload.single("image"), async (req, res) => {
              <a href="${
                process.env.REACT_APP_SERVER_URL
              }/joyu/unsubscribe/${email}">UnSubcribed</a></p>
+             <a href="http://localhost:3000/privacy-policy">Term and Policy</a></p>
 
 
 

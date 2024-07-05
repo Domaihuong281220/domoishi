@@ -55,6 +55,7 @@ const careersSchema = new Schema({
 
 const careerspositionaddressSchema = new Schema({
   address: String,
+  availability: Boolean,
   careerId: {
     type: Schema.Types.ObjectId,
     ref: "JoyuCareers",
