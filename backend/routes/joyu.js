@@ -581,8 +581,48 @@ joyu.put("/joyu/careers/:id", uploadJoyu.single("image"), async (req, res) => {
   }
 });
 
+// joyu.delete("/joyu/careers/:id", async (req, res) => {
+//   const { id } = req.params;
+//   if (!id) {
+//     return res.status(400).json({
+//       success: false,
+//       message: "ID parameter is required",
+//     });
+//   }
+//   try {
+//     const deletedCareers = await joyuSchemas.JoyuCareers.findByIdAndDelete(id);
+//     if (deletedCareers) {
+//       res.status(200).json({
+//         success: true,
+//         message: "Careers deleted successfully",
+//         data: deletedCareers,
+//       });
+//     } else {
+//       res.status(404).json({
+//         success: false,
+//         message: "No careers found with the given ID",
+//       });
+//     }
+//   } catch (err) {
+//     if (err.kind === "ObjectId") {
+//       return res.status(400).json({
+//         success: false,
+//         message: "Invalid ID format",
+//       });
+//     }
+//     res.status(500).json({
+//       success: false,
+//       message: "Server error",
+//       error: err.message,
+//     });
+//   }
+// });
+
+// filter position and avaibility
+// DELETE career and associated addresses by careerId
 joyu.delete("/joyu/careers/:id", async (req, res) => {
   const { id } = req.params;
+
   if (!id) {
     return res.status(400).json({
       success: false,
@@ -590,12 +630,14 @@ joyu.delete("/joyu/careers/:id", async (req, res) => {
     });
   }
   try {
-    const deletedCareers = await joyuSchemas.JoyuCareers.findByIdAndDelete(id);
-    if (deletedCareers) {
+    const deletedCareer = await joyuSchemas.JoyuCareers.findByIdAndDelete(id);
+    if (deletedCareer) {
+      const result = await Address.deleteMany({ careerId: id });
       res.status(200).json({
         success: true,
-        message: "Careers deleted successfully",
-        data: deletedCareers,
+        message: "Career and associated addresses deleted successfully",
+        careerDeleted: deletedCareer,
+        addressesDeletedCount: result.deletedCount,
       });
     } else {
       res.status(404).json({
@@ -618,7 +660,6 @@ joyu.delete("/joyu/careers/:id", async (req, res) => {
   }
 });
 
-// filter position and avaibility
 joyu.post("/joyu/careers/filter", async (req, res) => {
   const { availability, position } = req.body;
   let filter = {};
@@ -752,20 +793,43 @@ joyu.put("/joyu/address/:addressId", async (req, res) => {
   }
 });
 // Delete Address by id
-joyu.delete("/joyu/address/:addressId", async (req, res) => {
-  const { addressId } = req.params;
-
+joyu.delete("/joyu/address/:careerId", async (req, res) => {
   try {
-    const deleteAddress = await Address.findByIdAndDelete(addressId);
-    if (!deleteAddress) {
-      return res
-        .status(404)
-        .json({ success: false, message: "Address not found" });
+    const { careerId } = req.params;
+    const result = await Address.deleteMany({ careerId });
+
+    if (result.deletedCount === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No addresses found with the given careerId",
+      });
     }
 
+    res.status(200).json({
+      success: true,
+      message: `${result.deletedCount} addresses deleted`,
+    });
+  } catch (error) {
     res
-      .status(200)
-      .json({ success: true, message: "Address deleted successfully" });
+      .status(500)
+      .json({ success: false, message: "Server error", error: error.message });
+  }
+});
+
+// DELETE all addresses by careerId
+joyu.delete("/joyu/address/:careerId", async (req, res) => {
+  try {
+    const { careerId } = req.params;
+    const result = await Address.deleteMany({ careerId });
+
+    if (result.deletedCount === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No addresses found with the given careerId",
+      });
+    }
+
+    res.status(200).json({ success: true, data: {} });
   } catch (error) {
     res
       .status(500)
@@ -1703,7 +1767,9 @@ joyu.post("/joyu/sendemail", upload.single("image"), async (req, res) => {
                     <tr>
                         <td class="body" style="padding: 2vw; text-align: left; font-size: 16px; line-height: 1.6; border-collapse: collapse; border: 1px solid #cccccc; border-radius: 1vw;">
                             <p className = "text-red-200"  dangerouslySetInnerHTML={{
-                __html: ${replaceNewlinesWithBreaks('\r\n'+data.emailData)}</p>
+                __html: ${replaceNewlinesWithBreaks(
+                  "\r\n" + data.emailData
+                )}</p>
                         </td>
                     </tr>
 
