@@ -10,7 +10,6 @@ const Header = () => {
   const location = useLocation(); // Get the current location
 
   // Log the current path
-  console.log('Current path:', location.pathname);
   const navigate = useNavigate();
   return (
     <div className="h-fit bg-red-500">

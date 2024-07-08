@@ -55,7 +55,6 @@ const Header = () => {
     } else {
       setvisibleSolutions("none");
     }
-    console.log(visibleSolutions);
   };
 
   const onClickNavBarCompany = () => {

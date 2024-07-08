@@ -9,7 +9,6 @@ import axios from "axios";
 const CategoriesEdit = () => {
   const location = useLocation();
   let categoryDetails = location.state;
-  console.log(categoryDetails);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: categoryDetails.namecategory,

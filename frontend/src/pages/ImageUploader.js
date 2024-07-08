@@ -42,7 +42,6 @@ const ImageUploader = () => {
           'Content-Type': 'multipart/form-data'
         }
       });
-      console.log(response);
       alert('Images uploaded successfully: ' + response.data.path);
     } catch (error) {
       alert('Error uploading images: ' + error.message);

@@ -14,7 +14,6 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const user = JSON.parse(sessionStorage.getItem("UserInformation"));
-  console.log(user, "data");
   const [loginData, setLoginData] = useState({
     username: "",
     password: "",

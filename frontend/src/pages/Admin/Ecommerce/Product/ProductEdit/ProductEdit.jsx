@@ -103,7 +103,6 @@ const ProductEdit = () => {
               defaultValue={productDetail.price}
               onChange={(e) => {
                 setFormData({ ...formData, price: e.target.value });
-                console.log(formData);
               }}
             />
           </div>

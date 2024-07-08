@@ -452,6 +452,31 @@ joyu.get("/joyu/careers/positions", async (req, res) => {
   }
 });
 
+joyu.get("/joyu/careers/availability", async (req, res) => {
+  const careerSchema = joyuSchemas.JoyuCareers;
+  try {
+    const availabilityValues = await careerSchema.distinct("availability");
+    if (availabilityValues.length > 0) {
+      res.status(200).json({
+        success: true,
+        count: availabilityValues.length,
+        data: availabilityValues,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        message: "No availability values found",
+      });
+    }
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: err.message,
+    });
+  }
+});
+
 joyu.get("/joyu/careers/:id", async (req, res) => {
   const { id } = req.params; // Access id from query parameters
   if (!id) {
@@ -488,9 +513,6 @@ joyu.get("/joyu/careers/:id", async (req, res) => {
     });
   }
 });
-
-
-
 
 joyu.put("/joyu/careers/:id", uploadJoyu.single("image"), async (req, res) => {
   const { id } = req.params;
@@ -591,6 +613,45 @@ joyu.delete("/joyu/careers/:id", async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Server error",
+      error: err.message,
+    });
+  }
+});
+
+// filter position and avaibility
+joyu.post("/joyu/careers/filter", async (req, res) => {
+  const { availability, position } = req.body;
+  let filter = {};
+
+  // Check conditions for filtering
+  if (availability === "All" && position === "All") {
+    // Get all careers if both availability and position are "All"
+    filter = {};
+  } else if (position === "All" && availability !== "All") {
+    // Get all careers with specified availability
+    filter = { availability: availability };
+  } else if (availability === "All" && position !== "All") {
+    // Get all careers with specified position
+    filter = { position: position };
+  } else if (availability !== undefined && position !== undefined) {
+    // Filter by both availability and position
+    filter = { availability: availability, position: position };
+  } else {
+    return res.status(400).json({
+      message: "Missing filter parameters",
+    });
+  }
+
+  try {
+    const careers = await joyuSchemas.JoyuCareers.find(filter);
+    res.status(200).json({
+      message: "Careers fetched successfully",
+      data: careers,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      message: "Failed to fetch careers",
       error: err.message,
     });
   }
