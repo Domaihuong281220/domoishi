@@ -489,23 +489,32 @@ joyu.get("/joyu/careers/:id", async (req, res) => {
   }
 });
 
+
+
+
 joyu.put("/joyu/careers/:id", uploadJoyu.single("image"), async (req, res) => {
   const { id } = req.params;
-
-  const { position, description, responsibility, availability, address } =
-    req.body;
-
   const updateData = req.body;
-  // console.log(updatedData);
+
   if (!id) {
     return res.status(400).json({
       success: false,
       message: "ID parameter is required",
     });
   }
+
   try {
-    if (req.image) {
-      const imagePath = req.image.filename.replace(/ /g, "%20");
+    const existingProduct = await joyuSchemas.JoyuCareers.findById(id);
+
+    if (!existingProduct) {
+      return res.status(404).json({
+        success: false,
+        message: "No careers found with the given ID",
+      });
+    }
+
+    if (req.file) {
+      const imagePath = req.file.filename.replace(/ /g, "%20");
       updateData.image = imagePath;
 
       const imagetodelete = existingProduct.image.replace(/%20/g, " ");
@@ -516,10 +525,11 @@ joyu.put("/joyu/careers/:id", uploadJoyu.single("image"), async (req, res) => {
         }
       });
     }
+
     const updatedCareers = await joyuSchemas.JoyuCareers.findByIdAndUpdate(
-      id, // Using the ID directly
+      id,
       updateData,
-      { new: true, runValidators: true } // Return the updated object and run model validators
+      { new: true, runValidators: true }
     );
 
     if (updatedCareers) {
