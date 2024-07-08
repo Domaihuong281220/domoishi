@@ -689,7 +689,7 @@ joyu.delete("/joyu/address/:addressId", async (req, res) => {
     if (!deleteAddress) {
       return res
         .status(404)
-        .json({ success: false, message: "Product not found" });
+        .json({ success: false, message: "Address not found" });
     }
 
     res
