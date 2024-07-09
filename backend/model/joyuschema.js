@@ -141,17 +141,20 @@ const CategorySchema = new Schema({
   name: { type: String, required: true, maxlength: 50 },
 });
 
-const ProductSchema = new Schema({
-  name: { type: String, required: true, maxlength: 50 },
-  price: { type: Number, required: true, min: 0 },
-  description: { type: String, required: true, maxlength: 500 },
-  image: { type: String },
-  categoryID: {
-    type: Schema.Types.ObjectId,
-    ref: "JoyuCategory",
-    required: true,
+const ProductSchema = new Schema(
+  {
+    name: { type: String, required: true, maxlength: 50 },
+    price: { type: Number, required: true, min: 0 },
+    description: { type: String, required: true },
+    image: { type: String },
+    categoryID: {
+      type: Schema.Types.ObjectId,
+      ref: "JoyuCategory",
+      required: true,
+    },
   },
-});
+  { timestamps: true }
+);
 
 const BannerSchema = new Schema({
   bannerType: { type: String, required: true },

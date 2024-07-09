@@ -399,13 +399,13 @@ joyu.post("/joyu/careers", uploadJoyu.single("image"), async (req, res) => {
     });
   }
 });
-// get all position
+// get all careers
 
 joyu.get("/joyu/careers", async (req, res) => {
   const careerSchema = joyuSchemas.JoyuCareers;
   try {
     const careersItems = await careerSchema.find({});
-    if (careersItems.length > 0) {
+    if (careersItems.length >= 0) {
       res.status(200).json({
         success: true,
         count: careersItems.length,
@@ -1498,6 +1498,8 @@ joyu.post("/joyu/products", uploadJoyu.single("image"), async (req, res) => {
   try {
     // console.log(req);
     const { name, price, categoryID, description } = req.body;
+
+    console.log(req.file, req.filename, "asdhksjhd");
     const img = req.file ? req.file.filename : null;
 
     const image = img.replace(/ /g, "%20");
@@ -1520,7 +1522,9 @@ joyu.post("/joyu/products", uploadJoyu.single("image"), async (req, res) => {
 // Get all products
 joyu.get("/joyu/products", async (req, res) => {
   try {
-    const products = await Product.find().populate("categoryID", "name");
+    const products = await Product.find()
+      .populate("categoryID", "name")
+      .sort({ createdAt: -1 });
     res
       .status(200)
       .json({ success: true, count: products.length, data: products });
