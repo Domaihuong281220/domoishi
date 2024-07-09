@@ -793,22 +793,20 @@ joyu.put("/joyu/address/:addressId", async (req, res) => {
   }
 });
 // Delete Address by id
-joyu.delete("/joyu/address/:careerId", async (req, res) => {
-  try {
-    const { careerId } = req.params;
-    const result = await Address.deleteMany({ careerId });
+joyu.delete("/joyu/address/:addressId", async (req, res) => {
+  const { addressId } = req.params;
 
-    if (result.deletedCount === 0) {
-      return res.status(404).json({
-        success: false,
-        message: "No addresses found with the given careerId",
-      });
+  try {
+    const deleteAddress = await Address.findByIdAndDelete(addressId);
+    if (!deleteAddress) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Address not found" });
     }
 
-    res.status(200).json({
-      success: true,
-      message: `${result.deletedCount} addresses deleted`,
-    });
+    res
+      .status(200)
+      .json({ success: true, message: "Address deleted successfully" });
   } catch (error) {
     res
       .status(500)
