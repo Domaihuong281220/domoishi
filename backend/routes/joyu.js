@@ -1830,7 +1830,7 @@ joyu.post("/joyu/sendemail", upload.single("image"), async (req, res) => {
       message: "Failed to send emails",
       error: err.message,
     });
-  }
+  } 
 });
 
 // Uunscribe
