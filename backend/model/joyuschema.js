@@ -135,6 +135,7 @@ const joyuUserSchema = new Schema({
     unique: true,
     // email is optional in this setup; add required if it should be mandatory
   },
+  image: { type: String },
 });
 
 const CategorySchema = new Schema({

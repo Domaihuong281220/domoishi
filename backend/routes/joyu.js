@@ -1274,6 +1274,22 @@ joyu.delete("/joyu/customer/:id", async (req, res) => {
   }
 });
 
+// delete all customer
+joyu.delete("/joyu/customer", async (req, res) => {
+  const JoyuUser = joyuSchemas.JoyuUser;
+  try {
+    await JoyuUser.deleteMany({});
+    res.json({
+      message: "All customers have been deleted",
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: "Error deleting customers",
+      error: err.message,
+    });
+  }
+});
+
 // Create  list customer
 
 joyu.post("/joyu/customers", async (req, res) => {
@@ -1642,7 +1658,7 @@ joyu.post("/joyu/banner", uploadJoyu.single("image"), async (req, res) => {
   // console.log(req.body);
   try {
     const { bannerType } = req.body;
-    console.log(bannerType);
+    // console.log(bannerType);
     const img = req.file ? req.file.filename : null;
     const image = img.replace(/ /g, "%20");
     const banner = new Banner({ image, bannerType });
@@ -1724,7 +1740,6 @@ joyu.post("/joyu/sendemail", upload.single("image"), async (req, res) => {
     if (!input) return "";
     return input.replace(/(\r\n|\n|\r)/g, "<br>");
   };
-  console.log(data);
 
   try {
     const userData = await JoyuUser.find();
@@ -1751,76 +1766,57 @@ joyu.post("/joyu/sendemail", upload.single("image"), async (req, res) => {
         subject: data.subject, // Subject line
 
         html: `
-        
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-            <td align="center" style="padding: 2vw;">
-                    <!-- Header -->
-                    
-                    <tr>
-                      <td class="header" style="background-color: #ffffff; padding: 4vw; text-align: center; color: black; font-size: 24px; font-weight: bold;">
-                        Joyu Tea & Coffee Newsletter
-                        </td>
-                    </tr>
-                          <td align="center">
-
-                <table class="content" width="600" border="0" cellspacing="0" cellpadding="0" >
-                    <!-- Body -->
-                    <tr>
-                        <td class="body" style="padding: 2vw; text-align: left; font-size: 16px; line-height: 1.6; border-collapse: collapse; border: 1px solid #cccccc; border-radius: 1vw;">
-                            <p className = "text-red-200"  dangerouslySetInnerHTML={{
-                __html: ${replaceNewlinesWithBreaks(
-                  "\r\n" + data.emailData
-                )}</p>
-                        </td>
-                    </tr>
-
-                   
-                   </table>
-                    <!-- Footer -->
-                    <tr>
-                    
-                        <td class="footer" style="background-color: #ffffff; padding: 4vw; text-align: center; color: black; font-size: 12px;">
-                          <img src="http://drive.google.com/uc?export=view&id=1hHQ-bxFViMXRx08OQmDPgP2l_gMV2f4_" alt="Group-5" border="0">
-    
-                        <p>Joyu Tea & Coffee</p>
-                            <p>3545 Buckner Blvd, #105, Virginia Beach, VA 23453</p>
-                            <p>Phone: (757) 301-2384 | Email: <a href="mailto:info@joyuteacoffee.com" style="color: #6a737d; text-decoration: underline;">info@joyuteacoffee.com</a></p>
-                            <div style="margin-top: 1vw;">
-                                <a href="https://www.instagram.com/joyuteacoffee" target="_blank" style="color: #6a737d; text-decoration: underline; margin-right: 10px;">Instagram</a>
-                                <a href="https://www.facebook.com/joyuteacoffee" target="_blank" style="color: #6a737d; text-decoration: underline; margin-right: 10px;">Facebook</a>
-                                <a href="https://www.joyuteacoffee.com" target="_blank" style="color: #6a737d; text-decoration: underline;">Website</a>
-                            </div>
-                            <div style="margin-top: 2vw;" class="flex">
-                                <a href="${
-                                  process.env.REACT_APP_SERVER_URL
-                                }/joyu/unsubscribe/${email}" style="color: #6a737d; text-decoration: underline; margin-right: 12px;">Unsubscribe</a> 
-                                <a>|</a>
-                                <a href="https://www.joyuteacoffee.com/privacy-policy" style="color: #6a737d; text-decoration: underline;"> Privacy Policy</a>
-                            </div>
-                            <p style="margin-top: 2.2vw; color: #6a737d;">&copy; 2024 Joyu Tea & Coffee. All rights reserved.</p>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-
-          
+<div style="width: 95%; margin-right: auto; margin-left: auto; border: 1px solid #44614f; padding: 10px; margin-top: 10px; margin-bottom: 10px; border-radius: 15px;">
+   <div>
+      <div class="header" style="background-color: #ffffff; color: black; font-size: 24px; font-weight: bold; padding-top: 2vw; padding-bottom: 2vw">
+         Joyu Tea & Coffee Newsletter
+      </div>
+   </div>
+   <div  style=" text-align: left; font-size: 16px; line-height: 1.6;  width: 100%; padding-top: 2vw; padding-bottom: 2vw">
+      <p className = "text-red-200"  dangerouslySetInnerHTML={{
+      __html: ${replaceNewlinesWithBreaks("\r\n" + data.emailData)}</p>
+   </div>
+   <div class="" style="display: flex; justify-content: start; width: 80%; padding-top: 2vw; padding-bottom: 2vw;">
+      <img src="cid:newsletterImage" alt="image" style="height: 300px; width:300px; object-fit: cover;">
+   </div>
+   <div class="footer" style="background-color: #ffffff;  color: black; font-size: 12px;">
+      
+      <div>
+         <div class="footer" style="background-color: #ffffff; padding: 4vw; text-align: center; color: black; font-size: 16px;">
+            <img src="http://drive.google.com/uc?export=view&id=1hHQ-bxFViMXRx08OQmDPgP2l_gMV2f4_" alt="Group-5" border="0">
+            <p>Joyu Tea & Coffee</p>
+            <p>3545 Buckner Blvd, #105, Virginia Beach, VA 23453</p>
+            <p>Phone: (757) 301-2384 | Email: <a href="mailto:info@joyuteacoffee.com" style="color: #6a737d; text-decoration: underline;">info@joyuteacoffee.com</a></p>
+            <div style="margin-top: 1vw;">
+               <a href="https://www.instagram.com/joyuteacoffee" target="_blank" style="color: #6a737d; text-decoration: underline; margin-right: 10px;">Instagram</a>
+               <a href="https://www.facebook.com/joyuteacoffee" target="_blank" style="color: #6a737d; text-decoration: underline; margin-right: 10px;">Facebook</a>
+               <a href="https://www.joyuteacoffee.com" target="_blank" style="color: #6a737d; text-decoration: underline;">Website</a>
+            </div>
+            <div style="margin-top: 2vw;" class="flex">
+               <a href="${
+                 process.env.REACT_APP_SERVER_URL
+               }/joyu/unsubscribe/${email}" style="color: #6a737d; text-decoration: underline; margin-right: 12px;">Unsubscribe</a> 
+               <a>|</a>
+               <a href="https://www.joyuteacoffee.com/privacy-policy" style="color: #6a737d; text-decoration: underline;"> Privacy Policy</a>
+            </div>
+            <p style="margin-top: 2.2vw; color: #6a737d;">&copy; 2024 Joyu Tea & Coffee. All rights reserved.</p>
+         </div>
+      </div>
+   </div>
+</div>
+</div>
          `, // HTML body
         attachments: [
           image && {
             // Attach image only if it exists
             filename: image.originalname,
             content: image.buffer,
-            cid: data.img, // Use img from the frontend as the CID
+            cid: "newsletterImage", // Use img from the frontend as the CID
           },
         ].filter(Boolean),
       };
 
-      console.log(`Sending email to ${email}...`);
       await transporter.sendMail(mailOptions);
-      console.log(`Email sent to ${email}`);
     }
 
     res.json({
