@@ -1,39 +1,34 @@
-<div style="width: 95%; margin-right: auto; margin-left: auto; border: 1px solid #44614f; padding: 10px; margin-top: 10px; margin-bottom: 10px; ">
-  <div>
-     <div class="header" style="background-color: #ffffff; color: black; font-size: 24px; font-weight: bold; padding-top: 2vw; padding-bottom: 2vw">
-        Joyu Tea & Coffee Newsletter
-     </div>
-  </div>
-  <div  style=" text-align: left; font-size: 16px; line-height: 1.6;  width: 100%; padding-top: 2vw; padding-bottom: 2vw">
-     <p className = "text-red-200"  dangerouslySetInnerHTML={{
-     __html: ${replaceNewlinesWithBreaks("\r\n" + data.emailData)}</p>
-  </div>
-  <div class="" style="display: flex; justify-content: start; width: 80%; padding-top: 2vw; padding-bottom: 2vw;">
-     <img src="cid:newsletterImage" alt="image" style="height: 300px; width:300px; object-fit: cover;">
-  </div>
-  <div class="footer" style="background-color: #ffffff;  color: black; font-size: 12px;">
-     
-     <div>
-        <div class="footer" style="background-color: #ffffff; padding: 4vw; text-align: center; color: black; font-size: 16px;">
-           <img src="http://drive.google.com/uc?export=view&id=1hHQ-bxFViMXRx08OQmDPgP2l_gMV2f4_" alt="Group-5" border="0">
-           <p>Joyu Tea & Coffee</p>
-           <p>3545 Buckner Blvd, #105, Virginia Beach, VA 23453</p>
-           <p>Phone: (757) 301-2384 | Email: <a href="mailto:info@joyuteacoffee.com" style="color: #6a737d; text-decoration: underline;">info@joyuteacoffee.com</a></p>
-           <div style="margin-top: 1vw;">
-              <a href="https://www.instagram.com/joyuteacoffee" target="_blank" style="color: #6a737d; text-decoration: underline; margin-right: 10px;">Instagram</a>
-              <a href="https://www.facebook.com/joyuteacoffee" target="_blank" style="color: #6a737d; text-decoration: underline; margin-right: 10px;">Facebook</a>
-              <a href="https://www.joyuteacoffee.com" target="_blank" style="color: #6a737d; text-decoration: underline;">Website</a>
-           </div>
-           <div style="margin-top: 2vw;" class="flex">
-              <a href="${
-                process.env.REACT_APP_SERVER_URL
-              }/joyu/unsubscribe/${email}" style="color: #6a737d; text-decoration: underline; margin-right: 12px;">Unsubscribe</a> 
-              <a>|</a>
-              <a href="https://www.joyuteacoffee.com/privacy-policy" style="color: #6a737d; text-decoration: underline;"> Privacy Policy</a>
-           </div>
-           <p style="margin-top: 2.2vw; color: #6a737d;">&copy; 2024 Joyu Tea & Coffee. All rights reserved.</p>
-        </div>
-     </div>
-  </div>
+<div style="width: 95%; margin-right: auto; margin-left: auto; border: 1px solid #44614f; padding: 10px; margin-top: 10px; margin-bottom: 10px; border-radius: 15px;">
+  
+   <div  style=" text-align: left; font-size: 16px; line-height: 1.6;  width: 100%; padding-top: 2vw; padding-bottom: 2vw">
+      <p className = "text-red-200" >Thursday Sweet Treat is back! Satisfy your sweet cravings with our latest deal at Joyu Tea & Coffee. Pair croffles, flaky croissants, crookies, or other pastries with your favorite drinks. 🥐☕️ Bring your squad and enjoy a sweet escape together! 🍰✨ #JoyuSweetTreats #Croffles #Croissants #Crookies #SweetIndulgence #TeaAndCoffee #FriendsAndSweets"</p>
+   </div>
+   <div class="" style="display: flex;  width: 100%; padding-top: 2vw; padding-bottom: 2vw; margin-left: auto; margin-right: auto; ">
+      <img src="https://mail.google.com/mail/u/0?ui=2&ik=97b2454f20&attid=0.1&permmsgid=msg-f:1804198883587623144&th=1909cd53586588e8&view=fimg&fur=ip&sz=s0-l75-ft&attbid=ANGjdJ9PV7Z5UyvKWdv0WX3wAYj14T5D_Hl07VSVEU1NzStz-aGY8vF7qC1OkgcDAquUaIZYRh3zwZs5pcv0Y0B0hcsIz2E7r8a3ueKviyFx5NJsxVVznGIU1N16f7o&disp=emb alt="image" style="height: 300px; width:300px; object-fit: cover; margin-left: auto; margin-right: auto;">
+   </div>
+   <div class="footer" style="background-color: #ffffff;  color: black; font-size: 12px; display: flex; justify-content: center;">
+      
+      <div>
+         <div class="footer" style="background-color: #ffffff; padding: 4vw; text-align: center; color: black; font-size: 16px;">
+            <img src="http://localhost:4000/logo_sendEmail.png" alt="Logo Joyu" border="0">
+            <p>Joyu Tea & Coffee</p>
+            <p>3545 Buckner Blvd, #105, Virginia Beach, VA 23453</p>
+            <p>Phone: (757) 301-2384 | Email: <a href="mailto:info@joyuteacoffee.com" style="color: #6a737d; text-decoration: underline;">info@joyuteacoffee.com</a></p>
+            <div style="margin-top: 1vw;">
+               <a href="https://www.instagram.com/joyuteacoffee" target="_blank" style="color: #6a737d; text-decoration: underline; margin-right: 10px;">Instagram</a>
+               <a href="https://www.facebook.com/joyuteacoffee" target="_blank" style="color: #6a737d; text-decoration: underline; margin-right: 10px;">Facebook</a>
+               <a href="https://www.joyuteacoffee.com" target="_blank" style="color: #6a737d; text-decoration: underline;">Website</a>
+            </div>
+            <div style="margin-top: 2vw;" class="flex">
+               <a href="${
+                 process.env.REACT_APP_SERVER_URL
+               }/joyu/unsubscribe/${email}" style="color: #6a737d; text-decoration: underline; margin-right: 12px;">Unsubscribe</a> 
+               <a>|</a>
+               <a href="https://www.joyuteacoffee.com/privacy-policy" style="color: #6a737d; text-decoration: underline;"> Privacy Policy</a>
+            </div>
+            <p style="margin-top: 2.2vw; color: #6a737d;">&copy; 2024 Joyu Tea & Coffee. All rights reserved.</p>
+         </div>
+      </div>
+   </div>
 </div>
 </div>

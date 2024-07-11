@@ -1767,23 +1767,21 @@ joyu.post("/joyu/sendemail", upload.single("image"), async (req, res) => {
 
         html: `
 <div style="width: 95%; margin-right: auto; margin-left: auto; border: 1px solid #44614f; padding: 10px; margin-top: 10px; margin-bottom: 10px; border-radius: 15px;">
-   <div>
-      <div class="header" style="background-color: #ffffff; color: black; font-size: 24px; font-weight: bold; padding-top: 2vw; padding-bottom: 2vw">
-         Joyu Tea & Coffee Newsletter
-      </div>
-   </div>
+  
    <div  style=" text-align: left; font-size: 16px; line-height: 1.6;  width: 100%; padding-top: 2vw; padding-bottom: 2vw">
       <p className = "text-red-200"  dangerouslySetInnerHTML={{
       __html: ${replaceNewlinesWithBreaks("\r\n" + data.emailData)}</p>
    </div>
-   <div class="" style="display: flex; justify-content: start; width: 80%; padding-top: 2vw; padding-bottom: 2vw;">
-      <img src="cid:newsletterImage" alt="image" style="height: 300px; width:300px; object-fit: cover;">
+   <div class="" style="display: flex; justify-content: start; width: 100%; padding-top: 2vw; padding-bottom: 2vw;">
+      <img src="cid:newsletterImage" alt="image" style="height: 300px; width:300px; object-fit: cover; margin-left: auto; margin-right: auto;">
    </div>
    <div class="footer" style="background-color: #ffffff;  color: black; font-size: 12px;">
       
       <div>
          <div class="footer" style="background-color: #ffffff; padding: 4vw; text-align: center; color: black; font-size: 16px;">
-            <img src="http://drive.google.com/uc?export=view&id=1hHQ-bxFViMXRx08OQmDPgP2l_gMV2f4_" alt="Group-5" border="0">
+            <img src="${
+              process.env.REACT_APP_SERVER_URL
+            }/logo_sendEmail.png" alt="Logo Joyu" border="0">
             <p>Joyu Tea & Coffee</p>
             <p>3545 Buckner Blvd, #105, Virginia Beach, VA 23453</p>
             <p>Phone: (757) 301-2384 | Email: <a href="mailto:info@joyuteacoffee.com" style="color: #6a737d; text-decoration: underline;">info@joyuteacoffee.com</a></p>
@@ -1830,7 +1828,7 @@ joyu.post("/joyu/sendemail", upload.single("image"), async (req, res) => {
       message: "Failed to send emails",
       error: err.message,
     });
-  } 
+  }
 });
 
 // Uunscribe
@@ -1941,6 +1939,7 @@ module.exports = joyu;
 
 joyu.post("/api/sendEmailCatering", (req, res) => {
   const formData = req.body;
+  console.log(formData);
   const transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
@@ -1989,7 +1988,7 @@ joyu.post("/api/sendEmailCatering", (req, res) => {
         <td><strong>Special request: </strong></td>
         <td>${formData.specicalRequest}</td>
       </tr>
-      
+
     </table>
   `;
 
