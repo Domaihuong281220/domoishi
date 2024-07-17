@@ -1743,9 +1743,8 @@ joyu.post("/joyu/sendemail", upload.single("image"), async (req, res) => {
 
   try {
     const userData = await JoyuUser.find();
-    // const emails = userData.map((user) => user.email);
-    // console.log('Sending emails to:', emails);
-    const emails = ["nguyenvantay061999@gmail.com"];
+    const emails = userData.map((user) => user.email);
+
     // Create a transporter object using SMTP transport
     const transporter = nodemailer.createTransport({
       pool: true,
@@ -1761,10 +1760,9 @@ joyu.post("/joyu/sendemail", upload.single("image"), async (req, res) => {
         pass: "ckxh ylrr jbov ymon", // Replace with your app-specific password
       },
     });
-    const formattedContent = replaceNewlinesWithBreaks(data.emailContent);
+
     const batchSize = 10; // Number of emails to send in each batch
     const totalEmails = emails.length;
-    const delayBetweenBatches = 5000; // Thời gian chờ giữa các đợt (5 giây)
 
     // Send emails to all users
     for (let i = 0; i < totalEmails; i += batchSize) {
