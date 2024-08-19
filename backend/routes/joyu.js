@@ -1776,9 +1776,13 @@ joyu.post("/joyu/sendemail", upload.single("image"), async (req, res) => {
       host: "smtp.gmail.com",
       port: 587,
       secure: false,
+      // auth: {
+      //   user: "joyutea@gmail.com", // Replace with your email
+      //   pass: "wixz iswj yodr utjw", // Replace with your app-specific password
+      // },
       auth: {
-        user: "joyutea@gmail.com", // Replace with your email
-        pass: "wixz iswj yodr utjw", // Replace with your app-specific password
+        user: "taynv@1cinnovation.com", // Replace with your email
+        pass: "ckxh ylrr jbov ymon", // Replace with your app-specific password
       },
     });
 
