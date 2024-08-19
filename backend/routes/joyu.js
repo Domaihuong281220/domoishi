@@ -1290,6 +1290,31 @@ joyu.delete("/joyu/customer", async (req, res) => {
   }
 });
 
+// search customer by email
+joyu.get("/joyu/customer/search", async (req, res) => {
+  const JoyuUser = joyuSchemas.JoyuUser;
+  const email = req.query.email; // Get the email from query parameters
+
+  try {
+    const users = await JoyuUser.find({
+      email: { $regex: email, $options: "i" },
+    });
+    // The "i" option makes the search case-insensitive
+
+    if (users.length === 0) {
+      return res.status(404).json({
+        message: "No users found",
+      });
+    }
+
+    res.json(users); // Return all matching users
+  } catch (err) {
+    res.status(500).json({
+      message: "An error occurred while searching for users",
+      error: err.message,
+    });
+  }
+});
 // Create  list customer
 
 joyu.post("/joyu/customers", async (req, res) => {
